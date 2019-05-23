@@ -1,0 +1,176 @@
+[
+  {
+    "name": "Smith, John",
+    "dateOfBirth": "19/06/1981",
+    "crn": "X612322A",
+    "status": {
+      "type": "current",
+      "label": "current"
+    },
+    "offences": [
+      "Assault by beating"
+    ],
+    "case": "FR1231612322",
+    "markers": [
+      "Domestic violence"
+    ],
+    "appearance": 1,
+    "court": 2
+  },
+  {
+    "name": "Windsor, Edward",
+    "dateOfBirth": "01/02/1970",
+    "crn": "X612323A",
+    "status": {
+      "type": "known",
+      "label": "known"
+    },
+    "offences": [
+      "Robbery of goods over £500"
+    ],
+    "case": "SC1231612323",
+    "markers": [],
+    "appearance": 2,
+    "court": 3
+  },
+  {
+    "name": "Rhihaz, Mohammed",
+    "dateOfBirth": "21/09/1993",
+    "crn": "",
+    "status": {
+      "type": "not known",
+      "label": "not known"
+    },
+    "offences": [
+      "Possession of a knife in public",
+      "Violent, threatening behaviour"
+    ],
+    "case": "SC1231612323",
+    "markers": [
+      "Violent"
+    ],
+    "appearance": 2,
+    "court": 3
+  },
+  {
+    "name": "Jenkins, Robert",
+    "dateOfBirth": "03/03/1997",
+    "crn": "X97132A",
+    "status": {
+      "type": "current",
+      "label": "current"
+    },
+    "offences": [
+      "Robbery of goods over £500",
+      "Assault by beating",
+      "Violent, threatening behaviour"
+    ],
+    "case": "FR1231612322",
+    "markers": [
+      "Violent",
+      "Domestic violence"
+    ],
+    "appearance": 2,
+    "court": 2
+  },
+  {
+    "name": "Smithson, Thomas",
+    "dateOfBirth": "12/11/1978",
+    "crn": "",
+    "status": {
+      "type": "error",
+      "label": "no match"
+    },
+    "offences": [
+      "Robbery of goods over £500"
+    ],
+    "case": "SC1231612323",
+    "markers": [],
+    "appearance": 1,
+    "court": 2
+  },
+  {
+    "name": "Burgess, Gary",
+    "dateOfBirth": "03/03/1981",
+    "crn": "X612323A",
+    "status": {
+      "type": "current",
+      "label": "current"
+    },
+    "offences": [
+      "Robbery of goods over £500"
+    ],
+    "case": "SC1231612323",
+    "markers": [],
+    "appearance": 1,
+    "court": 3
+  },
+  {
+    "name": "Jones, Jason",
+    "dateOfBirth": "11/05/1964",
+    "crn": "X612323A",
+    "status": {
+      "type": "current",
+      "label": "current"
+    },
+    "offences": [
+      "Violent, threatening behaviour"
+    ],
+    "case": "SC1231612323",
+    "markers": [
+      "Violent"
+    ],
+    "appearance": 1,
+    "court": 3
+  },
+  {
+    "name": "Birds, Stephen",
+    "dateOfBirth": "21/03/1997",
+    "crn": "X612323A",
+    "status": {
+      "type": "current",
+      "label": "current"
+    },
+    "offences": [
+      "Violent, threatening behaviour"
+    ],
+    "case": "SC1231612323",
+    "markers": [],
+    "appearance": 1,
+    "court": 3
+  },
+  {
+    "name": "Jafoor, Abdul",
+    "dateOfBirth": "01/08/2000",
+    "crn": "X612323A",
+    "status": {
+      "type": "known",
+      "label": "known"
+    },
+    "offences": [
+      "Robbery of goods over £500"
+    ],
+    "case": "SC1231612323",
+    "markers": [],
+    "appearance": 1,
+    "court": 3
+  },
+  {
+    "name": "Bhukari, Shahid",
+    "dateOfBirth": "03/03/1967",
+    "crn": "X612323A",
+    "status": {
+      "type": "current",
+      "label": "current"
+    },
+    "offences": [
+      "Assault by beating"
+    ],
+    "case": "SC1231612323",
+    "markers": [
+      "Domestic violence"
+    ],
+    "appearance": 1,
+    "court": 3
+  }
+]
