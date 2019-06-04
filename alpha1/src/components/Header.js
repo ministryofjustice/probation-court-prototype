@@ -11,7 +11,7 @@ function Header () {
             <span className="govuk-header__logotype">
               <Logo className="govuk-header__logotype-crown"/>
             </span>
-            <span className="govuk-header__logotype-text">Probation in Court</span>
+            <span className="govuk-header__logotype-text">Prepare cases for court</span>
           </a>
         </div>
 

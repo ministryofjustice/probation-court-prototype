@@ -22,6 +22,10 @@ $hmcts-page-width: $govuk-page-width;
   width: calc(100% - 205px);
 }
 
+.app-offender-selection {
+  width: calc(100% - 102px);
+}
+
 .app-offender-image {
-  border: white 10px solid;
+  margin-right: 10px;
 }

@@ -11,7 +11,7 @@ function Navigation () {
 
             <ul className="hmcts-primary-navigation__list">
               <li className="hmcts-primary-navigation__item">
-                <NavLink to="/" className="hmcts-primary-navigation__link">Court list</NavLink>
+                <NavLink to="/" className="hmcts-primary-navigation__link">Case list</NavLink>
               </li>
               <li className="hmcts-primary-navigation__item">
                 <a className="hmcts-primary-navigation__link" href="/calendar" onClick={ (e) => e.preventDefault() }>Calendar</a>
