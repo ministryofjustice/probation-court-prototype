@@ -24,7 +24,7 @@ function OffenderSummary (props) {
           <div className="govuk-grid-column-full">
             <div className="moj-!-float-left--not-narrow">
 
-              <img src="/assets/images/no-photo.png" width="165" height="205" alt={ `Image of ${ offenderData.name }` }
+              <img src="/assets/images/no-photo.png" width="165" height="205" alt={ `${ offenderData.name }` }
                    className="app-offender-image"/>
             </div>
             <div className="moj-!-float-left--not-narrow app-offender-header">

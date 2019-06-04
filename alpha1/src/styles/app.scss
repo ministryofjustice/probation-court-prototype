@@ -6,82 +6,22 @@ $hmcts-page-width: $govuk-page-width;
 @import "~@hmcts/frontend/all";
 @import "~@mojdigital/pattern-library/all";
 
+//===============================================
+// Overrides
+//===============================================
+
 .govuk-phase-banner__content__tag {
   background: govuk-colour("red");
 }
+
+//===============================================
+// App specific styles
+//===============================================
 
 .app-offender-header {
   width: calc(100% - 205px);
 }
 
 .app-offender-image {
-  width: 165px;
   border: white 10px solid;
-}
-
-// @FIXME: Remove these overrides when updating to Pattern Library v0.0.1-beta.4
-//===============================================
-
-.moj-\!-float-left, .moj-\!-float-left--not-narrow {
-  float: left;
-}
-
-.moj-\!-float-right, .moj-\!-float-right--not-narrow {
-  float: right;
-}
-
-.moj-\!-float-left--not-narrow, .moj-\!-float-right--not-narrow {
-  @include govuk-media-query(mobile, tablet) {
-    float: none;
-  }
-}
-
-.moj-\!-float-left, .moj-\!-float-right, .moj-\!-float-left--not-narrow, .moj-\!-float-right--not-narrow {
-  @include govuk-clearfix;
-}
-
-//===============================================
-
-.moj-table.moj-table--row-counting tr th:first-child {
-  padding-left: 2em;
-}
-
-.moj-table td p {
-  margin-top: 0;
-  margin-bottom: 5px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-//===============================================
-
-.moj-badge {
-  display: inline-block;
-  min-width: 90%;
-  text-align: center;
-  border-color: govuk-colour("grey-2");
-  color: govuk-colour("grey-1");
-
-  &.moj-badge-current {
-    border-color: govuk-colour("green");
-    color: govuk-colour("green");
-  }
-
-  &.moj-badge-known {
-    border-color: govuk-colour("yellow");
-    color: govuk-colour("yellow");
-  }
-
-  &.moj-badge-error {
-    border-color: govuk-colour("red");
-    color: govuk-colour("red");
-  }
-}
-
-.moj-link--error {
-  &:link, &:visited {
-    color: govuk-colour("red");
-  }
 }

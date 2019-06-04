@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import PhaseBanner from './components/PhaseBanner'
 
 import CourtList from './scenes/court-list/CourtList'
+import OffenderSelection from './scenes/offender-selection/OffenderSelection'
 import OffenderSummary from './scenes/offender-summary/OffenderSummary'
 
 function App () {
@@ -22,6 +23,7 @@ function App () {
         <PhaseBanner/>
 
         <Route exact path="/" component={ CourtList }/>
+        <Route path="/offender-selection/:id" component={ OffenderSelection }/>
         <Route path="/offender-summary/:id" component={ OffenderSummary }/>
 
       </div>

@@ -72,7 +72,7 @@ function CourtList () {
                 <div className="hmcts-action-bar">
 
                   <div className="hmcts-action-bar__filter">
-                    <button id="filter-button" className="govuk-button moj-button--secondary govuk-!-margin-bottom-0"
+                    <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                             type="button"
                             aria-haspopup="true"
                             aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
@@ -127,7 +127,7 @@ function CourtList () {
                 { currentCourtList.map((listItem, index) => {
                   return (
                     <tr key={ index }>
-                      <th scope="row"><Link to={ `/offender-summary/${ index }` }
+                      <th scope="row"><Link to={ listItem.status.type === 'error' ? `/offender-selection/${ index }` : `/offender-summary/${ index }` }
                         className={ `govuk-link govuk-link--no-visited-state ${ listItem.status.type === 'error' ? 'moj-link--error' : '' }` }>{ listItem.name }</Link>
                       </th>
                       <td>

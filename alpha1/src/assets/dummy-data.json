@@ -79,7 +79,24 @@
     "crn": "",
     "status": {
       "type": "error",
-      "label": "no match"
+      "label": "no match",
+      "matches": [
+        {
+          "name": "Smithson, Tom",
+          "dateOfBirth": "12/11/1978",
+          "crn": "X698760A"
+        },
+        {
+          "name": "Smithson, Thomas",
+          "dateOfBirth": "11/12/1978",
+          "crn": "X123456A"
+        },
+        {
+          "name": "Smithson, Thomas",
+          "dateOfBirth": "12/03/1987",
+          "crn": "X654321A"
+        }
+      ]
     },
     "offences": [
       "Robbery of goods over £500"

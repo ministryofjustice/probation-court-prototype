@@ -33,7 +33,7 @@
   "devDependencies": {
     "@hmcts/frontend": "0.0.34-alpha",
     "@mojdigital/pattern-library": "0.0.1-beta.3",
-    "govuk-frontend": "2.11.0",
+    "govuk-frontend": "2.12.0",
     "node-sass": "4.12.0"
   }
 }
