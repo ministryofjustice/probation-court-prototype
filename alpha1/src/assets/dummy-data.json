@@ -1,315 +1,674 @@
-[
-  {
-    "name": "Smith, John",
-    "dateOfBirth": "19/06/1981",
-    "crn": "X612322A",
-    "pnc": "2007/332941B",
-    "courtStore": "A 0102938",
-    "status": {
-      "type": "current",
-      "label": "Current"
-    },
-    "offences": [
-      "Assault by beating"
-    ],
-    "previous": [
-      "Possession of a knife in public",
-      "Robbery of goods over £500",
-      "Assault by beating",
-      "Violent, threatening behaviour"
-    ],
-    "case": "FR1231612322",
-    "markers": [
-      {
-        "short": "DV",
-        "long": "Domestic violence"
-      }
-    ],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
-    },
-    "currentOrder": [
-      "50 days community service",
-      "Curfew 19:00 - 07:00",
-      "25 RAR days"
-    ],
-    "appearance": 1,
-    "court": 2
-  },
-  {
-    "name": "Windsor, Edward",
-    "dateOfBirth": "01/02/1970",
-    "crn": "X612323A",
-    "status": {
-      "type": "known",
-      "label": "Previous"
-    },
-    "offences": [
-      "Robbery of goods over £500"
-    ],
-    "previous": [
-      "Robbery of goods over £500",
-      "Robbery of goods over £500",
-      "Violent, threatening behaviour",
-      "Robbery of goods over £500"
-    ],
-    "case": "SC1231612323",
-    "markers": [],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
-    },
-    "appearance": 2,
-    "court": 3
-  },
-  {
-    "name": "Rhihaz, Mohammed",
-    "dateOfBirth": "21/09/1993",
-    "crn": "",
-    "status": {
-      "type": "not known",
-      "label": "Not known"
-    },
-    "offences": [
-      "Possession of a knife in public",
-      "Violent, threatening behaviour"
-    ],
-    "case": "SC1231612323",
-    "markers": [
-      {
-        "short": "VI",
-        "long": "Violent"
-      }
-    ],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
-    },
-    "appearance": 2,
-    "court": 3
-  },
-  {
-    "name": "Jenkins, Sally",
-    "dateOfBirth": "03/03/1997",
-    "crn": "X97132A",
-    "status": {
-      "type": "current",
-      "label": "Current"
-    },
-    "offences": [
-      "Robbery of goods over £500",
-      "Assault by beating",
-      "Violent, threatening behaviour"
-    ],
-    "previous": [
-      "Robbery of goods over £500",
-      "Assault by beating",
-      "Violent, threatening behaviour"
-    ],
-    "case": "FR1231612322",
-    "markers": [
-      {
-        "short": "VI",
-        "long": "Violent"
+{
+  "court": "Thames Magistrates Court",
+  "cases": [
+    {
+      "name": "Smith, John",
+      "dateOfBirth": "19/06/1981",
+      "crn": "X612322A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
+      "status": {
+        "type": "current",
+        "label": "Current"
       },
-      {
-        "short": "DV",
-        "long": "Domestic violence"
-      }
-    ],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
-    },
-    "currentOrder": [
-      "50 days community service"
-    ],
-    "appearance": 2,
-    "court": 2
-  },
-  {
-    "name": "Smith, Thomas",
-    "dateOfBirth": "12/11/1978",
-    "crn": "",
-    "status": {
-      "type": "error",
-      "label": "PNC missing",
-      "matches": [
+      "offences": [
+        "Assault by beating"
+      ],
+      "sentence": [
+        "Custodial sentence, 6 months"
+      ],
+      "deliusUpdated": "Y",
+      "previous": [
+        "Possession of a knife in public",
+        "Robbery of goods over £500",
+        "Assault by beating",
+        "Violent, threatening behaviour"
+      ],
+      "case": "FR1231612322",
+      "markers": [
         {
-          "name": "Smith, Thomas",
-          "dateOfBirth": "12/11/1978",
-          "crn": "X698760A",
-          "pnc": "2007/332941B"
-        },
-        {
-          "name": "Smith, Thomas",
-          "dateOfBirth": "11/12/1978",
-          "crn": "X123456A",
-          "pnc": "2004/123456B"
-        },
-        {
-          "name": "Smith, Thomas",
-          "dateOfBirth": "12/11/1987",
-          "crn": "X654321A",
-          "pnc": "1965/654321B"
+          "short": "DV",
+          "long": "Domestic violence"
         }
-      ]
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "50 days community service",
+        "Curfew 19:00 - 07:00",
+        "25 RAR days"
+      ],
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 2
     },
-    "offences": [
-      "Robbery of goods over £500"
-    ],
-    "case": "SC1231612323",
-    "markers": [],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
+    {
+      "name": "Paulson, Robert",
+      "dateOfBirth": "19/06/1981",
+      "crn": "X612322A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Possession of a knife in public",
+        "Robbery of goods over £500",
+        "Assault by beating",
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Custodial sentence, 6 months"
+      ],
+      "deliusUpdated": "Y",
+      "previous": [
+        "Possession of a knife in public",
+        "Robbery of goods over £500",
+        "Assault by beating",
+        "Violent, threatening behaviour"
+      ],
+      "case": "FR1231612322",
+      "markers": [
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "50 days community service",
+        "Curfew 19:00 - 07:00",
+        "25 RAR days"
+      ],
+      "currentState": {
+        "type": "Case Open",
+        "label": "2nd listing"
+      },
+      "appearance": 2,
+      "court": 2
     },
-    "appearance": 1,
-    "court": 2
-  },
-  {
-    "name": "Burgess, Gary",
-    "dateOfBirth": "03/03/1981",
-    "crn": "X612323A",
-    "status": {
-      "type": "current",
-      "label": "Current"
+    {
+      "name": "Windsor, Edward",
+      "dateOfBirth": "01/02/1970",
+      "crn": "X612323A",
+      "status": {
+        "type": "known",
+        "label": "Previous"
+      },
+      "offences": [
+        "Robbery of goods over £500"
+      ],
+      "sentence": [
+        "Community service, 50 days"
+      ],
+      "deliusUpdated": "N",
+      "previous": [
+        "Robbery of goods over £500",
+        "Robbery of goods over £500",
+        "Violent, threatening behaviour",
+        "Robbery of goods over £500"
+      ],
+      "case": "SC1231612323",
+      "markers": [],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 2,
+      "court": 3
     },
-    "offences": [
-      "Robbery of goods over £500"
-    ],
-    "case": "SC1231612323",
-    "markers": [],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
+    {
+      "name": "Rhihaz, Mohammed",
+      "dateOfBirth": "21/09/1993",
+      "crn": "",
+      "status": {
+        "type": "not known",
+        "label": "Not known"
+      },
+      "offences": [
+        "Possession of a knife in public",
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Suspended sentence, 2 years"
+      ],
+      "deliusUpdated": "N",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "VI",
+          "long": "Violent"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentState": {
+        "type": "Adjourned",
+        "label": "Adjourned",
+        "details": "Pre-sentence Report"
+      },
+      "appearance": 2,
+      "court": 3
     },
-    "currentOrder": [
-      "50 days community service",
-      "25 RAR days"
-    ],
-    "appearance": 1,
-    "court": 3
-  },
-  {
-    "name": "Jones, Jason",
-    "dateOfBirth": "11/05/1964",
-    "crn": "X612323A",
-    "status": {
-      "type": "current",
-      "label": "Current"
+    {
+      "name": "Jenkins, Sally",
+      "dateOfBirth": "03/03/1997",
+      "crn": "X97132A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Robbery of goods over £500",
+        "Assault by beating",
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Community service, 50 days",
+        "Curfew 19:00 - 07:00",
+        "RAR days, 25"
+      ],
+      "deliusUpdated": "Y",
+      "previous": [
+        "Robbery of goods over £500",
+        "Assault by beating",
+        "Violent, threatening behaviour"
+      ],
+      "case": "FR1231612322",
+      "markers": [
+        {
+          "short": "VI",
+          "long": "Violent"
+        },
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "50 days community service"
+      ],
+      "currentState": {
+        "type": "Adjourned",
+        "label": "Adjourned",
+        "details": "Legal issues"
+      },
+      "appearance": 2,
+      "court": 2
     },
-    "offences": [
-      "Violent, threatening behaviour"
-    ],
-    "case": "SC1231612323",
-    "markers": [
-      {
-        "short": "VI",
-        "long": "Violent"
-      }
-    ],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
+    {
+      "name": "Smith, Thomas",
+      "dateOfBirth": "12/11/1978",
+      "crn": "",
+      "status": {
+        "type": "error",
+        "label": "PNC missing",
+        "matches": [
+          {
+            "name": "Smith, Thomas",
+            "dateOfBirth": "12/11/1978",
+            "crn": "X698760A",
+            "pnc": "2007/332941B",
+            "current": false,
+            "address": {
+              "line1": "No fixed abode",
+              "line2": "",
+              "city": "",
+              "postcode": ""
+            }
+          },
+          {
+            "name": "Smith, Thomas",
+            "dateOfBirth": "11/12/1978",
+            "crn": "X123456A",
+            "pnc": "2004/123456B",
+            "current": true,
+            "address": {
+              "line1": "21 Albert Road",
+              "line2": "",
+              "city": "Sheffield",
+              "postcode": "S6 2NA"
+            }
+          },
+          {
+            "name": "Smith, Thomas",
+            "dateOfBirth": "12/11/1987",
+            "crn": "X654321A",
+            "pnc": "1965/654321B",
+            "current": false,
+            "address": {
+              "line1": "13 Scotland Street",
+              "line2": "",
+              "city": "Sheffield",
+              "postcode": "S2 1NG"
+            }
+          }
+        ]
+      },
+      "offences": [
+        "Robbery of goods over £500"
+      ],
+      "sentence": [
+        "Community service, 50 days"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 2
     },
-    "currentOrder": [
-      "Curfew 19:00 - 07:00"
-    ],
-    "appearance": 1,
-    "court": 3
-  },
-  {
-    "name": "Birds, Stephen",
-    "dateOfBirth": "21/03/1997",
-    "crn": "X612323A",
-    "status": {
-      "type": "current",
-      "label": "Current"
+    {
+      "name": "Burgess, Gary",
+      "dateOfBirth": "03/03/1981",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Robbery of goods over £500"
+      ],
+      "sentence": [
+        "Community service, 50 days"
+      ],
+      "case": "SC1231612323",
+      "markers": [],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "50 days community service",
+        "25 RAR days"
+      ],
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 3
     },
-    "offences": [
-      "Violent, threatening behaviour"
-    ],
-    "case": "SC1231612323",
-    "markers": [],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
+    {
+      "name": "Jones, Jason",
+      "dateOfBirth": "11/05/1964",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Suspended sentence, 12 months"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "VI",
+          "long": "Violent"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "Curfew 19:00 - 07:00"
+      ],
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 3
     },
-    "currentOrder": [
-      "Curfew 19:00 - 07:00"
-    ],
-    "appearance": 1,
-    "court": 3
-  },
-  {
-    "name": "Jafoor, Abdul",
-    "dateOfBirth": "01/08/2000",
-    "crn": "X612323A",
-    "status": {
-      "type": "known",
-      "label": "Previous"
+    {
+      "name": "Birds, Stephen",
+      "dateOfBirth": "21/03/1997",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Community service, 75 days",
+        "Curfew 19:00 - 07:00"
+      ],
+      "deliusUpdated": "N",
+      "case": "SC1231612323",
+      "markers": [],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "Curfew 19:00 - 07:00"
+      ],
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 3
     },
-    "offences": [
-      "Robbery of goods over £500"
-    ],
-    "case": "SC1231612323",
-    "markers": [],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
+    {
+      "name": "Jafoor, Abdul",
+      "dateOfBirth": "01/08/2000",
+      "crn": "X612323A",
+      "status": {
+        "type": "known",
+        "label": "Previous"
+      },
+      "offences": [
+        "Robbery of goods over £500"
+      ],
+      "sentence": [
+        "Community service, 35 days"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 3
     },
-    "appearance": 1,
-    "court": 3
-  },
-  {
-    "name": "Bhukari, Shahid",
-    "dateOfBirth": "03/03/1967",
-    "crn": "X612323A",
-    "status": {
-      "type": "current",
-      "label": "Current"
+    {
+      "name": "Bhukari, Shahid",
+      "dateOfBirth": "03/03/1967",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Assault by beating",
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Community service, 75 days",
+        "Curfew 19:00 - 07:00"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "155 days community service",
+        "Restraining order"
+      ],
+      "currentState": {
+        "type": "Case Open",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 3
     },
-    "offences": [
-      "Assault by beating"
-    ],
-    "case": "SC1231612323",
-    "markers": [
-      {
-        "short": "DV",
-        "long": "Domestic violence"
-      }
-    ],
-    "address": {
-      "line1": "3 George Street",
-      "line2": "",
-      "city": "Sheffield",
-      "postcode": "S7 2PQ"
+    {
+      "name": "Wishbone, Johnny",
+      "dateOfBirth": "03/03/1967",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Assault by beating"
+      ],
+      "sentence": [
+        "Community service, 75 days",
+        "Curfew 19:00 - 07:00"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "155 days community service",
+        "Restraining order"
+      ],
+      "currentState": {
+        "type": "Case Open",
+        "label": "2nd listing"
+      },
+      "appearance": 1,
+      "court": 3
     },
-    "currentOrder": [
-      "155 days community service",
-      "Restraining order"
-    ],
-    "appearance": 1,
-    "court": 3
-  }
-]
+    {
+      "name": "Smith, Julie",
+      "dateOfBirth": "03/03/1967",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Robbery of goods over £500"
+      ],
+      "sentence": [
+        "Community service, 50 days"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "20 days community service",
+        "Restraining order"
+      ],
+      "currentState": {
+        "type": "Sentenced",
+        "label": "2nd listing"
+      },
+      "appearance": 2,
+      "court": 3
+    },
+    {
+      "name": "Kowalczyk, Peotr",
+      "dateOfBirth": "03/03/1967",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Assault by beating",
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Community service, 100 days",
+        "Curfew 19:00 - 07:00",
+        "Restraining order"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "35 days community service"
+      ],
+      "currentState": {
+        "type": "Sentenced",
+        "label": "2nd listing"
+      },
+      "appearance": 2,
+      "court": 3
+    },
+    {
+      "name": "Hicks, Dwayne",
+      "dateOfBirth": "03/03/1967",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Robbery of goods over £500",
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [
+        "Community service, 75 days"
+      ],
+      "deliusUpdated": "N",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "35 days community service"
+      ],
+      "currentState": {
+        "type": "Sentenced",
+        "label": "2nd listing"
+      },
+      "appearance": 2,
+      "court": 3
+    },
+    {
+      "name": "Johnson, David",
+      "dateOfBirth": "03/03/1967",
+      "crn": "X612323A",
+      "status": {
+        "type": "current",
+        "label": "Current"
+      },
+      "offences": [
+        "Rape of female over 16 years of age",
+        "Assault by beating"
+      ],
+      "sentence": [
+        "Custodial, 12 years"
+      ],
+      "deliusUpdated": "Y",
+      "case": "SC1231612323",
+      "markers": [
+        {
+          "short": "DV",
+          "long": "Domestic violence"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentOrder": [
+        "35 days community service"
+      ],
+      "currentState": {
+        "type": "Sentenced",
+        "label": "2nd listing"
+      },
+      "appearance": 2,
+      "court": 3
+    }
+  ]
+}

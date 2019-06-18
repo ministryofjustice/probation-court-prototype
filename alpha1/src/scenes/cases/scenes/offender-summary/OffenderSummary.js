@@ -1,16 +1,15 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import currentCourtList from '../../assets/dummy-data'
+import dummyData from '../../../../assets/dummy-data'
 
 function OffenderSummary (props) {
 
+  const currentCourtList = dummyData.cases
   const offenderData = currentCourtList[props.match.params.id]
   const hasDV = offenderData.markers.map((marker) => {
     return marker.short === 'DV'
   }).indexOf(true) !== -1
-
-  console.info(hasDV)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -32,7 +31,7 @@ function OffenderSummary (props) {
       <div className="govuk-breadcrumbs">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
-            <Link to="/" className="govuk-breadcrumbs__link">Case list</Link>
+            <Link to="/cases/list" className="govuk-breadcrumbs__link">Case list</Link>
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Current case</li>
         </ol>
@@ -40,7 +39,20 @@ function OffenderSummary (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h1 className="govuk-heading-l">Current case</h1>
+        <table className="govuk-table">
+          <tbody>
+          <tr>
+            <td>
+              <h1 className="govuk-heading-l govuk-!-margin-0">{ dummyData.court }</h1>
+              <p className="govuk-body-m govuk-!-font-weight-bold">Current case, { today() }</p>
+            </td>
+            <td>
+              <div
+                className={ `moj-risk-alert ${ offenderData.currentState.type === 'Adjourned' ? 'moj-risk-alert--high' : offenderData.currentState.type === 'Case Open' ? 'moj-risk-alert--low' : '' }` }>{ offenderData.currentState.type.toUpperCase() }</div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
 
         <div className="hmcts-filter-layout">
 
@@ -90,7 +102,7 @@ function OffenderSummary (props) {
 
                   { offenderData.markers && !!offenderData.markers.length && (
                     <Fragment>
-                      <h2 className="govuk-heading-m">Libra markers</h2>
+                      <h2 className="govuk-heading-m">Markers</h2>
 
                       { offenderData.markers.map((marker, markerIndex) => {
                         return <p key={ markerIndex } className="govuk-body govuk-!-margin-bottom-0">{ marker.long }</p>
@@ -118,6 +130,15 @@ function OffenderSummary (props) {
                       }) }
 
                       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                      <h2 className="govuk-heading-m">Intervention details</h2>
+
+                      <p className="govuk-body govuk-!-margin-bottom-0">ES - RAR Programme</p>
+                      <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
+
+                      <div className="hmcts-badge moj-badge moj-badge-current govuk-!-margin-top-4">Active</div>
+
+                      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
                     </Fragment>
                   ) }
 
@@ -140,7 +161,8 @@ function OffenderSummary (props) {
 
                   <h2 className="govuk-heading-m">Something wrong?</h2>
 
-                  <p className="govuk-body">If this offender record does not appear to be correct, you can correct this manually.</p>
+                  <p className="govuk-body">If this offender record does not appear to be correct, you can correct this
+                    manually.</p>
 
                   <button className="govuk-button govuk-button--secondary">Find correct record</button>
 
@@ -160,12 +182,22 @@ function OffenderSummary (props) {
 
                 <div className="hmcts-identity-bar">
                   <div className="hmcts-identity-bar__container">
-                    <div className="hmcts-identity-bar__details govuk-!-padding-left-4">
+                    <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                       <h2 className="govuk-heading-m">Current offence</h2>
 
                       { offenderData.offences.map((offence, offenceIndex) => {
-                        return <p key={ offenceIndex } className="govuk-body">{ offence }</p>
+                        return (
+                          <div key={ offenceIndex } className="govuk-grid-row">
+                            <div className="govuk-grid-column-one-half">
+                              <p className="govuk-body">{ offence }</p>
+                            </div>
+                            <div className="govuk-grid-column-one-half">
+                              <p
+                                className="govuk-body moj-!-text-align-right">{ today().substr(today().indexOf(',') + 1) }</p>
+                            </div>
+                          </div>
+                        )
                       }) }
 
                     </div>
@@ -174,12 +206,21 @@ function OffenderSummary (props) {
 
                 <div className="hmcts-identity-bar">
                   <div className="hmcts-identity-bar__container">
-                    <div className="hmcts-identity-bar__details govuk-!-padding-left-4">
+                    <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                       <h2 className="govuk-heading-m">Previous convictions</h2>
 
                       { offenderData.previous && offenderData.previous.map((offence, offenceIndex) => {
-                        return <p key={ offenceIndex } className="govuk-body">{ offence }</p>
+                        return (
+                          <div key={ offenceIndex } className="govuk-grid-row">
+                            <div className="govuk-grid-column-one-half">
+                              <p className="govuk-body">{ offence }</p>
+                            </div>
+                            <div className="govuk-grid-column-one-half">
+                              <p className="govuk-body moj-!-text-align-right">24/03/2017</p>
+                            </div>
+                          </div>
+                        )
                       }) }
 
                       { (!offenderData.previous || !offenderData.previous.length) && (
@@ -193,6 +234,39 @@ function OffenderSummary (props) {
                 <h2 className="govuk-heading-m govuk-!-margin-top-6">Current status of case</h2>
 
                 <div className="hmcts-timeline govuk-!-margin-top-4">
+
+                  {
+                    offenderData.currentState.type === 'Sentenced' && (
+                      <div className="hmcts-timeline__item">
+
+                        <div className="hmcts-timeline__header">
+                          <h2 className="hmcts-timeline__title">Sentenced</h2>
+                          <p className="hmcts-timeline__by govuk-!-margin-left-1">from Court</p>
+                        </div>
+
+                        <p className="hmcts-timeline__date govuk-!-margin-bottom-4">{ today() } at 10:55</p>
+                        { offenderData.sentence.map((sentence, sentenceIndex) => {
+                          return <p key={ sentenceIndex } className="hmcts-timeline__description govuk-!-margin-0">{ sentence }</p>
+                        }) }
+
+                      </div>
+                    )
+                  }
+
+                  {
+                    offenderData.currentState.type === 'Adjourned' && (
+                      <div className="hmcts-timeline__item">
+
+                        <div className="hmcts-timeline__header">
+                          <h2 className="hmcts-timeline__title">Adjourned</h2>
+                          <p className="hmcts-timeline__by govuk-!-margin-left-1">from Court</p>
+                        </div>
+
+                        <p className="hmcts-timeline__date">{ today() } at 10:45</p>
+                        <p className="hmcts-timeline__description">{ offenderData.currentState.details }</p>
+                      </div>
+                    )
+                  }
 
                   { hasDV && (
                     <div className="hmcts-timeline__item">
@@ -212,7 +286,7 @@ function OffenderSummary (props) {
                       </ul>
 
                     </div>
-                  )}
+                  ) }
 
                   { offenderData.status.type === 'current' && (
                     <Fragment>
@@ -271,7 +345,7 @@ function OffenderSummary (props) {
                         have been requested from Police, Sheffield.</p>
 
                     </div>
-                  )}
+                  ) }
 
                   <div className="hmcts-timeline__item">
 
@@ -299,7 +373,7 @@ function OffenderSummary (props) {
           </div>
         </div>
 
-        <Link to="/" className="govuk-back-link">Back</Link>
+        <Link to="/cases" className="govuk-back-link">Back</Link>
 
       </main>
 

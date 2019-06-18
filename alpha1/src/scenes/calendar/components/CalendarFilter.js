@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-function CourtListFilter() {
+function CalendarFilter() {
   return (
     <Fragment>
       <div className="hmcts-filter__selected">
@@ -17,6 +17,16 @@ function CourtListFilter() {
           </div>
 
         </div>
+
+        <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Informant / prosecutor</h3>
+
+        <ul className="hmcts-filter-tags">
+
+          <li><a className="hmcts-filter__tag" href="?filter=3&state=0"
+                 onClick={ (e) => e.preventDefault() }><span
+            className="govuk-visually-hidden">Remove this filter</span> All</a></li>
+
+        </ul>
 
         <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Status</h3>
 
@@ -36,17 +46,17 @@ function CourtListFilter() {
 
         </ul>
 
-        <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Marker</h3>
+        <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Plea</h3>
 
         <ul className="hmcts-filter-tags">
 
           <li><a className="hmcts-filter__tag" href="?filter=1&state=0"
                  onClick={ (e) => e.preventDefault() }><span
-            className="govuk-visually-hidden">Remove this filter</span> Domestic violence</a></li>
+            className="govuk-visually-hidden">Remove this filter</span> Guilty</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
                  onClick={ (e) => e.preventDefault() }><span
-            className="govuk-visually-hidden">Remove this filter</span> Violent</a></li>
+            className="govuk-visually-hidden">Remove this filter</span> Not Guilty</a></li>
 
         </ul>
 
@@ -81,6 +91,18 @@ function CourtListFilter() {
       <div className="hmcts-filter__options">
 
         <button type="submit" className="govuk-button">Apply filters</button>
+
+        <div className="govuk-form-group">
+          <label className="govuk-label govuk-label--m" htmlFor="sort">
+            Informant / prosecutor
+          </label>
+          <select className="govuk-select" id="sort" name="sort">
+            <option value="1" defaultValue="all">All</option>
+            <option value="2">Police</option>
+            <option value="3">CPS</option>
+            <option value="4">HMRC</option>
+          </select>
+        </div>
 
         <div className="govuk-form-group">
 
@@ -123,7 +145,7 @@ function CourtListFilter() {
 
           <fieldset className="govuk-fieldset">
 
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">Marker</legend>
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">Plea</legend>
 
             <div className="govuk-checkboxes govuk-checkboxes--small">
 
@@ -131,7 +153,7 @@ function CourtListFilter() {
                 <input className="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="1"
                        defaultChecked/>
                 <label className="govuk-label govuk-checkboxes__label" htmlFor="type-1">
-                  Domestic violence
+                  Guilty
                 </label>
               </div>
 
@@ -139,7 +161,7 @@ function CourtListFilter() {
                 <input className="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2"
                        defaultChecked/>
                 <label className="govuk-label govuk-checkboxes__label" htmlFor="type-2">
-                  Violent
+                  Not Guilty
                 </label>
               </div>
 
@@ -206,4 +228,4 @@ function CourtListFilter() {
   )
 }
 
-export default CourtListFilter
+export default CalendarFilter

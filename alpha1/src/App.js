@@ -8,10 +8,8 @@ import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import PhaseBanner from './components/PhaseBanner'
 
-import CourtList from './scenes/court-list/CourtList'
-import OffenderSelection from './scenes/offender-selection/OffenderSelection'
-import OffenderSummary from './scenes/offender-summary/OffenderSummary'
-import AdjournedList from './scenes/adjourned-list/AdjournedList'
+import Cases from './scenes/cases/Cases'
+import Calendar from './scenes/calendar/Calendar'
 
 function App () {
   return (
@@ -23,10 +21,8 @@ function App () {
 
         <PhaseBanner/>
 
-        <Route exact path="/" component={ CourtList }/>
-        <Route exact path="/adjourned" component={ AdjournedList }/>
-        <Route path="/offender-selection/:id" component={ OffenderSelection }/>
-        <Route path="/offender-summary/:id" component={ OffenderSummary }/>
+        <Route path="/cases/" component={ Cases }/>
+        <Route exact path="/calendar" component={ Calendar }/>
 
       </div>
 

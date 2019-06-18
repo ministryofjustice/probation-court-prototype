@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import currentCourtList from '../../assets/dummy-data'
+import dummyData from '../../../../assets/dummy-data'
 
 function OffenderSelection (props) {
 
-  const offenderData = currentCourtList[props.match.params.id]
+  const offenderData = dummyData.cases[props.match.params.id]
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -17,7 +17,7 @@ function OffenderSelection (props) {
       <div className="govuk-breadcrumbs">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
-            <Link to="/" className="govuk-breadcrumbs__link">Case list</Link>
+            <Link to="/cases/list" className="govuk-breadcrumbs__link">Case list</Link>
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Match offender record</li>
         </ol>
@@ -147,7 +147,11 @@ function OffenderSelection (props) {
                           <div className="moj-!-float-left--not-narrow app-offender-selection">
 
                             <h1
-                              className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.name }</h1>
+                              className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.name }
+                              {offenderItem.current && (
+                                <span className="hmcts-badge hmcts-badge--green govuk-!-margin-left-4">Current offender</span>
+                              )}
+                            </h1>
 
                             <div className="govuk-grid-row">
                               <div className="govuk-grid-column-one-quarter">
@@ -192,6 +196,11 @@ function OffenderSelection (props) {
                           </div>
                         </div>
                       </div>
+
+                      { offenderItem.address && (
+                        <p
+                          className="govuk-body govuk-!-margin-top-2">{ offenderItem.address.line1 } { offenderItem.address.line2 && offenderItem.address.line2 } { offenderItem.address.city } { offenderItem.address.postcode }</p>
+                      ) }
 
                       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 

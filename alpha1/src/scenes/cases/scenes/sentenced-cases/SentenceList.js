@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import currentCourtList from '../../assets/dummy-data'
+import dummyData from '../../../../assets/dummy-data'
 
-import Pagination from '../../components/Pagination'
 import CourtListFilter from '../court-list/components/CourtListFilter'
 
-function AdjournedList () {
+function SentencedList () {
+
+  const currentCourtList = dummyData.cases
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -16,6 +17,7 @@ function AdjournedList () {
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const today = new Date()
+    today.setDate(today.getDate() - 1)
 
     return (
       `${ days[today.getDay()] }, ${ today.toLocaleDateString() }`
@@ -36,7 +38,7 @@ function AdjournedList () {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <h1 className="govuk-heading-l govuk-!-margin-0">Sheffield Magistrates Court</h1>
+      <h1 className="govuk-heading-l govuk-!-margin-0">{ dummyData.court }</h1>
       <p className="govuk-body-m govuk-!-font-weight-bold">{ today() }</p>
 
       <nav className="hmcts-sub-navigation" aria-label="Sub navigation">
@@ -44,21 +46,21 @@ function AdjournedList () {
         <ul className="hmcts-sub-navigation__list">
 
           <li className="hmcts-sub-navigation__item">
-            <a className="hmcts-sub-navigation__link govuk-link--no-visited-state" href="/">
+            <Link to="/cases/list" className="hmcts-sub-navigation__link govuk-link--no-visited-state">
               Current cases
-            </a>
+            </Link>
           </li>
 
           <li className="hmcts-sub-navigation__item">
-            <a className="hmcts-sub-navigation__link govuk-link--no-visited-state" aria-current="page" href="/adjourned" onClick={ (event) => event.preventDefault() }>
+            <Link to="/cases/adjourned" className="hmcts-sub-navigation__link govuk-link--no-visited-state">
               Adjourned cases
-            </a>
+            </Link>
           </li>
 
           <li className="hmcts-sub-navigation__item">
-            <a className="hmcts-sub-navigation__link govuk-link--no-visited-state" href="#3" onClick={ (event) => event.preventDefault() }>
+            <Link to="/cases/sentenced" className="hmcts-sub-navigation__link govuk-link--no-visited-state" aria-current="page">
               Sentenced cases
-            </a>
+            </Link>
           </li>
 
         </ul>
@@ -97,7 +99,7 @@ function AdjournedList () {
             <tbody>
             <tr>
               <td>
-                <h1 className="govuk-heading-l govuk-!-margin-0">Adjourned cases</h1>
+                <h1 className="govuk-heading-l govuk-!-margin-0">Sentenced cases</h1>
               </td>
               <td className="moj-!-text-align-right">
 
@@ -143,29 +145,40 @@ function AdjournedList () {
                 <tr>
                   <th scope="col">Name</th>
                   <th scope="col">Offence</th>
-                  <th scope="col">Adjournment</th>
+                  <th scope="col">Sentence</th>
+                  <th scope="col"><p className="moj-!-text-align-right">Saved to Delius</p></th>
                 </tr>
                 </thead>
 
                 <tbody>
 
                 { currentCourtList.map((listItem, index) => {
-                  return (
-                    <tr key={ index }>
-                      <th scope="row"><Link
-                        to={ listItem.status.type === 'error' ? `/offender-selection/${ index }` : `/offender-summary/${ index }` }
-                        className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
-                      </th>
-                      <td>
-                        { listItem.offences.map((offence, offenceIndex) => {
-                          return <p key={ offenceIndex }>{ offence }</p>
-                        }) }
-                      </td>
-                      <td>
-                        Adjourned for Pre-Sentence Report
-                      </td>
-                    </tr>
-                  )
+                  if (listItem.currentState.type === 'Sentenced') {
+                    return (
+                      <tr key={ index }>
+                        <th scope="row"><Link
+                          to={ listItem.status.type === 'error' ? `match/${ index }` : `details/${ index }` }
+                          className={ `govuk-link govuk-link--no-visited-state ${ listItem.deliusUpdated === 'N' ? 'moj-link--error app-link--error-view' : '' }` }>{ listItem.name }</Link>
+                        </th>
+                        <td>
+                          { listItem.offences.map((offence, offenceIndex) => {
+                            return <p key={ offenceIndex }
+                                      className={ listItem.deliusUpdated === 'N' ? 'moj-!-color-bright-red' : '' }>{ offence }</p>
+                          }) }
+                        </td>
+                        <td>
+                          { listItem.sentence.map((sentence, sentenceIndex) => {
+                            return <p key={ sentenceIndex }
+                                      className={ listItem.deliusUpdated === 'N' ? 'moj-!-color-bright-red' : '' }>{ sentence }</p>
+                          }) }
+                        </td>
+                        <td>
+                          <p
+                            className={ listItem.deliusUpdated === 'N' ? 'moj-!-color-bright-red moj-!-text-align-right' : 'moj-!-text-align-right' }>{ listItem.deliusUpdated }</p>
+                        </td>
+                      </tr>
+                    )
+                  }
                 }) }
 
                 </tbody>
@@ -175,8 +188,6 @@ function AdjournedList () {
 
           </div>
 
-          <Pagination/>
-
         </div>
       </div>
 
@@ -184,4 +195,4 @@ function AdjournedList () {
   )
 }
 
-export default AdjournedList
+export default SentencedList

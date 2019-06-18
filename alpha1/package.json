@@ -4,9 +4,10 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "moment": "2.24.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-router-dom": "5.0.0",
+    "react-router-dom": "5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
@@ -33,7 +34,7 @@
   "devDependencies": {
     "@hmcts/frontend": "0.0.34-alpha",
     "@mojdigital/pattern-library": "0.0.1-beta.3",
-    "govuk-frontend": "2.12.0",
+    "govuk-frontend": "2.13.0",
     "node-sass": "4.12.0"
   }
 }
