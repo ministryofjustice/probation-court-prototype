@@ -1,17 +1,26 @@
 import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
+import { lastMonth as last, nextMonth as next } from '../../utils/DateTools'
 
 import dummyData from '../../assets/dummy-data'
 
 import CalendarFilter from './components/CalendarFilter'
 
-function Calendar () {
+function Calendar (props) {
 
-  const dateObject = moment()
-  const weekdaysShort = moment.weekdaysShort()
+  const currentDate = moment()
+
+  if (props.match.params.month && props.match.params.year) {
+    currentDate.set('month', parseInt(props.match.params.month, 10) - 1)
+    currentDate.set('year', props.match.params.year)
+  }
+
+  const lastMonth = last(currentDate)
+  const nextMonth = next(currentDate)
 
   function firstDayOfMonth () {
-    return moment(dateObject)
+    return moment(currentDate)
       .startOf('month')
       .format('d')
   }
@@ -26,22 +35,32 @@ function Calendar () {
 
   function daysInMonth () {
     let days = []
-    const today = dateObject.date()
-    for (let i = 1, day; i <= dateObject.daysInMonth(); i++) {
-      day = parseInt(dateObject.isoWeekday(i).format('d'), 10)
+    const today = currentDate.month() === moment().month() ? currentDate.date() : -1
+    for (let i = 1, day; i <= currentDate.daysInMonth(); i++) {
+      day = moment(currentDate).date(i).format('dd')
       days.push(
-        <li key={ i } className={ `app-calendar--item ${ today === i ? 'app-calendar--item_today' : '' }` }>
-          <div className={ `app-calendar--item_day ${ today === i ? 'app-calendar--item_day_today' : '' }` }>{ i }</div>
-          { day !== 1 && day !== 2 && (
-            <Fragment>
-              { i >= today && (<div
-                className="hmcts-badge hmcts-badge--green govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } new</div>) }
-              { (i === today || i === (today - 3)) && (<div
-                className="hmcts-badge hmcts-badge--red govuk-!-margin-2">{ Math.ceil(Math.random() * 10) } adjourned</div>) }
-              { i <= today && (
-                <div className="hmcts-badge govuk-!-margin-2">{ Math.ceil(Math.random() * ( i === today ? 1 : 25 )) + 10 } sentenced</div>) }
-            </Fragment>
-          ) }
+        <li key={ i } className={ `app-calendar--item ${ i === today ? 'app-calendar--item_today' : '' }` }>
+          <Link to={ `/cases/list/${ moment().date(i).format('D/M/YYYY') }` } className="app-calendar--link">
+            <div className={ `app-calendar--item_day ${ i === today ? 'app-calendar--item_day_today' : '' }` }
+                 aria-hidden="true">{ i }</div>
+            <div className="govuk-visually-hidden">{ moment().date(i).format('dddd, Do MMMM YYYY') }</div>
+            { day !== 'Sa' && day !== 'Su' && (
+              <Fragment>
+                { i >= today && (<div
+                  className="hmcts-badge govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } cases</div>) }
+                { i <= today && (
+                  <Fragment>
+                    <div
+                      className="hmcts-badge hmcts-badge--red govuk-!-margin-2">{ Math.ceil(Math.random() * 10) } adjourned
+                    </div>
+                    <div
+                      className="hmcts-badge hmcts-badge--green govuk-!-margin-2">{ Math.ceil(Math.random() * (i === today ? 1 : 25)) + 10 } sentenced
+                    </div>
+                  </Fragment>
+                ) }
+              </Fragment>
+            ) }
+          </Link>
         </li>
       )
     }
@@ -62,8 +81,9 @@ function Calendar () {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <h1 className="govuk-heading-l govuk-!-margin-0">{ dummyData.court }</h1>
-      <p className="govuk-body-m govuk-!-font-weight-bold">{ dateObject.format('MMMM, YYYY') }</p>
+      <h1 className="govuk-heading-l govuk-!-margin-0">Calendar</h1>
+      <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('MMMM, YYYY') } <span
+        className="govuk-hint moj-util-inline">at { dummyData.court }</span></p>
 
       <div className="hmcts-filter-layout">
 
@@ -99,41 +119,29 @@ function Calendar () {
               <td>
                 <ul className="hmcts-pagination__list govuk-!-margin-top-2">
                   <li className="hmcts-pagination__item  hmcts-pagination__item--prev">
-                    <a className="govuk-body-s hmcts-pagination__link" href="/">May, 2019<span
-                      className="govuk-visually-hidden">May, 2019</span></a>
+                    <Link to={ `/calendar/${ lastMonth.month + '/' + lastMonth.year }` }
+                          className="govuk-body-s hmcts-pagination__link">{ lastMonth.monthName }, { lastMonth.year }</Link>
                   </li>
                   <li className="hmcts-pagination__item">&nbsp;|&nbsp;</li>
                   <li className="hmcts-pagination__item  hmcts-pagination__item--next">
-                    <a className="govuk-body-s hmcts-pagination__link" href="/">July, 2019<span
-                      className="govuk-visually-hidden">July, 2019</span></a>
+                    <Link to={ `/calendar/${ nextMonth.month + '/' + nextMonth.year }` }
+                          className="govuk-body-s hmcts-pagination__link">{ nextMonth.monthName }, { nextMonth.year }</Link>
                   </li>
                 </ul>
 
-                <h3 className="hmcts-badge hmcts-badge--red govuk-!-margin-0 moj-!-text-align-center">Filtered view</h3>
               </td>
               <td className="moj-!-text-align-right">
 
                 <div className="hmcts-action-bar">
 
-                  <div className="hmcts-action-bar__filter">
-                    <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
-                            type="button"
-                            aria-haspopup="true"
-                            aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
-                    </button>
-                  </div>
-
                   <div className="hmcts-menu">
                     <div className="hmcts-menu__wrapper">
 
-                      <button type="submit"
-                              className="govuk-button govuk-button--secondary hmcts-menu__item govuk-!-margin-bottom-0"
-                              disabled>Reassign
-                      </button>
-
-                      <button type="submit"
-                              className="govuk-button govuk-button--secondary hmcts-menu__item govuk-!-margin-bottom-0"
-                              disabled>Archive
+                      <button id="filter-button"
+                              className="hmcts-menu__item govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
+                              type="button"
+                              aria-haspopup="true"
+                              aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
                       </button>
 
                     </div>
@@ -146,13 +154,15 @@ function Calendar () {
           </table>
 
           <div className="hmcts-scrollable-pane">
-
             <div className="hmcts-scrollable-pane__wrapper">
 
               <ul className="app-calendar">
-                { weekdaysShort.map(day => {
+                { moment.weekdaysShort().map((day, index) => {
                   return (
-                    <li key={ day } className="app-calendar--item app-calendar--item_header">{ day }</li>
+                    <li key={ day } className="app-calendar--item app-calendar--item_header">
+                      <span className="govuk-visually-hidden">{ moment.weekdays(index) }</span>
+                      <abbr title={ moment.weekdays(index) } aria-hidden="true">{ day }</abbr>
+                    </li>
                   )
                 })
                 }

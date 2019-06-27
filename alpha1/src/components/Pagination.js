@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-function Pagination () {
+function Pagination (props) {
   return (
     <Fragment>
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-0"/>
@@ -16,18 +16,16 @@ function Pagination () {
               className="govuk-visually-hidden"> set of pages</span></a>
           </li>
 
-          <li className="hmcts-pagination__item hmcts-pagination__item--active">1</li>
-          <li className="hmcts-pagination__item"><a className="hmcts-pagination__link" href="/page=2"
-                                                    onClick={ (e) => e.preventDefault() }>2</a></li>
-          <li className="hmcts-pagination__item"><a className="hmcts-pagination__link" href="/page=3"
-                                                    onClick={ (e) => e.preventDefault() }>3</a></li>
-          <li className="hmcts-pagination__item"><a className="hmcts-pagination__link" href="/page=4"
-                                                    onClick={ (e) => e.preventDefault() }>4</a></li>
-          <li className="hmcts-pagination__item"><a className="hmcts-pagination__link" href="/page=5"
-                                                    onClick={ (e) => e.preventDefault() }>5</a></li>
+          { [...Array(props.pageCount || 5)].map((e, i) => {
+            return <li key={ i } className="hmcts-pagination__item">
+              <a className={ `hmcts-pagination__link${ i === 0 ? ' hmcts-pagination__item--active' : '' }` }
+                 href={ `/page=${ i + 1 }` }
+                 onClick={ (e) => e.preventDefault() }>{ i + 1 }</a>
+            </li>
+          }) }
 
           <li className="hmcts-pagination__item  hmcts-pagination__item--next">
-            <a className="hmcts-pagination__link" href="/page=1" onClick={ (e) => e.preventDefault() }>Next<span
+            <a className="hmcts-pagination__link" href="/page=2" onClick={ (e) => e.preventDefault() }>Next<span
               className="govuk-visually-hidden"> set of pages</span></a>
           </li>
 

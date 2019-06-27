@@ -1,15 +1,171 @@
 {
-  "court": "Thames Magistrates Court",
+  "court": "Sheffield Magistrates Court",
   "cases": [
+    {
+      "name": "Jenkins, John",
+      "dateOfBirth": "04/03/1974",
+      "gender": "Male",
+      "crn": "",
+      "pnc": "2004/123456B",
+      "status": {
+        "type": "error",
+        "label": "Not identified",
+        "matches": [
+          {
+            "name": "Jenkins, John",
+            "dateOfBirth": "04/03/1975",
+            "gender": "Male",
+            "crn": "X698760A",
+            "pnc": "Blank",
+            "current": false,
+            "address": {
+              "line1": "No fixed abode",
+              "line2": "",
+              "city": "",
+              "postcode": ""
+            }
+          },
+          {
+            "name": "Jenkins, John",
+            "dateOfBirth": "03/04/1974",
+            "gender": "Male",
+            "crn": "X123456A",
+            "pnc": "2004/123465B",
+            "current": true,
+            "address": {
+              "line1": "21 Albert Road",
+              "line2": "",
+              "city": "Sheffield",
+              "postcode": "S6 2NA"
+            }
+          },
+          {
+            "name": "Jenkins, John",
+            "dateOfBirth": "04/03/1987",
+            "gender": "Male",
+            "crn": "X654321A",
+            "pnc": "2004/223456B",
+            "current": false,
+            "address": {
+              "line1": "13 Scotland Street",
+              "line2": "",
+              "city": "Sheffield",
+              "postcode": "S2 1NG"
+            }
+          }
+        ]
+      },
+      "offences": [
+        "Assault by beating",
+        "Possession of a knife in public",
+        "Violent, threatening behaviour"
+      ],
+      "sentence": [],
+      "deliusUpdated": "N",
+      "nps": true,
+      "case": "SC1231612323",
+      "markers": [],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentState": {
+        "type": "New",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 2
+    },
+    {
+      "name": "Marsh, Beverley",
+      "dateOfBirth": "12/11/1978",
+      "gender": "Female",
+      "crn": "",
+      "pnc": "2004/123456B",
+      "status": {
+        "type": "error",
+        "label": "Not identified",
+        "matches": [
+          {
+            "name": "Marsh, Beverley",
+            "dateOfBirth": "12/11/1978",
+            "gender": "Female",
+            "crn": "X698760A",
+            "pnc": "Blank",
+            "current": false,
+            "address": {
+              "line1": "No fixed abode",
+              "line2": "",
+              "city": "",
+              "postcode": ""
+            }
+          },
+          {
+            "name": "Marsh, Beverley",
+            "dateOfBirth": "11/12/1978",
+            "gender": "Female",
+            "crn": "X123456A",
+            "pnc": "2004/123465B",
+            "current": true,
+            "address": {
+              "line1": "21 Albert Road",
+              "line2": "",
+              "city": "Sheffield",
+              "postcode": "S6 2NA"
+            }
+          },
+          {
+            "name": "Marsh, Beverley",
+            "dateOfBirth": "12/11/1987",
+            "gender": "Female",
+            "crn": "X654321A",
+            "pnc": "2004/223456B",
+            "current": false,
+            "address": {
+              "line1": "13 Scotland Street",
+              "line2": "",
+              "city": "Sheffield",
+              "postcode": "S2 1NG"
+            }
+          }
+        ]
+      },
+      "offences": [
+        "Robbery of goods over £500"
+      ],
+      "sentence": [
+        "Community service, 50 days"
+      ],
+      "deliusUpdated": "Y",
+      "nps": true,
+      "case": "SC1231612323",
+      "markers": [],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentState": {
+        "type": "New",
+        "label": "1st listing"
+      },
+      "appearance": 1,
+      "court": 3
+    },
     {
       "name": "Smith, John",
       "dateOfBirth": "19/06/1981",
+      "gender": "Male",
       "crn": "X612322A",
       "pnc": "2007/332941B",
       "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "NPS"
       },
       "offences": [
         "Assault by beating"
@@ -18,6 +174,7 @@
         "Custodial sentence, 6 months"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "previous": [
         "Possession of a knife in public",
         "Robbery of goods over £500",
@@ -31,6 +188,13 @@
           "long": "Domestic violence"
         }
       ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Very high"
+        }
+      ],
       "address": {
         "line1": "3 George Street",
         "line2": "",
@@ -38,12 +202,12 @@
         "postcode": "S7 2PQ"
       },
       "currentOrder": [
-        "50 days community service",
+        "50 hours unpaid work",
         "Curfew 19:00 - 07:00",
         "25 RAR days"
       ],
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
         "label": "1st listing"
       },
       "appearance": 1,
@@ -52,12 +216,14 @@
     {
       "name": "Paulson, Robert",
       "dateOfBirth": "19/06/1981",
+      "gender": "Male",
       "crn": "X612322A",
       "pnc": "2007/332941B",
       "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "NPS"
       },
       "offences": [
         "Possession of a knife in public",
@@ -69,6 +235,7 @@
         "Custodial sentence, 6 months"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "previous": [
         "Possession of a knife in public",
         "Robbery of goods over £500",
@@ -80,6 +247,13 @@
         {
           "short": "DV",
           "long": "Domestic violence"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "High"
         }
       ],
       "address": {
@@ -94,8 +268,14 @@
         "25 RAR days"
       ],
       "currentState": {
-        "type": "Case Open",
-        "label": "2nd listing"
+        "type": "New",
+        "label": "3rd listing"
+      },
+      "previousState": {
+        "type": "Adjourned",
+        "label": "Was adjourned",
+        "date": "17/06/2019",
+        "details": "Legal issues"
       },
       "appearance": 2,
       "court": 2
@@ -103,7 +283,10 @@
     {
       "name": "Windsor, Edward",
       "dateOfBirth": "01/02/1970",
+      "gender": "Male",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "known",
         "label": "Previous"
@@ -115,6 +298,7 @@
         "Community service, 50 days"
       ],
       "deliusUpdated": "N",
+      "nps": true,
       "previous": [
         "Robbery of goods over £500",
         "Robbery of goods over £500",
@@ -123,6 +307,13 @@
       ],
       "case": "SC1231612323",
       "markers": [],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Low"
+        }
+      ],
       "address": {
         "line1": "3 George Street",
         "line2": "",
@@ -130,7 +321,54 @@
         "postcode": "S7 2PQ"
       },
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
+        "label": "1st listing"
+      },
+      "appearance": 2,
+      "court": 3
+    },
+    {
+      "name": "Robertson, Phillip",
+      "dateOfBirth": "01/02/1970",
+      "gender": "Male",
+      "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
+      "status": {
+        "type": "known",
+        "label": "Previous"
+      },
+      "offences": [
+        "Assault by beating"
+      ],
+      "sentence": [
+        "Community service, 50 days"
+      ],
+      "deliusUpdated": "N",
+      "nps": true,
+      "previous": [
+        "Robbery of goods over £500",
+        "Robbery of goods over £500",
+        "Violent, threatening behaviour",
+        "Robbery of goods over £500"
+      ],
+      "case": "SC1231612323",
+      "markers": [],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Low"
+        }
+      ],
+      "address": {
+        "line1": "3 George Street",
+        "line2": "",
+        "city": "Sheffield",
+        "postcode": "S7 2PQ"
+      },
+      "currentState": {
+        "type": "New",
         "label": "1st listing"
       },
       "appearance": 2,
@@ -139,7 +377,10 @@
     {
       "name": "Rhihaz, Mohammed",
       "dateOfBirth": "21/09/1993",
+      "gender": "Male",
       "crn": "",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "not known",
         "label": "Not known"
@@ -152,11 +393,27 @@
         "Suspended sentence, 2 years"
       ],
       "deliusUpdated": "N",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [
         {
-          "short": "VI",
-          "long": "Violent"
+          "short": "DV",
+          "long": "Domestic violence"
+        },
+        {
+          "short": "TG",
+          "long": "Hate crime - Transgender"
+        },
+        {
+          "short": "PT",
+          "long": "Persistently Targeted Victims"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Medium"
         }
       ],
       "address": {
@@ -168,7 +425,8 @@
       "currentState": {
         "type": "Adjourned",
         "label": "Adjourned",
-        "details": "Pre-sentence Report"
+        "details": "Pre-sentence Report",
+        "date": "today"
       },
       "appearance": 2,
       "court": 3
@@ -176,10 +434,14 @@
     {
       "name": "Jenkins, Sally",
       "dateOfBirth": "03/03/1997",
+      "gender": "Female",
       "crn": "X97132A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "NPS"
       },
       "offences": [
         "Robbery of goods over £500",
@@ -192,6 +454,7 @@
         "RAR days, 25"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "previous": [
         "Robbery of goods over £500",
         "Assault by beating",
@@ -200,8 +463,8 @@
       "case": "FR1231612322",
       "markers": [
         {
-          "short": "VI",
-          "long": "Violent"
+          "short": "PW",
+          "long": "Prohibited Weapons"
         },
         {
           "short": "DV",
@@ -220,89 +483,23 @@
       "currentState": {
         "type": "Adjourned",
         "label": "Adjourned",
-        "details": "Legal issues"
+        "details": "Legal issues",
+        "date": "today"
       },
       "appearance": 2,
       "court": 2
     },
     {
-      "name": "Smith, Thomas",
-      "dateOfBirth": "12/11/1978",
-      "crn": "",
-      "status": {
-        "type": "error",
-        "label": "PNC missing",
-        "matches": [
-          {
-            "name": "Smith, Thomas",
-            "dateOfBirth": "12/11/1978",
-            "crn": "X698760A",
-            "pnc": "2007/332941B",
-            "current": false,
-            "address": {
-              "line1": "No fixed abode",
-              "line2": "",
-              "city": "",
-              "postcode": ""
-            }
-          },
-          {
-            "name": "Smith, Thomas",
-            "dateOfBirth": "11/12/1978",
-            "crn": "X123456A",
-            "pnc": "2004/123456B",
-            "current": true,
-            "address": {
-              "line1": "21 Albert Road",
-              "line2": "",
-              "city": "Sheffield",
-              "postcode": "S6 2NA"
-            }
-          },
-          {
-            "name": "Smith, Thomas",
-            "dateOfBirth": "12/11/1987",
-            "crn": "X654321A",
-            "pnc": "1965/654321B",
-            "current": false,
-            "address": {
-              "line1": "13 Scotland Street",
-              "line2": "",
-              "city": "Sheffield",
-              "postcode": "S2 1NG"
-            }
-          }
-        ]
-      },
-      "offences": [
-        "Robbery of goods over £500"
-      ],
-      "sentence": [
-        "Community service, 50 days"
-      ],
-      "deliusUpdated": "Y",
-      "case": "SC1231612323",
-      "markers": [],
-      "address": {
-        "line1": "3 George Street",
-        "line2": "",
-        "city": "Sheffield",
-        "postcode": "S7 2PQ"
-      },
-      "currentState": {
-        "type": "Case Open",
-        "label": "1st listing"
-      },
-      "appearance": 1,
-      "court": 2
-    },
-    {
       "name": "Burgess, Gary",
       "dateOfBirth": "03/03/1981",
+      "gender": "Male",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "CRC"
       },
       "offences": [
         "Robbery of goods over £500"
@@ -310,6 +507,13 @@
       "sentence": [
         "Community service, 50 days"
       ],
+      "previous": [
+        "Robbery of goods over £500",
+        "Robbery of goods over £500",
+        "Violent, threatening behaviour",
+        "Robbery of goods over £500"
+      ],
+      "nps": true,
       "case": "SC1231612323",
       "markers": [],
       "address": {
@@ -323,7 +527,7 @@
         "25 RAR days"
       ],
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
         "label": "1st listing"
       },
       "appearance": 1,
@@ -332,10 +536,13 @@
     {
       "name": "Jones, Jason",
       "dateOfBirth": "11/05/1964",
-      "crn": "X612323A",
+      "gender": "Male",
+      "crn": "",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
-        "type": "current",
-        "label": "Current"
+        "type": "unknown",
+        "label": "Not known"
       },
       "offences": [
         "Violent, threatening behaviour"
@@ -344,11 +551,12 @@
         "Suspended sentence, 12 months"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [
         {
-          "short": "VI",
-          "long": "Violent"
+          "short": "PW",
+          "long": "Prohibited weapons"
         }
       ],
       "address": {
@@ -357,11 +565,9 @@
         "city": "Sheffield",
         "postcode": "S7 2PQ"
       },
-      "currentOrder": [
-        "Curfew 19:00 - 07:00"
-      ],
+      "currentOrder": [],
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
         "label": "1st listing"
       },
       "appearance": 1,
@@ -370,10 +576,13 @@
     {
       "name": "Birds, Stephen",
       "dateOfBirth": "21/03/1997",
-      "crn": "X612323A",
+      "gender": "Male",
+      "crn": "",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
-        "type": "current",
-        "label": "Current"
+        "type": "unknown",
+        "label": "Not known"
       },
       "offences": [
         "Violent, threatening behaviour"
@@ -383,19 +592,25 @@
         "Curfew 19:00 - 07:00"
       ],
       "deliusUpdated": "N",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Medium"
+        }
+      ],
       "address": {
         "line1": "3 George Street",
         "line2": "",
         "city": "Sheffield",
         "postcode": "S7 2PQ"
       },
-      "currentOrder": [
-        "Curfew 19:00 - 07:00"
-      ],
+      "currentOrder": [],
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
         "label": "1st listing"
       },
       "appearance": 1,
@@ -404,7 +619,10 @@
     {
       "name": "Jafoor, Abdul",
       "dateOfBirth": "01/08/2000",
+      "gender": "Male",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "known",
         "label": "Previous"
@@ -416,8 +634,16 @@
         "Community service, 35 days"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Low"
+        }
+      ],
       "address": {
         "line1": "3 George Street",
         "line2": "",
@@ -425,7 +651,7 @@
         "postcode": "S7 2PQ"
       },
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
         "label": "1st listing"
       },
       "appearance": 1,
@@ -434,10 +660,14 @@
     {
       "name": "Bhukari, Shahid",
       "dateOfBirth": "03/03/1967",
+      "gender": "Male",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "NPS"
       },
       "offences": [
         "Assault by beating",
@@ -448,11 +678,19 @@
         "Curfew 19:00 - 07:00"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [
         {
           "short": "DV",
           "long": "Domestic violence"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Low"
         }
       ],
       "address": {
@@ -466,7 +704,7 @@
         "Restraining order"
       ],
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
         "label": "1st listing"
       },
       "appearance": 1,
@@ -475,10 +713,14 @@
     {
       "name": "Wishbone, Johnny",
       "dateOfBirth": "03/03/1967",
+      "gender": "Male",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "NPS"
       },
       "offences": [
         "Assault by beating"
@@ -488,11 +730,23 @@
         "Curfew 19:00 - 07:00"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [
         {
           "short": "DV",
           "long": "Domestic violence"
+        },
+        {
+          "short": "CO",
+          "long": "Crime against an older person"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Medium"
         }
       ],
       "address": {
@@ -506,8 +760,14 @@
         "Restraining order"
       ],
       "currentState": {
-        "type": "Case Open",
+        "type": "New",
         "label": "2nd listing"
+      },
+      "previousState": {
+        "type": "Adjourned",
+        "label": "Was adjourned",
+        "date": "today",
+        "details": "Pre-sentence report"
       },
       "appearance": 1,
       "court": 3
@@ -515,10 +775,14 @@
     {
       "name": "Smith, Julie",
       "dateOfBirth": "03/03/1967",
+      "gender": "Female",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "CRC"
       },
       "offences": [
         "Robbery of goods over £500"
@@ -527,11 +791,19 @@
         "Community service, 50 days"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [
         {
           "short": "DV",
           "long": "Domestic violence"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Low"
         }
       ],
       "address": {
@@ -541,8 +813,7 @@
         "postcode": "S7 2PQ"
       },
       "currentOrder": [
-        "20 days community service",
-        "Restraining order"
+        "Community service, 50 days"
       ],
       "currentState": {
         "type": "Sentenced",
@@ -554,10 +825,14 @@
     {
       "name": "Kowalczyk, Peotr",
       "dateOfBirth": "03/03/1967",
+      "gender": "Male",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "NPS"
       },
       "offences": [
         "Assault by beating",
@@ -569,11 +844,19 @@
         "Restraining order"
       ],
       "deliusUpdated": "Y",
+      "nps": true,
       "case": "SC1231612323",
       "markers": [
         {
           "short": "DV",
           "long": "Domestic violence"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Medium"
         }
       ],
       "address": {
@@ -583,7 +866,9 @@
         "postcode": "S7 2PQ"
       },
       "currentOrder": [
-        "35 days community service"
+        "Community service, 100 days",
+        "Curfew 19:00 - 07:00",
+        "Restraining order"
       ],
       "currentState": {
         "type": "Sentenced",
@@ -595,24 +880,40 @@
     {
       "name": "Hicks, Dwayne",
       "dateOfBirth": "03/03/1967",
+      "gender": "Male",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
         "type": "current",
-        "label": "Current"
+        "label": "Current",
+        "office": "CRC"
       },
       "offences": [
         "Robbery of goods over £500",
         "Violent, threatening behaviour"
       ],
       "sentence": [
-        "Community service, 75 days"
+        "Community service, 75 days",
+        "Curfew 19:00 - 07:00"
       ],
       "deliusUpdated": "N",
+      "nps": true,
+      "previous": [
+        "Robbery of goods over £500"
+      ],
       "case": "SC1231612323",
       "markers": [
         {
           "short": "DV",
           "long": "Domestic violence"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Low"
         }
       ],
       "address": {
@@ -622,7 +923,8 @@
         "postcode": "S7 2PQ"
       },
       "currentOrder": [
-        "35 days community service"
+        "Community service, 75 days",
+        "Curfew 19:00 - 07:00"
       ],
       "currentState": {
         "type": "Sentenced",
@@ -635,23 +937,48 @@
       "name": "Johnson, David",
       "dateOfBirth": "03/03/1967",
       "crn": "X612323A",
+      "pnc": "2007/332941B",
+      "courtStore": "A 0102938",
       "status": {
-        "type": "current",
-        "label": "Current"
+        "type": "",
+        "label": ""
       },
       "offences": [
         "Rape of female over 16 years of age",
+        "Assault by beating"
+      ],
+      "previous": [
+        "Assault by beating",
+        "Assault by beating",
+        "Violent, threatening behaviour",
+        "Assault by beating",
         "Assault by beating"
       ],
       "sentence": [
         "Custodial, 12 years"
       ],
       "deliusUpdated": "Y",
+      "nps": false,
       "case": "SC1231612323",
       "markers": [
         {
+          "short": "RP",
+          "long": "Rape"
+        },
+        {
+          "short": "PW",
+          "long": "Prohibited weapons"
+        },
+        {
           "short": "DV",
           "long": "Domestic violence"
+        }
+      ],
+      "risk": [
+        {
+          "short": "RoSH",
+          "long": "Risk of Serious Harm",
+          "level": "Very high"
         }
       ],
       "address": {
@@ -661,7 +988,7 @@
         "postcode": "S7 2PQ"
       },
       "currentOrder": [
-        "35 days community service"
+        "Custodial, 12 years"
       ],
       "currentState": {
         "type": "Sentenced",

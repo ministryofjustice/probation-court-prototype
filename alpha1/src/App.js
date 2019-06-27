@@ -22,7 +22,7 @@ function App () {
         <PhaseBanner/>
 
         <Route path="/cases/" component={ Cases }/>
-        <Route exact path="/calendar" component={ Calendar }/>
+        <Route path="/calendar/:month?/:year?" component={ Calendar }/>
 
       </div>
 

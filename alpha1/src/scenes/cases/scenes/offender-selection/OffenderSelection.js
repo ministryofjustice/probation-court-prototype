@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import dummyData from '../../../../assets/dummy-data'
+import { getAge } from '../../../../utils/DateTools'
 
 function OffenderSelection (props) {
 
@@ -17,7 +18,7 @@ function OffenderSelection (props) {
       <div className="govuk-breadcrumbs">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/list" className="govuk-breadcrumbs__link">Case list</Link>
+            <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Match offender record</li>
         </ol>
@@ -25,7 +26,8 @@ function OffenderSelection (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h1 className="govuk-heading-l">Match offender record</h1>
+        <h1 className="govuk-heading-l">Match offender record  <span
+          className="govuk-hint moj-util-inline">in Delius</span></h1>
 
         <div className="hmcts-filter-layout">
 
@@ -41,7 +43,6 @@ function OffenderSelection (props) {
               </div>
 
               <div className="hmcts-filter__content">
-
                 <div className="hmcts-filter__selected">
 
                   <div className="hmcts-filter__selected-heading">
@@ -53,8 +54,20 @@ function OffenderSelection (props) {
                     <table className="govuk-table moj-table">
                       <tbody>
                       <tr>
+                        <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
+                        <td className="govuk-body">{ offenderData.pnc }</td>
+                      </tr>
+                      <tr>
                         <td className="govuk-!-font-weight-bold">Date of birth:</td>
                         <td>{ offenderData.dateOfBirth }</td>
+                      </tr>
+                      <tr>
+                        <td className="govuk-!-font-weight-bold">Age:</td>
+                        <td>{ getAge(offenderData.dateOfBirth) }</td>
+                      </tr>
+                      <tr>
+                        <td className="govuk-!-font-weight-bold">Gender:</td>
+                        <td>{ offenderData.gender }</td>
                       </tr>
                       <tr>
                         <td className="govuk-!-font-weight-bold">Address:</td>
@@ -73,7 +86,6 @@ function OffenderSelection (props) {
                     </table>
 
                   </div>
-
                 </div>
 
                 <div className="hmcts-filter__options">
@@ -84,7 +96,7 @@ function OffenderSelection (props) {
 
                       <div className="govuk-form-group">
                         <label className="govuk-label hmcts-search__label govuk-label--m"
-                               htmlFor="offender-search">Search</label>
+                               htmlFor="offender-search">Record not listed?</label>
 
                         <span id="offender-search-hint" className="govuk-hint hmcts-search__hint">You can search for an offender record using multiple terms</span>
                         <input className="govuk-input hmcts-search__input" id="offender-search" name="offender-search"
@@ -103,12 +115,12 @@ function OffenderSelection (props) {
                   <hr
                     className="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-0"/>
 
-                  <h2 className="govuk-heading-m">Offender not known</h2>
+                  <h2 className="govuk-heading-m">Offender not known?</h2>
 
-                  <p className="govuk-body">If you have determined that the offender is not currently known you
-                    can create a new offender record.</p>
+                  <p className="govuk-body">Confirm that you have determined that the offender is not currently known to
+                    probation.</p>
 
-                  <button className="govuk-button govuk-button--secondary">Create offender record</button>
+                  <button className="govuk-button govuk-button--secondary">Offender not known</button>
 
                 </div>
 
@@ -124,12 +136,12 @@ function OffenderSelection (props) {
 
               <div className="hmcts-scrollable-pane__wrapper">
 
-                <div className="govuk-warning-text moj-warning-text">
+                <div className="govuk-warning-text moj-warning-text moj-warning-text--critical">
                   <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
                   <strong className="govuk-warning-text__text">
                     <span className="govuk-warning-text__assistive">Warning</span>
-                    A positive identification was not possible due to missing data, please manually match the correct
-                    offender record.
+                    A positive identification was not possible due to missing data, please manually match the offender
+                    record.
                   </strong>
                 </div>
 
@@ -148,9 +160,10 @@ function OffenderSelection (props) {
 
                             <h1
                               className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.name }
-                              {offenderItem.current && (
-                                <span className="hmcts-badge hmcts-badge--green govuk-!-margin-left-4">Current offender</span>
-                              )}
+                              { offenderItem.current && (
+                                <span
+                                  className="hmcts-badge hmcts-badge--green govuk-!-margin-left-4">Current offender</span>
+                              ) }
                             </h1>
 
                             <div className="govuk-grid-row">
@@ -178,13 +191,9 @@ function OffenderSelection (props) {
                               </div>
                               <div className="govuk-grid-column-one-quarter">
 
-                                { offenderItem.pnc && (
-                                  <Fragment>
-                                    <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
-                                    <p
-                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.pnc }</p>
-                                  </Fragment>
-                                ) }
+                                <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
+                                <p
+                                  className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.pnc }</p>
 
                               </div>
                               <div className="govuk-grid-column-one-quarter moj-!-text-align-right">
@@ -197,10 +206,26 @@ function OffenderSelection (props) {
                         </div>
                       </div>
 
-                      { offenderItem.address && (
-                        <p
-                          className="govuk-body govuk-!-margin-top-2">{ offenderItem.address.line1 } { offenderItem.address.line2 && offenderItem.address.line2 } { offenderItem.address.city } { offenderItem.address.postcode }</p>
-                      ) }
+                      <table className="govuk-table moj-table">
+                        <tbody>
+                        <tr>
+                          <td>
+
+                            <p className="govuk-body govuk-!-margin-top-2">
+                              { offenderItem.gender }, { getAge(offenderItem.dateOfBirth) } of { offenderItem.address.line1 } { offenderItem.address.line2 && offenderItem.address.line2 } { offenderItem.address.city } { offenderItem.address.postcode }
+                            </p>
+
+                          </td>
+                          <td className="moj-!-text-align-right">
+
+                            <a href={ `http://delius/offender/` }
+                               className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
+                               onClick={ (e) => e.preventDefault() }>View Delius record</a>
+
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
 
                       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
