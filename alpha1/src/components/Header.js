@@ -7,11 +7,11 @@ function Header () {
       <div className="hmcts-header__container">
 
         <div className="hmcts-header__logo">
-          <a className="hmcts-header__link" href="/" onClick={ (e) => e.preventDefault() }>
+          <a className="hmcts-header__link" href="/" onClick={ e => e.preventDefault() }>
             <span className="govuk-header__logotype">
               <Logo className="govuk-header__logotype-crown"/>
             </span>
-            <span className="govuk-header__logotype-text">Prepare cases for court</span>
+            <span className="govuk-header__logotype-text">Probation in court</span>
           </a>
         </div>
 
@@ -22,13 +22,13 @@ function Header () {
             <ul className="hmcts-header__navigation-list">
 
               <li className="hmcts-header__navigation-item">
-                <a className="hmcts-header__navigation-link" href="/profile" onClick={ (e) => e.preventDefault() }>
+                <a className="hmcts-header__navigation-link" href="/profile" onClick={ e => e.preventDefault() }>
                   Profile
                 </a>
               </li>
 
               <li className="hmcts-header__navigation-item">
-                <a className="hmcts-header__navigation-link" href="/sign-out" onClick={ (e) => e.preventDefault() }>
+                <a className="hmcts-header__navigation-link" href="/sign-out" onClick={ e => e.preventDefault() }>
                   Sign out
                 </a>
               </li>

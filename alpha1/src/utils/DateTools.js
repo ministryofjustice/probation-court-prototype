@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-const getDateFromProps = (params) => {
+const getDateFromProps = params => {
   const currentDate = moment()
   if (params.day && params.month && params.year) {
     currentDate.set('date', params.day)
@@ -28,7 +28,7 @@ const nextMonth = (dateObject = moment()) => {
   }
 }
 
-const getAge = (dateOfBirth) => {
+const getAge = dateOfBirth => {
   return moment().diff(moment(dateOfBirth, 'DD/MM/YYYY'), 'years')
 }
 

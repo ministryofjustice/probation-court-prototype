@@ -17,7 +17,7 @@ function Navigation () {
                 <NavLink to="/cases/list" className="hmcts-primary-navigation__link">Case list</NavLink>
               </li>
               <li className="hmcts-primary-navigation__item">
-                <NavLink to="/help" className="hmcts-primary-navigation__link" onClick={ (e) => e.preventDefault() }>Help</NavLink>
+                <NavLink to="/help" className="hmcts-primary-navigation__link" onClick={ e => e.preventDefault() }>Help</NavLink>
               </li>
             </ul>
 

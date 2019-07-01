@@ -12,20 +12,20 @@ function Pagination (props) {
         <ul className="hmcts-pagination__list">
 
           <li className="hmcts-pagination__item  hmcts-pagination__item--prev">
-            <a className="hmcts-pagination__link" href="/page=1" onClick={ (e) => e.preventDefault() }>Previous<span
+            <a className="hmcts-pagination__link" href="/page=1" onClick={ e => e.preventDefault() }>Previous<span
               className="govuk-visually-hidden"> set of pages</span></a>
           </li>
 
-          { [...Array(props.pageCount || 5)].map((e, i) => {
+          { [...Array(props.pageCount || 5)].map((item, i) => {
             return <li key={ i } className="hmcts-pagination__item">
               <a className={ `hmcts-pagination__link${ i === 0 ? ' hmcts-pagination__item--active' : '' }` }
                  href={ `/page=${ i + 1 }` }
-                 onClick={ (e) => e.preventDefault() }>{ i + 1 }</a>
+                 onClick={ e => e.preventDefault() }>{ i + 1 }</a>
             </li>
           }) }
 
           <li className="hmcts-pagination__item  hmcts-pagination__item--next">
-            <a className="hmcts-pagination__link" href="/page=2" onClick={ (e) => e.preventDefault() }>Next<span
+            <a className="hmcts-pagination__link" href="/page=2" onClick={ e => e.preventDefault() }>Next<span
               className="govuk-visually-hidden"> set of pages</span></a>
           </li>
 

@@ -66,7 +66,8 @@ function SentencedList (props) {
           <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
             <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong className="govuk-warning-text__text"><span
-              className="govuk-warning-text__assistive">Warning</span>There is 1 case where the sentence has not been recorded in Delius.</strong>
+              className="govuk-warning-text__assistive">Warning</span>There is 1 case where the sentence has not been
+              recorded in Delius.</strong>
           </div>
 
           <div className="hmcts-identity-bar app-identity-bar-warning govuk-!-margin-bottom-6">
@@ -90,7 +91,8 @@ function SentencedList (props) {
                       <Fragment key={ index }>
                         { listItem.currentState.type === 'Sentenced' && (
                           <tr>
-                            <th scope="row"><Link to={ `/cases/details/${ index }` } className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
+                            <th scope="row"><Link to={ `/cases/details/${ index }` }
+                                                  className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
                             </th>
                             <td>
                               { listItem.offences.map((offence, offenceIndex) => {
@@ -197,16 +199,19 @@ function SentencedList (props) {
                     <Fragment key={ index }>
                       { listItem.currentState.type === 'Sentenced' && (
                         <tr>
-                          <th scope="row"><Link to={ `/cases/details/${ index }` } className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
+                          <th scope="row"><Link to={ `/cases/details/${ index }` }
+                                                className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
                           </th>
                           <td>
                             { listItem.offences.map((offence, offenceIndex) => {
-                              return <p key={ offenceIndex } className="govuk-body govuk-!-margin-bottom-2">{ offence }</p>
+                              return <p key={ offenceIndex }
+                                        className="govuk-body govuk-!-margin-bottom-2">{ offence }</p>
                             }) }
                           </td>
                           <td>
                             { listItem.sentence.map((sentence, sentenceIndex) => {
-                              return <p key={ sentenceIndex } className="govuk-body govuk-!-margin-bottom-2">{ sentence }</p>
+                              return <p key={ sentenceIndex }
+                                        className="govuk-body govuk-!-margin-bottom-2">{ sentence }</p>
                             }) }
                           </td>
                           <td>

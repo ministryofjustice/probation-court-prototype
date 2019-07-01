@@ -13,7 +13,7 @@ function CourtListFilter() {
 
           <div className="hmcts-filter__heading-action">
             <p><a className="govuk-link govuk-link--no-visited-state" href="?filter=clear"
-                  onClick={ (e) => e.preventDefault() }>Clear filters</a></p>
+                  onClick={ e => e.preventDefault() }>Clear filters</a></p>
           </div>
 
         </div>
@@ -23,23 +23,23 @@ function CourtListFilter() {
         <ul className="hmcts-filter-tags">
 
           <li><a className="hmcts-filter__tag" href="?filter=1&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 1</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 2</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 3</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 4</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 5</a></li>
 
         </ul>
@@ -49,11 +49,11 @@ function CourtListFilter() {
         <ul className="hmcts-filter-tags">
 
           <li><a className="hmcts-filter__tag" href="?filter=1&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> AM</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> PM</a></li>
 
         </ul>
@@ -63,11 +63,11 @@ function CourtListFilter() {
         <ul className="hmcts-filter-tags">
 
           <li><a className="hmcts-filter__tag" href="?filter=1&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 1st listing</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 2nd listing</a></li>
 
         </ul>
@@ -77,15 +77,15 @@ function CourtListFilter() {
         <ul className="hmcts-filter-tags">
 
           <li><a className="hmcts-filter__tag" href="?filter=3&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Current</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=4&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Known</a></li>
 
           <li><a className="hmcts-filter__tag" href="?filter=5&state=0"
-                 onClick={ (e) => e.preventDefault() }><span
+                 onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Not known</a></li>
 
         </ul>
