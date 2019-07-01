@@ -1,0 +1,157 @@
+$hmcts-assets-path: "/assets/";
+$govuk-page-width: 1200px;
+$hmcts-page-width: $govuk-page-width;
+
+@import "~govuk-frontend/all";
+@import "~@hmcts/frontend/all";
+@import "~@mojdigital/pattern-library/all";
+
+//===============================================
+// Overrides
+//===============================================
+
+* {
+  box-sizing: border-box;
+}
+
+.govuk-phase-banner__content__tag {
+  background: govuk-colour("red");
+}
+
+.hmcts-primary-navigation__link {
+  &:focus {
+    color: white !important;
+    &:before {
+      background-color: white !important;
+    }
+  }
+}
+
+.hmcts-badge--red {
+  color: govuk-colour("bright-red");
+  border-color: govuk-colour("bright-red");
+}
+
+.hmcts-badge--small {
+  width: 35px;
+}
+
+.hmcts-badge--text-small {
+  font-size: 12px;
+}
+
+//===============================================
+// App specific styles
+//===============================================
+
+abbr {
+  text-decoration: none;
+}
+
+.app-identity-bar-warning {
+  background-color: govuk-tint(govuk-colour("blue"), 97);
+  box-shadow: inset 0 -1px 0 0 govuk-colour("blue");
+}
+
+.app-identity-bar--error {
+  background-color: govuk-tint(govuk-colour("red"), 95);
+  box-shadow: inset 0 -1px 0 0 govuk-colour("red");
+}
+
+.app-icon-down {
+  border: solid govuk-colour("blue");
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 10px 3px 10px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.app-util-center {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.app-\!-inline {
+  display: inline;
+}
+
+.app-calendar--link {
+  text-decoration: none;
+}
+
+.app-\!-cursor-pointer {
+  cursor: pointer;
+}
+
+.app-hint-s {
+  @extend .govuk-hint;
+  font-size: 14px;
+}
+
+.app-calendar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0;
+  @include govuk-font(16);
+  @include govuk-clearfix;
+  border-left: 1px solid govuk-colour("grey-2");
+}
+
+.app-calendar--item {
+  text-align: center;
+  float: left;
+  width: 14.285%;
+  list-style: none;
+  border: 1px solid govuk-colour("grey-2");
+  margin-left: -1px;
+  margin-top: -1px;
+  padding: 0 0 5px 0;
+  min-height: 130px;
+  font-weight: 700;
+}
+
+.app-calendar--item_header {
+  border-color: govuk-colour("blue");
+  background: govuk-colour("blue");
+  color: govuk-colour("white");
+  padding: 5px 0;
+  min-height: 10px;
+}
+
+.app-calendar--item_day {
+  border-color: govuk-colour("grey-3");
+  background: govuk-colour("grey-3");
+  color: govuk-colour("black");
+  min-height: 10px;
+  padding: 5px 0;
+}
+
+.app-calendar--item_day_today {
+  border-color: govuk-colour("yellow");
+  background: govuk-colour("yellow");
+  color: govuk-colour("white");
+}
+
+.app-calendar--item_empty {
+  background: govuk-colour("grey-4");
+}
+
+.app-calendar--item_today {
+  background: govuk-tint(govuk-colour("yellow"), 95);
+}
+
+.app-offender-header {
+  width: calc(100% - 205px);
+}
+
+.app-offender-selection {
+  width: calc(100% - 102px);
+}
+
+.app-offender-image {
+  margin-right: 10px;
+}
