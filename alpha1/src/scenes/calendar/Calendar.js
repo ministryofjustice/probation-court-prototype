@@ -58,9 +58,9 @@ function Calendar (props) {
             <div className="govuk-visually-hidden">{ moment().date(i).format('dddd, Do MMMM YYYY') }</div>
             { day !== 'Sa' && day !== 'Su' && (
               <Fragment>
-                { i >= today && i <= today + (todayDay === 'Th' || todayDay === 'Fr' ? 4 : 2) && (<div
+                { today !== -1 && i >= today && i <= today + (todayDay === 'Th' || todayDay === 'Fr' ? 4 : 2) && (<div
                   className="hmcts-badge govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } cases</div>) }
-                { i <= today && (
+                { (i <= today || (today === -1 && currentDate.month() <= moment().month())) && (
                   <Fragment>
                     <div
                       className="hmcts-badge hmcts-badge--red govuk-!-margin-2">{ Math.ceil(Math.random() * 10) } adjourned
