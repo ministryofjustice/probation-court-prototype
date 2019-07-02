@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { getDateFromProps } from '../../../../utils/DateTools'
 
-import CourtListFilter from '../court-list/components/CourtListFilter'
+import CaseListFilter from '../case-list/components/CaseListFilter'
 
 function AdjournedList (props) {
 
@@ -11,11 +11,12 @@ function AdjournedList (props) {
   const currentDate = getDateFromProps(props.match.params)
 
   useEffect(() => {
-    async function getData() {
-      const response = await fetch('http://localhost:3000/assets/dummy-data.json');
-      const data = await response.json();
-      setData(data);
+    async function getData () {
+      const response = await fetch('http://localhost:8080/api/adjourned')
+      const data = await response.json()
+      setData(data)
     }
+
     window.scrollTo(0, 0)
     getData()
   }, [])
@@ -82,7 +83,7 @@ function AdjournedList (props) {
 
             <div className="hmcts-filter__content">
 
-              <CourtListFilter/>
+              <CaseListFilter/>
 
             </div>
 
@@ -135,29 +136,25 @@ function AdjournedList (props) {
 
                 { data.cases && data.cases.map((listItem, index) => {
                   return (
-                    <Fragment key={ index }>
-                      { listItem.currentState.type === 'Adjourned' && (
-                        <tr>
-                          <th scope="row"><Link
-                            to={ `/cases/details/${ index }` }
-                            className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
-                          </th>
-                          <td>
-                            { listItem.offences.map((offence, offenceIndex) => {
-                              return <p key={ offenceIndex }>{ offence }</p>
-                            }) }
-                          </td>
-                          <td>10:45</td>
-                          <td>
-                            { listItem.currentState.label === 'Adjourned' && (
-                              <p>{ listItem.currentState.details }</p>
-                            ) }
-                          </td>
-                          <td><p className="moj-!-text-align-right">{ listItem.court }</p>
-                          </td>
-                        </tr>
-                      ) }
-                    </Fragment>
+                    <tr key={ index }>
+                      <th scope="row"><Link
+                        to={ `/cases/details/${ index }` }
+                        className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
+                      </th>
+                      <td>
+                        { listItem.offences.map((offence, offenceIndex) => {
+                          return <p key={ offenceIndex }>{ offence }</p>
+                        }) }
+                      </td>
+                      <td>10:45</td>
+                      <td>
+                        { listItem.currentState.label === 'Adjourned' && (
+                          <p>{ listItem.currentState.details }</p>
+                        ) }
+                      </td>
+                      <td><p className="moj-!-text-align-right">{ listItem.court }</p>
+                      </td>
+                    </tr>
                   )
                 }) }
 

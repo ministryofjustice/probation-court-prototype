@@ -17,7 +17,7 @@ function Calendar (props) {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch('http://localhost:3000/assets/dummy-data.json');
+      const response = await fetch('http://localhost:8080/api/calendar');
       const data = await response.json();
       setData(data);
     }
