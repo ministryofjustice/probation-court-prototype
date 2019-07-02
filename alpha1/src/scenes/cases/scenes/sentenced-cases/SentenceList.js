@@ -1,20 +1,23 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
-import dummyData from '../../../../assets/dummy-data'
 
 import CourtListFilter from '../court-list/components/CourtListFilter'
 import { getDateFromProps } from '../../../../utils/DateTools'
 
 function SentencedList (props) {
 
-  const currentCourtList = dummyData.cases
+  const [data, setData] = useState({})
   const currentDate = getDateFromProps(props.match.params)
-  const hasErrors = currentCourtList.some(listItem => { return listItem.deliusUpdated === 'N' })
 
   useEffect(() => {
+    async function getData() {
+      const response = await fetch('http://localhost:3000/assets/dummy-data.json');
+      const data = await response.json();
+      setData(data);
+    }
     window.scrollTo(0, 0)
-  })
+    getData()
+  }, [])
 
   function toggleFilter () {
     const $filter = document.querySelector('.hmcts-filter')
@@ -60,7 +63,7 @@ function SentencedList (props) {
 
       </nav>
 
-      { hasErrors && (
+      { data.cases && data.cases.some(listItem => { return listItem.deliusUpdated === 'N' }) && (
         <Fragment>
 
           <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
@@ -86,7 +89,7 @@ function SentencedList (props) {
                   </thead>
                   <tbody>
 
-                  { currentCourtList.map((listItem, index) => {
+                  { data.cases && data.cases.map((listItem, index) => {
                     return listItem.deliusUpdated === 'N' ? (
                       <Fragment key={ index }>
                         { listItem.currentState.type === 'Sentenced' && (
@@ -159,7 +162,7 @@ function SentencedList (props) {
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Sentenced cases </h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') } <span
-                  className="govuk-hint moj-util-inline">at { dummyData.court }</span></p>
+                  className="govuk-hint moj-util-inline">at { data.court }</span></p>
               </td>
               <td className="moj-!-text-align-right">
 
@@ -194,7 +197,7 @@ function SentencedList (props) {
 
                 <tbody>
 
-                { currentCourtList.map((listItem, index) => {
+                { data.cases && data.cases.map((listItem, index) => {
                   return (
                     <Fragment key={ index }>
                       { listItem.currentState.type === 'Sentenced' && (

@@ -1,19 +1,24 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import dummyData from '../../../../assets/dummy-data'
 import { getDateFromProps } from '../../../../utils/DateTools'
 
 import CourtListFilter from '../court-list/components/CourtListFilter'
 
 function AdjournedList (props) {
 
-  const currentCourtList = dummyData.cases
+  const [data, setData] = useState({})
   const currentDate = getDateFromProps(props.match.params)
 
   useEffect(() => {
+    async function getData() {
+      const response = await fetch('http://localhost:3000/assets/dummy-data.json');
+      const data = await response.json();
+      setData(data);
+    }
     window.scrollTo(0, 0)
-  })
+    getData()
+  }, [])
 
   function toggleFilter () {
     const $filter = document.querySelector('.hmcts-filter')
@@ -93,7 +98,7 @@ function AdjournedList (props) {
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Adjourned cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') } <span
-                  className="govuk-hint moj-util-inline">at { dummyData.court }</span></p>
+                  className="govuk-hint moj-util-inline">at { data.court }</span></p>
               </td>
               <td className="moj-!-text-align-right">
 
@@ -128,7 +133,7 @@ function AdjournedList (props) {
 
                 <tbody>
 
-                { currentCourtList.map((listItem, index) => {
+                { data.cases && data.cases.map((listItem, index) => {
                   return (
                     <Fragment key={ index }>
                       { listItem.currentState.type === 'Adjourned' && (

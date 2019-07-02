@@ -1,7 +1,5 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
-import dummyData from '../../../../assets/dummy-data'
 
 import Pagination from '../../../../components/Pagination'
 import CourtListFilter from './components/CourtListFilter'
@@ -9,13 +7,18 @@ import { getDateFromProps } from '../../../../utils/DateTools'
 
 function CourtList (props) {
 
-  const currentCourtList = dummyData.cases
+  const [data, setData] = useState({})
   const currentDate = getDateFromProps(props.match.params)
-  const hasErrors = currentCourtList.some(listItem => { return listItem.status.type === 'error' })
 
   useEffect(() => {
+    async function getData() {
+      const response = await fetch('http://localhost:3000/assets/dummy-data.json');
+      const data = await response.json();
+      setData(data);
+    }
     window.scrollTo(0, 0)
-  })
+    getData()
+  }, [])
 
   function toggleFilter () {
     const $filter = document.querySelector('.hmcts-filter')
@@ -61,7 +64,7 @@ function CourtList (props) {
 
       </nav>
 
-      { hasErrors && (
+      { data.cases && data.cases.some(listItem => { return listItem.status.type === 'error' }) && (
         <Fragment>
 
           <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
@@ -88,7 +91,7 @@ function CourtList (props) {
                   </thead>
                   <tbody>
 
-                  { currentCourtList.map((listItem, index) => {
+                  { data.cases && data.cases.map((listItem, index) => {
                     return listItem.status.type === 'error' ? (
                       <Fragment key={ index }>
                         { listItem.currentState.type !== 'Adjourned' && listItem.currentState.type !== 'Sentenced' && (
@@ -169,7 +172,7 @@ function CourtList (props) {
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') } <span
-                  className="govuk-hint moj-util-inline">at { dummyData.court }</span></p>
+                  className="govuk-hint moj-util-inline">at { data.court }</span></p>
               </td>
               <td className="moj-!-text-align-right">
 
@@ -216,7 +219,7 @@ function CourtList (props) {
                 </thead>
                 <tbody>
 
-                { currentCourtList.map((listItem, index) => {
+                { data.cases && data.cases.map((listItem, index) => {
                   return listItem.status.type !== 'error' ? (
                     <Fragment key={ index }>
                       { listItem.currentState.type !== 'Adjourned' && listItem.currentState.type !== 'Sentenced' && (

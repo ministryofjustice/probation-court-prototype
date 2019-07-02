@@ -1,16 +1,22 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import dummyData from '../../../../assets/dummy-data'
 import { getAge } from '../../../../utils/DateTools'
 
 function OffenderSelection (props) {
 
-  const offenderData = dummyData.cases[props.match.params.id]
+  const [data, setData] = useState({})
+  const id = props.match.params.id
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  })
+    async function getData() {
+      const response = await fetch('http://localhost:3000/assets/dummy-data.json');
+      const data = await response.json();
+      setData(data.cases[id]);
+    }
+    getData()
+  }, [id])
 
   return (
     <Fragment>
@@ -42,89 +48,92 @@ function OffenderSelection (props) {
                 </div>
               </div>
 
-              <div className="hmcts-filter__content">
-                <div className="hmcts-filter__selected">
+              { data.name && (
 
-                  <div className="hmcts-filter__selected-heading">
+                <div className="hmcts-filter__content">
+                  <div className="hmcts-filter__selected">
 
-                    <div className="hmcts-filter__heading-title">
-                      <h2 className="govuk-heading-m">{ offenderData.name }</h2>
-                    </div>
+                    <div className="hmcts-filter__selected-heading">
 
-                    <table className="govuk-table moj-table">
-                      <tbody>
-                      <tr>
-                        <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
-                        <td className="govuk-body">{ offenderData.pnc }</td>
-                      </tr>
-                      <tr>
-                        <td className="govuk-!-font-weight-bold">Date of birth:</td>
-                        <td>{ offenderData.dateOfBirth }</td>
-                      </tr>
-                      <tr>
-                        <td className="govuk-!-font-weight-bold">Age:</td>
-                        <td>{ getAge(offenderData.dateOfBirth) }</td>
-                      </tr>
-                      <tr>
-                        <td className="govuk-!-font-weight-bold">Gender:</td>
-                        <td>{ offenderData.gender }</td>
-                      </tr>
-                      <tr>
-                        <td className="govuk-!-font-weight-bold">Address:</td>
-                        <td>
-
-                          <p className="govuk-body govuk-!-margin-bottom-0">{ offenderData.address.line1 }</p>
-                          { offenderData.address.line2 && (
-                            <p className="govuk-body govuk-!-margin-bottom-0">{ offenderData.address.line2 }</p>
-                          ) }
-                          <p className="govuk-body govuk-!-margin-bottom-0">{ offenderData.address.city }</p>
-                          <p className="govuk-body govuk-!-margin-bottom-0">{ offenderData.address.postcode }</p>
-
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-
-                  </div>
-                </div>
-
-                <div className="hmcts-filter__options">
-
-                  <div className="hmcts-search govuk-!-margin-bottom-6">
-
-                    <form id="ndForm" onSubmit={ (event) => { event.preventDefault() } }>
-
-                      <div className="govuk-form-group">
-                        <label className="govuk-label hmcts-search__label govuk-label--m"
-                               htmlFor="offender-search">Record not listed?</label>
-
-                        <span id="offender-search-hint" className="govuk-hint hmcts-search__hint">You can search for an offender record using multiple terms</span>
-                        <input className="govuk-input hmcts-search__input" id="offender-search" name="offender-search"
-                               type="search"
-                               aria-describedby="offender-search-hint"/>
+                      <div className="hmcts-filter__heading-title">
+                        <h2 className="govuk-heading-m">{ data.name }</h2>
                       </div>
 
-                      <button type="submit" className="govuk-button hmcts-search__button ">
-                        Search
-                      </button>
+                      <table className="govuk-table moj-table">
+                        <tbody>
+                        <tr>
+                          <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
+                          <td className="govuk-body">{ data.pnc }</td>
+                        </tr>
+                        <tr>
+                          <td className="govuk-!-font-weight-bold">Date of birth:</td>
+                          <td>{ data.dateOfBirth }</td>
+                        </tr>
+                        <tr>
+                          <td className="govuk-!-font-weight-bold">Age:</td>
+                          <td>{ getAge(data.dateOfBirth) }</td>
+                        </tr>
+                        <tr>
+                          <td className="govuk-!-font-weight-bold">Gender:</td>
+                          <td>{ data.gender }</td>
+                        </tr>
+                        <tr>
+                          <td className="govuk-!-font-weight-bold">Address:</td>
+                          <td>
 
-                    </form>
+                            <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.line1 }</p>
+                            { data.address.line2 && (
+                              <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.line2 }</p>
+                            ) }
+                            <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.city }</p>
+                            <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.postcode }</p>
+
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+
+                  <div className="hmcts-filter__options">
+
+                    <div className="hmcts-search govuk-!-margin-bottom-6">
+
+                      <form id="ndForm" onSubmit={ e => { e.preventDefault() } }>
+
+                        <div className="govuk-form-group">
+                          <label className="govuk-label hmcts-search__label govuk-label--m"
+                                 htmlFor="offender-search">Record not listed?</label>
+
+                          <span id="offender-search-hint" className="govuk-hint hmcts-search__hint">You can search for an offender record using multiple terms</span>
+                          <input className="govuk-input hmcts-search__input" id="offender-search" name="offender-search"
+                                 type="search"
+                                 aria-describedby="offender-search-hint"/>
+                        </div>
+
+                        <button type="submit" className="govuk-button hmcts-search__button ">
+                          Search
+                        </button>
+
+                      </form>
+
+                    </div>
+
+                    <hr
+                      className="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-0"/>
+
+                    <h2 className="govuk-heading-m">Offender not known?</h2>
+
+                    <p className="govuk-body">Confirm that you have determined that the offender is not currently known to
+                      probation.</p>
+
+                    <button className="govuk-button govuk-button--secondary">Offender not known</button>
 
                   </div>
 
-                  <hr
-                    className="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-0"/>
-
-                  <h2 className="govuk-heading-m">Offender not known?</h2>
-
-                  <p className="govuk-body">Confirm that you have determined that the offender is not currently known to
-                    probation.</p>
-
-                  <button className="govuk-button govuk-button--secondary">Offender not known</button>
-
                 </div>
-
-              </div>
+              )}
 
             </div>
 
@@ -145,7 +154,7 @@ function OffenderSelection (props) {
                   </strong>
                 </div>
 
-                { offenderData.status.matches.map((offenderItem, index) => {
+                { data.status && data.status.matches.map((offenderItem, index) => {
                   return (
                     <div key={ index }>
                       <div className="govuk-grid-row">
