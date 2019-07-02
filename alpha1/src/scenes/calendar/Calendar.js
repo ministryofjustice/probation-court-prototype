@@ -16,11 +16,12 @@ function Calendar (props) {
   }
 
   useEffect(() => {
-    async function getData() {
-      const response = await fetch('http://localhost:8080/api/calendar');
-      const data = await response.json();
-      setData(data);
+    async function getData () {
+      const response = await fetch('http://localhost:8080/api/calendar')
+      const data = await response.json()
+      setData(data)
     }
+
     window.scrollTo(0, 0)
     getData()
   }, [])
@@ -45,6 +46,8 @@ function Calendar (props) {
   function daysInMonth () {
     let days = []
     const today = currentDate.month() === moment().month() ? currentDate.date() : -1
+    const todayDay = currentDate.format('dd')
+
     for (let i = 1, day; i <= currentDate.daysInMonth(); i++) {
       day = moment(currentDate).date(i).format('dd')
       days.push(
@@ -55,7 +58,7 @@ function Calendar (props) {
             <div className="govuk-visually-hidden">{ moment().date(i).format('dddd, Do MMMM YYYY') }</div>
             { day !== 'Sa' && day !== 'Su' && (
               <Fragment>
-                { i >= today && (<div
+                { i >= today && i <= today + (todayDay === 'Th' || todayDay === 'Fr' ? 4 : 2) && (<div
                   className="hmcts-badge govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } cases</div>) }
                 { i <= today && (
                   <Fragment>
