@@ -3,7 +3,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/0"
+        "url": "/api/cases/details/64802825"
       },
       "response": {
         "headers": {
@@ -17,7 +17,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/1"
+        "url": "/api/cases/details/94596500"
       },
       "response": {
         "headers": {
@@ -31,7 +31,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/2"
+        "url": "/api/cases/details/68463477"
       },
       "response": {
         "headers": {
@@ -45,7 +45,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/3"
+        "url": "/api/cases/details/93614728"
       },
       "response": {
         "headers": {
@@ -59,7 +59,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/4"
+        "url": "/api/cases/details/60723458"
       },
       "response": {
         "headers": {
@@ -73,7 +73,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/5"
+        "url": "/api/cases/details/20956386"
       },
       "response": {
         "headers": {
@@ -87,7 +87,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/6"
+        "url": "/api/cases/details/11730116"
       },
       "response": {
         "headers": {
@@ -101,7 +101,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/7"
+        "url": "/api/cases/details/88046347"
       },
       "response": {
         "headers": {
@@ -115,7 +115,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/8"
+        "url": "/api/cases/details/00460163"
       },
       "response": {
         "headers": {
@@ -129,7 +129,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/9"
+        "url": "/api/cases/details/59168627"
       },
       "response": {
         "headers": {
@@ -143,7 +143,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/10"
+        "url": "/api/cases/details/26054192"
       },
       "response": {
         "headers": {
@@ -157,7 +157,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/11"
+        "url": "/api/cases/details/02735804"
       },
       "response": {
         "headers": {
@@ -171,7 +171,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/12"
+        "url": "/api/cases/details/20590215"
       },
       "response": {
         "headers": {
@@ -185,7 +185,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/13"
+        "url": "/api/cases/details/74726530"
       },
       "response": {
         "headers": {
@@ -199,7 +199,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/14"
+        "url": "/api/cases/details/62385826"
       },
       "response": {
         "headers": {
@@ -213,7 +213,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/15"
+        "url": "/api/cases/details/31329672"
       },
       "response": {
         "headers": {
@@ -227,7 +227,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/16"
+        "url": "/api/cases/details/54167900"
       },
       "response": {
         "headers": {
@@ -241,7 +241,7 @@
     {
       "request": {
         "method": "GET",
-        "url": "/api/cases/details/17"
+        "url": "/api/cases/details/87274207"
       },
       "response": {
         "headers": {
