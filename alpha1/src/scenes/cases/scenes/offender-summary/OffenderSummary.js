@@ -12,12 +12,12 @@ function OffenderSummary (props) {
   useEffect(() => {
     window.scrollTo(0, 0)
     async function getData() {
-      const response = await fetch('http://localhost:3000/assets/dummy-data.json')
+      const response = await fetch(`http://localhost:8080/api/cases/details/${ id }`)
       const data = await response.json()
       setData({
         court: data.court,
-        offenderData: data.cases[id],
-        hasDV: data.cases[id].markers.map((marker) => {
+        offenderData: data.details,
+        hasDV: data.details.markers.map((marker) => {
           return marker.short === 'DV'
         }).indexOf(true) !== -1
       })

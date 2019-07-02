@@ -96,7 +96,7 @@ function CaseList (props) {
                     return listItem.status.type === 'error' ? (
                       <tr key={ index }>
                         <th scope="row"><Link
-                          to={ `/cases/match/${ index }` }
+                          to={ `/cases/match/${ listItem.id }` }
                           className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
                         </th>
                         <td>
@@ -221,7 +221,7 @@ function CaseList (props) {
                   return listItem.status.type !== 'error' ? (
                     <tr key={ index }>
                       <th scope="row"><Link
-                        to={ `/cases/details/${ index }` }
+                        to={ `/cases/details/${ listItem.id }` }
                         className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
                       </th>
                       <td>

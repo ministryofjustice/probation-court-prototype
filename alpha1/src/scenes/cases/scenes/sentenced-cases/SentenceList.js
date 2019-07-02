@@ -95,7 +95,7 @@ function SentencedList (props) {
                       <Fragment key={ index }>
                         { listItem.currentState.type === 'Sentenced' && (
                           <tr>
-                            <th scope="row"><Link to={ `/cases/details/${ index }` }
+                            <th scope="row"><Link to={ `/cases/details/${ listItem.id }` }
                                                   className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
                             </th>
                             <td>
@@ -200,28 +200,32 @@ function SentencedList (props) {
 
                 { data.cases && data.cases.map((listItem, index) => {
                   return (
-                    <tr key={ index }>
-                      <th scope="row"><Link to={ `/cases/details/${ index }` }
-                                            className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
-                      </th>
-                      <td>
-                        { listItem.offences.map((offence, offenceIndex) => {
-                          return <p key={ offenceIndex }
-                                    className="govuk-body govuk-!-margin-bottom-2">{ offence }</p>
-                        }) }
-                      </td>
-                      <td>
-                        { listItem.sentence.map((sentence, sentenceIndex) => {
-                          return <p key={ sentenceIndex }
-                                    className="govuk-body govuk-!-margin-bottom-2">{ sentence }</p>
-                        }) }
-                      </td>
-                      <td>
-                        <p>{ listItem.deliusUpdated === 'N' ? 'No' : 'Yes' }</p>
-                      </td>
-                      <td><p className="moj-!-text-align-right">{ listItem.court }</p>
-                      </td>
-                    </tr>
+                    <Fragment key={ index }>
+                      { listItem.deliusUpdated === 'Y' && (
+                        <tr>
+                          <th scope="row"><Link to={ `/cases/details/${ listItem.id }` }
+                                                className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
+                          </th>
+                          <td>
+                            { listItem.offences.map((offence, offenceIndex) => {
+                              return <p key={ offenceIndex }
+                                        className="govuk-body govuk-!-margin-bottom-2">{ offence }</p>
+                            }) }
+                          </td>
+                          <td>
+                            { listItem.sentence.map((sentence, sentenceIndex) => {
+                              return <p key={ sentenceIndex }
+                                        className="govuk-body govuk-!-margin-bottom-2">{ sentence }</p>
+                            }) }
+                          </td>
+                          <td>
+                            <p>{ listItem.deliusUpdated === 'N' ? 'No' : 'Yes' }</p>
+                          </td>
+                          <td><p className="moj-!-text-align-right">{ listItem.court }</p>
+                          </td>
+                        </tr>
+                      ) }
+                    </Fragment>
                   )
                 }) }
 

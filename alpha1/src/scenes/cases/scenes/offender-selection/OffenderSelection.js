@@ -10,10 +10,10 @@ function OffenderSelection (props) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    async function getData() {
-      const response = await fetch('http://localhost:3000/assets/dummy-data.json');
-      const data = await response.json();
-      setData(data.cases[id]);
+    async function getData () {
+      const response = await fetch(`http://localhost:8080/api/cases/details/${ id }`)
+      const data = await response.json()
+      setData(data.details)
     }
     getData()
   }, [id])
@@ -32,7 +32,7 @@ function OffenderSelection (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h1 className="govuk-heading-l">Match offender record  <span
+        <h1 className="govuk-heading-l">Match offender record <span
           className="govuk-hint moj-util-inline">in Delius</span></h1>
 
         <div className="hmcts-filter-layout">
@@ -125,7 +125,8 @@ function OffenderSelection (props) {
 
                     <h2 className="govuk-heading-m">Offender not known?</h2>
 
-                    <p className="govuk-body">Confirm that you have determined that the offender is not currently known to
+                    <p className="govuk-body">Confirm that you have determined that the offender is not currently known
+                      to
                       probation.</p>
 
                     <button className="govuk-button govuk-button--secondary">Offender not known</button>
@@ -133,7 +134,7 @@ function OffenderSelection (props) {
                   </div>
 
                 </div>
-              )}
+              ) }
 
             </div>
 

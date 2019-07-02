@@ -138,7 +138,7 @@ function AdjournedList (props) {
                   return (
                     <tr key={ index }>
                       <th scope="row"><Link
-                        to={ `/cases/details/${ index }` }
+                        to={ `/cases/details/${ listItem.id }` }
                         className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
                       </th>
                       <td>
