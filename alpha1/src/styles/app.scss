@@ -1,12 +1,20 @@
+//===============================================
+// Config
+//===============================================
+
 $hmcts-assets-path: "/assets/";
-$govuk-page-width: 1200px;
+$govuk-page-width: 1800px;
 $hmcts-page-width: $govuk-page-width;
+
+//===============================================
+// Imports
+//===============================================
 
 @import "~govuk-frontend/all";
 @import "~@hmcts/frontend/all";
 @import "~@mojdigital/pattern-library/all";
 
-//===============================================
+// ===============================================
 // Overrides
 //===============================================
 
@@ -40,12 +48,25 @@ $hmcts-page-width: $govuk-page-width;
   font-size: 12px;
 }
 
+.moj-badge-error {
+  color: govuk-colour("bright-red") !important;
+  border-color: govuk-colour("bright-red") !important;
+}
+
 //===============================================
 // App specific styles
 //===============================================
 
 abbr {
   text-decoration: none;
+}
+
+.app-offence-title {
+  padding-left: 10px;
+  padding-bottom: 0;
+  &:last-child {
+    padding-bottom: 0;
+  }
 }
 
 .app-identity-bar-warning {
@@ -154,4 +175,8 @@ abbr {
 
 .app-offender-image {
   margin-right: 10px;
+}
+
+.app-full-width {
+  width: 100%;
 }

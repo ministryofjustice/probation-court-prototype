@@ -1,25 +1,50 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
+
+import { useStateValue } from '../../../../utils/StateProvider'
 
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
-import { getDateFromProps } from '../../../../utils/DateTools'
 
-function CaseList (props) {
+function CaseList () {
 
   const [data, setData] = useState({})
-  const currentDate = getDateFromProps(props.match.params)
+  const [{ currentDate }, dispatch] = useStateValue()
 
   useEffect(() => {
     async function getData () {
-      const response = await fetch('http://localhost:8080/api/caselist')
+      const response = await fetch('http://localhost:8080/api/bigcaselist')
       const data = await response.json()
-      setData(data)
+      configureData(data)
+      dispatch({ type: 'setCourt', setCourt: data.courtName })
     }
 
     window.scrollTo(0, 0)
     getData()
-  }, [])
+  }, [dispatch])
+
+  function configureData ($data) {
+    let cases = []
+    $data.sessions.forEach($session => {
+      $session.blocks.forEach($block => {
+        $block.cases.forEach($case => {
+          let hasOrder = $case.offences.filter($offence => { return $offence.title.indexOf('order') !== -1 || $offence.title.indexOf('Assault') !== -1 }).length
+          $case.defendant.deliusStatus = hasOrder ? 'Current' : 'Known'
+          $case.defendant.nps = $case.defendant.deliusStatus === 'Current' && $case.offences.filter($offence => { return $offence.title.indexOf('Assault') !== -1 }).length
+          $case.courtRoom = parseInt($session.courtRoom, 10)
+          $case.startTime = $block.startTime
+          $case.endTime = $block.endTime
+          $case.noMatch = $case.offences.filter($offence => { return $offence.title.indexOf('emergency worker') !== -1 }).length
+          if ($block.description.indexOf('Fine') === -1 && $block.description.indexOf('Non-CPS') === -1 && $block.description.indexOf('Vary') === -1) {
+            cases.push($case)
+          }
+        })
+      })
+    })
+
+    setData({ courtName: $data.courtName, cases: cases })
+  }
 
   function toggleFilter () {
     const $filter = document.querySelector('.hmcts-filter')
@@ -43,21 +68,21 @@ function CaseList (props) {
             <Link to={ `/cases/list/${ currentDate.format('DD/MM/YYYY') }` }
                   className="hmcts-sub-navigation__link govuk-link--no-visited-state"
                   aria-current="page">
-              Cases
+              { currentDate.format('dddd, Do MMMM YYYY') }
             </Link>
           </li>
 
           <li className="hmcts-sub-navigation__item">
-            <Link to={ `/cases/adjourned/${ currentDate.format('DD/MM/YYYY') }` }
+            <Link to={ `/cases/list/${ moment(currentDate).add(1, 'd').format('DD/MM/YYYY') }` }
                   className="hmcts-sub-navigation__link govuk-link--no-visited-state">
-              Adjourned cases
+              { moment(currentDate).add(1, 'd').format('dddd, Do MMMM YYYY') }
             </Link>
           </li>
 
           <li className="hmcts-sub-navigation__item">
-            <Link to={ `/cases/sentenced/${ currentDate.format('DD/MM/YYYY') }` }
+            <Link to={ `/cases/list/${ moment(currentDate).add(2, 'd').format('DD/MM/YYYY') }` }
                   className="hmcts-sub-navigation__link govuk-link--no-visited-state">
-              Sentenced cases
+              { moment(currentDate).add(2, 'd').format('dddd, Do MMMM YYYY') }
             </Link>
           </li>
 
@@ -65,7 +90,7 @@ function CaseList (props) {
 
       </nav>
 
-      { data.cases && data.cases.some(listItem => { return listItem.status.type === 'error' }) && (
+      { data.cases && data.cases.some($case => { return $case.noMatch }) && (
         <Fragment>
 
           <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
@@ -92,31 +117,28 @@ function CaseList (props) {
                   </thead>
                   <tbody>
 
-                  { data.cases && data.cases.map((listItem, index) => {
-                    return listItem.status.type === 'error' ? (
+                  { data.cases && data.cases.map(($case, index) => {
+                    return $case.noMatch ? (
                       <tr key={ index }>
                         <th scope="row"><Link
-                          to={ `/cases/match/${ listItem.id }` }
-                          className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
+                          to={ `/cases/match/${ $case.id }` }
+                          onClick={ () => {
+                            dispatch({ type: 'setCase', setCase: $case })
+                          } }
+                          className="govuk-link govuk-link--no-visited-state">{ $case.defendant.name }</Link>
                         </th>
                         <td>
-                          { listItem.offences.map((offence, offenceIndex) => {
-                            return <p key={ offenceIndex } className="govuk-body">{ offence }</p>
-                          }) }
+                          <ol className="govuk-list">
+                            { $case.offences.map((offence, offenceIndex) => {
+                              return <li key={ offenceIndex }
+                                         className="govuk-list--number app-offence-title">{ offence.title }</li>
+                            }) }
+                          </ol>
                         </td>
-                        <td>{ listItem.status.label }</td>
-                        <td>{ listItem.currentState.label }
-                          { listItem.previousState && (
-                            <Fragment>
-                              <p
-                                className="govuk-hint">{ listItem.previousState.label } { listItem.previousState.date && listItem.previousState.date }</p>
-                              <p className="govuk-hint">{ listItem.previousState.details }</p>
-                            </Fragment>
-                          ) }
-                        </td>
-                        <td>13:00 - 16:30</td>
-                        <td><p className="moj-!-text-align-right">{ listItem.court }</p>
-                        </td>
+                        <td>Not identified</td>
+                        <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
+                        <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
+                        <td><p className="moj-!-text-align-right">{ $case.courtRoom }</p></td>
                       </tr>
                     ) : (<Fragment key={ index }/>)
                   }) }
@@ -169,8 +191,8 @@ function CaseList (props) {
             <tr>
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Cases</h2>
-                <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') } <span
-                  className="govuk-hint moj-util-inline">at { data.court }</span></p>
+                <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
+                  <span className="govuk-hint moj-util-inline">&nbsp;at { data.courtName }</span></p>
               </td>
               <td className="moj-!-text-align-right">
 
@@ -208,7 +230,7 @@ function CaseList (props) {
                 <thead>
                 <tr>
                   <th scope="col">Name</th>
-                  <th scope="col">Offence</th>
+                  <th scope="col" style={ { 'width': '40%' } }>Offence</th>
                   <th scope="col">Delius record</th>
                   <th scope="col">Status</th>
                   <th scope="col">Sitting</th>
@@ -217,34 +239,35 @@ function CaseList (props) {
                 </thead>
                 <tbody>
 
-                { data.cases && data.cases.map((listItem, index) => {
-                  return listItem.status.type !== 'error' ? (
-                    <tr key={ index }>
-                      <th scope="row"><Link
-                        to={ `/cases/details/${ listItem.id }` }
-                        className="govuk-link govuk-link--no-visited-state">{ listItem.name }</Link>
-                      </th>
-                      <td>
-                        { listItem.offences.map((offence, offenceIndex) => {
-                          return <p key={ offenceIndex } className="govuk-body">{ offence }</p>
-                        }) }
-                      </td>
-                      <td>{ listItem.status.label } { listItem.status.office && (
-                        <span className="app-hint-s moj-util-inline">({ listItem.status.office })</span>) }</td>
-                      <td>{ listItem.currentState.label }
-                        { listItem.previousState && (
-                          <Fragment>
-                            <p
-                              className="govuk-hint">{ listItem.previousState.label } { listItem.previousState.date && listItem.previousState.date }</p>
-                            <p className="govuk-hint">{ listItem.previousState.details }</p>
-                          </Fragment>
-                        ) }
-                      </td>
-                      <td>09:30 - 12:00</td>
-                      <td><p className="moj-!-text-align-right">{ listItem.court }</p>
-                      </td>
-                    </tr>
-                  ) : (<Fragment key={ index }/>)
+                { data.cases && data.cases.map(($case, caseIndex) => {
+                  return (
+                    caseIndex < 10 && (
+                      <tr key={ caseIndex }>
+                        <th scope="row"><Link
+                          to={ `/cases/details/${ $case.id }` }
+                          onClick={ () => {
+                            dispatch({ type: 'setCase', setCase: $case })
+                          } }
+                          className="govuk-link govuk-link--no-visited-state">{ $case.defendant.name }</Link>
+                        </th>
+                        <td>
+                          <ol className="govuk-list">
+                            { $case.offences.map((offence, offenceIndex) => {
+                              return <li key={ offenceIndex }
+                                         className="govuk-list--number app-offence-title">{ offence.title }</li>
+                            }) }
+                          </ol>
+                        </td>
+                        <td>
+                          { $case.defendant.deliusStatus } <span className="govuk-hint app-!-inline">{ $case.defendant.nps ? '(nps)' : '(crc)' }</span>
+                        </td>
+                        <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
+                        <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
+                        <td><p className="moj-!-text-align-right">{ $case.courtRoom }</p>
+                        </td>
+                      </tr>
+                    )
+                  )
                 }) }
 
                 </tbody>

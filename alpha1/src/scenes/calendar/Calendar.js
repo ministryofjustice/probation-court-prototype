@@ -43,6 +43,10 @@ function Calendar (props) {
     return blanks
   }
 
+  function postBlanks() {
+    return [<Fragment />]
+  }
+
   function daysInMonth () {
     let days = []
     const today = currentDate.month() === moment().month() ? currentDate.date() : -1
@@ -180,6 +184,7 @@ function Calendar (props) {
                 }
                 { blanks() }
                 { daysInMonth() }
+                { postBlanks() }
               </ul>
 
               <p>&nbsp;</p>

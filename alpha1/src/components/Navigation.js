@@ -11,9 +11,6 @@ function Navigation () {
 
             <ul className="hmcts-primary-navigation__list">
               <li className="hmcts-primary-navigation__item">
-                <NavLink to="/calendar" className="hmcts-primary-navigation__link">Calendar</NavLink>
-              </li>
-              <li className="hmcts-primary-navigation__item">
                 <NavLink to="/cases/list" className="hmcts-primary-navigation__link">Case list</NavLink>
               </li>
               <li className="hmcts-primary-navigation__item">

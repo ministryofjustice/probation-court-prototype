@@ -29,7 +29,7 @@ const nextMonth = (dateObject = moment()) => {
 }
 
 const getAge = dateOfBirth => {
-  return moment().diff(moment(dateOfBirth, 'DD/MM/YYYY'), 'years')
+  return moment().diff(moment(dateOfBirth, 'YYYY-MM-DD'), 'years')
 }
 
 export {

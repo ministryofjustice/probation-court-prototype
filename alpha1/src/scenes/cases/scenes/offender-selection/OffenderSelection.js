@@ -1,22 +1,50 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
+import { useStateValue } from '../../../../utils/StateProvider'
 import { getAge } from '../../../../utils/DateTools'
 
-function OffenderSelection (props) {
+function OffenderSelection () {
 
-  const [data, setData] = useState({})
-  const id = props.match.params.id
+  const [{ currentCase }] = useStateValue()
+  const [data, setState] = useState({ potentialMatches: [] })
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    async function getData () {
-      const response = await fetch(`http://localhost:8080/api/cases/details/${ id }`)
-      const data = await response.json()
-      setData(data.details)
+
+    // Create some potential matches from the current defendant data
+    let potentialMatches = []
+    for (let i = 0, len = 3, $case; i < len; i++) {
+      $case = JSON.parse(JSON.stringify(currentCase))
+      if ($case.hasOwnProperty('defendant')) {
+        $case.defendant.crn = `DX1234${ i }A`
+        $case.defendant.pnc = `A123456${ i }BA`
+        $case.defendant.current = i === 1
+        switch (i) {
+          case 0 :
+            $case.defendant.address.line1 = 'No fixed abode'
+            $case.defendant.address.line2 = void 0
+            $case.defendant.address.line3 = void 0
+            $case.defendant.address.line4 = void 0
+            $case.defendant.address.line5 = void 0
+            $case.defendant.address.postcode = void 0
+            $case.defendant.dateOfBirth = moment($case.defendant.dateOfBirth, 'YYYY-MM-DD').subtract(1, 'years').format('YYYY-MM-DD')
+            break
+          case 2 :
+            $case.defendant.dateOfBirth = moment($case.defendant.dateOfBirth, 'YYYY-MM-DD').add(3, 'months').format('YYYY-MM-DD')
+            $case.defendant.address.line1 = '10'
+            $case.defendant.address.line2 = 'King Road'
+            $case.defendant.address.postcode = 'S12 5GH'
+            $case.defendant.pnc = 'Not recorded'
+            break
+        }
+        $case.defendant.age = getAge($case.defendant.dateOfBirth)
+        potentialMatches.push($case)
+      }
     }
-    getData()
-  }, [id])
+    setState({ potentialMatches: potentialMatches })
+  }, [currentCase])
 
   return (
     <Fragment>
@@ -26,13 +54,13 @@ function OffenderSelection (props) {
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
           </li>
-          <li className="govuk-breadcrumbs__list-item" aria-current="page">Match offender record</li>
+          <li className="govuk-breadcrumbs__list-item" aria-current="page">Match record</li>
         </ol>
       </div>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h1 className="govuk-heading-l">Match offender record <span
+        <h1 className="govuk-heading-l">Match record <span
           className="govuk-hint moj-util-inline">in Delius</span></h1>
 
         <div className="hmcts-filter-layout">
@@ -44,20 +72,18 @@ function OffenderSelection (props) {
               <div className="hmcts-filter__header">
 
                 <div className="hmcts-filter__header-title">
-                  <h2 className="govuk-heading-m">Offender data</h2>
+                  { currentCase.defendant && (
+                    <h2 className="govuk-heading-m">{ currentCase.defendant.name }</h2>
+                  ) }
                 </div>
               </div>
 
-              { data.name && (
+              { currentCase.defendant && (
 
                 <div className="hmcts-filter__content">
                   <div className="hmcts-filter__selected">
 
                     <div className="hmcts-filter__selected-heading">
-
-                      <div className="hmcts-filter__heading-title">
-                        <h2 className="govuk-heading-m">{ data.name }</h2>
-                      </div>
 
                       <table className="govuk-table moj-table">
                         <tbody>
@@ -67,26 +93,36 @@ function OffenderSelection (props) {
                         </tr>
                         <tr>
                           <td className="govuk-!-font-weight-bold">Date of birth:</td>
-                          <td>{ data.dateOfBirth }</td>
+                          <td>{ moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</td>
                         </tr>
                         <tr>
                           <td className="govuk-!-font-weight-bold">Age:</td>
-                          <td>{ getAge(data.dateOfBirth) }</td>
+                          <td>{ currentCase.defendant.age }</td>
                         </tr>
                         <tr>
                           <td className="govuk-!-font-weight-bold">Gender:</td>
-                          <td>{ data.gender }</td>
+                          <td>{ currentCase.defendant.gender === 'M' ? 'Male' : 'Female' }</td>
                         </tr>
                         <tr>
                           <td className="govuk-!-font-weight-bold">Address:</td>
                           <td>
 
-                            <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.line1 }</p>
-                            { data.address.line2 && (
-                              <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.line2 }</p>
+                            <p
+                              className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line1 }</p>
+                            { currentCase.defendant.address.line2 && (
+                              <p
+                                className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line2 }</p>
                             ) }
-                            <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.city }</p>
-                            <p className="govuk-body govuk-!-margin-bottom-0">{ data.address.postcode }</p>
+                            { currentCase.defendant.address.line3 && (
+                              <p
+                                className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line3 }</p>
+                            ) }
+                            { currentCase.defendant.address.line4 && (
+                              <p
+                                className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line4 }</p>
+                            ) }
+                            <p
+                              className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.postcode }</p>
 
                           </td>
                         </tr>
@@ -155,22 +191,22 @@ function OffenderSelection (props) {
                   </strong>
                 </div>
 
-                { data.status && data.status.matches.map((offenderItem, index) => {
-                  return (
+                { data.potentialMatches.map((offenderItem, index) => {
+                  return offenderItem.defendant && (
                     <div key={ index }>
                       <div className="govuk-grid-row">
                         <div className="govuk-grid-column-full">
                           <div className="moj-!-float-left--not-narrow">
 
                             <img src="/assets/images/no-photo.png" width="82" height="102"
-                                 alt={ `${ offenderItem.name }` }
+                                 alt={ `${ offenderItem.defendant.name }` }
                                  className="app-offender-image"/>
                           </div>
                           <div className="moj-!-float-left--not-narrow app-offender-selection">
 
                             <h1
-                              className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.name }
-                              { offenderItem.current && (
+                              className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.defendant.name }
+                              { offenderItem.defendant.current && (
                                 <span
                                   className="hmcts-badge hmcts-badge--green govuk-!-margin-left-4">Current offender</span>
                               ) }
@@ -179,22 +215,22 @@ function OffenderSelection (props) {
                             <div className="govuk-grid-row">
                               <div className="govuk-grid-column-one-quarter">
 
-                                { offenderItem.dateOfBirth && (
+                                { offenderItem.defendant.dateOfBirth && (
                                   <Fragment>
                                     <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">Date of birth</p>
                                     <p
-                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.dateOfBirth }</p>
+                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ moment(offenderItem.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</p>
                                   </Fragment>
                                 ) }
 
                               </div>
                               <div className="govuk-grid-column-one-quarter">
 
-                                { offenderItem.crn && (
+                                { offenderItem.defendant.crn && (
                                   <Fragment>
                                     <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">CRN</p>
                                     <p
-                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.crn }</p>
+                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.crn }</p>
                                   </Fragment>
                                 ) }
 
@@ -203,7 +239,7 @@ function OffenderSelection (props) {
 
                                 <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
                                 <p
-                                  className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.pnc }</p>
+                                  className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.pnc }</p>
 
                               </div>
                               <div className="govuk-grid-column-one-quarter moj-!-text-align-right">
@@ -222,7 +258,7 @@ function OffenderSelection (props) {
                           <td>
 
                             <p className="govuk-body govuk-!-margin-top-2">
-                              { offenderItem.gender }, { getAge(offenderItem.dateOfBirth) } of { offenderItem.address.line1 } { offenderItem.address.line2 && offenderItem.address.line2 } { offenderItem.address.city } { offenderItem.address.postcode }
+                              { offenderItem.defendant.gender }, { offenderItem.defendant.age } of { offenderItem.defendant.address.line1 } { offenderItem.defendant.address.line2 && offenderItem.defendant.address.line2 } { offenderItem.defendant.address.line3 } { offenderItem.defendant.address.postcode }
                             </p>
 
                           </td>

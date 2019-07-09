@@ -942,7 +942,7 @@
   dependencies:
     "@hapi/hoek" "6.x.x"
 
-"@hmcts/frontend@0.0.34-alpha":
+"@hmcts/frontend@v0.0.34-alpha":
   version "0.0.34-alpha"
   resolved "https://registry.yarnpkg.com/@hmcts/frontend/-/frontend-0.0.34-alpha.tgz#0d39b6d06c632ccb7c578fc91e3311306da9db0d"
   integrity sha512-+q3IB4L3UHsD5cs/11PDWEftDAmDV6eYkxm9eoNtXAfea93VhXNFA9ZEIV+TM7v/9xaAIkmDj9C4kCSUb1Hl3g==
@@ -4434,7 +4434,7 @@ govuk-frontend@2.11.0:
   resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-2.11.0.tgz#f9eb4497a55d22b7eab8364323266680e17be188"
   integrity sha512-kZR0ZrSju+Jqh8o5niKklj8/m5XmsNNUSQLL4M4urnMcrLypwW2dU3RkR8UCnzS2DDy4BTHb7CZw0VjQPoi3jg==
 
-govuk-frontend@2.13.0:
+govuk-frontend@v2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-2.13.0.tgz#0273f7c92070abd6450c73a006ebb3ddc793463a"
   integrity sha512-6XDtTt5plSrPQvPgLFN4LCtb9ULuqoXCgkHy5c7XE/70/sVm47RPbLR11tYGPcmV8cOApBhW0wL8y8ryspHfpw==
