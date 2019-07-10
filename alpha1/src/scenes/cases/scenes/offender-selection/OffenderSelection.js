@@ -38,6 +38,8 @@ function OffenderSelection () {
             $case.defendant.address.postcode = 'S12 5GH'
             $case.defendant.pnc = 'Not recorded'
             break
+          default:
+
         }
         $case.defendant.age = getAge($case.defendant.dateOfBirth)
         potentialMatches.push($case)

@@ -7,12 +7,39 @@ import { useStateValue } from '../../../../utils/StateProvider'
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
 
-function CaseList () {
+function CaseList (props) {
 
   const [data, setData] = useState({})
   const [{ currentDate }, dispatch] = useStateValue()
 
   useEffect(() => {
+
+    function configureData ($data) {
+      let cases = []
+      let unmatched = []
+      $data.sessions.forEach($session => {
+        $session.blocks.forEach($block => {
+          $block.cases.forEach($case => {
+            let hasOrder = $case.offences.filter($offence => { return $offence.title.indexOf('order') !== -1 || $offence.title.indexOf('Assault') !== -1 }).length
+            $case.defendant.name = fixNameCase($case.defendant.name)
+            $case.defendant.deliusStatus = hasOrder ? 'Current' : 'Known'
+            $case.defendant.nps = $case.defendant.deliusStatus === 'Current' && $case.offences.filter($offence => { return $offence.title.indexOf('Assault') !== -1 }).length
+            $case.courtRoom = parseInt($session.courtRoom, 10)
+            $case.startTime = $block.startTime
+            $case.endTime = $block.endTime
+            $case.noMatch = $case.offences.filter($offence => { return $offence.title.indexOf('emergency worker') !== -1 }).length
+
+            if ($case.noMatch) {
+              unmatched.push($case)
+            } else if ($case.offences.some(item => { return item.title.toLowerCase().indexOf('speed') === -1 && item.title.toLowerCase().indexOf('non-payment') === -1 && item.title.toLowerCase().indexOf('television') === -1 })) {
+              cases.push($case)
+            }
+          })
+        })
+      })
+      setData({ courtName: $data.courtName, cases: cases, unmatched: unmatched })
+    }
+
     async function getData () {
       const response = await fetch('http://localhost:8080/api/bigcaselist')
       const data = await response.json()
@@ -24,28 +51,6 @@ function CaseList () {
     getData()
   }, [dispatch])
 
-  function configureData ($data) {
-    let cases = []
-    $data.sessions.forEach($session => {
-      $session.blocks.forEach($block => {
-        $block.cases.forEach($case => {
-          let hasOrder = $case.offences.filter($offence => { return $offence.title.indexOf('order') !== -1 || $offence.title.indexOf('Assault') !== -1 }).length
-          $case.defendant.deliusStatus = hasOrder ? 'Current' : 'Known'
-          $case.defendant.nps = $case.defendant.deliusStatus === 'Current' && $case.offences.filter($offence => { return $offence.title.indexOf('Assault') !== -1 }).length
-          $case.courtRoom = parseInt($session.courtRoom, 10)
-          $case.startTime = $block.startTime
-          $case.endTime = $block.endTime
-          $case.noMatch = $case.offences.filter($offence => { return $offence.title.indexOf('emergency worker') !== -1 }).length
-          if ($block.description.indexOf('Fine') === -1 && $block.description.indexOf('Non-CPS') === -1 && $block.description.indexOf('Vary') === -1) {
-            cases.push($case)
-          }
-        })
-      })
-    })
-
-    setData({ courtName: $data.courtName, cases: cases })
-  }
-
   function toggleFilter () {
     const $filter = document.querySelector('.hmcts-filter')
     const $button = document.querySelector('#filter-button')
@@ -55,6 +60,10 @@ function CaseList () {
       $button.textContent = isOpen ? 'Hide filter' : 'Show filter'
       $button.setAttribute('aria-expanded', isOpen.toString())
     }
+  }
+
+  function fixNameCase ($name) {
+    return $name.toLowerCase().replace('miss ', '').replace('mrs ', '').replace('mr ', '').split(' ').map(item => { return item.charAt(0).toUpperCase() + item.slice(1) }).join(' ')
   }
 
   return (
@@ -90,7 +99,7 @@ function CaseList () {
 
       </nav>
 
-      { data.cases && data.cases.some($case => { return $case.noMatch }) && (
+      { data.unmatched && data.unmatched.length && (
         <Fragment>
 
           <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
@@ -104,7 +113,7 @@ function CaseList () {
             <div className="hmcts-identity-bar__container">
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                <table className="govuk-table moj-table moj-table--split-rows">
+                <table className="govuk-table moj-table moj-table--split-rows govuk-!-margin-bottom-0">
                   <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -117,8 +126,8 @@ function CaseList () {
                   </thead>
                   <tbody>
 
-                  { data.cases && data.cases.map(($case, index) => {
-                    return $case.noMatch ? (
+                  { data.unmatched && data.unmatched.map(($case, index) => {
+                    return (
                       <tr key={ index }>
                         <th scope="row"><Link
                           to={ `/cases/match/${ $case.id }` }
@@ -140,7 +149,7 @@ function CaseList () {
                         <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
                         <td><p className="moj-!-text-align-right">{ $case.courtRoom }</p></td>
                       </tr>
-                    ) : (<Fragment key={ index }/>)
+                    )
                   }) }
 
                   </tbody>
@@ -208,7 +217,10 @@ function CaseList () {
                   <div className="hmcts-menu">
                     <div className="hmcts-menu__wrapper">
 
-                      <button type="submit" className="govuk-button govuk-button--secondary hmcts-menu__item">
+                      <button type="submit" className="govuk-button govuk-button--secondary hmcts-menu__item"
+                              onClick={ () => {
+                                props.history.push('/cases/new')
+                              } }>
                         Add case
                       </button>
 
@@ -226,7 +238,7 @@ function CaseList () {
 
             <div className="hmcts-scrollable-pane__wrapper govuk-!-margin-top-0">
 
-              <table className="govuk-table moj-table moj-table--split-rows">
+              <table className="govuk-table moj-table moj-table--split-rows app-alternate-rows-table">
                 <thead>
                 <tr>
                   <th scope="col">Name</th>
@@ -241,7 +253,7 @@ function CaseList () {
 
                 { data.cases && data.cases.map(($case, caseIndex) => {
                   return (
-                    caseIndex < 10 && (
+                    caseIndex < 15 && (
                       <tr key={ caseIndex }>
                         <th scope="row"><Link
                           to={ `/cases/details/${ $case.id }` }
@@ -251,15 +263,19 @@ function CaseList () {
                           className="govuk-link govuk-link--no-visited-state">{ $case.defendant.name }</Link>
                         </th>
                         <td>
-                          <ol className="govuk-list">
-                            { $case.offences.map((offence, offenceIndex) => {
-                              return <li key={ offenceIndex }
-                                         className="govuk-list--number app-offence-title">{ offence.title }</li>
-                            }) }
-                          </ol>
+                          { $case.offences.length > 1 ? (
+                            <ol className="govuk-list govuk-!-margin-left-4">
+                              { $case.offences.map((offence, offenceIndex) => {
+                                return <li key={ offenceIndex } className="govuk-list--number app-offence-title">{ offence.title }</li>
+                              }) }
+                            </ol>
+                          ) : (
+                            <p className="govuk-body govuk-!-margin-bottom-2">{ $case.offences[0].title }</p>
+                          ) }
                         </td>
                         <td>
-                          { $case.defendant.deliusStatus } <span className="govuk-hint app-!-inline">{ $case.defendant.nps ? '(nps)' : '(crc)' }</span>
+                          { $case.defendant.deliusStatus } <span
+                          className="govuk-hint app-!-inline">{ $case.defendant.nps ? '(nps)' : '(crc)' }</span>
                         </td>
                         <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
                         <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>

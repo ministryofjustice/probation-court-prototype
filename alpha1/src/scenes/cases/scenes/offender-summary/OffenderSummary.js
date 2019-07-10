@@ -14,6 +14,21 @@ function OffenderSummary () {
     window.scrollTo(0, 0)
   }, [])
 
+  function getMarker($marker) {
+    let markerDescription
+    switch ($marker) {
+      case 'DV':
+        markerDescription = 'Domestic Violence'
+        break
+      case 'VI':
+        markerDescription = 'Violent'
+        break
+      default:
+        markerDescription = ''
+    }
+    return markerDescription
+  }
+
   return (
     <Fragment>
 
@@ -86,34 +101,20 @@ function OffenderSummary () {
 
                   <div className="hmcts-filter__options">
 
-                    { currentCase.defendant.risk && !!currentCase.defendant.risk.length && (
+                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.nps) && (
                       <Fragment>
                         <h2 className="govuk-heading-m govuk-!-margin-bottom-0">Risk <span
                           className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
-
-                        { currentCase.defendant.risk.map((risk, riskIndex) => {
-                          if (risk.short === 'RoSH') {
-                            return (
-                              <div key={ riskIndex }
-                                   className={ `moj-risk-alert moj-risk-alert--small ${ risk.level.toLowerCase().indexOf('high') !== -1 ? 'moj-risk-alert--high' : risk.level === 'Medium' ? 'moj-risk-alert--medium' : 'moj-risk-alert--low' }` }>{ risk.level } { risk.long }</div>
-                            )
-                          } else {
-                            return <p key={ riskIndex }
-                                      className="govuk-body govuk-!-margin-bottom-0">{ risk.level } { risk.long }</p>
-                          }
-                        }) }
-
+                              <div className="moj-risk-alert moj-risk-alert--small moj-risk-alert--high">Very High Risk of Serious Harm</div>
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
                       </Fragment>
                     ) }
 
-                    { currentCase.defendant.currentOrder && !!currentCase.defendant.currentOrder.length && currentCase.defendant.nps && (
+                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.nps) && (
                       <Fragment>
                         <h2 className="govuk-heading-m">Current order</h2>
 
-                        { currentCase.defendant.currentOrder.map((order, orderIndex) => {
-                          return <p key={ orderIndex } className="govuk-body govuk-!-margin-bottom-0">{ order }</p>
-                        }) }
+                        <p className="govuk-body govuk-!-margin-bottom-0">155 days community service</p>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
@@ -283,11 +284,11 @@ function OffenderSummary () {
                         </td>
                         <td>
 
-                          { currentCase.defendant.markers && !!currentCase.defendant.markers.length && (
+                          { currentCase.markers && !!currentCase.markers.length && (
                             <div className="moj-!-text-align-right govuk-!-margin-bottom-2">
-                              { currentCase.defendant.markers.map((marker, markerIndex) => {
+                              { currentCase.markers.map((marker, markerIndex) => {
                                 return <div key={ markerIndex }
-                                            className="hmcts-badge hmcts-badge--small moj-tooltip moj-tooltip--secondary moj-util-inline moj-!-text-align-center govuk-!-margin-left-1">{ marker.short }<span>{ marker.long }</span>
+                                            className="hmcts-badge hmcts-badge--small moj-tooltip moj-tooltip--secondary moj-util-inline moj-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
                                 </div>
                               }) }
                             </div>
