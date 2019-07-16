@@ -63,7 +63,7 @@ function OffenderSelection () {
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
         <h1 className="govuk-heading-l">Match record <span
-          className="govuk-hint moj-util-inline">in Delius</span></h1>
+          className="govuk-hint app-!-inline">in Delius</span></h1>
 
         <div className="moj-filter-layout">
 
@@ -87,7 +87,7 @@ function OffenderSelection () {
 
                     <div className="moj-filter__selected-heading">
 
-                      <table className="govuk-table moj-table">
+                      <table className="govuk-table app-table">
                         <tbody>
                         <tr>
                           <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
@@ -184,7 +184,7 @@ function OffenderSelection () {
 
               <div className="moj-scrollable-pane__wrapper">
 
-                <div className="govuk-warning-text moj-warning-text moj-warning-text--critical">
+                <div className="govuk-warning-text app-warning-text app-warning-text--interrupt">
                   <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
                   <strong className="govuk-warning-text__text">
                     <span className="govuk-warning-text__assistive">Warning</span>
@@ -198,13 +198,13 @@ function OffenderSelection () {
                     <div key={ index }>
                       <div className="govuk-grid-row">
                         <div className="govuk-grid-column-full">
-                          <div className="moj-!-float-left--not-narrow">
+                          <div className="app-!-float-left--not-narrow">
 
                             <img src="/assets/images/no-photo.png" width="82" height="102"
                                  alt={ `${ offenderItem.defendant.name }` }
                                  className="app-offender-image"/>
                           </div>
-                          <div className="moj-!-float-left--not-narrow app-offender-selection">
+                          <div className="app-!-float-left--not-narrow app-offender-selection">
 
                             <h1
                               className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.defendant.name }
@@ -244,7 +244,7 @@ function OffenderSelection () {
                                   className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.pnc }</p>
 
                               </div>
-                              <div className="govuk-grid-column-one-quarter moj-!-text-align-right">
+                              <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
                                 <button className="govuk-button govuk-button--secondary">Match</button>
 
@@ -254,7 +254,7 @@ function OffenderSelection () {
                         </div>
                       </div>
 
-                      <table className="govuk-table moj-table">
+                      <table className="govuk-table app-table">
                         <tbody>
                         <tr>
                           <td>
@@ -264,7 +264,7 @@ function OffenderSelection () {
                             </p>
 
                           </td>
-                          <td className="moj-!-text-align-right">
+                          <td className="app-!-text-align-right">
 
                             <a href={ `http://delius/offender/` }
                                className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"

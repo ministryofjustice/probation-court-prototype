@@ -43,15 +43,15 @@ function CaseSummary (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <table className="govuk-table moj-table" role="presentation">
+        <table className="govuk-table app-table" role="presentation">
           <tbody>
           <tr>
             <td>
               <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
               <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }<span
-                className="govuk-hint moj-util-inline">at { court }</span></p>
+                className="govuk-hint app-!-inline">at { court }</span></p>
             </td>
-            <td className="moj-!-text-align-right">
+            <td className="app-!-text-align-right">
 
               <div className="moj-action-bar">
 
@@ -96,13 +96,13 @@ function CaseSummary (props) {
 
                     <div className="moj-filter__selected-heading">
 
-                      <div className="moj-!-float-left">
+                      <div className="app-!-float-left">
 
                         <img src="/assets/images/no-photo.png" width="82" height="102"
                              alt={ `${ currentCase.defendant.name }` }
                              className="app-offender-image"/>
                       </div>
-                      <div className="moj-!-float-left">
+                      <div className="app-!-float-left">
 
                         <p className="govuk-body govuk-!-margin-bottom-0">
                           <strong>DOB:</strong> { moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
@@ -125,7 +125,7 @@ function CaseSummary (props) {
                     { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                       <Fragment>
                         <h2 className="govuk-heading-m govuk-!-margin-bottom-0">RoSH <span
-                          className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
+                          className="govuk-hint app-!-inline govuk-!-margin-top-0">from Delius record</span></h2>
 
                         { currentCase.defendant.risk.map((risk, riskIndex) => {
                           return risk.type === 'RoSH' ? (
@@ -225,13 +225,13 @@ function CaseSummary (props) {
 
                     <h2 className="govuk-heading-m govuk-!-margin-top-2">Current case</h2>
 
-                    <table className="govuk-table moj-table moj-table--split-rows">
+                    <table className="govuk-table app-table app-table--split-rows">
                       <thead>
                       <tr>
                         <th>Offence</th>
                         <th>
                           <p
-                            className={ !currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) ? 'moj-!-text-align-right' : '' }>
+                            className={ !currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) ? 'app-!-text-align-right' : '' }>
                             Code
                           </p>
                         </th>
@@ -259,7 +259,7 @@ function CaseSummary (props) {
                       </tbody>
                     </table>
 
-                    <table className="govuk-table moj-table">
+                    <table className="govuk-table app-table">
                       <thead>
                       <tr>
                         <th colSpan="2">Appearing in Court Room { currentCase.courtRoom }</th>
@@ -276,10 +276,10 @@ function CaseSummary (props) {
                         <td>
 
                           { currentCase.markers && !!currentCase.markers.length && (
-                            <div className="moj-!-text-align-right govuk-!-margin-bottom-2">
+                            <div className="app-!-text-align-right govuk-!-margin-bottom-2">
                               { currentCase.markers.map((marker, markerIndex) => {
                                 return <div key={ markerIndex }
-                                            className="moj-badge moj-badge--small moj-tooltip moj-tooltip--secondary moj-util-inline moj-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
+                                            className="moj-badge moj-badge--small moj-tooltip moj-tooltip--secondary app-!-inline app-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
                                 </div>
                               }) }
                             </div>
@@ -301,7 +301,7 @@ function CaseSummary (props) {
 
                       <h2 className="govuk-heading-m govuk-!-margin-top-2">Previous convictions</h2>
 
-                      <table className="govuk-table moj-table moj-table--split-rows">
+                      <table className="govuk-table app-table app-table--split-rows">
                         <thead>
                         <tr>
                           <th>Offence</th>
@@ -334,9 +334,9 @@ function CaseSummary (props) {
                 { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                   <Fragment>
                     <h2 className="govuk-heading-m govuk-!-margin-top-6">Registers and warnings <span
-                      className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
+                      className="govuk-hint app-!-inline govuk-!-margin-top-0">from Delius record</span></h2>
 
-                    <table className="govuk-table moj-table moj-table--split-rows">
+                    <table className="govuk-table app-table app-table--split-rows">
                       <thead>
                       <tr>
                         <th style={ { 'width': '220px' } }>Type</th>
@@ -381,7 +381,7 @@ function CaseSummary (props) {
 
                 <h2 className="govuk-heading-m govuk-!-margin-top-6">Case tracker</h2>
 
-                <table className="govuk-table moj-table moj-table--split-rows">
+                <table className="govuk-table app-table app-table--split-rows">
                   <thead>
                   <tr>
                     <th>Supporting information</th>
@@ -424,7 +424,7 @@ function CaseSummary (props) {
                       </Fragment>
                     ) }
 
-                    <p className="moj-!-text-align-right">
+                    <p className="app-!-text-align-right">
                       <button className="govuk-button govuk-button--secondary">Add note</button>
                     </p>
 

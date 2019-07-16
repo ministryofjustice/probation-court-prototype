@@ -93,15 +93,15 @@ function AdjournedList (props) {
 
         <div className="moj-filter-layout__content">
 
-          <table className="govuk-table moj-table" role="presentation">
+          <table className="govuk-table app-table" role="presentation">
             <tbody>
             <tr>
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Adjourned cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') } <span
-                  className="govuk-hint moj-util-inline">at { data.court }</span></p>
+                  className="govuk-hint app-!-inline">at { data.court }</span></p>
               </td>
-              <td className="moj-!-text-align-right">
+              <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
                   <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
@@ -120,7 +120,7 @@ function AdjournedList (props) {
 
             <div className="moj-scrollable-pane__wrapper">
 
-              <table className="govuk-table moj-table moj-table--split-rows">
+              <table className="govuk-table app-table app-table--split-rows">
 
                 <thead>
                 <tr>
@@ -128,7 +128,7 @@ function AdjournedList (props) {
                   <th scope="col">Offence</th>
                   <th scope="col">Adjourned at</th>
                   <th scope="col">Adjournment</th>
-                  <th scope="col"><p className="moj-!-text-align-right">Court</p></th>
+                  <th scope="col"><p className="app-!-text-align-right">Court</p></th>
                 </tr>
                 </thead>
 
@@ -152,7 +152,7 @@ function AdjournedList (props) {
                           <p>{ listItem.currentState.details }</p>
                         ) }
                       </td>
-                      <td><p className="moj-!-text-align-right">{ listItem.court }</p>
+                      <td><p className="app-!-text-align-right">{ listItem.court }</p>
                       </td>
                     </tr>
                   )

@@ -51,7 +51,7 @@ function AddCase () {
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
         <h1 className="govuk-heading-l">Add case <span
-          className="govuk-hint moj-util-inline">for { currentDate.format('dddd, Do MMMM YYYY') }</span></h1>
+          className="govuk-hint app-!-inline">for { currentDate.format('dddd, Do MMMM YYYY') }</span></h1>
 
         <div className="moj-filter-layout">
 
@@ -135,7 +135,7 @@ function AddCase () {
                     ) }
 
                     { data.offenderMatch && (
-                      <table className="govuk-table moj-table">
+                      <table className="govuk-table app-table">
                         <tbody>
                         <tr>
                           <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
@@ -202,7 +202,7 @@ function AddCase () {
                   <Fragment>
 
                     { data.offences && !data.offences.length && (
-                      <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt">
+                      <div className="govuk-warning-text app-warning-text app-warning-text--interrupt">
                         <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
                         <strong className="govuk-warning-text__text">
                           <span className="govuk-warning-text__assistive">Warning</span>
@@ -215,13 +215,13 @@ function AddCase () {
                       <Fragment>
                         <div className="govuk-grid-row">
                           <div className="govuk-grid-column-full">
-                            <div className="moj-!-float-left--not-narrow">
+                            <div className="app-!-float-left--not-narrow">
 
                               <img src="/assets/images/no-photo.png" width="82" height="102"
                                    alt={ `${ data.defendant.name }` }
                                    className="app-offender-image"/>
                             </div>
-                            <div className="moj-!-float-left--not-narrow app-offender-selection">
+                            <div className="app-!-float-left--not-narrow app-offender-selection">
 
                               <h1
                                 className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ data.defendant.name }
@@ -261,7 +261,7 @@ function AddCase () {
                                     className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ data.defendant.pnc }</p>
 
                                 </div>
-                                <div className="govuk-grid-column-one-quarter moj-!-text-align-right">
+                                <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
                                   <button className="govuk-button govuk-button--secondary" onClick={ e => {
                                     setData({ ...data, offenderMatch: true })
@@ -274,7 +274,7 @@ function AddCase () {
                           </div>
                         </div>
 
-                        <table className="govuk-table moj-table">
+                        <table className="govuk-table app-table">
                           <tbody>
                           <tr>
                             <td>
@@ -284,7 +284,7 @@ function AddCase () {
                               </p>
 
                             </td>
-                            <td className="moj-!-text-align-right">
+                            <td className="app-!-text-align-right">
 
                               <a href={ `http://delius/offender/` }
                                  className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
@@ -432,14 +432,14 @@ function AddCase () {
                               </div>
 
                             </div>
-                            <div className="govuk-grid-column-one-third moj-!-text-align-right">&nbsp;</div>
+                            <div className="govuk-grid-column-one-third app-!-text-align-right">&nbsp;</div>
                           </div>
 
                         </div>
                       </div>
                     </div>
 
-                    <p className="moj-!-text-align-right">
+                    <p className="app-!-text-align-right">
                       <button className="govuk-button">Add case</button>
                     </p>
 

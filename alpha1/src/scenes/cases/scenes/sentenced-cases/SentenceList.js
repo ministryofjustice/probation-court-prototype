@@ -67,7 +67,7 @@ function SentencedList (props) {
       { data.cases && data.cases.some(listItem => { return listItem.deliusUpdated === 'N' }) && (
         <Fragment>
 
-          <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
+          <div className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-0">
             <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong className="govuk-warning-text__text"><span
               className="govuk-warning-text__assistive">Warning</span>There is 1 case where the sentence has not been
@@ -78,14 +78,14 @@ function SentencedList (props) {
             <div className="moj-identity-bar__container">
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                <table className="govuk-table moj-table moj-table--split-rows">
+                <table className="govuk-table app-table app-table--split-rows">
                   <thead>
                   <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Offence</th>
                     <th scope="col">Sentence</th>
                     <th scope="col">Recorded in Delius</th>
-                    <th scope="col"><p className="moj-!-text-align-right">Court</p></th>
+                    <th scope="col"><p className="app-!-text-align-right">Court</p></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -111,7 +111,7 @@ function SentencedList (props) {
                             <td>
                               <p>{ listItem.deliusUpdated === 'N' ? 'No' : 'Yes' }</p>
                             </td>
-                            <td><p className="moj-!-text-align-right">{ listItem.court }</p>
+                            <td><p className="app-!-text-align-right">{ listItem.court }</p>
                             </td>
                           </tr>
                         ) }
@@ -157,15 +157,15 @@ function SentencedList (props) {
 
         <div className="moj-filter-layout__content">
 
-          <table className="govuk-table moj-table" role="presentation">
+          <table className="govuk-table app-table" role="presentation">
             <tbody>
             <tr>
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Sentenced cases </h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') } <span
-                  className="govuk-hint moj-util-inline">at { data.court }</span></p>
+                  className="govuk-hint app-!-inline">at { data.court }</span></p>
               </td>
-              <td className="moj-!-text-align-right">
+              <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
                   <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
@@ -184,7 +184,7 @@ function SentencedList (props) {
 
             <div className="moj-scrollable-pane__wrapper">
 
-              <table className="govuk-table moj-table moj-table--split-rows">
+              <table className="govuk-table app-table app-table--split-rows">
 
                 <thead>
                 <tr>
@@ -192,7 +192,7 @@ function SentencedList (props) {
                   <th scope="col">Offence</th>
                   <th scope="col">Sentence</th>
                   <th scope="col">Recorded in Delius</th>
-                  <th scope="col"><p className="moj-!-text-align-right">Court</p></th>
+                  <th scope="col"><p className="app-!-text-align-right">Court</p></th>
                 </tr>
                 </thead>
 
@@ -221,7 +221,7 @@ function SentencedList (props) {
                           <td>
                             <p>{ listItem.deliusUpdated === 'N' ? 'No' : 'Yes' }</p>
                           </td>
-                          <td><p className="moj-!-text-align-right">{ listItem.court }</p>
+                          <td><p className="app-!-text-align-right">{ listItem.court }</p>
                           </td>
                         </tr>
                       ) }

@@ -12,7 +12,6 @@ $moj-page-width: $govuk-page-width;
 
 @import "~govuk-frontend/all";
 @import "~@ministryofjustice/frontend/all";
-@import "~@mojdigital/pattern-library/all";
 
 // ===============================================
 // Overrides
@@ -49,6 +48,10 @@ $moj-page-width: $govuk-page-width;
   border-color: govuk-colour("bright-red");
 }
 
+.moj-badge {
+  text-align: center;
+}
+
 .moj-badge:not(.moj-badge--small) {
   min-width: 0;
   padding: 5px 20px;
@@ -58,8 +61,8 @@ $moj-page-width: $govuk-page-width;
   color: govuk-colour("blue");
   border-color: govuk-colour("blue");
   text-align: center;
-  width: 35px;
-  min-width: 0;
+  min-width: 45px;
+  padding: 5px 10px;
 }
 
 .moj-badge--green {
@@ -87,12 +90,6 @@ $moj-page-width: $govuk-page-width;
 .moj-risk-tag--high, .moj-risk-tag--very-high {
   color: govuk-colour("bright-red");
   border-color: govuk-colour("bright-red");
-}
-
-.moj-table--split-rows {
-  th:last-child, td:last-child {
-    text-align: right;
-  }
 }
 
 //===============================================
@@ -149,6 +146,12 @@ abbr {
 .app-\!-inline {
   display: inline;
 }
+
+.app-\!-text-align-center {
+  text-align: center; }
+
+.app-\!-text-align-right {
+  text-align: right; }
 
 .app-calendar--link {
   text-decoration: none;
@@ -231,4 +234,135 @@ abbr {
 
 .app-full-width {
   width: 100%;
+}
+
+.app-table {
+
+  width: 100%;
+
+  th, td {
+    vertical-align: top;
+  }
+
+  td p, th p {
+    margin-top: 0;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.app-table--split-rows {
+
+    thead tr {
+      border-bottom: 2px solid govuk-colour("black");
+    }
+
+    th, td {
+      padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) govuk-em(govuk-spacing(2), 19px) 0;
+      border-bottom: 1px solid $govuk-border-colour;
+      text-align: left;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    th {
+      @include govuk-typography-weight-bold();
+    }
+
+    tbody tr:last-child {
+      border: 0;
+
+      td, th {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  &.app-table--row-counting {
+
+    counter-reset: rowNumber;
+
+    tbody {
+      counter-reset: rowNumber;
+    }
+
+    tr {
+      counter-increment: rowNumber;
+
+      th:first-child, td:first-child {
+        padding-left: 2em;
+      }
+
+      td:first-child::before {
+        display: inline-block;
+        content: counter(rowNumber) ".";
+        min-width: 2em;
+        margin-left: -2em;
+      }
+    }
+  }
+}
+
+.app-\!-float-left, .app-\!-float-left--not-narrow {
+  float: left;
+}
+
+.app-\!-float-right, .app-\!-float-right--not-narrow {
+  float: right;
+}
+
+.app-\!-float-left--not-narrow, .app-\!-float-right--not-narrow {
+  @include govuk-media-query(mobile, tablet) {
+    float: none;
+  }
+}
+
+.app-\!-float-left, .app-\!-float-right, .app-\!-float-left--not-narrow, .app-\!-float-right--not-narrow {
+  @include govuk-clearfix;
+}
+.app-warning-text {
+  @include govuk-responsive-padding(4, all);
+  background: govuk-colour("blue");
+
+  .govuk-warning-text__icon {
+    left: 20px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.app-warning-text__icon--interrupt {
+  color: govuk-colour("blue");
+  background: govuk-colour("white");
+  border-color: govuk-colour("white");
+}
+
+.app-warning-text__text--interrupt {
+  color: govuk-colour("white");
+}
+
+.app-warning-text--interrupt {
+  background: govuk-colour("blue");
+  color: govuk-colour("white");
+
+  .govuk-warning-text__icon {
+    color: govuk-colour("blue");
+    background: govuk-colour("white");
+    border-color: govuk-colour("white");
+  }
+}
+
+.app-warning-text--critical {
+  background: govuk-colour("red");
+  color: govuk-colour("white");
+
+  .govuk-warning-text__icon {
+    color: govuk-colour("red");
+    background: govuk-colour("white");
+    border-color: govuk-colour("white");
+  }
 }

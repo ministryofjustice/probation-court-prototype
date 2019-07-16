@@ -78,7 +78,7 @@ function CaseList (props) {
 
       <nav className="moj-sub-navigation" aria-label="Sub navigation">
 
-        <p className="govuk-hint moj-!-float-right govuk-!-margin-top-2">&nbsp;Last
+        <p className="govuk-hint app-!-float-right govuk-!-margin-top-2">&nbsp;Last
           updated { currentDate.format('dddd, Do MMMM YYYY') } at 10:30</p>
 
         <ul className="moj-sub-navigation__list">
@@ -113,7 +113,7 @@ function CaseList (props) {
       { data.unmatched && data.unmatched.length && (
         <Fragment>
 
-          <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
+          <div className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-0">
             <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong className="govuk-warning-text__text"><span
               className="govuk-warning-text__assistive">Warning</span>There are 3 cases that have not been matched to
@@ -124,7 +124,7 @@ function CaseList (props) {
             <div className="moj-identity-bar__container">
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                <table className="govuk-table moj-table moj-table--split-rows govuk-!-margin-bottom-0">
+                <table className="govuk-table app-table app-table--split-rows govuk-!-margin-bottom-0">
                   <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -167,7 +167,7 @@ function CaseList (props) {
                 </table>
               </div>
 
-              <p className="govuk-body moj-!-text-align-center">
+              <p className="govuk-body app-!-text-align-center">
                 <a className="govuk-link govuk-link--no-visited-state" href="?expand"
                    onClick={ e => e.preventDefault() }><em className="app-icon-down"/> Show more <em
                   className="app-icon-down"/></a>
@@ -188,9 +188,7 @@ function CaseList (props) {
                 <h2 className="govuk-heading-m">Filter</h2>
               </div>
 
-              <div className="moj-filter__header-action">
-
-              </div>
+              <div className="moj-filter__header-action" />
 
             </div>
 
@@ -206,16 +204,16 @@ function CaseList (props) {
 
         <div className="moj-filter-layout__content">
 
-          <table className="govuk-table moj-table" role="presentation">
+          <table className="govuk-table app-table" role="presentation">
             <tbody>
             <tr>
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
-                  <span className="govuk-hint moj-util-inline">&nbsp;at { data.courtName }</span>
+                  <span className="govuk-hint app-!-inline">&nbsp;at { data.courtName }</span>
                 </p>
               </td>
-              <td className="moj-!-text-align-right">
+              <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
                   <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
@@ -254,7 +252,7 @@ function CaseList (props) {
 
             <div className="moj-scrollable-pane__wrapper govuk-!-margin-top-0">
 
-              <table className="govuk-table moj-table moj-table--split-rows app-alternate-rows-table">
+              <table className="govuk-table app-table app-table--split-rows app-alternate-rows-table">
                 <thead>
                 <tr>
                   <th scope="col">Name</th>
