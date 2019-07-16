@@ -39,7 +39,7 @@ $moj-page-width: $govuk-page-width;
   }
 }
 
-.moj-risk-tag {
+.app-risk-tag {
   min-width: 125px;
 }
 
@@ -50,6 +50,13 @@ $moj-page-width: $govuk-page-width;
 
 .moj-badge {
   text-align: center;
+  color: govuk-colour("grey-1");
+  border-color: govuk-colour("grey-1");
+
+  &.moj-badge-known {
+    color: govuk-colour("yellow");
+    border-color: govuk-colour("yellow");
+  }
 }
 
 .moj-badge:not(.moj-badge--small) {
@@ -66,8 +73,8 @@ $moj-page-width: $govuk-page-width;
 }
 
 .moj-badge--green {
-  color: govuk-colour("green");
-  border-color: govuk-colour("green");
+  color: govuk-colour("light-green");
+  border-color: govuk-colour("light-green");
 }
 
 .moj-badge--text-small {
@@ -83,22 +90,30 @@ $moj-page-width: $govuk-page-width;
   margin: 0;
 }
 
-.moj-tooltip--secondary {
+.app-tooltip--secondary {
   cursor: default;
 }
 
-.moj-risk-tag--high, .moj-risk-tag--very-high {
+.app-risk-tag--high, .app-risk-tag--very-high {
   color: govuk-colour("bright-red");
   border-color: govuk-colour("bright-red");
+}
+
+.moj-pagination {
+  margin: 0; // Stop horizontal scrolling
 }
 
 //===============================================
 // App specific styles
 //===============================================
 
-abbr {
-  text-decoration: none;
-}
+@import "calendar";
+@import "layout";
+@import "risk";
+@import "table";
+@import "tooltip";
+@import "typography";
+@import "warning-text";
 
 .app-offence-title {
   padding-left: 5px;
@@ -106,15 +121,6 @@ abbr {
 
   &:last-child {
     padding-bottom: 0;
-  }
-}
-
-.app-alternate-rows-table {
-  tr:nth-child(even) {
-    background-color: govuk-colour("grey-4");
-  }
-  th, td {
-    padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) !important;
   }
 }
 
@@ -138,86 +144,8 @@ abbr {
   -webkit-transform: rotate(45deg);
 }
 
-.app-util-center {
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.app-\!-inline {
-  display: inline;
-}
-
-.app-\!-text-align-center {
-  text-align: center; }
-
-.app-\!-text-align-right {
-  text-align: right; }
-
-.app-calendar--link {
-  text-decoration: none;
-}
-
 .app-\!-cursor-pointer {
   cursor: pointer;
-}
-
-.app-hint-s {
-  @extend .govuk-hint;
-  font-size: 14px;
-}
-
-.app-calendar {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 0;
-  @include govuk-font(16);
-  @include govuk-clearfix;
-  border-left: 1px solid govuk-colour("grey-2");
-}
-
-.app-calendar--item {
-  text-align: center;
-  float: left;
-  width: 14.285%;
-  list-style: none;
-  border: 1px solid govuk-colour("grey-2");
-  margin-left: -1px;
-  margin-top: -1px;
-  padding: 0 0 5px 0;
-  min-height: 130px;
-  font-weight: 700;
-}
-
-.app-calendar--item_header {
-  border-color: govuk-colour("blue");
-  background: govuk-colour("blue");
-  color: govuk-colour("white");
-  padding: 5px 0;
-  min-height: 10px;
-}
-
-.app-calendar--item_day {
-  border-color: govuk-colour("grey-3");
-  background: govuk-colour("grey-3");
-  color: govuk-colour("black");
-  min-height: 10px;
-  padding: 5px 0;
-}
-
-.app-calendar--item_day_today {
-  border-color: govuk-colour("yellow");
-  background: govuk-colour("yellow");
-  color: govuk-colour("white");
-}
-
-.app-calendar--item_empty {
-  background: govuk-colour("grey-4");
-}
-
-.app-calendar--item_today {
-  background: govuk-tint(govuk-colour("yellow"), 95);
 }
 
 .app-offender-header {
@@ -230,139 +158,4 @@ abbr {
 
 .app-offender-image {
   margin-right: 10px;
-}
-
-.app-full-width {
-  width: 100%;
-}
-
-.app-table {
-
-  width: 100%;
-
-  th, td {
-    vertical-align: top;
-  }
-
-  td p, th p {
-    margin-top: 0;
-    margin-bottom: 5px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &.app-table--split-rows {
-
-    thead tr {
-      border-bottom: 2px solid govuk-colour("black");
-    }
-
-    th, td {
-      padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) govuk-em(govuk-spacing(2), 19px) 0;
-      border-bottom: 1px solid $govuk-border-colour;
-      text-align: left;
-
-      &:last-child {
-        text-align: right;
-      }
-    }
-
-    th {
-      @include govuk-typography-weight-bold();
-    }
-
-    tbody tr:last-child {
-      border: 0;
-
-      td, th {
-        border-bottom: 0;
-      }
-    }
-  }
-
-  &.app-table--row-counting {
-
-    counter-reset: rowNumber;
-
-    tbody {
-      counter-reset: rowNumber;
-    }
-
-    tr {
-      counter-increment: rowNumber;
-
-      th:first-child, td:first-child {
-        padding-left: 2em;
-      }
-
-      td:first-child::before {
-        display: inline-block;
-        content: counter(rowNumber) ".";
-        min-width: 2em;
-        margin-left: -2em;
-      }
-    }
-  }
-}
-
-.app-\!-float-left, .app-\!-float-left--not-narrow {
-  float: left;
-}
-
-.app-\!-float-right, .app-\!-float-right--not-narrow {
-  float: right;
-}
-
-.app-\!-float-left--not-narrow, .app-\!-float-right--not-narrow {
-  @include govuk-media-query(mobile, tablet) {
-    float: none;
-  }
-}
-
-.app-\!-float-left, .app-\!-float-right, .app-\!-float-left--not-narrow, .app-\!-float-right--not-narrow {
-  @include govuk-clearfix;
-}
-.app-warning-text {
-  @include govuk-responsive-padding(4, all);
-  background: govuk-colour("blue");
-
-  .govuk-warning-text__icon {
-    left: 20px;
-    width: 38px;
-    height: 38px;
-  }
-}
-
-.app-warning-text__icon--interrupt {
-  color: govuk-colour("blue");
-  background: govuk-colour("white");
-  border-color: govuk-colour("white");
-}
-
-.app-warning-text__text--interrupt {
-  color: govuk-colour("white");
-}
-
-.app-warning-text--interrupt {
-  background: govuk-colour("blue");
-  color: govuk-colour("white");
-
-  .govuk-warning-text__icon {
-    color: govuk-colour("blue");
-    background: govuk-colour("white");
-    border-color: govuk-colour("white");
-  }
-}
-
-.app-warning-text--critical {
-  background: govuk-colour("red");
-  color: govuk-colour("white");
-
-  .govuk-warning-text__icon {
-    color: govuk-colour("red");
-    background: govuk-colour("white");
-    border-color: govuk-colour("white");
-  }
 }

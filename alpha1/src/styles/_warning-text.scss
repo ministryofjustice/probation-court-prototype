@@ -1,0 +1,42 @@
+.app-warning-text {
+  @include govuk-responsive-padding(4, all);
+  background: govuk-colour("blue");
+
+  .govuk-warning-text__icon {
+    left: 20px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.app-warning-text__icon--interrupt {
+  color: govuk-colour("blue");
+  background: govuk-colour("white");
+  border-color: govuk-colour("white");
+}
+
+.app-warning-text__text--interrupt {
+  color: govuk-colour("white");
+}
+
+.app-warning-text--interrupt {
+  background: govuk-colour("blue");
+  color: govuk-colour("white");
+
+  .govuk-warning-text__icon {
+    color: govuk-colour("blue");
+    background: govuk-colour("white");
+    border-color: govuk-colour("white");
+  }
+}
+
+.app-warning-text--critical {
+  background: govuk-colour("red");
+  color: govuk-colour("white");
+
+  .govuk-warning-text__icon {
+    color: govuk-colour("red");
+    background: govuk-colour("white");
+    border-color: govuk-colour("white");
+  }
+}

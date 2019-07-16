@@ -49,7 +49,7 @@ function CaseSummary (props) {
             <td>
               <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
               <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }<span
-                className="govuk-hint app-!-inline">at { court }</span></p>
+                className="govuk-hint app-!-inline">&nbsp;at { court }</span></p>
             </td>
             <td className="app-!-text-align-right">
 
@@ -115,7 +115,8 @@ function CaseSummary (props) {
                       </div>
 
                       <div
-                        className={ `moj-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender</div>
+                        className={ `moj-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender
+                      </div>
 
                     </div>
                   </div>
@@ -130,7 +131,7 @@ function CaseSummary (props) {
                         { currentCase.defendant.risk.map((risk, riskIndex) => {
                           return risk.type === 'RoSH' ? (
                             <div key={ riskIndex }
-                                 className="moj-risk-alert moj-risk-alert--small moj-risk-alert--high">{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
+                                 className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
                               of Serious Harm</div>
                           ) : (<Fragment key={ riskIndex }/>)
                         }) }
@@ -153,7 +154,8 @@ function CaseSummary (props) {
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
 
                         <div
-                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active Intervention
+                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active
+                          Intervention
                         </div>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
@@ -279,7 +281,7 @@ function CaseSummary (props) {
                             <div className="app-!-text-align-right govuk-!-margin-bottom-2">
                               { currentCase.markers.map((marker, markerIndex) => {
                                 return <div key={ markerIndex }
-                                            className="moj-badge moj-badge--small moj-tooltip moj-tooltip--secondary app-!-inline app-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
+                                            className="moj-badge moj-badge--small app-tooltip app-tooltip--secondary app-!-inline app-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
                                 </div>
                               }) }
                             </div>
@@ -351,7 +353,7 @@ function CaseSummary (props) {
                           <tr key={ riskIndex }>
                             <td>{ risk.type }</td>
                             <td><span
-                              className={ `moj-risk-tag moj-risk-tag--${ risk.status.split(' ').join('-') }` }>{ risk.status }</span>
+                              className={ `app-risk-tag app-risk-tag--${ risk.status.toLowerCase().split(' ').join('-') }` }>{ risk.status }</span>
                             </td>
                             <td>{ risk.description }</td>
                             <td>{ moment(risk.date, 'YYYY-MM-DD').format('DD/MM/YYYY') }</td>
