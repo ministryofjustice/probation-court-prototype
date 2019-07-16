@@ -14,25 +14,30 @@ function CaseList (props) {
 
   useEffect(() => {
 
+    function notInString ($title, $string) {
+      return $title.toLowerCase().indexOf($string) === -1
+    }
+
     function configureData ($data) {
       let cases = []
       let unmatched = []
       $data.sessions.forEach($session => {
         $session.blocks.forEach($block => {
           $block.cases.forEach($case => {
-            let hasOrder = $case.offences.filter($offence => { return $offence.title.indexOf('order') !== -1 || $offence.title.indexOf('Assault') !== -1 }).length
+            let hasOrder = $case.offences.some($offence => { return notInString($offence.title, 'order') || notInString($offence.title, 'assault') })
             $case.defendant.name = fixNameCase($case.defendant.name)
             $case.defendant.deliusStatus = hasOrder ? 'Current' : 'Known'
-            $case.defendant.nps = $case.defendant.deliusStatus === 'Current' && $case.offences.filter($offence => { return $offence.title.indexOf('Assault') !== -1 }).length
+            $case.defendant.nps = $case.defendant.deliusStatus === 'Current' && $case.offences.some($offence => { return notInString($offence.title, 'assault') })
             $case.courtRoom = parseInt($session.courtRoom, 10)
             $case.startTime = $block.startTime
             $case.endTime = $block.endTime
-            $case.noMatch = $case.offences.filter($offence => { return $offence.title.indexOf('emergency worker') !== -1 }).length
+            $case.noMatch = $case.offences.some($offence => { return !notInString($offence.title, 'emergency worker') })
 
             if ($case.noMatch) {
               unmatched.push($case)
-            } else if ($case.offences.some(item => { return item.title.toLowerCase().indexOf('speed') === -1 && item.title.toLowerCase().indexOf('non-payment') === -1 && item.title.toLowerCase().indexOf('television') === -1 })) {
+            } else if ($case.offences.some(item => { return notInString(item.title, 'speed') && notInString(item.title, 'non-payment') && notInString(item.title, 'television') })) {
               cases.push($case)
+              console.info($case)
             }
           })
         })
@@ -219,7 +224,7 @@ function CaseList (props) {
 
                       <button type="submit" className="govuk-button govuk-button--secondary hmcts-menu__item"
                               onClick={ () => {
-                                props.history.push('/cases/new')
+                                props.history.push('/cases/add')
                               } }>
                         Add case
                       </button>
@@ -266,7 +271,8 @@ function CaseList (props) {
                           { $case.offences.length > 1 ? (
                             <ol className="govuk-list govuk-!-margin-left-4">
                               { $case.offences.map((offence, offenceIndex) => {
-                                return <li key={ offenceIndex } className="govuk-list--number app-offence-title">{ offence.title }</li>
+                                return <li key={ offenceIndex }
+                                           className="govuk-list--number app-offence-title">{ offence.title }</li>
                               }) }
                             </ol>
                           ) : (

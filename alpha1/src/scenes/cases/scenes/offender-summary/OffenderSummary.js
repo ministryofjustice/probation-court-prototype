@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import { useStateValue } from '../../../../utils/StateProvider'
 
-function OffenderSummary () {
+function OffenderSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
@@ -79,12 +79,8 @@ function OffenderSummary () {
                         <p className="govuk-body govuk-!-margin-bottom-0">
                           <strong>DOB:</strong> { moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
                         </p>
-                        <p className="govuk-body govuk-!-margin-bottom-0">
-                          <strong>CRN:</strong> { currentCase.defendant.crn }
-                        </p>
-                        <p className="govuk-body govuk-!-margin-bottom-0">
-                          <strong>PNC:</strong> { currentCase.defendant.pnc }
-                        </p>
+                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>CRN:</strong> X612323A</p>
+                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>PNC:</strong> 2004/123456B</p>
                         <p className="govuk-body govuk-!-margin-bottom-0"><strong>Court
                           store:</strong> { currentCase.caseNumber }</p>
 
@@ -149,11 +145,11 @@ function OffenderSummary () {
 
                     <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Telephone</h3>
 
-                    <p className="govuk-body">07777 777 777</p>
+                    <p className="govuk-body">07765 765 432</p>
 
                     <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</h3>
 
-                    <p className="govuk-body"><a href="/email" className="govuk-link govuk-link--no-visited-state"
+                    <p className="govuk-body"><a href={ `/contact/${ props.match.params.id }` } className="govuk-link govuk-link--no-visited-state"
                                                  onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
                     </p>
 
@@ -246,6 +242,7 @@ function OffenderSummary () {
                       <tr>
                         <th>Offence</th>
                         <th>Code</th>
+                        <th>Plea</th>
                         <th><p className="moj-!-text-align-right">Plea date</p></th>
                       </tr>
                       </thead>
@@ -256,6 +253,7 @@ function OffenderSummary () {
                           <tr key={ offenceIndex }>
                             <td>{ offence.title }</td>
                             <td>{ offence.code }</td>
+                            <td>{ offence.plea }</td>
                             <td>
                               <p className="moj-!-text-align-right">
                                 { offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').format('DD/MM/YYYY')) }
@@ -314,7 +312,7 @@ function OffenderSummary () {
                       <tr>
                         <th>Offence</th>
                         <th>Code</th>
-                        <th><p className="moj-!-text-align-right">Plea date</p></th>
+                        <th><p className="moj-!-text-align-right">Date</p></th>
                       </tr>
                       </thead>
                       <tbody>
@@ -346,7 +344,10 @@ function OffenderSummary () {
 
                 { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
                   return (
-                    <p key={ offenceIndex } className="govuk-body">{ offence.summary }</p>
+                    <Fragment key={ offenceIndex }>
+                      <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
+                      <p className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
+                    </Fragment>
                   )
                 }) }
 
