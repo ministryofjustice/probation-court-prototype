@@ -3,15 +3,15 @@ import React, { Fragment } from 'react'
 function CalendarFilter() {
   return (
     <Fragment>
-      <div className="hmcts-filter__selected">
+      <div className="moj-filter__selected">
 
-        <div className="hmcts-filter__selected-heading">
+        <div className="moj-filter__selected-heading">
 
-          <div className="hmcts-filter__heading-title">
+          <div className="moj-filter__heading-title">
             <h2 className="govuk-heading-m">Selected filters</h2>
           </div>
 
-          <div className="hmcts-filter__heading-action">
+          <div className="moj-filter__heading-action">
             <p><a className="govuk-link govuk-link--no-visited-state" href="?filter=clear"
                   onClick={ e => e.preventDefault() }>Clear filters</a></p>
           </div>
@@ -20,9 +20,9 @@ function CalendarFilter() {
 
         <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Informant / prosecutor</h3>
 
-        <ul className="hmcts-filter-tags">
+        <ul className="moj-filter-tags">
 
-          <li><a className="hmcts-filter__tag" href="?filter=3&state=0"
+          <li><a className="moj-filter__tag" href="?filter=3&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> All</a></li>
 
@@ -30,17 +30,17 @@ function CalendarFilter() {
 
         <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Status</h3>
 
-        <ul className="hmcts-filter-tags">
+        <ul className="moj-filter-tags">
 
-          <li><a className="hmcts-filter__tag" href="?filter=3&state=0"
+          <li><a className="moj-filter__tag" href="?filter=3&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Current</a></li>
 
-          <li><a className="hmcts-filter__tag" href="?filter=4&state=0"
+          <li><a className="moj-filter__tag" href="?filter=4&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Known</a></li>
 
-          <li><a className="hmcts-filter__tag" href="?filter=5&state=0"
+          <li><a className="moj-filter__tag" href="?filter=5&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Not known</a></li>
 
@@ -48,13 +48,13 @@ function CalendarFilter() {
 
         <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Plea</h3>
 
-        <ul className="hmcts-filter-tags">
+        <ul className="moj-filter-tags">
 
-          <li><a className="hmcts-filter__tag" href="?filter=1&state=0"
+          <li><a className="moj-filter__tag" href="?filter=1&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Guilty</a></li>
 
-          <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
+          <li><a className="moj-filter__tag" href="?filter=2&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> Not Guilty</a></li>
 
@@ -62,25 +62,25 @@ function CalendarFilter() {
 
         <h3 className="govuk-heading-s govuk-!-margin-bottom-0">Court</h3>
 
-        <ul className="hmcts-filter-tags">
+        <ul className="moj-filter-tags">
 
-          <li><a className="hmcts-filter__tag" href="?filter=1&state=0"
+          <li><a className="moj-filter__tag" href="?filter=1&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 1</a></li>
 
-          <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
+          <li><a className="moj-filter__tag" href="?filter=2&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 2</a></li>
 
-          <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
+          <li><a className="moj-filter__tag" href="?filter=2&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 3</a></li>
 
-          <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
+          <li><a className="moj-filter__tag" href="?filter=2&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 4</a></li>
 
-          <li><a className="hmcts-filter__tag" href="?filter=2&state=0"
+          <li><a className="moj-filter__tag" href="?filter=2&state=0"
                  onClick={ e => e.preventDefault() }><span
             className="govuk-visually-hidden">Remove this filter</span> 5</a></li>
 
@@ -88,7 +88,7 @@ function CalendarFilter() {
 
       </div>
 
-      <div className="hmcts-filter__options">
+      <div className="moj-filter__options">
 
         <button type="submit" className="govuk-button">Apply filters</button>
 

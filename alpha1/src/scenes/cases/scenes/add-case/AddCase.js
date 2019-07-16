@@ -53,23 +53,23 @@ function AddCase () {
         <h1 className="govuk-heading-l">Add case <span
           className="govuk-hint moj-util-inline">for { currentDate.format('dddd, Do MMMM YYYY') }</span></h1>
 
-        <div className="hmcts-filter-layout">
+        <div className="moj-filter-layout">
 
-          <div className="hmcts-filter-layout__filter">
+          <div className="moj-filter-layout__filter">
 
-            <div className="hmcts-filter">
+            <div className="moj-filter">
 
-              <div className="hmcts-filter__header">
+              <div className="moj-filter__header">
 
-                <div className="hmcts-filter__header-title">
+                <div className="moj-filter__header-title">
                   <h2 className="govuk-heading-m">Defendant details</h2>
                 </div>
               </div>
 
-              <div className="hmcts-filter__content">
-                <div className="hmcts-filter__selected">
+              <div className="moj-filter__content">
+                <div className="moj-filter__selected">
 
-                  <div className="hmcts-filter__selected-heading">
+                  <div className="moj-filter__selected-heading">
 
                     { !data.offenderMatch && (
                       <form name="defendantForm">
@@ -172,7 +172,7 @@ function AddCase () {
 
                 { !data.offenderMatch && (
 
-                  <div className="hmcts-filter__options">
+                  <div className="moj-filter__options">
 
                     <h2 className="govuk-heading-m">Offender not known?</h2>
 
@@ -192,11 +192,11 @@ function AddCase () {
 
           </div>
 
-          <div className="hmcts-filter-layout__content">
+          <div className="moj-filter-layout__content">
 
-            <div className="hmcts-scrollable-pane">
+            <div className="moj-scrollable-pane">
 
-              <div className="hmcts-scrollable-pane__wrapper">
+              <div className="moj-scrollable-pane__wrapper">
 
                 { !data.offenderMatch && (
                   <Fragment>
@@ -227,7 +227,7 @@ function AddCase () {
                                 className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ data.defendant.name }
                                 { data.defendant.current && (
                                   <span
-                                    className="hmcts-badge hmcts-badge--green govuk-!-margin-left-4">Current offender</span>
+                                    className="moj-badge moj-badge--green govuk-!-margin-left-4">Current offender</span>
                                 ) }
                               </h1>
 
@@ -303,8 +303,8 @@ function AddCase () {
 
                 { data.offenderMatch && (
                   <form name="caseForm">
-                    <div className="hmcts-identity-bar">
-                      <div className="hmcts-identity-bar__container">
+                    <div className="moj-identity-bar">
+                      <div className="moj-identity-bar__container">
                         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                           <h2 className="govuk-heading-m govuk-!-margin-top-2">Current case, Appearing in Court
@@ -332,8 +332,8 @@ function AddCase () {
                       </div>
                     </div>
 
-                    <div className="hmcts-identity-bar">
-                      <div className="hmcts-identity-bar__container">
+                    <div className="moj-identity-bar">
+                      <div className="moj-identity-bar__container">
                         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                           <h2 className="govuk-heading-m govuk-!-margin-top-2">Offence</h2>
@@ -364,8 +364,8 @@ function AddCase () {
                       </div>
                     </div>
 
-                    <div className="hmcts-identity-bar">
-                      <div className="hmcts-identity-bar__container">
+                    <div className="moj-identity-bar">
+                      <div className="moj-identity-bar__container">
                         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                           <div className="govuk-grid-row">

@@ -63,14 +63,14 @@ function Calendar (props) {
             { day !== 'Sa' && day !== 'Su' && (
               <Fragment>
                 { today !== -1 && i >= today && i <= today + (todayDay === 'Th' || todayDay === 'Fr' ? 4 : 2) && (<div
-                  className="hmcts-badge govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } cases</div>) }
+                  className="moj-badge govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } cases</div>) }
                 { (i <= today || (today === -1 && currentDate.month() <= moment().month())) && (
                   <Fragment>
                     <div
-                      className="hmcts-badge hmcts-badge--red govuk-!-margin-2">{ Math.ceil(Math.random() * 10) } adjourned
+                      className="moj-badge moj-badge--red govuk-!-margin-2">{ Math.ceil(Math.random() * 10) } adjourned
                     </div>
                     <div
-                      className="hmcts-badge hmcts-badge--green govuk-!-margin-2">{ Math.ceil(Math.random() * (i === today ? 1 : 25)) + 10 } sentenced
+                      className="moj-badge moj-badge--green govuk-!-margin-2">{ Math.ceil(Math.random() * (i === today ? 1 : 25)) + 10 } sentenced
                     </div>
                   </Fragment>
                 ) }
@@ -84,11 +84,11 @@ function Calendar (props) {
   }
 
   function toggleFilter () {
-    const $filter = document.querySelector('.hmcts-filter')
+    const $filter = document.querySelector('.moj-filter')
     const $button = document.querySelector('#filter-button')
     if ($filter && $button) {
-      $filter.classList.toggle('hmcts-hidden')
-      const isOpen = !$filter.classList.contains('hmcts-hidden')
+      $filter.classList.toggle('moj-hidden')
+      const isOpen = !$filter.classList.contains('moj-hidden')
       $button.textContent = isOpen ? 'Hide filter' : 'Show filter'
       $button.setAttribute('aria-expanded', isOpen.toString())
     }
@@ -101,23 +101,23 @@ function Calendar (props) {
       <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('MMMM, YYYY') } <span
         className="govuk-hint moj-util-inline">at { data.court }</span></p>
 
-      <div className="hmcts-filter-layout">
+      <div className="moj-filter-layout">
 
-        <div className="hmcts-filter-layout__filter">
-          <div className="hmcts-filter hmcts-hidden">
-            <div className="hmcts-filter__header">
+        <div className="moj-filter-layout__filter">
+          <div className="moj-filter moj-hidden">
+            <div className="moj-filter__header">
 
-              <div className="hmcts-filter__header-title">
+              <div className="moj-filter__header-title">
                 <h2 className="govuk-heading-m">Filter</h2>
               </div>
 
-              <div className="hmcts-filter__header-action">
+              <div className="moj-filter__header-action">
 
               </div>
 
             </div>
 
-            <div className="hmcts-filter__content">
+            <div className="moj-filter__content">
 
               <CalendarFilter/>
 
@@ -127,34 +127,34 @@ function Calendar (props) {
 
         </div>
 
-        <div className="hmcts-filter-layout__content">
+        <div className="moj-filter-layout__content">
 
           <table className="govuk-table moj-table" role="presentation">
             <tbody>
             <tr>
               <td>
-                <ul className="hmcts-pagination__list govuk-!-margin-top-2">
-                  <li className="hmcts-pagination__item  hmcts-pagination__item--prev">
+                <ul className="moj-pagination__list govuk-!-margin-top-2">
+                  <li className="moj-pagination__item  moj-pagination__item--prev">
                     <Link to={ `/calendar/${ lastMonth.month + '/' + lastMonth.year }` }
-                          className="govuk-body-s hmcts-pagination__link">{ lastMonth.monthName }, { lastMonth.year }</Link>
+                          className="govuk-body-s moj-pagination__link">{ lastMonth.monthName }, { lastMonth.year }</Link>
                   </li>
-                  <li className="hmcts-pagination__item">&nbsp;|&nbsp;</li>
-                  <li className="hmcts-pagination__item  hmcts-pagination__item--next">
+                  <li className="moj-pagination__item">&nbsp;|&nbsp;</li>
+                  <li className="moj-pagination__item  moj-pagination__item--next">
                     <Link to={ `/calendar/${ nextMonth.month + '/' + nextMonth.year }` }
-                          className="govuk-body-s hmcts-pagination__link">{ nextMonth.monthName }, { nextMonth.year }</Link>
+                          className="govuk-body-s moj-pagination__link">{ nextMonth.monthName }, { nextMonth.year }</Link>
                   </li>
                 </ul>
 
               </td>
               <td className="moj-!-text-align-right">
 
-                <div className="hmcts-action-bar">
+                <div className="moj-action-bar">
 
-                  <div className="hmcts-menu">
-                    <div className="hmcts-menu__wrapper">
+                  <div className="moj-menu">
+                    <div className="moj-menu__wrapper">
 
                       <button id="filter-button"
-                              className="hmcts-menu__item govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
+                              className="moj-menu__item govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                               type="button"
                               aria-haspopup="true"
                               aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
@@ -169,8 +169,8 @@ function Calendar (props) {
             </tbody>
           </table>
 
-          <div className="hmcts-scrollable-pane">
-            <div className="hmcts-scrollable-pane__wrapper">
+          <div className="moj-scrollable-pane">
+            <div className="moj-scrollable-pane__wrapper">
 
               <ul className="app-calendar">
                 { moment.weekdaysShort().map((day, index) => {

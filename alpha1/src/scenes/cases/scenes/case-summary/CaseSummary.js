@@ -53,16 +53,16 @@ function CaseSummary (props) {
             </td>
             <td className="moj-!-text-align-right">
 
-              <div className="hmcts-action-bar">
+              <div className="moj-action-bar">
 
-                <div className="hmcts-menu">
-                  <div className="hmcts-menu__wrapper">
+                <div className="moj-menu">
+                  <div className="moj-menu__wrapper">
 
-                    <button className="govuk-button govuk-button--secondary hmcts-menu__item" type="button">Adjourn
+                    <button className="govuk-button govuk-button--secondary moj-menu__item" type="button">Adjourn
                       case
                     </button>
 
-                    <button className="govuk-button govuk-button--secondary hmcts-menu__item" type="button">Record
+                    <button className="govuk-button govuk-button--secondary moj-menu__item" type="button">Record
                       sentence
                     </button>
 
@@ -77,24 +77,24 @@ function CaseSummary (props) {
         </table>
 
         { currentCase && currentCase.defendant && (
-          <div className="hmcts-filter-layout">
+          <div className="moj-filter-layout">
 
-            <div className="hmcts-filter-layout__filter">
+            <div className="moj-filter-layout__filter">
 
-              <div className="hmcts-filter">
+              <div className="moj-filter">
 
-                <div className="hmcts-filter__header">
+                <div className="moj-filter__header">
 
-                  <div className="hmcts-filter__header-title">
+                  <div className="moj-filter__header-title">
                     <h2 className="govuk-heading-m">{ currentCase.defendant && currentCase.defendant.name }</h2>
                   </div>
                 </div>
 
-                <div className="hmcts-filter__content">
+                <div className="moj-filter__content">
 
-                  <div className="hmcts-filter__selected">
+                  <div className="moj-filter__selected">
 
-                    <div className="hmcts-filter__selected-heading">
+                    <div className="moj-filter__selected-heading">
 
                       <div className="moj-!-float-left">
 
@@ -115,12 +115,12 @@ function CaseSummary (props) {
                       </div>
 
                       <div
-                        className={ `hmcts-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender</div>
+                        className={ `moj-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender</div>
 
                     </div>
                   </div>
 
-                  <div className="hmcts-filter__options">
+                  <div className="moj-filter__options">
 
                     { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                       <Fragment>
@@ -153,7 +153,7 @@ function CaseSummary (props) {
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
 
                         <div
-                          className="hmcts-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active Intervention
+                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active Intervention
                         </div>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
@@ -217,10 +217,10 @@ function CaseSummary (props) {
               </div>
             </div>
 
-            <div className="hmcts-filter-layout__content">
+            <div className="moj-filter-layout__content">
 
-              <div className="hmcts-identity-bar">
-                <div className="hmcts-identity-bar__container">
+              <div className="moj-identity-bar">
+                <div className="moj-identity-bar__container">
                   <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                     <h2 className="govuk-heading-m govuk-!-margin-top-2">Current case</h2>
@@ -279,7 +279,7 @@ function CaseSummary (props) {
                             <div className="moj-!-text-align-right govuk-!-margin-bottom-2">
                               { currentCase.markers.map((marker, markerIndex) => {
                                 return <div key={ markerIndex }
-                                            className="hmcts-badge hmcts-badge--small moj-tooltip moj-tooltip--secondary moj-util-inline moj-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
+                                            className="moj-badge moj-badge--small moj-tooltip moj-tooltip--secondary moj-util-inline moj-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
                                 </div>
                               }) }
                             </div>
@@ -295,8 +295,8 @@ function CaseSummary (props) {
               </div>
 
               { !!(currentCase.defendant.previousConvictions && currentCase.defendant.previousConvictions.length) && (
-                <div className="hmcts-identity-bar govuk-!-margin-top-4">
-                  <div className="hmcts-identity-bar__container">
+                <div className="moj-identity-bar govuk-!-margin-top-4">
+                  <div className="moj-identity-bar__container">
                     <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                       <h2 className="govuk-heading-m govuk-!-margin-top-2">Previous convictions</h2>
@@ -401,7 +401,7 @@ function CaseSummary (props) {
                     <td>CPS Pack</td>
                     <td>Acquired</td>
                     <td>
-                      <a className="govuk-link hmcts-timeline__document-link" href="/cps-link"
+                      <a className="govuk-link moj-timeline__document-link" href="/cps-link"
                          onClick={ e => e.preventDefault() }>CPS Pack</a>
                     </td>
                   </tr>
@@ -410,8 +410,8 @@ function CaseSummary (props) {
 
               </div>
 
-              <div className="hmcts-identity-bar">
-                <div className="hmcts-identity-bar__container">
+              <div className="moj-identity-bar">
+                <div className="moj-identity-bar__container">
                   <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                     <h2 className="govuk-heading-m">Notes</h2>

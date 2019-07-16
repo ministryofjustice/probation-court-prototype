@@ -2,16 +2,15 @@
 // Config
 //===============================================
 
-$hmcts-assets-path: "/assets/";
+$moj-assets-path: "/assets/";
 $govuk-page-width: 1800px;
-$hmcts-page-width: $govuk-page-width;
+$moj-page-width: $govuk-page-width;
 
 //===============================================
 // Imports
 //===============================================
 
 @import "~govuk-frontend/all";
-@import "~@hmcts/frontend/all";
 @import "~@ministryofjustice/frontend/all";
 @import "~@mojdigital/pattern-library/all";
 
@@ -27,7 +26,11 @@ $hmcts-page-width: $govuk-page-width;
   background: govuk-colour("red");
 }
 
-.hmcts-primary-navigation__link {
+.govuk-header__logotype-crown {
+  fill: white;
+}
+
+.moj-primary-navigation__link {
   &:focus {
     color: white !important;
 
@@ -37,16 +40,30 @@ $hmcts-page-width: $govuk-page-width;
   }
 }
 
-.hmcts-badge--red {
+.moj-risk-tag {
+  min-width: 125px;
+}
+
+.moj-badge--red {
   color: govuk-colour("bright-red");
   border-color: govuk-colour("bright-red");
 }
 
-.hmcts-badge--small {
+.moj-badge {
+  min-width: 0;
+  padding: 5px 20px;
+}
+
+.moj-badge--small {
   width: 35px;
 }
 
-.hmcts-badge--text-small {
+.moj-badge--green {
+  color: govuk-colour("green");
+  border-color: govuk-colour("green");
+}
+
+.moj-badge--text-small {
   font-size: 12px;
 }
 
@@ -55,7 +72,7 @@ $hmcts-page-width: $govuk-page-width;
   border-color: govuk-colour("bright-red") !important;
 }
 
-.hmcts-identity-bar__container {
+.moj-identity-bar__container {
   margin: 0;
 }
 

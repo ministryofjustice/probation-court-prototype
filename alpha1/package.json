@@ -4,7 +4,6 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@ministryofjustice/frontend": "0.0.6-alpha",
     "moment": "2.24.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
@@ -31,7 +30,7 @@
     "iOS >= 9"
   ],
   "devDependencies": {
-    "@hmcts/frontend": "v0.0.34-alpha",
+    "@ministryofjustice/frontend": "0.0.6-alpha",
     "@mojdigital/pattern-library": "0.0.1-beta.3",
     "govuk-frontend": "v2.13.0",
     "node-sass": "4.12.0"

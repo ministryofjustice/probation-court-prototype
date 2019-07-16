@@ -22,11 +22,11 @@ function AdjournedList (props) {
   }, [])
 
   function toggleFilter () {
-    const $filter = document.querySelector('.hmcts-filter')
+    const $filter = document.querySelector('.moj-filter')
     const $button = document.querySelector('#filter-button')
     if ($filter && $button) {
-      $filter.classList.toggle('hmcts-hidden')
-      const isOpen = !$filter.classList.contains('hmcts-hidden')
+      $filter.classList.toggle('moj-hidden')
+      const isOpen = !$filter.classList.contains('moj-hidden')
       $button.textContent = isOpen ? 'Hide filter' : 'Show filter'
       $button.setAttribute('aria-expanded', isOpen.toString())
     }
@@ -35,28 +35,28 @@ function AdjournedList (props) {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <nav className="hmcts-sub-navigation" aria-label="Sub navigation">
+      <nav className="moj-sub-navigation" aria-label="Sub navigation">
 
-        <ul className="hmcts-sub-navigation__list">
+        <ul className="moj-sub-navigation__list">
 
-          <li className="hmcts-sub-navigation__item">
+          <li className="moj-sub-navigation__item">
             <Link to={ `/cases/list/${ currentDate.format('DD/MM/YYYY') }` }
-                  className="hmcts-sub-navigation__link govuk-link--no-visited-state">
+                  className="moj-sub-navigation__link govuk-link--no-visited-state">
               Cases
             </Link>
           </li>
 
-          <li className="hmcts-sub-navigation__item">
+          <li className="moj-sub-navigation__item">
             <Link to={ `/cases/adjourned/${ currentDate.format('DD/MM/YYYY') }` }
-                  className="hmcts-sub-navigation__link govuk-link--no-visited-state"
+                  className="moj-sub-navigation__link govuk-link--no-visited-state"
                   aria-current="page">
               Adjourned cases
             </Link>
           </li>
 
-          <li className="hmcts-sub-navigation__item">
+          <li className="moj-sub-navigation__item">
             <Link to={ `/cases/sentenced/${ currentDate.format('DD/MM/YYYY') }` }
-                  className="hmcts-sub-navigation__link govuk-link--no-visited-state">
+                  className="moj-sub-navigation__link govuk-link--no-visited-state">
               Sentenced cases
             </Link>
           </li>
@@ -65,23 +65,23 @@ function AdjournedList (props) {
 
       </nav>
 
-      <div className="hmcts-filter-layout">
+      <div className="moj-filter-layout">
 
-        <div className="hmcts-filter-layout__filter">
-          <div className="hmcts-filter hmcts-hidden">
-            <div className="hmcts-filter__header">
+        <div className="moj-filter-layout__filter">
+          <div className="moj-filter moj-hidden">
+            <div className="moj-filter__header">
 
-              <div className="hmcts-filter__header-title">
+              <div className="moj-filter__header-title">
                 <h2 className="govuk-heading-m">Filter</h2>
               </div>
 
-              <div className="hmcts-filter__header-action">
+              <div className="moj-filter__header-action">
 
               </div>
 
             </div>
 
-            <div className="hmcts-filter__content">
+            <div className="moj-filter__content">
 
               <CaseListFilter/>
 
@@ -91,7 +91,7 @@ function AdjournedList (props) {
 
         </div>
 
-        <div className="hmcts-filter-layout__content">
+        <div className="moj-filter-layout__content">
 
           <table className="govuk-table moj-table" role="presentation">
             <tbody>
@@ -103,7 +103,7 @@ function AdjournedList (props) {
               </td>
               <td className="moj-!-text-align-right">
 
-                <div className="hmcts-action-bar">
+                <div className="moj-action-bar">
                   <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                           type="button"
                           aria-haspopup="true"
@@ -116,9 +116,9 @@ function AdjournedList (props) {
             </tbody>
           </table>
 
-          <div className="hmcts-scrollable-pane">
+          <div className="moj-scrollable-pane">
 
-            <div className="hmcts-scrollable-pane__wrapper">
+            <div className="moj-scrollable-pane__wrapper">
 
               <table className="govuk-table moj-table moj-table--split-rows">
 

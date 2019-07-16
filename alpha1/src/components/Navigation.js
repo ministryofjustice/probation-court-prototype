@@ -3,18 +3,18 @@ import { NavLink } from 'react-router-dom'
 
 function Navigation () {
   return (
-    <div className="hmcts-primary-navigation">
-      <div className="hmcts-primary-navigation__container">
-        <div className="hmcts-primary-navigation__nav">
+    <div className="moj-primary-navigation">
+      <div className="moj-primary-navigation__container">
+        <div className="moj-primary-navigation__nav">
 
-          <nav className="hmcts-primary-navigation" aria-label="Primary navigation">
+          <nav className="moj-primary-navigation" aria-label="Primary navigation">
 
-            <ul className="hmcts-primary-navigation__list">
-              <li className="hmcts-primary-navigation__item">
-                <NavLink to="/cases/list" className="hmcts-primary-navigation__link">Case list</NavLink>
+            <ul className="moj-primary-navigation__list">
+              <li className="moj-primary-navigation__item">
+                <NavLink to="/cases/list" className="moj-primary-navigation__link">Case list</NavLink>
               </li>
-              <li className="hmcts-primary-navigation__item">
-                <NavLink to="/help" className="hmcts-primary-navigation__link" onClick={ e => e.preventDefault() }>Help</NavLink>
+              <li className="moj-primary-navigation__item">
+                <NavLink to="/help" className="moj-primary-navigation__link" onClick={ e => e.preventDefault() }>Help</NavLink>
               </li>
             </ul>
 
