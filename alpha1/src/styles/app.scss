@@ -1,12 +1,20 @@
+//===============================================
+// Config
+//===============================================
+
 $hmcts-assets-path: "/assets/";
-$govuk-page-width: 1200px;
+$govuk-page-width: 1800px;
 $hmcts-page-width: $govuk-page-width;
+
+//===============================================
+// Imports
+//===============================================
 
 @import "~govuk-frontend/all";
 @import "~@hmcts/frontend/all";
 @import "~@mojdigital/pattern-library/all";
 
-//===============================================
+// ===============================================
 // Overrides
 //===============================================
 
@@ -21,6 +29,7 @@ $hmcts-page-width: $govuk-page-width;
 .hmcts-primary-navigation__link {
   &:focus {
     color: white !important;
+
     &:before {
       background-color: white !important;
     }
@@ -40,12 +49,43 @@ $hmcts-page-width: $govuk-page-width;
   font-size: 12px;
 }
 
+.moj-badge-error {
+  color: govuk-colour("bright-red") !important;
+  border-color: govuk-colour("bright-red") !important;
+}
+
+.hmcts-identity-bar__container {
+  margin: 0;
+}
+
+.moj-tooltip--secondary {
+  cursor: default;
+}
+
 //===============================================
 // App specific styles
 //===============================================
 
 abbr {
   text-decoration: none;
+}
+
+.app-offence-title {
+  padding-left: 5px;
+  padding-bottom: 0;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.app-alternate-rows-table {
+  tr:nth-child(even) {
+    background-color: govuk-colour("grey-4");
+  }
+  th, td {
+    padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) !important;
+  }
 }
 
 .app-identity-bar-warning {
@@ -154,4 +194,8 @@ abbr {
 
 .app-offender-image {
   margin-right: 10px;
+}
+
+.app-full-width {
+  width: 100%;
 }

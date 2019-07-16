@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/adjourned"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*"
+    },
+    "status": 200,
+    "body": "{\"court\":\"Sheffield Magistrates Court\",\"cases\":[{\"id\":\"20590215\",\"name\":\"Rhihaz, Mohammed\",\"dateOfBirth\":\"21/09/1993\",\"gender\":\"Male\",\"crn\":\"\",\"pnc\":\"2007/332941B\",\"courtStore\":\"A 0102938\",\"status\":{\"type\":\"not known\",\"label\":\"Not known\"},\"offences\":[\"Possession of a knife in public\",\"Violent, threatening behaviour\"],\"sentence\":[\"Suspended sentence, 2 years\"],\"deliusUpdated\":\"N\",\"nps\":true,\"case\":\"SC1231612323\",\"markers\":[{\"short\":\"DV\",\"long\":\"Domestic violence\"},{\"short\":\"TG\",\"long\":\"Hate crime - Transgender\"},{\"short\":\"PT\",\"long\":\"Persistently Targeted Victims\"}],\"risk\":[{\"short\":\"RoSH\",\"long\":\"Risk of Serious Harm\",\"level\":\"Medium\"}],\"address\":{\"line1\":\"3 George Street\",\"line2\":\"\",\"city\":\"Sheffield\",\"postcode\":\"S7 2PQ\"},\"currentState\":{\"type\":\"Adjourned\",\"label\":\"Adjourned\",\"details\":\"Pre-sentence Report\",\"date\":\"today\"},\"appearance\":2,\"court\":3},{\"id\":\"74726530\",\"name\":\"Jenkins, Sally\",\"dateOfBirth\":\"03/03/1997\",\"gender\":\"Female\",\"crn\":\"X97132A\",\"pnc\":\"2007/332941B\",\"courtStore\":\"A 0102938\",\"status\":{\"type\":\"current\",\"label\":\"Current\",\"office\":\"NPS\"},\"offences\":[\"Robbery of goods over £500\",\"Assault by beating\",\"Violent, threatening behaviour\"],\"sentence\":[\"Community service, 50 days\",\"Curfew 19:00 - 07:00\",\"RAR days, 25\"],\"deliusUpdated\":\"Y\",\"nps\":true,\"previous\":[\"Robbery of goods over £500\",\"Assault by beating\",\"Violent, threatening behaviour\"],\"case\":\"FR1231612322\",\"markers\":[{\"short\":\"PW\",\"long\":\"Prohibited Weapons\"},{\"short\":\"DV\",\"long\":\"Domestic violence\"}],\"address\":{\"line1\":\"3 George Street\",\"line2\":\"\",\"city\":\"Sheffield\",\"postcode\":\"S7 2PQ\"},\"currentOrder\":[\"50 days community service\"],\"currentState\":{\"type\":\"Adjourned\",\"label\":\"Adjourned\",\"details\":\"Legal issues\",\"date\":\"today\"},\"appearance\":2,\"court\":2}]}"
+  }
+}

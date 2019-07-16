@@ -20,7 +20,6 @@ function App () {
       <div className="govuk-width-container">
 
         <PhaseBanner/>
-
         <Route path="/cases/" component={ Cases }/>
         <Route path="/calendar/:month?/:year?" component={ Calendar }/>
 

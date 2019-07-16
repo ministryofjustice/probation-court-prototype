@@ -1,20 +1,30 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { lastMonth as last, nextMonth as next } from '../../utils/DateTools'
-
-import dummyData from '../../assets/dummy-data'
 
 import CalendarFilter from './components/CalendarFilter'
 
 function Calendar (props) {
 
+  const [data, setData] = useState({})
   const currentDate = moment()
 
   if (props.match.params.month && props.match.params.year) {
     currentDate.set('month', parseInt(props.match.params.month, 10) - 1)
     currentDate.set('year', props.match.params.year)
   }
+
+  useEffect(() => {
+    async function getData () {
+      const response = await fetch('http://localhost:8080/api/calendar')
+      const data = await response.json()
+      setData(data)
+    }
+
+    window.scrollTo(0, 0)
+    getData()
+  }, [])
 
   const lastMonth = last(currentDate)
   const nextMonth = next(currentDate)
@@ -33,9 +43,15 @@ function Calendar (props) {
     return blanks
   }
 
+  function postBlanks() {
+    return [<Fragment />]
+  }
+
   function daysInMonth () {
     let days = []
     const today = currentDate.month() === moment().month() ? currentDate.date() : -1
+    const todayDay = currentDate.format('dd')
+
     for (let i = 1, day; i <= currentDate.daysInMonth(); i++) {
       day = moment(currentDate).date(i).format('dd')
       days.push(
@@ -46,9 +62,9 @@ function Calendar (props) {
             <div className="govuk-visually-hidden">{ moment().date(i).format('dddd, Do MMMM YYYY') }</div>
             { day !== 'Sa' && day !== 'Su' && (
               <Fragment>
-                { i >= today && (<div
+                { today !== -1 && i >= today && i <= today + (todayDay === 'Th' || todayDay === 'Fr' ? 4 : 2) && (<div
                   className="hmcts-badge govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } cases</div>) }
-                { i <= today && (
+                { (i <= today || (today === -1 && currentDate.month() <= moment().month())) && (
                   <Fragment>
                     <div
                       className="hmcts-badge hmcts-badge--red govuk-!-margin-2">{ Math.ceil(Math.random() * 10) } adjourned
@@ -83,7 +99,7 @@ function Calendar (props) {
 
       <h1 className="govuk-heading-l govuk-!-margin-0">Calendar</h1>
       <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('MMMM, YYYY') } <span
-        className="govuk-hint moj-util-inline">at { dummyData.court }</span></p>
+        className="govuk-hint moj-util-inline">at { data.court }</span></p>
 
       <div className="hmcts-filter-layout">
 
@@ -168,6 +184,7 @@ function Calendar (props) {
                 }
                 { blanks() }
                 { daysInMonth() }
+                { postBlanks() }
               </ul>
 
               <p>&nbsp;</p>

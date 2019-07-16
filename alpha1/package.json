@@ -1,6 +1,6 @@
 {
   "name": "alpha1",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
@@ -19,22 +19,20 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.1%",
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Samsung versions",
+    "Safari >= 9",
+    "ie 8-11",
+    "iOS >= 9"
+  ],
   "devDependencies": {
-    "@hmcts/frontend": "0.0.34-alpha",
+    "@hmcts/frontend": "v0.0.34-alpha",
     "@mojdigital/pattern-library": "0.0.1-beta.3",
-    "govuk-frontend": "2.13.0",
+    "govuk-frontend": "v2.13.0",
     "node-sass": "4.12.0"
   }
 }
