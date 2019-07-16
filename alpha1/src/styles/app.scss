@@ -49,13 +49,17 @@ $moj-page-width: $govuk-page-width;
   border-color: govuk-colour("bright-red");
 }
 
-.moj-badge {
+.moj-badge:not(.moj-badge--small) {
   min-width: 0;
   padding: 5px 20px;
 }
 
 .moj-badge--small {
+  color: govuk-colour("blue");
+  border-color: govuk-colour("blue");
+  text-align: center;
   width: 35px;
+  min-width: 0;
 }
 
 .moj-badge--green {

@@ -584,7 +584,7 @@
                     "date": "2018-06-11"
                   }
                 ],
-                "assignment": "nps",
+                "assignment": "",
                 "deliusStatus": "Known",
                 "previousConvictions": [
                   {
@@ -861,8 +861,8 @@
                   "postcode": "S58 2TF"
                 },
                 "age": "39",
-                "assignment": "nps",
-                "deliusStatus": "Current",
+                "assignment": "",
+                "deliusStatus": "Known",
                 "risk": [
                   {
                     "type": "RoSH",
