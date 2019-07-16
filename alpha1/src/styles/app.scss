@@ -12,6 +12,7 @@ $hmcts-page-width: $govuk-page-width;
 
 @import "~govuk-frontend/all";
 @import "~@hmcts/frontend/all";
+@import "~@ministryofjustice/frontend/all";
 @import "~@mojdigital/pattern-library/all";
 
 // ===============================================
@@ -60,6 +61,17 @@ $hmcts-page-width: $govuk-page-width;
 
 .moj-tooltip--secondary {
   cursor: default;
+}
+
+.moj-risk-tag--high, .moj-risk-tag--very-high {
+  color: govuk-colour("bright-red");
+  border-color: govuk-colour("bright-red");
+}
+
+.moj-table--split-rows {
+  th:last-child, td:last-child {
+    text-align: right;
+  }
 }
 
 //===============================================

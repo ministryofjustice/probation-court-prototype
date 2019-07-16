@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import { useStateValue } from '../../../../utils/StateProvider'
 
-function OffenderSummary (props) {
+function CaseSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
@@ -14,7 +14,7 @@ function OffenderSummary (props) {
     window.scrollTo(0, 0)
   }, [])
 
-  function getMarker($marker) {
+  function getMarker ($marker) {
     let markerDescription
     switch ($marker) {
       case 'DV':
@@ -35,7 +35,7 @@ function OffenderSummary (props) {
       <div className="govuk-breadcrumbs">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
+            <Link to="/cases/list" className="govuk-breadcrumbs__link">Case</Link>
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Case details</li>
         </ol>
@@ -43,10 +43,38 @@ function OffenderSummary (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
-        <p
-          className="govuk-body-m govuk-!-font-weight-bold govuk-!-margin-bottom-0">{ currentDate.format('dddd, Do MMMM YYYY ') }<span
-          className="govuk-hint moj-util-inline">at { court }</span></p>
+        <table className="govuk-table moj-table" role="presentation">
+          <tbody>
+          <tr>
+            <td>
+              <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
+              <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }<span
+                className="govuk-hint moj-util-inline">at { court }</span></p>
+            </td>
+            <td className="moj-!-text-align-right">
+
+              <div className="hmcts-action-bar">
+
+                <div className="hmcts-menu">
+                  <div className="hmcts-menu__wrapper">
+
+                    <button className="govuk-button govuk-button--secondary hmcts-menu__item" type="button">Adjourn
+                      case
+                    </button>
+
+                    <button className="govuk-button govuk-button--secondary hmcts-menu__item" type="button">Record
+                      sentence
+                    </button>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
 
         { currentCase && currentCase.defendant && (
           <div className="hmcts-filter-layout">
@@ -86,27 +114,32 @@ function OffenderSummary (props) {
 
                       </div>
 
-                      { currentCase.defendant.deliusStatus === 'Current' && (
-                        <div
-                          className="hmcts-badge moj-badge moj-badge-error govuk-!-margin-top-4 app-full-width">Current
-                          offender</div>
-                      ) }
+                      <div
+                        className={ `hmcts-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender</div>
 
                     </div>
                   </div>
 
                   <div className="hmcts-filter__options">
 
-                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.nps) && (
+                    { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                       <Fragment>
-                        <h2 className="govuk-heading-m govuk-!-margin-bottom-0">Risk <span
+                        <h2 className="govuk-heading-m govuk-!-margin-bottom-0">RoSH <span
                           className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
-                              <div className="moj-risk-alert moj-risk-alert--small moj-risk-alert--high">Very High Risk of Serious Harm</div>
+
+                        { currentCase.defendant.risk.map((risk, riskIndex) => {
+                          return risk.type === 'RoSH' ? (
+                            <div key={ riskIndex }
+                                 className="moj-risk-alert moj-risk-alert--small moj-risk-alert--high">{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
+                              of Serious Harm</div>
+                          ) : (<Fragment key={ riskIndex }/>)
+                        }) }
+
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
                       </Fragment>
                     ) }
 
-                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.nps) && (
+                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
                       <Fragment>
                         <h2 className="govuk-heading-m">Current order</h2>
 
@@ -120,7 +153,7 @@ function OffenderSummary (props) {
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
 
                         <div
-                          className="hmcts-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active
+                          className="hmcts-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active Intervention
                         </div>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
@@ -149,7 +182,8 @@ function OffenderSummary (props) {
 
                     <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</h3>
 
-                    <p className="govuk-body"><a href={ `/contact/${ props.match.params.id }` } className="govuk-link govuk-link--no-visited-state"
+                    <p className="govuk-body"><a href={ `/contact/${ props.match.params.id }` }
+                                                 className="govuk-link govuk-link--no-visited-state"
                                                  onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
                     </p>
 
@@ -158,7 +192,10 @@ function OffenderSummary (props) {
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
-                        <h2 className="govuk-heading-m">Probation office</h2>
+                        <h2 className="govuk-heading-m">Offender manager</h2>
+
+                        <p className="govuk-body">Sarah Francis<span className="govuk-hint govuk-!-margin-top-0">Allocated on 01/06/2019</span>
+                        </p>
 
                         <p className="govuk-body">{ currentCase.defendant.nps ? 'NPS' : 'CRC' } South Yorkshire<br/>
                           12 Holme Road<br/>
@@ -166,70 +203,21 @@ function OffenderSummary (props) {
                           South Yorkshire<br/>
                           S7 2TT</p>
 
+                        <p className="govuk-body">
+                          Telephone: 0114 276 0760
+                        </p>
+
                         <button className="govuk-button govuk-button--secondary">Contact offender manager</button>
 
                       </Fragment>
                     ) }
 
-                    { /* currentCase.defendant.status.type !== 'not known' && (
-                      <Fragment>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                        <h2 className="govuk-heading-m">Offender record</h2>
-
-                        <p className="govuk-body">View the offender record in Delius.</p>
-
-                        <button className="govuk-button govuk-button--secondary">View Delius record</button>
-
-                      </Fragment>
-                    ) */ }
-
-                    { /* currentCase.defendant.currentState.type === 'New' && (
-                      <Fragment>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                        <h2 className="govuk-heading-m">Something wrong?</h2>
-
-                        <p className="govuk-body">If this offender record does not appear to be correct, you can correct
-                          this
-                          manually.</p>
-
-                        <button className="govuk-button govuk-button--secondary">Find correct record</button>
-
-                      </Fragment>
-                    ) */ }
-
                   </div>
-
                 </div>
-
               </div>
-
             </div>
 
             <div className="hmcts-filter-layout__content">
-
-              { /* currentCase.defendant.currentState.type === 'Sentenced' && currentCase.defendant.deliusUpdated === 'N' && (
-                <div className="govuk-warning-text moj-warning-text moj-warning-text--critical">
-                  <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
-                  <strong className="govuk-warning-text__text">
-                    <span className="govuk-warning-text__assistive">Warning</span>
-                    The current sentence has not been recorded in Delius.
-                  </strong>
-                </div>
-              ) */ }
-
-              { /* currentCase.defendant.currentState.type === 'Sentenced' && !currentCase.defendant.nps && (
-                <div className="govuk-warning-text moj-warning-text">
-                  <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
-                  <strong className="govuk-warning-text__text">
-                    <span className="govuk-warning-text__assistive">Warning</span>
-                    The offender has been given a custodial sentence, this record has now been transferred to NOMIS.
-                  </strong>
-                </div>
-              ) */ }
 
               <div className="hmcts-identity-bar">
                 <div className="hmcts-identity-bar__container">
@@ -241,9 +229,16 @@ function OffenderSummary (props) {
                       <thead>
                       <tr>
                         <th>Offence</th>
-                        <th>Code</th>
-                        <th>Plea</th>
-                        <th><p className="moj-!-text-align-right">Plea date</p></th>
+                        <th>
+                          <p
+                            className={ !currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) ? 'moj-!-text-align-right' : '' }>
+                            Code
+                          </p>
+                        </th>
+                        { currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) && (
+                          <th>Plea</th>) }
+                        { currentCase.offences.some(offence => { return offence.pleaDate && offence.pleaDate.length }) && (
+                          <th>Plea date</th>) }
                       </tr>
                       </thead>
                       <tbody>
@@ -253,12 +248,10 @@ function OffenderSummary (props) {
                           <tr key={ offenceIndex }>
                             <td>{ offence.title }</td>
                             <td>{ offence.code }</td>
-                            <td>{ offence.plea }</td>
-                            <td>
-                              <p className="moj-!-text-align-right">
-                                { offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').format('DD/MM/YYYY')) }
-                              </p>
-                            </td>
+                            { !!(offence.plea && offence.plea.length) && (<td>{ offence.plea }</td>) }
+                            { !!(offence.pleaDate && offence.pleaDate.length) && (
+                              <td>{ offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').format('DD/MM/YYYY')) }</td>
+                            ) }
                           </tr>
                         )
                       }) }
@@ -301,44 +294,76 @@ function OffenderSummary (props) {
                 </div>
               </div>
 
-              <div className="hmcts-identity-bar govuk-!-margin-top-4">
-                <div className="hmcts-identity-bar__container">
-                  <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+              { !!(currentCase.defendant.previousConvictions && currentCase.defendant.previousConvictions.length) && (
+                <div className="hmcts-identity-bar govuk-!-margin-top-4">
+                  <div className="hmcts-identity-bar__container">
+                    <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Previous convictions</h2>
+                      <h2 className="govuk-heading-m govuk-!-margin-top-2">Previous convictions</h2>
+
+                      <table className="govuk-table moj-table moj-table--split-rows">
+                        <thead>
+                        <tr>
+                          <th>Offence</th>
+                          <th>Code</th>
+                          <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        { currentCase.defendant.previousConvictions && currentCase.defendant.previousConvictions.map((offence, offenceIndex) => {
+                          return (
+                            <tr key={ offenceIndex }>
+                              <td>{ offence.title }</td>
+                              <td>{ offence.code }</td>
+                              <td>{ offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').subtract(1, 'years').format('DD/MM/YYYY')) }</td>
+                            </tr>
+                          )
+                        }) }
+
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              ) }
+
+              <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+
+                { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
+                  <Fragment>
+                    <h2 className="govuk-heading-m govuk-!-margin-top-6">Registers and warnings <span
+                      className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
 
                     <table className="govuk-table moj-table moj-table--split-rows">
                       <thead>
                       <tr>
-                        <th>Offence</th>
-                        <th>Code</th>
-                        <th><p className="moj-!-text-align-right">Date</p></th>
+                        <th style={ { 'width': '220px' } }>Type</th>
+                        <th style={ { 'width': '130px' } }>Status</th>
+                        <th>Description</th>
+                        <th style={ { 'width': '130px' } }>Date</th>
                       </tr>
                       </thead>
                       <tbody>
-
-                      { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
+                      { currentCase.defendant.risk.map((risk, riskIndex) => {
                         return (
-                          <tr key={ offenceIndex }>
-                            <td>{ offence.title }</td>
-                            <td>{ offence.code }</td>
-                            <td>
-                              <p className="moj-!-text-align-right">
-                                { offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').subtract(1, 'years').format('DD/MM/YYYY')) }
-                              </p>
+                          <tr key={ riskIndex }>
+                            <td>{ risk.type }</td>
+                            <td><span
+                              className={ `moj-risk-tag moj-risk-tag--${ risk.status.split(' ').join('-') }` }>{ risk.status }</span>
                             </td>
+                            <td>{ risk.description }</td>
+                            <td>{ moment(risk.date, 'YYYY-MM-DD').format('DD/MM/YYYY') }</td>
                           </tr>
                         )
                       }) }
-
                       </tbody>
                     </table>
 
-                  </div>
-                </div>
-              </div>
-
-              <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+                    <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+                  </Fragment>
+                ) }
 
                 <h2 className="govuk-heading-m govuk-!-margin-top-6">Case summary</h2>
 
@@ -346,7 +371,8 @@ function OffenderSummary (props) {
                   return (
                     <Fragment key={ offenceIndex }>
                       <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
-                      <p className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
+                      <p
+                        className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
                     </Fragment>
                   )
                 }) }
@@ -360,7 +386,7 @@ function OffenderSummary (props) {
                   <tr>
                     <th>Supporting information</th>
                     <th>Action</th>
-                    <th><p className="moj-!-text-align-right">Status</p></th>
+                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -368,19 +394,15 @@ function OffenderSummary (props) {
                     <tr>
                       <td>Offender manager update</td>
                       <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:15</td>
-                      <td>
-                        <p className="moj-!-text-align-right">Awaiting response</p>
-                      </td>
+                      <td>Awaiting response</td>
                     </tr>
                   ) }
                   <tr>
                     <td>CPS Pack</td>
                     <td>Acquired</td>
-                    <td className="moj-!-text-align-right">
-                      <p className="moj-!-text-align-right">
-                        <a className="govuk-link hmcts-timeline__document-link" href="/cps-link"
-                           onClick={ e => e.preventDefault() }>CPS Pack</a>
-                      </p>
+                    <td>
+                      <a className="govuk-link hmcts-timeline__document-link" href="/cps-link"
+                         onClick={ e => e.preventDefault() }>CPS Pack</a>
                     </td>
                   </tr>
                   </tbody>
@@ -394,10 +416,13 @@ function OffenderSummary (props) {
 
                     <h2 className="govuk-heading-m">Notes</h2>
 
-                    <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
-
-                    <p className="govuk-body">Case adjourned off as defendant has changed plea from guilty to not
-                      guilty. Seems very upset, claiming the police didn't listen to them.</p>
+                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
+                      <Fragment>
+                        <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
+                        <p className="govuk-body">Case adjourned off as defendant has changed plea from guilty to not
+                          guilty. Seems very upset, claiming the police didn't listen to them.</p>
+                      </Fragment>
+                    ) }
 
                     <p className="moj-!-text-align-right">
                       <button className="govuk-button govuk-button--secondary">Add note</button>
@@ -419,4 +444,4 @@ function OffenderSummary (props) {
   )
 }
 
-export default OffenderSummary
+export default CaseSummary

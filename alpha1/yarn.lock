@@ -1093,6 +1093,13 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@ministryofjustice/frontend@0.0.6-alpha":
+  version "0.0.6-alpha"
+  resolved "https://registry.yarnpkg.com/@ministryofjustice/frontend/-/frontend-0.0.6-alpha.tgz#748450a6913263020f1ad84b5b09f03c66205bc7"
+  integrity sha512-BLp0M68bMr+dTsI0OkV8FqV/853zA1UYWhk+vsqtYxUAEVj466ZmQWpiPUZcvjGOiffTBntN8SBKXuJ0o7jQfg==
+  dependencies:
+    moment "^2.22.2"
+
 "@mojdigital/pattern-library@0.0.1-beta.3":
   version "0.0.1-beta.3"
   resolved "https://registry.yarnpkg.com/@mojdigital/pattern-library/-/pattern-library-0.0.1-beta.3.tgz#04f7bcf4f86595353aea97c39f71bc8019a6dd5d"
@@ -6497,7 +6504,7 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
-moment@2.24.0:
+moment@2.24.0, moment@^2.22.2:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==

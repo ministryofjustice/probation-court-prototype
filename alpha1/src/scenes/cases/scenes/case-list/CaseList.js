@@ -24,14 +24,16 @@ function CaseList (props) {
       $data.sessions.forEach($session => {
         $session.blocks.forEach($block => {
           $block.cases.forEach($case => {
-            let hasOrder = $case.offences.some($offence => { return notInString($offence.title, 'order') || notInString($offence.title, 'assault') })
-            $case.defendant.name = fixNameCase($case.defendant.name)
-            $case.defendant.deliusStatus = hasOrder ? 'Current' : 'Known'
-            $case.defendant.nps = $case.defendant.deliusStatus === 'Current' && $case.offences.some($offence => { return notInString($offence.title, 'assault') })
-            $case.courtRoom = parseInt($session.courtRoom, 10)
-            $case.startTime = $block.startTime
-            $case.endTime = $block.endTime
-            $case.noMatch = $case.offences.some($offence => { return !notInString($offence.title, 'emergency worker') })
+
+            $case = {
+              ...$case,
+              courtRoom: parseInt($session.courtRoom, 10),
+              startTime: $block.startTime,
+              endTime: $block.endTime,
+              noMatch: $case.offences.some($offence => { return !notInString($offence.title, 'emergency worker') })
+            }
+
+            $case.defendant = { ...$case.defendant, name: fixNameCase($case.defendant.name) }
 
             if ($case.noMatch) {
               unmatched.push($case)
@@ -76,6 +78,9 @@ function CaseList (props) {
 
       <nav className="hmcts-sub-navigation" aria-label="Sub navigation">
 
+        <p className="govuk-hint moj-!-float-right govuk-!-margin-top-2">&nbsp;Last
+          updated { currentDate.format('dddd, Do MMMM YYYY') } at 10:30</p>
+
         <ul className="hmcts-sub-navigation__list">
 
           <li className="hmcts-sub-navigation__item">
@@ -102,6 +107,7 @@ function CaseList (props) {
 
         </ul>
 
+
       </nav>
 
       { data.unmatched && data.unmatched.length && (
@@ -126,7 +132,7 @@ function CaseList (props) {
                     <th scope="col">Delius record</th>
                     <th scope="col">Status</th>
                     <th scope="col">Sitting</th>
-                    <th scope="col"><p className="moj-!-text-align-right">Court</p></th>
+                    <th scope="col">Court</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -152,7 +158,7 @@ function CaseList (props) {
                         <td>Not identified</td>
                         <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
                         <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
-                        <td><p className="moj-!-text-align-right">{ $case.courtRoom }</p></td>
+                        <td>{ $case.courtRoom }</td>
                       </tr>
                     )
                   }) }
@@ -206,7 +212,8 @@ function CaseList (props) {
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
-                  <span className="govuk-hint moj-util-inline">&nbsp;at { data.courtName }</span></p>
+                  <span className="govuk-hint moj-util-inline">&nbsp;at { data.courtName }</span>
+                </p>
               </td>
               <td className="moj-!-text-align-right">
 
@@ -222,9 +229,13 @@ function CaseList (props) {
                   <div className="hmcts-menu">
                     <div className="hmcts-menu__wrapper">
 
+                      <button id="filter-button" className="govuk-button govuk-button--secondary hmcts-menu__item"
+                              type="button">Search
+                      </button>
+
                       <button type="submit" className="govuk-button govuk-button--secondary hmcts-menu__item"
                               onClick={ () => {
-                                // props.history.push('/cases/add')
+                                props.history.push('/cases/add')
                               } }>
                         Add case
                       </button>
@@ -251,7 +262,7 @@ function CaseList (props) {
                   <th scope="col">Delius record</th>
                   <th scope="col">Status</th>
                   <th scope="col">Sitting</th>
-                  <th scope="col"><p className="moj-!-text-align-right">Court</p></th>
+                  <th scope="col">Court</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -280,13 +291,14 @@ function CaseList (props) {
                           ) }
                         </td>
                         <td>
-                          { $case.defendant.deliusStatus } <span
-                          className="govuk-hint app-!-inline">{ $case.defendant.nps ? '(nps)' : '(crc)' }</span>
+                          { $case.defendant.deliusStatus }
+                          { $case.defendant.assignment && (
+                            <span className="govuk-hint app-!-inline">&nbsp;({ $case.defendant.assignment })</span>
+                          ) }
                         </td>
                         <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
                         <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
-                        <td><p className="moj-!-text-align-right">{ $case.courtRoom }</p>
-                        </td>
+                        <td>{ $case.courtRoom }</td>
                       </tr>
                     )
                   )
