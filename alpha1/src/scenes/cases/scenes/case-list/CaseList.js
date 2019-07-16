@@ -224,7 +224,7 @@ function CaseList (props) {
 
                       <button type="submit" className="govuk-button govuk-button--secondary hmcts-menu__item"
                               onClick={ () => {
-                                props.history.push('/cases/add')
+                                // props.history.push('/cases/add')
                               } }>
                         Add case
                       </button>
