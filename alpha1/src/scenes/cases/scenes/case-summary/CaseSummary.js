@@ -8,7 +8,7 @@ function CaseSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
-  console.info(currentCase)
+  console.info('CURRENT CASE:', currentCase)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -43,26 +43,26 @@ function CaseSummary (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <table className="govuk-table moj-table" role="presentation">
+        <table className="govuk-table app-table" role="presentation">
           <tbody>
           <tr>
             <td>
               <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
               <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }<span
-                className="govuk-hint moj-util-inline">at { court }</span></p>
+                className="govuk-hint app-!-inline">&nbsp;at { court }</span></p>
             </td>
-            <td className="moj-!-text-align-right">
+            <td className="app-!-text-align-right">
 
-              <div className="hmcts-action-bar">
+              <div className="moj-action-bar">
 
-                <div className="hmcts-menu">
-                  <div className="hmcts-menu__wrapper">
+                <div className="moj-menu">
+                  <div className="moj-menu__wrapper">
 
-                    <button className="govuk-button govuk-button--secondary hmcts-menu__item" type="button">Adjourn
+                    <button className="govuk-button app-button--interrupt moj-menu__item" type="button">Adjourn
                       case
                     </button>
 
-                    <button className="govuk-button govuk-button--secondary hmcts-menu__item" type="button">Record
+                    <button className="govuk-button app-button--interrupt moj-menu__item" type="button">Record
                       sentence
                     </button>
 
@@ -77,32 +77,32 @@ function CaseSummary (props) {
         </table>
 
         { currentCase && currentCase.defendant && (
-          <div className="hmcts-filter-layout">
+          <div className="moj-filter-layout">
 
-            <div className="hmcts-filter-layout__filter">
+            <div className="moj-filter-layout__filter">
 
-              <div className="hmcts-filter">
+              <div className="moj-filter">
 
-                <div className="hmcts-filter__header">
+                <div className="moj-filter__header">
 
-                  <div className="hmcts-filter__header-title">
+                  <div className="moj-filter__header-title">
                     <h2 className="govuk-heading-m">{ currentCase.defendant && currentCase.defendant.name }</h2>
                   </div>
                 </div>
 
-                <div className="hmcts-filter__content">
+                <div className="moj-filter__content">
 
-                  <div className="hmcts-filter__selected">
+                  <div className="moj-filter__selected">
 
-                    <div className="hmcts-filter__selected-heading">
+                    <div className="moj-filter__selected-heading">
 
-                      <div className="moj-!-float-left">
+                      <div className="app-!-float-left">
 
                         <img src="/assets/images/no-photo.png" width="82" height="102"
                              alt={ `${ currentCase.defendant.name }` }
                              className="app-offender-image"/>
                       </div>
-                      <div className="moj-!-float-left">
+                      <div className="app-!-float-left">
 
                         <p className="govuk-body govuk-!-margin-bottom-0">
                           <strong>DOB:</strong> { moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
@@ -115,22 +115,23 @@ function CaseSummary (props) {
                       </div>
 
                       <div
-                        className={ `hmcts-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender</div>
+                        className={ `moj-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender
+                      </div>
 
                     </div>
                   </div>
 
-                  <div className="hmcts-filter__options">
+                  <div className="moj-filter__options">
 
                     { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                       <Fragment>
                         <h2 className="govuk-heading-m govuk-!-margin-bottom-0">RoSH <span
-                          className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
+                          className="govuk-hint app-!-inline govuk-!-margin-top-0">from Delius record</span></h2>
 
                         { currentCase.defendant.risk.map((risk, riskIndex) => {
                           return risk.type === 'RoSH' ? (
                             <div key={ riskIndex }
-                                 className="moj-risk-alert moj-risk-alert--small moj-risk-alert--high">{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
+                                 className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
                               of Serious Harm</div>
                           ) : (<Fragment key={ riskIndex }/>)
                         }) }
@@ -153,7 +154,8 @@ function CaseSummary (props) {
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
 
                         <div
-                          className="hmcts-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active Intervention
+                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active
+                          Intervention
                         </div>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
@@ -217,24 +219,18 @@ function CaseSummary (props) {
               </div>
             </div>
 
-            <div className="hmcts-filter-layout__content">
+            <div className="moj-filter-layout__content">
 
-              <div className="hmcts-identity-bar">
-                <div className="hmcts-identity-bar__container">
+              <div className="moj-identity-bar">
+                <div className="moj-identity-bar__container">
                   <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                     <h2 className="govuk-heading-m govuk-!-margin-top-2">Current case</h2>
 
-                    <table className="govuk-table moj-table moj-table--split-rows">
+                    <table className="govuk-table app-table app-table--split-rows">
                       <thead>
                       <tr>
                         <th>Offence</th>
-                        <th>
-                          <p
-                            className={ !currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) ? 'moj-!-text-align-right' : '' }>
-                            Code
-                          </p>
-                        </th>
                         { currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) && (
                           <th>Plea</th>) }
                         { currentCase.offences.some(offence => { return offence.pleaDate && offence.pleaDate.length }) && (
@@ -247,7 +243,6 @@ function CaseSummary (props) {
                         return (
                           <tr key={ offenceIndex }>
                             <td>{ offence.title }</td>
-                            <td>{ offence.code }</td>
                             { !!(offence.plea && offence.plea.length) && (<td>{ offence.plea }</td>) }
                             { !!(offence.pleaDate && offence.pleaDate.length) && (
                               <td>{ offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').format('DD/MM/YYYY')) }</td>
@@ -259,7 +254,7 @@ function CaseSummary (props) {
                       </tbody>
                     </table>
 
-                    <table className="govuk-table moj-table">
+                    <table className="govuk-table app-table">
                       <thead>
                       <tr>
                         <th colSpan="2">Appearing in Court Room { currentCase.courtRoom }</th>
@@ -276,10 +271,10 @@ function CaseSummary (props) {
                         <td>
 
                           { currentCase.markers && !!currentCase.markers.length && (
-                            <div className="moj-!-text-align-right govuk-!-margin-bottom-2">
+                            <div className="app-!-text-align-right govuk-!-margin-bottom-2">
                               { currentCase.markers.map((marker, markerIndex) => {
                                 return <div key={ markerIndex }
-                                            className="hmcts-badge hmcts-badge--small moj-tooltip moj-tooltip--secondary moj-util-inline moj-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
+                                            className="moj-badge moj-badge--small app-tooltip app-tooltip--secondary app-!-inline app-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
                                 </div>
                               }) }
                             </div>
@@ -294,33 +289,73 @@ function CaseSummary (props) {
                 </div>
               </div>
 
-              { !!(currentCase.defendant.previousConvictions && currentCase.defendant.previousConvictions.length) && (
-                <div className="hmcts-identity-bar govuk-!-margin-top-4">
-                  <div className="hmcts-identity-bar__container">
+              <div className="moj-identity-bar govuk-!-margin-top-4">
+                <div className="moj-identity-bar__container">
+                  <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+
+                    <h2 className="govuk-heading-m govuk-!-margin-top-6">Case summary</h2>
+
+                    { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
+                      return (
+                        offenceIndex < 2 ?
+                          <Fragment key={ offenceIndex }>
+                            <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
+                            <p
+                              className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
+                          </Fragment> : <Fragment key={ offenceIndex }/>
+                      )
+                    }) }
+
+                    { !!(currentCase.offences && currentCase.offences.length > 3) && (
+                      <p className="govuk-body app-!-text-align-center">
+                        <a className="govuk-link govuk-link--no-visited-state" href="?expand"
+                           onClick={ e => e.preventDefault() }><em className="app-icon-down"/> Show more <em
+                          className="app-icon-down"/></a>
+                      </p>
+                    ) }
+
+                  </div>
+                </div>
+              </div>
+
+              { !!(currentCase.defendant.previousConvictions.summary && currentCase.defendant.previousConvictions.summary.length) && (
+                <div className="moj-identity-bar govuk-!-margin-top-4">
+                  <div className="moj-identity-bar__container">
                     <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                      <h2 className="govuk-heading-m govuk-!-margin-top-2">Previous convictions</h2>
+                      <h2 className="govuk-heading-m govuk-!-margin-top-6">Summary of convictions <span
+                        className="govuk-hint app-!-inline govuk-!-margin-top-0">from CPS pack</span></h2>
 
-                      <table className="govuk-table moj-table moj-table--split-rows">
-                        <thead>
-                        <tr>
-                          <th>Offence</th>
-                          <th>Code</th>
-                          <th>Date</th>
-                        </tr>
-                        </thead>
+                      <table className="govuk-table app-table app-table--split-rows">
                         <tbody>
 
-                        { currentCase.defendant.previousConvictions && currentCase.defendant.previousConvictions.map((offence, offenceIndex) => {
+                        { currentCase.defendant.previousConvictions.summary.map((conviction, convictionIndex) => {
                           return (
-                            <tr key={ offenceIndex }>
-                              <td>{ offence.title }</td>
-                              <td>{ offence.code }</td>
-                              <td>{ offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').subtract(1, 'years').format('DD/MM/YYYY')) }</td>
+                            <tr key={ convictionIndex }>
+                              <td style={ { 'width': '75px' } }>{ conviction.count }</td>
+                              <td>{ conviction.description }</td>
+                              <td style={ { 'width': '150px' } }>{ conviction.dateRange }</td>
                             </tr>
                           )
                         }) }
 
+                        </tbody>
+                      </table>
+
+                      <table className="govuk-table app-table app-table--split-rows">
+                        <tbody>
+                        <tr>
+                          <th>Convictions:</th>
+                          <td>{ currentCase.defendant.previousConvictions.convictionCount }</td>
+                          <th>Offences:</th>
+                          <td>{ currentCase.defendant.previousConvictions.offenceCount }</td>
+                        </tr>
+                        <tr>
+                          <th>First convicted:</th>
+                          <td>{ currentCase.defendant.previousConvictions.firstConvicted }</td>
+                          <th>Last convicted:</th>
+                          <td>{ currentCase.defendant.previousConvictions.lastConvicted }</td>
+                        </tr>
                         </tbody>
                       </table>
 
@@ -334,9 +369,9 @@ function CaseSummary (props) {
                 { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                   <Fragment>
                     <h2 className="govuk-heading-m govuk-!-margin-top-6">Registers and warnings <span
-                      className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
+                      className="govuk-hint app-!-inline govuk-!-margin-top-0">from Delius record</span></h2>
 
-                    <table className="govuk-table moj-table moj-table--split-rows">
+                    <table className="govuk-table app-table app-table--split-rows">
                       <thead>
                       <tr>
                         <th style={ { 'width': '220px' } }>Type</th>
@@ -351,7 +386,7 @@ function CaseSummary (props) {
                           <tr key={ riskIndex }>
                             <td>{ risk.type }</td>
                             <td><span
-                              className={ `moj-risk-tag moj-risk-tag--${ risk.status.split(' ').join('-') }` }>{ risk.status }</span>
+                              className={ `app-risk-tag app-risk-tag--${ risk.status.toLowerCase().split(' ').join('-') }` }>{ risk.status }</span>
                             </td>
                             <td>{ risk.description }</td>
                             <td>{ moment(risk.date, 'YYYY-MM-DD').format('DD/MM/YYYY') }</td>
@@ -365,23 +400,9 @@ function CaseSummary (props) {
                   </Fragment>
                 ) }
 
-                <h2 className="govuk-heading-m govuk-!-margin-top-6">Case summary</h2>
-
-                { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
-                  return (
-                    <Fragment key={ offenceIndex }>
-                      <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
-                      <p
-                        className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
-                    </Fragment>
-                  )
-                }) }
-
-                <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
                 <h2 className="govuk-heading-m govuk-!-margin-top-6">Case tracker</h2>
 
-                <table className="govuk-table moj-table moj-table--split-rows">
+                <table className="govuk-table app-table app-table--split-rows">
                   <thead>
                   <tr>
                     <th>Supporting information</th>
@@ -401,7 +422,7 @@ function CaseSummary (props) {
                     <td>CPS Pack</td>
                     <td>Acquired</td>
                     <td>
-                      <a className="govuk-link hmcts-timeline__document-link" href="/cps-link"
+                      <a className="govuk-link moj-timeline__document-link" href="/cps-link"
                          onClick={ e => e.preventDefault() }>CPS Pack</a>
                     </td>
                   </tr>
@@ -410,8 +431,8 @@ function CaseSummary (props) {
 
               </div>
 
-              <div className="hmcts-identity-bar">
-                <div className="hmcts-identity-bar__container">
+              <div className="moj-identity-bar">
+                <div className="moj-identity-bar__container">
                   <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                     <h2 className="govuk-heading-m">Notes</h2>
@@ -424,7 +445,7 @@ function CaseSummary (props) {
                       </Fragment>
                     ) }
 
-                    <p className="moj-!-text-align-right">
+                    <p className="app-!-text-align-right">
                       <button className="govuk-button govuk-button--secondary">Add note</button>
                     </p>
 
@@ -437,6 +458,9 @@ function CaseSummary (props) {
         ) }
 
         <Link to="/cases" className="govuk-back-link">Back</Link>
+        <Link to="#top" className="app-top-link" onClick={() => {
+          window.scrollTo(0, 0)
+        }}>Back to top</Link>
 
       </main>
 

@@ -194,32 +194,31 @@
                 ],
                 "deliusStatus": "Current",
                 "assignment": "crc",
-                "previousConvictions": [
-                  {
-                    "sequence": "3",
-                    "code": "CJ88116",
-                    "title": "Assault by beating",
-                    "summary": "On 12/01/2019 at ROTHERHAM in the county of SOUTH YORKSHIRE assaulted MR BEAN by beating him",
-                    "contraryToActAndSection": "Contrary to section 39 of the Criminal Justice Act 1988.",
-                    "statementOfFact": "",
-                    "plea": "",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
+                "previousConvictions": {
+                  "convictionCount": 2,
+                  "offenceCount": 5,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
                   },
-                  {
-                    "sequence": "2",
-                    "code": "TH68010",
-                    "title": "Theft from a shop",
-                    "summary": "Between 11/03/2018 and 15/05/2018 at BARNSLEY in the county of BARNSLEY, stole 2 items of Vodka, to the value of £12.50, belonging to Dixon's",
-                    "contraryToActAndSection": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": "for plea"
-                  }
-                ]
+                  "summary": [
+                    {
+                      "count": 1,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 3,
+                      "description": "Theft and kindred offences",
+                      "dateRange": "1995"
+                    },
+                    {
+                      "count": 1,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "Assessments/Reports: undergo an assessment conducted by AS DIRECTED for dependency on Class A drugs and participate in any follow-up",
               "solicitor": "ROGERS AND BAINES SOLICITORS",
@@ -293,32 +292,31 @@
                 ],
                 "assignment": "crc",
                 "deliusStatus": "Current",
-                "previousConvictions": [
-                  {
-                    "sequence": "3",
-                    "code": "CJ88116",
-                    "title": "Assault by beating",
-                    "summary": "On 12/01/2019 at ROTHERHAM in the county of SOUTH YORKSHIRE assaulted MR BEAN by beating him",
-                    "contraryToActAndSection": "Contrary to section 39 of the Criminal Justice Act 1988.",
-                    "statementOfFact": "",
-                    "plea": "",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
+                "previousConvictions": {
+                  "convictionCount": 2,
+                  "offenceCount": 5,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
                   },
-                  {
-                    "sequence": "2",
-                    "code": "TH68010",
-                    "title": "Theft from a shop",
-                    "summary": "Between 11/03/2018 and 15/05/2018 at BARNSLEY in the county of BARNSLEY, stole 2 items of Vodka, to the value of £12.50, belonging to Dixon's",
-                    "contraryToActAndSection": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": "for plea"
-                  }
-                ]
+                  "summary": [
+                    {
+                      "count": 1,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 3,
+                      "description": "Theft and kindred offences",
+                      "dateRange": "1995"
+                    },
+                    {
+                      "count": 1,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "Assessments/Reports: undergo an assessment conducted by AS DIRECTED for dependency on Class A drugs and participate in any follow-up",
               "solicitor": "",
@@ -380,32 +378,31 @@
                 ],
                 "assignment": "crc",
                 "deliusStatus": "Current",
-                "previousConvictions": [
-                  {
-                    "sequence": "3",
-                    "code": "CJ88116",
-                    "title": "Assault by beating",
-                    "summary": "On 12/01/2019 at ROTHERHAM in the county of SOUTH YORKSHIRE assaulted MR BEAN by beating him",
-                    "contraryToActAndSection": "Contrary to section 39 of the Criminal Justice Act 1988.",
-                    "statementOfFact": "",
-                    "plea": "",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
+                "previousConvictions": {
+                  "convictionCount": 2,
+                  "offenceCount": 5,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
                   },
-                  {
-                    "sequence": "2",
-                    "code": "TH68010",
-                    "title": "Theft from a shop",
-                    "summary": "Between 11/03/2018 and 15/05/2018 at BARNSLEY in the county of BARNSLEY, stole 2 items of Vodka, to the value of £12.50, belonging to Dixon's",
-                    "contraryToActAndSection": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": "for plea"
-                  }
-                ]
+                  "summary": [
+                    {
+                      "count": 1,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 3,
+                      "description": "Theft and kindred offences",
+                      "dateRange": "1995"
+                    },
+                    {
+                      "count": 1,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "Assessments/Reports: undergo an assessment conducted by AS DIRECTED for dependency on Class A drugs and participate in any follow-up",
               "solicitor": "",
@@ -484,32 +481,36 @@
                 ],
                 "assignment": "nps",
                 "deliusStatus": "Current",
-                "previousConvictions": [
-                  {
-                    "sequence": "3",
-                    "code": "CJ88116",
-                    "title": "Assault by beating",
-                    "summary": "On 12/01/2019 at ROTHERHAM in the county of SOUTH YORKSHIRE assaulted MR BEAN by beating him",
-                    "contraryToActAndSection": "Contrary to section 39 of the Criminal Justice Act 1988.",
-                    "statementOfFact": "",
-                    "plea": "",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
                   },
-                  {
-                    "sequence": "2",
-                    "code": "TH68010",
-                    "title": "Theft from a shop",
-                    "summary": "Between 11/03/2018 and 15/05/2018 at BARNSLEY in the county of BARNSLEY, stole 2 items of Vodka, to the value of £12.50, belonging to Dixon's",
-                    "contraryToActAndSection": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": "for plea"
-                  }
-                ]
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "",
               "solicitor": "",
@@ -584,34 +585,38 @@
                     "date": "2018-06-11"
                   }
                 ],
-                "assignment": "nps",
+                "assignment": "",
                 "deliusStatus": "Known",
-                "previousConvictions": [
-                  {
-                    "sequence": "3",
-                    "code": "CJ88116",
-                    "title": "Assault by beating",
-                    "summary": "On 12/01/2019 at ROTHERHAM in the county of SOUTH YORKSHIRE assaulted MR BEAN by beating him",
-                    "contraryToActAndSection": "Contrary to section 39 of the Criminal Justice Act 1988.",
-                    "statementOfFact": "",
-                    "plea": "",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
                   },
-                  {
-                    "sequence": "2",
-                    "code": "TH68010",
-                    "title": "Theft from a shop",
-                    "summary": "Between 11/03/2018 and 15/05/2018 at BARNSLEY in the county of BARNSLEY, stole 2 items of Vodka, to the value of £12.50, belonging to Dixon's",
-                    "contraryToActAndSection": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": "for plea"
-                  }
-                ]
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "",
               "solicitor": "",
@@ -712,20 +717,36 @@
                     "date": "2019-06-11"
                   }
                 ],
-                "previousConvictions": [
-                  {
-                    "sequence": "1",
-                    "code": "PH97004",
-                    "title": "Harassment without violence",
-                    "summary": "Between 09/01/2018 and 05/05/2018 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 23 SMS messages, left 12 voicemail messages and made unwanted phone calls",
-                    "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
-                  }
-                ]
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "Pre-hearing cond: Assessments/Reports: undergo an assessment conducted by as directed for dependency on Class A drugs and participate in any follow-up assessment",
               "solicitor": "",
@@ -790,20 +811,36 @@
                     "date": "2019-06-11"
                   }
                 ],
-                "previousConvictions": [
-                  {
-                    "sequence": "1",
-                    "code": "PH97004",
-                    "title": "Harassment without violence",
-                    "summary": "Between 09/01/2018 and 05/05/2018 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 23 SMS messages, left 12 voicemail messages and made unwanted phone calls",
-                    "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
-                  }
-                ]
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "Pre-hearing cond: Assessments/Reports: undergo an assessment conducted by as directed for dependency on Class A drugs and participate in any follow-up assessment",
               "solicitor": "",
@@ -861,8 +898,8 @@
                   "postcode": "S58 2TF"
                 },
                 "age": "39",
-                "assignment": "nps",
-                "deliusStatus": "Current",
+                "assignment": "",
+                "deliusStatus": "Known",
                 "risk": [
                   {
                     "type": "RoSH",
@@ -871,20 +908,36 @@
                     "date": "2019-06-11"
                   }
                 ],
-                "previousConvictions": [
-                  {
-                    "sequence": "1",
-                    "code": "PH97004",
-                    "title": "Harassment without violence",
-                    "summary": "Between 09/01/2018 and 05/05/2018 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 23 SMS messages, left 12 voicemail messages and made unwanted phone calls",
-                    "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
-                  }
-                ]
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "",
               "solicitor": "",
@@ -1245,20 +1298,36 @@
                     "date": "2019-06-11"
                   }
                 ],
-                "previousConvictions": [
-                  {
-                    "sequence": "1",
-                    "code": "PH97004",
-                    "title": "Harassment without violence",
-                    "summary": "Between 09/01/2018 and 05/05/2018 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 23 SMS messages, left 12 voicemail messages and made unwanted phone calls",
-                    "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
-                  }
-                ]
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "",
               "solicitor": "",
@@ -1309,20 +1378,36 @@
                     "date": "2019-06-11"
                   }
                 ],
-                "previousConvictions": [
-                  {
-                    "sequence": "1",
-                    "code": "PH97004",
-                    "title": "Harassment without violence",
-                    "summary": "Between 09/01/2018 and 05/05/2018 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 23 SMS messages, left 12 voicemail messages and made unwanted phone calls",
-                    "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
-                  }
-                ]
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "",
               "solicitor": "",
@@ -1393,20 +1478,36 @@
                     "date": "2019-06-11"
                   }
                 ],
-                "previousConvictions": [
-                  {
-                    "sequence": "1",
-                    "code": "PH97004",
-                    "title": "Harassment without violence",
-                    "summary": "Between 09/01/2018 and 05/05/2018 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 23 SMS messages, left 12 voicemail messages and made unwanted phone calls",
-                    "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
-                  }
-                ]
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "",
               "solicitor": "",
@@ -1483,20 +1584,36 @@
                     "date": "2019-06-11"
                   }
                 ],
-                "previousConvictions": [
-                  {
-                    "sequence": "1",
-                    "code": "PH97004",
-                    "title": "Harassment without violence",
-                    "summary": "Between 09/01/2018 and 05/05/2018 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 23 SMS messages, left 12 voicemail messages and made unwanted phone calls",
-                    "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
-                    "statementOfFact": "",
-                    "plea": "G",
-                    "pleaDate": "2019-06-18",
-                    "adjournedDate": "2019-03-12",
-                    "adjournedReason": ""
-                  }
-                ]
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
               },
               "bailConditions": "ng cond: Exclusion: not to enter SHEFFIELD UNITED, BRAMHALL LANE ; Residence: live and sleep each night at 34 BEAK ROAD, SHEFFIELD",
               "solicitor": "",
@@ -1746,7 +1863,7 @@
               "defendant": {
                 "name": "MR Mark RODGERS",
                 "gender": "M",
-                "dateOfBirth": "1987-08-11",
+                "dateOfBirth": "1976-05-11",
                 "address": {
                   "line1": "Dobbs Lane",
                   "line2": "368 Brighthill Road",
@@ -1755,7 +1872,7 @@
                   "line5": "",
                   "postcode": "S65 7HG"
                 },
-                "age": "31",
+                "age": "43",
                 "risk": [
                   {
                     "type": "Public protection",
@@ -1778,20 +1895,56 @@
                 ],
                 "assignment": "nps",
                 "deliusStatus": "Current",
-                "previousConvictions": [
+                "previousConvictions": {
+                  "convictionCount": 16,
+                  "offenceCount": 56,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
                     {
-                      "sequence": "2",
-                      "code": "CJ88116",
-                      "title": "Assault by beating",
-                      "summary": "On 12/01/2018 at ROTHERHAM in the county of SOUTH YORKSHIRE assaulted MRS BEAN by beating her",
-                      "contraryToActAndSection": "Contrary to section 39 of the Criminal Justice Act 1988.",
-                      "statementOfFact": "",
-                      "plea": "",
-                      "pleaDate": "2019-06-18",
-                      "adjournedDate": "2019-03-12",
-                      "adjournedReason": "for plea"
+                      "count": 6,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Sexual offences",
+                      "dateRange": "2012"
+                    },
+                    {
+                      "count": 10,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Fraud and kindred offences",
+                      "dateRange": "1994-2002"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Public disorder offences",
+                      "dateRange": "1982-2013"
+                    },
+                    {
+                      "count": 19,
+                      "description": "Theft and kindred offences",
+                      "dateRange": "1995"
+                    },
+                    {
+                      "count": 7,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 3,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
                     }
-                ]
+                  ]
+                }
               },
               "bailConditions": "",
               "solicitor": "",

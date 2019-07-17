@@ -1,38 +1,35 @@
 import React from 'react'
-import { ReactComponent as Logo } from '../assets/hmcts-logotype-crest.svg'
+import { NavLink } from 'react-router-dom'
+
+import { ReactComponent as Logo } from '../assets/moj-logotype-crest.svg'
 
 function Header () {
   return (
-    <header className="hmcts-header" role="banner">
-      <div className="hmcts-header__container">
+    <header className="moj-header" role="banner">
 
-        <div className="hmcts-header__logo">
-          <a className="hmcts-header__link" href="/" onClick={ e => e.preventDefault() }>
+      <div className="moj-header__container">
+
+        <div className="moj-header__logo">
+
             <span className="govuk-header__logotype">
               <Logo className="govuk-header__logotype-crown"/>
             </span>
-            <span className="govuk-header__logotype-text">Probation in court</span>
-          </a>
+
+          <NavLink to="/cases/list" className="moj-header__link moj-header__link--organisation-name">MOJ Digital</NavLink>
+          <NavLink to="/cases/list" className="moj-header__link moj-header__link--service-name">Probation in
+            court</NavLink>
         </div>
+        <div className="moj-header__content">
 
-        <div className="hmcts-header__content">
+          <nav className="moj-header__navigation" aria-label="Account navigation">
 
-          <nav className="hmcts-header__navigation" aria-label="Account navigation">
-
-            <ul className="hmcts-header__navigation-list">
-
-              <li className="hmcts-header__navigation-item">
-                <a className="hmcts-header__navigation-link" href="/profile" onClick={ e => e.preventDefault() }>
-                  Profile
-                </a>
+            <ul className="moj-header__navigation-list">
+              <li className="moj-header__navigation-item">
+                <a className="moj-header__navigation-link" href="/" onClick={ e => {e.preventDefault()} }>Profile</a>
               </li>
-
-              <li className="hmcts-header__navigation-item">
-                <a className="hmcts-header__navigation-link" href="/sign-out" onClick={ e => e.preventDefault() }>
-                  Sign out
-                </a>
+              <li className="moj-header__navigation-item">
+                <a className="moj-header__navigation-link" href="/" onClick={ e => {e.preventDefault()} }>Sign out</a>
               </li>
-
             </ul>
 
           </nav>

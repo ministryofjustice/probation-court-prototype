@@ -51,25 +51,32 @@ function AddCase () {
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
         <h1 className="govuk-heading-l">Add case <span
-          className="govuk-hint moj-util-inline">for { currentDate.format('dddd, Do MMMM YYYY') }</span></h1>
+          className="govuk-hint app-!-inline">for { currentDate.format('dddd, Do MMMM YYYY') }</span></h1>
 
-        <div className="hmcts-filter-layout">
+        <div className="moj-filter-layout">
 
-          <div className="hmcts-filter-layout__filter">
+          <div className="moj-filter-layout__filter">
 
-            <div className="hmcts-filter">
+            <div className="moj-filter">
 
-              <div className="hmcts-filter__header">
+              <div className="moj-filter__header">
 
-                <div className="hmcts-filter__header-title">
-                  <h2 className="govuk-heading-m">Defendant details</h2>
+                <div className="moj-filter__header-title">
+                  <h2 className="govuk-heading-m">
+                    { !data.offenderMatch && (
+                      <Fragment>Defendant details</Fragment>
+                    ) }
+                    { data.offenderMatch && (
+                      <Fragment>{ data.defendant.name }</Fragment>
+                    ) }
+                  </h2>
                 </div>
               </div>
 
-              <div className="hmcts-filter__content">
-                <div className="hmcts-filter__selected">
+              <div className="moj-filter__content">
+                <div className="moj-filter__selected">
 
-                  <div className="hmcts-filter__selected-heading">
+                  <div className="moj-filter__selected-heading">
 
                     { !data.offenderMatch && (
                       <form name="defendantForm">
@@ -135,74 +142,86 @@ function AddCase () {
                     ) }
 
                     { data.offenderMatch && (
-                      <table className="govuk-table moj-table">
-                        <tbody>
-                        <tr>
-                          <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
-                          <td className="govuk-body">{ data.defendant.pnc }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Date of birth:</td>
-                          <td>{ moment(data.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Age:</td>
-                          <td>{ data.defendant.age }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Gender:</td>
-                          <td>{ data.defendant.gender === 'M' ? 'Male' : 'Female' }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Address:</td>
-                          <td>
-                            <p className="govuk-body govuk-!-margin-bottom-0">10 King Road</p>
-                            <p className="govuk-body govuk-!-margin-bottom-0">Crookes</p>
-                            <p className="govuk-body govuk-!-margin-bottom-0">Sheffield</p>
-                            <p className="govuk-body govuk-!-margin-bottom-0">South Yorkshire</p>
-                            <p className="govuk-body govuk-!-margin-bottom-0">S12 5GH</p>
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
+                      <Fragment>
+
+                        <div className="app-!-float-left">
+
+                          <img src="/assets/images/no-photo.png" width="82" height="102"
+                               alt={ `${ data.defendant.name }` }
+                               className="app-offender-image"/>
+                        </div>
+                        <div className="app-!-float-left">
+
+                          <p className="govuk-body govuk-!-margin-bottom-0">
+                            <strong>DOB:</strong> { moment(data.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
+                          </p>
+                          <p className="govuk-body govuk-!-margin-bottom-0"><strong>CRN:</strong> X612323A</p>
+                          <p className="govuk-body govuk-!-margin-bottom-0"><strong>PNC:</strong> { data.defendant.pnc }
+                          </p>
+
+                        </div>
+
+                        <div
+                          className={ `moj-badge moj-badge ${ data.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : data.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>Not
+                          known offender
+                        </div>
+
+                      </Fragment>
                     ) }
 
                   </div>
                 </div>
 
-                { !data.offenderMatch && (
+                <div className="moj-filter__options">
 
-                  <div className="hmcts-filter__options">
+                  <h2 className="govuk-heading-m">Contact details</h2>
 
-                    <h2 className="govuk-heading-m">Offender not known?</h2>
+                  <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Address</h3>
 
-                    <p className="govuk-body">Confirm that you have determined that the offender is not currently known
-                      to
-                      probation.</p>
+                  <p className="govuk-body">MILES DANTON<br/>368 London Road<br/>Broomhill<br/>S65 7HG</p>
 
-                    <button className="govuk-button govuk-button--secondary">Offender not known</button>
+                  <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Telephone</h3>
 
-                  </div>
+                  <p className="govuk-body">07765 765 432</p>
 
-                ) }
+                  <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</h3>
 
+                  <p className="govuk-body"><a href="mailto:user-123456@some-host.com"
+                                               className="govuk-link govuk-link--no-visited-state"
+                                               onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
+                  </p>
+
+                  { !data.offenderMatch && (
+                    <Fragment>
+
+                      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                      <h2 className="govuk-heading-m">Offender not known?</h2>
+
+                      <p className="govuk-body">Confirm that you have determined that the offender is not currently
+                        known
+                        to
+                        probation.</p>
+
+                      <button className="govuk-button govuk-button--secondary">Offender not known</button>
+
+                    </Fragment>
+                  ) }
+
+                </div>
               </div>
-
             </div>
-
           </div>
 
-          <div className="hmcts-filter-layout__content">
-
-            <div className="hmcts-scrollable-pane">
-
-              <div className="hmcts-scrollable-pane__wrapper">
+          <div className="moj-filter-layout__content">
+            <div className="moj-scrollable-pane">
+              <div className="moj-scrollable-pane__wrapper">
 
                 { !data.offenderMatch && (
                   <Fragment>
 
                     { data.offences && !data.offences.length && (
-                      <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt">
+                      <div className="govuk-warning-text app-warning-text app-warning-text--interrupt">
                         <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
                         <strong className="govuk-warning-text__text">
                           <span className="govuk-warning-text__assistive">Warning</span>
@@ -215,19 +234,19 @@ function AddCase () {
                       <Fragment>
                         <div className="govuk-grid-row">
                           <div className="govuk-grid-column-full">
-                            <div className="moj-!-float-left--not-narrow">
+                            <div className="app-!-float-left--not-narrow">
 
                               <img src="/assets/images/no-photo.png" width="82" height="102"
                                    alt={ `${ data.defendant.name }` }
                                    className="app-offender-image"/>
                             </div>
-                            <div className="moj-!-float-left--not-narrow app-offender-selection">
+                            <div className="app-!-float-left--not-narrow app-offender-selection">
 
                               <h1
                                 className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ data.defendant.name }
                                 { data.defendant.current && (
                                   <span
-                                    className="hmcts-badge hmcts-badge--green govuk-!-margin-left-4">Current offender</span>
+                                    className="moj-badge moj-badge--green govuk-!-margin-left-4">Current offender</span>
                                 ) }
                               </h1>
 
@@ -261,7 +280,7 @@ function AddCase () {
                                     className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ data.defendant.pnc }</p>
 
                                 </div>
-                                <div className="govuk-grid-column-one-quarter moj-!-text-align-right">
+                                <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
                                   <button className="govuk-button govuk-button--secondary" onClick={ e => {
                                     setData({ ...data, offenderMatch: true })
@@ -274,7 +293,7 @@ function AddCase () {
                           </div>
                         </div>
 
-                        <table className="govuk-table moj-table">
+                        <table className="govuk-table app-table">
                           <tbody>
                           <tr>
                             <td>
@@ -284,7 +303,7 @@ function AddCase () {
                               </p>
 
                             </td>
-                            <td className="moj-!-text-align-right">
+                            <td className="app-!-text-align-right">
 
                               <a href={ `http://delius/offender/` }
                                  className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
@@ -303,37 +322,32 @@ function AddCase () {
 
                 { data.offenderMatch && (
                   <form name="caseForm">
-                    <div className="hmcts-identity-bar">
-                      <div className="hmcts-identity-bar__container">
+                    <div className="moj-identity-bar">
+                      <div className="moj-identity-bar__container">
                         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                          <h2 className="govuk-heading-m govuk-!-margin-top-2">Current case, Appearing in Court
-                            on { currentDate.format('dddd, Do MMMM YYYY') }</h2>
+                          <h2 className="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-1">Appearing in
+                            Court</h2>
+                          <span
+                            className="govuk-hint govuk-!-margin">On { currentDate.format('dddd, Do MMMM YYYY') }.</span>
 
+                          <div className="govuk-form-group">
+                            <label className="govuk-label" htmlFor="room">Court room</label>
+                            <input className="govuk-input govuk-input--width-2" id="room" name="room" type="text"/>
+                          </div>
 
-                          <div className="govuk-grid-row">
-                            <div className="govuk-grid-column-two-thirds">
-
-                              <div className="govuk-form-group">
-                                <label className="govuk-label" htmlFor="room">Court room</label>
-                                <input className="govuk-input" id="room" name="room" type="text"/>
-                              </div>
-
-                              <div className="govuk-form-group">
-                                <label className="govuk-label" htmlFor="sitting">Sitting</label>
-                                <input className="govuk-input" id="sitting" name="sitting" type="text"/>
-                              </div>
-
-                            </div>
-                            <div className="govuk-grid-column-one-third">&nbsp;</div>
+                          <div className="govuk-form-group">
+                            <label className="govuk-label" htmlFor="sitting">Sitting</label>
+                            <input className="govuk-input govuk-input--width-10" id="sitting" name="sitting"
+                                   type="text"/>
                           </div>
 
                         </div>
                       </div>
                     </div>
 
-                    <div className="hmcts-identity-bar">
-                      <div className="hmcts-identity-bar__container">
+                    <div className="moj-identity-bar">
+                      <div className="moj-identity-bar__container">
                         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                           <h2 className="govuk-heading-m govuk-!-margin-top-2">Offence</h2>
@@ -347,12 +361,27 @@ function AddCase () {
                               </div>
 
                               <div className="govuk-form-group">
-                                <label className="govuk-label" htmlFor="code">Code</label>
-                                <span className="govuk-hint">If known</span>
-                                <input className="govuk-input" id="code" name="code" type="text"/>
+                                <label className="govuk-label" htmlFor="contrary">Contrary to</label>
+                                <input className="govuk-input" id="contrary" name="contrary" type="text"/>
                               </div>
 
-                              <button className="govuk-button govuk-button--secondary">Add offence</button>
+                              <div className="govuk-form-group">
+                                <label className="govuk-label" htmlFor="more-detail">
+                                  Offence summary
+                                </label>
+                                <textarea className="govuk-textarea" id="more-detail" name="more-detail" rows="5"
+                                          aria-describedby="more-detail-hint"/>
+                              </div>
+
+                              <div className="govuk-form-group">
+                                <label className="govuk-label" htmlFor="code">Code</label>
+                                <span className="govuk-hint">If known</span>
+                                <input className="govuk-input govuk-input--width-5" id="code" name="code" type="text"/>
+                              </div>
+
+                              <button className="govuk-button govuk-button--secondary"
+                                      onClick={ e => {e.preventDefault()} }>Add another offence
+                              </button>
 
                             </div>
                             <div className="govuk-grid-column-one-third">
@@ -364,8 +393,8 @@ function AddCase () {
                       </div>
                     </div>
 
-                    <div className="hmcts-identity-bar">
-                      <div className="hmcts-identity-bar__container">
+                    <div className="moj-identity-bar">
+                      <div className="moj-identity-bar__container">
                         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                           <div className="govuk-grid-row">
@@ -381,23 +410,23 @@ function AddCase () {
                                     <div className="govuk-checkboxes__item">
                                       <input className="govuk-checkboxes__input" id="waste-1" name="waste"
                                              type="checkbox" value="carcasses"/>
-                                        <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-1">
-                                          Domestic violence
-                                        </label>
+                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-1">
+                                        Domestic violence
+                                      </label>
                                     </div>
                                     <div className="govuk-checkboxes__item">
                                       <input className="govuk-checkboxes__input" id="waste-2" name="waste"
                                              type="checkbox" value="mines"/>
-                                        <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-2">
-                                          Violent
-                                        </label>
+                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-2">
+                                        Violent
+                                      </label>
                                     </div>
                                     <div className="govuk-checkboxes__item">
                                       <input className="govuk-checkboxes__input" id="waste-3" name="waste"
                                              type="checkbox" value="farm"/>
-                                        <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-3">
-                                          Escape risk
-                                        </label>
+                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-3">
+                                        Escape risk
+                                      </label>
                                     </div>
                                     <div className="govuk-checkboxes__item">
                                       <input className="govuk-checkboxes__input" id="waste-4" name="waste"
@@ -432,14 +461,14 @@ function AddCase () {
                               </div>
 
                             </div>
-                            <div className="govuk-grid-column-one-third moj-!-text-align-right">&nbsp;</div>
+                            <div className="govuk-grid-column-one-third app-!-text-align-right">&nbsp;</div>
                           </div>
 
                         </div>
                       </div>
                     </div>
 
-                    <p className="moj-!-text-align-right">
+                    <p className="app-!-text-align-right">
                       <button className="govuk-button">Add case</button>
                     </p>
 

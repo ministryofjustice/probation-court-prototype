@@ -59,11 +59,11 @@ function CaseList (props) {
   }, [dispatch])
 
   function toggleFilter () {
-    const $filter = document.querySelector('.hmcts-filter')
+    const $filter = document.querySelector('.moj-filter')
     const $button = document.querySelector('#filter-button')
     if ($filter && $button) {
-      $filter.classList.toggle('hmcts-hidden')
-      const isOpen = !$filter.classList.contains('hmcts-hidden')
+      $filter.classList.toggle('moj-hidden')
+      const isOpen = !$filter.classList.contains('moj-hidden')
       $button.textContent = isOpen ? 'Hide filter' : 'Show filter'
       $button.setAttribute('aria-expanded', isOpen.toString())
     }
@@ -76,31 +76,31 @@ function CaseList (props) {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <nav className="hmcts-sub-navigation" aria-label="Sub navigation">
+      <nav className="moj-sub-navigation" aria-label="Sub navigation">
 
-        <p className="govuk-hint moj-!-float-right govuk-!-margin-top-2">&nbsp;Last
+        <p className="govuk-hint app-!-float-right govuk-!-margin-top-2">&nbsp;Last
           updated { currentDate.format('dddd, Do MMMM YYYY') } at 10:30</p>
 
-        <ul className="hmcts-sub-navigation__list">
+        <ul className="moj-sub-navigation__list">
 
-          <li className="hmcts-sub-navigation__item">
+          <li className="moj-sub-navigation__item">
             <Link to={ `/cases/list/${ currentDate.format('DD/MM/YYYY') }` }
-                  className="hmcts-sub-navigation__link govuk-link--no-visited-state"
+                  className="moj-sub-navigation__link govuk-link--no-visited-state"
                   aria-current="page">
               { currentDate.format('dddd, Do MMMM YYYY') }
             </Link>
           </li>
 
-          <li className="hmcts-sub-navigation__item">
+          <li className="moj-sub-navigation__item">
             <Link to={ `/cases/list/${ moment(currentDate).add(1, 'd').format('DD/MM/YYYY') }` }
-                  className="hmcts-sub-navigation__link govuk-link--no-visited-state">
+                  className="moj-sub-navigation__link govuk-link--no-visited-state">
               { moment(currentDate).add(1, 'd').format('dddd, Do MMMM YYYY') }
             </Link>
           </li>
 
-          <li className="hmcts-sub-navigation__item">
+          <li className="moj-sub-navigation__item">
             <Link to={ `/cases/list/${ moment(currentDate).add(2, 'd').format('DD/MM/YYYY') }` }
-                  className="hmcts-sub-navigation__link govuk-link--no-visited-state">
+                  className="moj-sub-navigation__link govuk-link--no-visited-state">
               { moment(currentDate).add(2, 'd').format('dddd, Do MMMM YYYY') }
             </Link>
           </li>
@@ -113,18 +113,18 @@ function CaseList (props) {
       { data.unmatched && data.unmatched.length && (
         <Fragment>
 
-          <div className="govuk-warning-text moj-warning-text moj-warning-text--interrupt govuk-!-margin-0">
+          <div className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-0">
             <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong className="govuk-warning-text__text"><span
               className="govuk-warning-text__assistive">Warning</span>There are 3 cases that have not been matched to
               offender records in Delius.</strong>
           </div>
 
-          <div className="hmcts-identity-bar app-identity-bar-warning govuk-!-margin-bottom-6">
-            <div className="hmcts-identity-bar__container">
+          <div className="moj-identity-bar app-identity-bar-warning govuk-!-margin-bottom-6">
+            <div className="moj-identity-bar__container">
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                <table className="govuk-table moj-table moj-table--split-rows govuk-!-margin-bottom-0">
+                <table className="govuk-table app-table app-table--split-rows govuk-!-margin-bottom-0">
                   <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -167,7 +167,7 @@ function CaseList (props) {
                 </table>
               </div>
 
-              <p className="govuk-body moj-!-text-align-center">
+              <p className="govuk-body app-!-text-align-center">
                 <a className="govuk-link govuk-link--no-visited-state" href="?expand"
                    onClick={ e => e.preventDefault() }><em className="app-icon-down"/> Show more <em
                   className="app-icon-down"/></a>
@@ -178,23 +178,21 @@ function CaseList (props) {
         </Fragment>
       ) }
 
-      <div className="hmcts-filter-layout">
+      <div className="moj-filter-layout">
 
-        <div className="hmcts-filter-layout__filter">
-          <div className="hmcts-filter hmcts-hidden">
-            <div className="hmcts-filter__header">
+        <div className="moj-filter-layout__filter">
+          <div className="moj-filter moj-hidden">
+            <div className="moj-filter__header">
 
-              <div className="hmcts-filter__header-title">
+              <div className="moj-filter__header-title">
                 <h2 className="govuk-heading-m">Filter</h2>
               </div>
 
-              <div className="hmcts-filter__header-action">
-
-              </div>
+              <div className="moj-filter__header-action" />
 
             </div>
 
-            <div className="hmcts-filter__content">
+            <div className="moj-filter__content">
 
               <CaseListFilter/>
 
@@ -204,36 +202,36 @@ function CaseList (props) {
 
         </div>
 
-        <div className="hmcts-filter-layout__content">
+        <div className="moj-filter-layout__content">
 
-          <table className="govuk-table moj-table" role="presentation">
+          <table className="govuk-table app-table" role="presentation">
             <tbody>
             <tr>
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
-                  <span className="govuk-hint moj-util-inline">&nbsp;at { data.courtName }</span>
+                  <span className="govuk-hint app-!-inline">&nbsp;at { data.courtName }</span>
                 </p>
               </td>
-              <td className="moj-!-text-align-right">
+              <td className="app-!-text-align-right">
 
-                <div className="hmcts-action-bar">
+                <div className="moj-action-bar">
                   <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                           type="button"
                           aria-haspopup="true"
                           aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
                   </button>
 
-                  <div className="hmcts-action-bar__filter"/>
+                  <div className="moj-action-bar__filter"/>
 
-                  <div className="hmcts-menu">
-                    <div className="hmcts-menu__wrapper">
+                  <div className="moj-menu">
+                    <div className="moj-menu__wrapper">
 
-                      <button id="filter-button" className="govuk-button govuk-button--secondary hmcts-menu__item"
+                      <button id="filter-button" className="govuk-button app-button--interrupt moj-menu__item"
                               type="button">Search
                       </button>
 
-                      <button type="submit" className="govuk-button govuk-button--secondary hmcts-menu__item"
+                      <button type="submit" className="govuk-button app-button--interrupt moj-menu__item"
                               onClick={ () => {
                                 props.history.push('/cases/add')
                               } }>
@@ -250,11 +248,11 @@ function CaseList (props) {
             </tbody>
           </table>
 
-          <div className="hmcts-scrollable-pane">
+          <div className="moj-scrollable-pane">
 
-            <div className="hmcts-scrollable-pane__wrapper govuk-!-margin-top-0">
+            <div className="moj-scrollable-pane__wrapper govuk-!-margin-top-0">
 
-              <table className="govuk-table moj-table moj-table--split-rows app-alternate-rows-table">
+              <table className="govuk-table app-table app-table--split-rows app-alternate-rows-table">
                 <thead>
                 <tr>
                   <th scope="col">Name</th>

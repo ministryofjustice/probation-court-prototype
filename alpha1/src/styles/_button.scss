@@ -1,0 +1,26 @@
+.app-button--interrupt {
+  background-color: govuk-colour("light-blue");
+
+  &,
+  &:link,
+  &:visited,
+  &:active,
+  &:hover {
+    color: govuk-colour("white");
+  }
+
+  @include govuk-compatibility(govuk_template) {
+    &:link:focus {
+      color: govuk-colour("white");
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: govuk-colour("light-blue");
+
+    &[disabled] {
+      background-color: govuk-colour("light-blue");
+    }
+  }
+}
