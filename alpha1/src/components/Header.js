@@ -15,7 +15,7 @@ function Header () {
               <Logo className="govuk-header__logotype-crown"/>
             </span>
 
-          <NavLink to="/cases/list" className="moj-header__link moj-header__link--organisation-name">HMPPS</NavLink>
+          <NavLink to="/cases/list" className="moj-header__link moj-header__link--organisation-name">MOJ Digital</NavLink>
           <NavLink to="/cases/list" className="moj-header__link moj-header__link--service-name">Probation in
             court</NavLink>
         </div>

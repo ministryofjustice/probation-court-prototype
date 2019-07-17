@@ -13,12 +13,25 @@ $moj-page-width: $govuk-page-width;
 @import "~govuk-frontend/all";
 @import "~@ministryofjustice/frontend/all";
 
+@import "button";
+@import "calendar";
+@import "layout";
+@import "risk";
+@import "table";
+@import "tooltip";
+@import "typography";
+@import "warning-text";
+
 // ===============================================
 // Overrides
 //===============================================
 
 * {
   box-sizing: border-box;
+}
+
+.moj-header {
+  border-bottom: 10px solid govuk-colour("blue");
 }
 
 .govuk-phase-banner__content__tag {
@@ -37,10 +50,6 @@ $moj-page-width: $govuk-page-width;
       background-color: white !important;
     }
   }
-}
-
-.app-risk-tag {
-  min-width: 125px;
 }
 
 .moj-badge--red {
@@ -90,10 +99,6 @@ $moj-page-width: $govuk-page-width;
   margin: 0;
 }
 
-.app-tooltip--secondary {
-  cursor: default;
-}
-
 .app-risk-tag--high, .app-risk-tag--very-high {
   color: govuk-colour("bright-red");
   border-color: govuk-colour("bright-red");
@@ -106,14 +111,6 @@ $moj-page-width: $govuk-page-width;
 //===============================================
 // App specific styles
 //===============================================
-
-@import "calendar";
-@import "layout";
-@import "risk";
-@import "table";
-@import "tooltip";
-@import "typography";
-@import "warning-text";
 
 .app-offence-title {
   padding-left: 5px;

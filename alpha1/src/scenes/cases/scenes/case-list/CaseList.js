@@ -227,11 +227,11 @@ function CaseList (props) {
                   <div className="moj-menu">
                     <div className="moj-menu__wrapper">
 
-                      <button id="filter-button" className="govuk-button govuk-button--secondary moj-menu__item"
+                      <button id="filter-button" className="govuk-button app-button--interrupt moj-menu__item"
                               type="button">Search
                       </button>
 
-                      <button type="submit" className="govuk-button govuk-button--secondary moj-menu__item"
+                      <button type="submit" className="govuk-button app-button--interrupt moj-menu__item"
                               onClick={ () => {
                                 props.history.push('/cases/add')
                               } }>

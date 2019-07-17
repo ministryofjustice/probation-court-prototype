@@ -1,12 +1,13 @@
 .app-tooltip {
   position: relative;
+  cursor: default;
 
   span {
     font-size: 16px;
     position: absolute;
     z-index: 999;
     white-space: nowrap;
-    top: -36px;
+    top: -38px;
     right: 0;
     background: govuk-colour("grey-1");
     border-radius: 3px;

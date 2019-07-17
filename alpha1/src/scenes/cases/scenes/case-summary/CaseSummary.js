@@ -8,7 +8,7 @@ function CaseSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
-  console.info(currentCase)
+  console.info('CURRENT CASE:', currentCase)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -58,11 +58,11 @@ function CaseSummary (props) {
                 <div className="moj-menu">
                   <div className="moj-menu__wrapper">
 
-                    <button className="govuk-button govuk-button--secondary moj-menu__item" type="button">Adjourn
+                    <button className="govuk-button app-button--interrupt moj-menu__item" type="button">Adjourn
                       case
                     </button>
 
-                    <button className="govuk-button govuk-button--secondary moj-menu__item" type="button">Record
+                    <button className="govuk-button app-button--interrupt moj-menu__item" type="button">Record
                       sentence
                     </button>
 
@@ -231,12 +231,6 @@ function CaseSummary (props) {
                       <thead>
                       <tr>
                         <th>Offence</th>
-                        <th>
-                          <p
-                            className={ !currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) ? 'app-!-text-align-right' : '' }>
-                            Code
-                          </p>
-                        </th>
                         { currentCase.offences.some(offence => { return offence.plea && offence.plea.length }) && (
                           <th>Plea</th>) }
                         { currentCase.offences.some(offence => { return offence.pleaDate && offence.pleaDate.length }) && (
@@ -249,7 +243,6 @@ function CaseSummary (props) {
                         return (
                           <tr key={ offenceIndex }>
                             <td>{ offence.title }</td>
-                            <td>{ offence.code }</td>
                             { !!(offence.plea && offence.plea.length) && (<td>{ offence.plea }</td>) }
                             { !!(offence.pleaDate && offence.pleaDate.length) && (
                               <td>{ offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').format('DD/MM/YYYY')) }</td>
@@ -296,33 +289,73 @@ function CaseSummary (props) {
                 </div>
               </div>
 
-              { !!(currentCase.defendant.previousConvictions && currentCase.defendant.previousConvictions.length) && (
+              <div className="moj-identity-bar govuk-!-margin-top-4">
+                <div className="moj-identity-bar__container">
+                  <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+
+                    <h2 className="govuk-heading-m govuk-!-margin-top-6">Case summary</h2>
+
+                    { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
+                      return (
+                        offenceIndex < 2 ?
+                          <Fragment key={ offenceIndex }>
+                            <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
+                            <p
+                              className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
+                          </Fragment> : <Fragment key={ offenceIndex }/>
+                      )
+                    }) }
+
+                    { !!(currentCase.offences && currentCase.offences.length > 3) && (
+                      <p className="govuk-body app-!-text-align-center">
+                        <a className="govuk-link govuk-link--no-visited-state" href="?expand"
+                           onClick={ e => e.preventDefault() }><em className="app-icon-down"/> Show more <em
+                          className="app-icon-down"/></a>
+                      </p>
+                    ) }
+
+                  </div>
+                </div>
+              </div>
+
+              { !!(currentCase.defendant.previousConvictions.summary && currentCase.defendant.previousConvictions.summary.length) && (
                 <div className="moj-identity-bar govuk-!-margin-top-4">
                   <div className="moj-identity-bar__container">
                     <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                      <h2 className="govuk-heading-m govuk-!-margin-top-2">Previous convictions</h2>
+                      <h2 className="govuk-heading-m govuk-!-margin-top-6">Summary of convictions <span
+                        className="govuk-hint app-!-inline govuk-!-margin-top-0">from CPS pack</span></h2>
 
                       <table className="govuk-table app-table app-table--split-rows">
-                        <thead>
-                        <tr>
-                          <th>Offence</th>
-                          <th>Code</th>
-                          <th>Date</th>
-                        </tr>
-                        </thead>
                         <tbody>
 
-                        { currentCase.defendant.previousConvictions && currentCase.defendant.previousConvictions.map((offence, offenceIndex) => {
+                        { currentCase.defendant.previousConvictions.summary.map((conviction, convictionIndex) => {
                           return (
-                            <tr key={ offenceIndex }>
-                              <td>{ offence.title }</td>
-                              <td>{ offence.code }</td>
-                              <td>{ offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').subtract(1, 'years').format('DD/MM/YYYY')) }</td>
+                            <tr key={ convictionIndex }>
+                              <td style={ { 'width': '75px' } }>{ conviction.count }</td>
+                              <td>{ conviction.description }</td>
+                              <td style={ { 'width': '150px' } }>{ conviction.dateRange }</td>
                             </tr>
                           )
                         }) }
 
+                        </tbody>
+                      </table>
+
+                      <table className="govuk-table app-table app-table--split-rows">
+                        <tbody>
+                        <tr>
+                          <th>Convictions:</th>
+                          <td>{ currentCase.defendant.previousConvictions.convictionCount }</td>
+                          <th>Offences:</th>
+                          <td>{ currentCase.defendant.previousConvictions.offenceCount }</td>
+                        </tr>
+                        <tr>
+                          <th>First convicted:</th>
+                          <td>{ currentCase.defendant.previousConvictions.firstConvicted }</td>
+                          <th>Last convicted:</th>
+                          <td>{ currentCase.defendant.previousConvictions.lastConvicted }</td>
+                        </tr>
                         </tbody>
                       </table>
 
@@ -366,20 +399,6 @@ function CaseSummary (props) {
                     <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
                   </Fragment>
                 ) }
-
-                <h2 className="govuk-heading-m govuk-!-margin-top-6">Case summary</h2>
-
-                { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
-                  return (
-                    <Fragment key={ offenceIndex }>
-                      <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
-                      <p
-                        className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
-                    </Fragment>
-                  )
-                }) }
-
-                <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
                 <h2 className="govuk-heading-m govuk-!-margin-top-6">Case tracker</h2>
 
@@ -439,6 +458,9 @@ function CaseSummary (props) {
         ) }
 
         <Link to="/cases" className="govuk-back-link">Back</Link>
+        <Link to="#top" className="app-top-link" onClick={() => {
+          window.scrollTo(0, 0)
+        }}>Back to top</Link>
 
       </main>
 

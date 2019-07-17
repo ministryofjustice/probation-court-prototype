@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-function CaseListFilter() {
+function CaseListFilter () {
   return (
     <Fragment>
       <div className="moj-filter__selected">
@@ -243,6 +243,20 @@ function CaseListFilter() {
           </fieldset>
 
         </div>
+
+        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+        <h3 className="govuk-heading-m">Pre-filtered list</h3>
+
+        <p className="govuk-body">The overall case list has been pre-filtered in order to ignore cases that are usually
+          of no interest to probation.</p>
+
+        <p className="govuk-body">If you wish to view the complete list of cases for this date you can do so by clicking
+          the below link.</p>
+
+        <p className="govuk-body"><a href="/cases/list?prefiltered=false"
+                                     className="govuk-link govuk-link--no-visited-state"
+                                     onClick={ e => {e.preventDefault()} }>View complete case list</a>.</p>
 
       </div>
     </Fragment>
