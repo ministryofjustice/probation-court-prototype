@@ -14,6 +14,9 @@ function Navigation () {
                 <NavLink to="/cases/list" className="moj-primary-navigation__link">Case list</NavLink>
               </li>
               <li className="moj-primary-navigation__item">
+                <NavLink to="/cases/search" className="moj-primary-navigation__link" onClick={ e => e.preventDefault() }>Search</NavLink>
+              </li>
+              <li className="moj-primary-navigation__item">
                 <NavLink to="/help" className="moj-primary-navigation__link" onClick={ e => e.preventDefault() }>Help</NavLink>
               </li>
             </ul>

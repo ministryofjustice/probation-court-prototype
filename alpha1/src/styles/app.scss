@@ -42,10 +42,9 @@ $moj-page-width: $govuk-page-width;
   fill: white;
 }
 
-.moj-primary-navigation__link {
+.moj-header__link, .moj-header__navigation-link, .moj-primary-navigation__link {
   &:focus {
     color: white !important;
-
     &:before {
       background-color: white !important;
     }
@@ -111,6 +110,16 @@ $moj-page-width: $govuk-page-width;
 //===============================================
 // App specific styles
 //===============================================
+
+.app-back-to-top__link {
+  float: right;
+  margin: 15px 0;
+  @include govuk-clearfix;
+}
+
+.app-back-to-top__icon {
+  margin-right: 5px;
+}
 
 .app-offence-title {
   padding-left: 5px;
