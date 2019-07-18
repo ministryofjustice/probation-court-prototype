@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { ReactComponent as Logo } from '../assets/moj-logotype-crest.svg'
 
@@ -15,9 +15,9 @@ function Header () {
               <Logo className="govuk-header__logotype-crown"/>
             </span>
 
-          <NavLink to="/cases/list" className="moj-header__link moj-header__link--organisation-name">MOJ Digital</NavLink>
-          <NavLink to="/cases/list" className="moj-header__link moj-header__link--service-name">Probation in
-            court</NavLink>
+          <Link to="/cases/list" className="moj-header__link moj-header__link--organisation-name">MOJ Digital</Link>
+          <Link to="/cases/list" className="moj-header__link moj-header__link--service-name">Probation in
+            court</Link>
         </div>
         <div className="moj-header__content">
 

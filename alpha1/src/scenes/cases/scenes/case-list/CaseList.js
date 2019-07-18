@@ -39,7 +39,6 @@ function CaseList (props) {
               unmatched.push($case)
             } else if ($case.offences.some(item => { return notInString(item.title, 'speed') && notInString(item.title, 'non-payment') && notInString(item.title, 'television') })) {
               cases.push($case)
-              console.info($case)
             }
           })
         })
@@ -226,10 +225,6 @@ function CaseList (props) {
 
                   <div className="moj-menu">
                     <div className="moj-menu__wrapper">
-
-                      <button id="filter-button" className="govuk-button app-button--interrupt moj-menu__item"
-                              type="button">Search
-                      </button>
 
                       <button type="submit" className="govuk-button app-button--interrupt moj-menu__item"
                               onClick={ () => {
