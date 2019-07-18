@@ -10,6 +10,7 @@ import AdjournedList from './scenes/adjourned-list/AdjournedList'
 import CaseSummary from './scenes/case-summary/CaseSummary'
 import OffenderSelection from './scenes/offender-selection/OffenderSelection'
 import AddCase from './scenes/add-case/AddCase'
+import OffenderSummary from './scenes/offender-summary/OffenderSummary'
 
 function Cases (props) {
 
@@ -19,6 +20,7 @@ function Cases (props) {
       <Route path={ `${ props.match.url }/adjourned/:day?/:month?/:year?` } component={ AdjournedList }/>
       <Route path={ `${ props.match.url }/sentenced/:day?/:month?/:year?` } component={ SentencedList }/>
       <Route path={ `${ props.match.url }/details/:id` } component={ CaseSummary }/>
+      <Route path={ `${ props.match.url }/offender/:id` } component={ OffenderSummary }/>
       <Route path={ `${ props.match.url }/match/:id` } component={ OffenderSelection }/>
       <Route path={ `${ props.match.url }/add` } component={ AddCase }/>
     </StateProvider>

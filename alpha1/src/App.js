@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import './styles/app.scss'
 
 import Header from './components/Header'
-import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import PhaseBanner from './components/PhaseBanner'
 
@@ -15,7 +14,6 @@ function App () {
   return (
     <Router>
       <Header/>
-      <Navigation/>
 
       <div className="govuk-width-container">
         <PhaseBanner/>

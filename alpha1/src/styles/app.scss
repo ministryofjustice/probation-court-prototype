@@ -107,9 +107,31 @@ $moj-page-width: $govuk-page-width;
   margin: 0; // Stop horizontal scrolling
 }
 
+.moj-primary-navigation__search {
+  float: right;
+  @include govuk-clearfix;
+}
+
+.moj-primary-navigation__container {
+  padding-top: 10px;
+}
+
+.moj-search {
+  margin: 0;
+  padding: 0;
+}
+
 //===============================================
 // App specific styles
 //===============================================
+
+.app-filter__header--blue {
+  background: govuk-colour("blue");
+
+  .moj-filter__header-title .govuk-heading-m {
+    color: govuk-colour("white");
+  }
+}
 
 .app-back-to-top__link {
   float: right;

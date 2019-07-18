@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import { useStateValue } from '../../../../utils/StateProvider'
+import DefendantDetails from '../../shared-components/DefendantDetails'
+import SomethingWrong from '../../shared-components/SomethingWrong'
 
 function CaseSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
   console.info('CURRENT CASE:', currentCase)
+  console.info('Props:', props)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -35,7 +38,7 @@ function CaseSummary (props) {
       <div className="govuk-breadcrumbs">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/list" className="govuk-breadcrumbs__link">Case</Link>
+            <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Case details</li>
         </ol>
@@ -78,15 +81,12 @@ function CaseSummary (props) {
 
         { currentCase && currentCase.defendant && (
           <div className="moj-filter-layout">
-
             <div className="moj-filter-layout__filter">
-
               <div className="moj-filter">
 
-                <div className="moj-filter__header">
-
+                <div className="moj-filter__header app-filter__header--blue">
                   <div className="moj-filter__header-title">
-                    <h2 className="govuk-heading-m">{ currentCase.defendant && currentCase.defendant.name }</h2>
+                    <h2 className="govuk-heading-m">{ currentCase.defendant.name }</h2>
                   </div>
                 </div>
 
@@ -96,27 +96,17 @@ function CaseSummary (props) {
 
                     <div className="moj-filter__selected-heading">
 
-                      <div className="app-!-float-left">
+                      <DefendantDetails/>
 
-                        <img src="/assets/images/no-photo.png" width="82" height="102"
-                             alt={ `${ currentCase.defendant.name }` }
-                             className="app-offender-image"/>
-                      </div>
-                      <div className="app-!-float-left">
-
-                        <p className="govuk-body govuk-!-margin-bottom-0">
-                          <strong>DOB:</strong> { moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
-                        </p>
-                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>CRN:</strong> X612323A</p>
-                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>PNC:</strong> 2004/123456B</p>
-                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>Court
-                          store:</strong> { currentCase.caseNumber }</p>
-
-                      </div>
-
-                      <div
-                        className={ `moj-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender
-                      </div>
+                      { currentCase.defendant.deliusStatus !== 'Not known' && (
+                        <button
+                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-top-2 app-full-width"
+                          onClick={ e => {
+                            e.preventDefault()
+                            props.history.push(`/cases/offender/${ props.match.params.id }`)
+                          } }>View offender summary
+                        </button>
+                      )}
 
                     </div>
                   </div>
@@ -129,19 +119,25 @@ function CaseSummary (props) {
                           className="govuk-hint app-!-inline govuk-!-margin-top-0">from Delius record</span></h2>
 
                         { currentCase.defendant.risk.map((risk, riskIndex) => {
-                          return risk.type === 'RoSH' ? (
-                            <div key={ riskIndex }
-                                 className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
-                              of Serious Harm</div>
-                          ) : (<Fragment key={ riskIndex }/>)
+                          return (
+                            <Fragment key={ riskIndex }>
+                              { risk.type === 'RoSH' && (
+                                <div
+                                     className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
+                                  of Serious Harm</div>
+                              ) }
+                            </Fragment>
+                          )
                         }) }
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
                       </Fragment>
                     ) }
 
                     { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
                       <Fragment>
+
                         <h2 className="govuk-heading-m">Current order</h2>
 
                         <p className="govuk-body govuk-!-margin-bottom-0">155 days community service</p>
@@ -159,40 +155,12 @@ function CaseSummary (props) {
                         </div>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
                       </Fragment>
                     ) }
 
-                    <h2 className="govuk-heading-m">Contact details</h2>
-
-                    <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Address</h3>
-
-                    <p className="govuk-body">{ currentCase.defendant.address.line1 }<br/>
-                      { currentCase.defendant.address.line2 && (
-                        <Fragment>{ currentCase.defendant.address.line2 }<br/></Fragment>
-                      ) }
-                      { currentCase.defendant.address.line3 && (
-                        <Fragment>{ currentCase.defendant.address.line3 }<br/></Fragment>
-                      ) }
-                      { currentCase.defendant.address.line4 && (
-                        <Fragment>{ currentCase.defendant.address.line4 }<br/></Fragment>
-                      ) }
-                      { currentCase.defendant.address.postcode }</p>
-
-                    <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Telephone</h3>
-
-                    <p className="govuk-body">07765 765 432</p>
-
-                    <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</h3>
-
-                    <p className="govuk-body"><a href={ `/contact/${ props.match.params.id }` }
-                                                 className="govuk-link govuk-link--no-visited-state"
-                                                 onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
-                    </p>
-
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
                         <h2 className="govuk-heading-m">Offender manager</h2>
 
@@ -209,10 +177,16 @@ function CaseSummary (props) {
                           Telephone: 0114 276 0760
                         </p>
 
-                        <button className="govuk-button govuk-button--secondary">Contact offender manager</button>
+                        <button className="govuk-button govuk-button--secondary app-full-width govuk-!-margin-bottom-0">
+                          Contact offender manager
+                        </button>
+
+                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
                       </Fragment>
                     ) }
+
+                    <SomethingWrong/>
 
                   </div>
                 </div>
@@ -293,7 +267,7 @@ function CaseSummary (props) {
                 <div className="moj-identity-bar__container">
                   <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                    <h2 className="govuk-heading-m govuk-!-margin-top-6">Case summary</h2>
+                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Case summary</h2>
 
                     { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
                       return (
@@ -323,7 +297,7 @@ function CaseSummary (props) {
                   <div className="moj-identity-bar__container">
                     <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                      <h2 className="govuk-heading-m govuk-!-margin-top-6">Summary of convictions <span
+                      <h2 className="govuk-heading-m govuk-!-margin-top-2">Summary of convictions <span
                         className="govuk-hint app-!-inline govuk-!-margin-top-0">from CPS pack</span></h2>
 
                       <table className="govuk-table app-table app-table--split-rows">
@@ -366,40 +340,6 @@ function CaseSummary (props) {
 
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
-                  <Fragment>
-                    <h2 className="govuk-heading-m govuk-!-margin-top-6">Registers and warnings <span
-                      className="govuk-hint app-!-inline govuk-!-margin-top-0">from Delius record</span></h2>
-
-                    <table className="govuk-table app-table app-table--split-rows">
-                      <thead>
-                      <tr>
-                        <th style={ { 'width': '220px' } }>Type</th>
-                        <th style={ { 'width': '130px' } }>Status</th>
-                        <th>Description</th>
-                        <th style={ { 'width': '130px' } }>Date</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      { currentCase.defendant.risk.map((risk, riskIndex) => {
-                        return (
-                          <tr key={ riskIndex }>
-                            <td>{ risk.type }</td>
-                            <td><span
-                              className={ `app-risk-tag app-risk-tag--${ risk.status.toLowerCase().split(' ').join('-') }` }>{ risk.status }</span>
-                            </td>
-                            <td>{ risk.description }</td>
-                            <td>{ moment(risk.date, 'YYYY-MM-DD').format('DD/MM/YYYY') }</td>
-                          </tr>
-                        )
-                      }) }
-                      </tbody>
-                    </table>
-
-                    <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-                  </Fragment>
-                ) }
-
                 <h2 className="govuk-heading-m govuk-!-margin-top-6">Case tracker</h2>
 
                 <table className="govuk-table app-table app-table--split-rows">
@@ -435,7 +375,7 @@ function CaseSummary (props) {
                 <div className="moj-identity-bar__container">
                   <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                    <h2 className="govuk-heading-m">Notes</h2>
+                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Notes</h2>
 
                     { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
                       <Fragment>
@@ -457,12 +397,12 @@ function CaseSummary (props) {
           </div>
         ) }
 
-        <Link to="/cases" className="govuk-back-link">Back</Link>
+        <Link to="/cases/list" className="govuk-back-link">Back</Link>
 
-        <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={e => {
+        <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={ e => {
           e.preventDefault()
           window.scrollTo(0, 0)
-        }}>
+        } }>
           <svg role="presentation" focusable="false" className="app-back-to-top__icon"
                xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
             <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>

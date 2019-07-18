@@ -30,7 +30,7 @@ function CaseList (props) {
               courtRoom: parseInt($session.courtRoom, 10),
               startTime: $block.startTime,
               endTime: $block.endTime,
-              noMatch: $case.offences.some($offence => { return !notInString($offence.title, 'emergency worker') })
+              noMatch: $case.defendant.deliusStatus === 'NO_MATCH'
             }
 
             $case.defendant = { ...$case.defendant, name: fixNameCase($case.defendant.name) }
@@ -105,7 +105,6 @@ function CaseList (props) {
           </li>
 
         </ul>
-
 
       </nav>
 

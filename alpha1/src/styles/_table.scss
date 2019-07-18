@@ -4,14 +4,23 @@
 
   th, td {
     vertical-align: top;
+    text-align: left;
+
+    p {
+      margin-top: 0;
+      margin-bottom: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
-  td p, th p {
-    margin-top: 0;
-    margin-bottom: 5px;
-
-    &:last-child {
-      margin-bottom: 0;
+  &:not(.app-table__50-50) {
+    td:nth-last-child(n) ~ td:last-child,
+    th:nth-last-child(n) ~ th:last-child {
+      text-align: right;
+      padding-right: 0;
     }
   }
 
@@ -19,6 +28,7 @@
     tr:nth-child(even) {
       background-color: govuk-colour("grey-4");
     }
+
     th, td {
       padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) !important;
     }
@@ -26,22 +36,13 @@
 
   &.app-table--split-rows {
 
-    thead tr {
+    thead tr:last-child {
       border-bottom: 2px solid govuk-colour("black");
     }
 
-    th, td {
+    th,td {
       padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) govuk-em(govuk-spacing(2), 19px) 0;
       border-bottom: 1px solid $govuk-border-colour;
-      text-align: left;
-
-      &:last-child {
-        text-align: right;
-      }
-
-      &:only-child {
-        text-align: left;
-      }
     }
 
     th {

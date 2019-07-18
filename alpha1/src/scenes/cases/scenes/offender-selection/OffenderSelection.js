@@ -87,7 +87,7 @@ function OffenderSelection () {
 
                     <div className="moj-filter__selected-heading">
 
-                      <table className="govuk-table app-table">
+                      <table className="govuk-table app-table app-table__50-50">
                         <tbody>
                         <tr>
                           <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
@@ -167,7 +167,7 @@ function OffenderSelection () {
                       to
                       probation.</p>
 
-                    <button className="govuk-button govuk-button--secondary">Offender not known</button>
+                    <button className="govuk-button govuk-button--secondary app-full-width govuk-!-margin-bottom-0">Offender not known</button>
 
                   </div>
 
@@ -287,7 +287,7 @@ function OffenderSelection () {
           </div>
         </div>
 
-        <Link to="/" className="govuk-back-link">Back</Link>
+        <Link to="/cases/list" className="govuk-back-link">Back</Link>
 
       </main>
 
