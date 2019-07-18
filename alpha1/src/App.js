@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import './styles/app.scss'
 
@@ -18,11 +18,11 @@ function App () {
       <Navigation/>
 
       <div className="govuk-width-container">
-
         <PhaseBanner/>
         <Route path="/cases/" component={ Cases }/>
         <Route path="/calendar/:month?/:year?" component={ Calendar }/>
-
+        <Route path="/calendar/:month?/:year?" component={ Calendar }/>
+        <Redirect from="*" to="/cases/list" />
       </div>
 
       <Footer/>

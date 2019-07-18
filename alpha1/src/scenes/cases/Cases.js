@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import { StateProvider } from '../../utils/StateProvider'
 import { initialState, reducer } from './context/CaseContext'
@@ -14,16 +14,14 @@ import AddCase from './scenes/add-case/AddCase'
 function Cases (props) {
 
   return (
-    <Router>
-      <StateProvider initialState={ initialState } reducer={ reducer }>
-        <Route path={ `${ props.match.url }/list/:day?/:month?/:year?` } component={ CaseList }/>
-        <Route path={ `${ props.match.url }/adjourned/:day?/:month?/:year?` } component={ AdjournedList }/>
-        <Route path={ `${ props.match.url }/sentenced/:day?/:month?/:year?` } component={ SentencedList }/>
-        <Route path={ `${ props.match.url }/details/:id` } component={ CaseSummary }/>
-        <Route path={ `${ props.match.url }/match/:id` } component={ OffenderSelection }/>
-        <Route path={ `${ props.match.url }/add` } component={ AddCase }/>
-      </StateProvider>
-    </Router>
+    <StateProvider initialState={ initialState } reducer={ reducer }>
+      <Route path={ `${ props.match.url }/list/:day?/:month?/:year?` } component={ CaseList }/>
+      <Route path={ `${ props.match.url }/adjourned/:day?/:month?/:year?` } component={ AdjournedList }/>
+      <Route path={ `${ props.match.url }/sentenced/:day?/:month?/:year?` } component={ SentencedList }/>
+      <Route path={ `${ props.match.url }/details/:id` } component={ CaseSummary }/>
+      <Route path={ `${ props.match.url }/match/:id` } component={ OffenderSelection }/>
+      <Route path={ `${ props.match.url }/add` } component={ AddCase }/>
+    </StateProvider>
   )
 }
 
