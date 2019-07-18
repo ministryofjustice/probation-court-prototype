@@ -106,7 +106,7 @@ function CaseSummary (props) {
                             props.history.push(`/cases/offender/${ props.match.params.id }`)
                           } }>View offender summary
                         </button>
-                      )}
+                      ) }
 
                     </div>
                   </div>
@@ -123,7 +123,7 @@ function CaseSummary (props) {
                             <Fragment key={ riskIndex }>
                               { risk.type === 'RoSH' && (
                                 <div
-                                     className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
+                                  className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
                                   of Serious Harm</div>
                               ) }
                             </Fragment>
@@ -150,7 +150,7 @@ function CaseSummary (props) {
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
 
                         <div
-                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active
+                          className="moj-badge moj-badge moj-badge--green govuk-!-margin-top-4 app-full-width">Active
                           Intervention
                         </div>
 
@@ -286,6 +286,14 @@ function CaseSummary (props) {
                            onClick={ e => e.preventDefault() }><em className="app-icon-down"/> Show more <em
                           className="app-icon-down"/></a>
                       </p>
+                    ) }
+
+                    { !!(currentCase.bailConditions && currentCase.bailConditions.length) && (
+                      <Fragment>
+                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+                        <h3 className="govuk-heading-s govuk-!-margin-bottom-1">Bail conditions</h3>
+                        <p className="govuk-body">{ currentCase.bailConditions }</p>
+                      </Fragment>
                     ) }
 
                   </div>

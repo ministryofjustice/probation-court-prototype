@@ -23,7 +23,7 @@ function OffenderDetails () {
         </tr>
         <tr>
           <th>Gender</th>
-          <td colSpan="2">Male</td>
+          <td colSpan="2">{ currentCase.defendant.gender === 'M' ? 'Male' : 'Female' }</td>
         </tr>
         <tr>
           <th>NI Number</th>
