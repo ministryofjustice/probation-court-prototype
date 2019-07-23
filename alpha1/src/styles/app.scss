@@ -6,6 +6,10 @@ $moj-assets-path: "/assets/";
 $govuk-page-width: 1800px;
 $moj-page-width: $govuk-page-width;
 
+$govuk-text-colour: #231f20;
+$govuk-brand-colour: #204060;
+$govuk-link-colour: #587088;
+
 //===============================================
 // Imports
 //===============================================
@@ -30,8 +34,12 @@ $moj-page-width: $govuk-page-width;
   box-sizing: border-box;
 }
 
+.govuk-main-wrapper {
+  padding-top: 15px;
+}
+
 .moj-header {
-  border-bottom: 10px solid govuk-colour("blue");
+  border-bottom: 10px solid $govuk-brand-colour;
 }
 
 .govuk-phase-banner__content__tag {
@@ -73,8 +81,8 @@ $moj-page-width: $govuk-page-width;
 }
 
 .moj-badge--small {
-  color: govuk-colour("blue");
-  border-color: govuk-colour("blue");
+  color: $govuk-brand-colour;
+  border-color: $govuk-brand-colour;
   text-align: center;
   min-width: 45px;
   padding: 5px 10px;
@@ -98,11 +106,6 @@ $moj-page-width: $govuk-page-width;
   margin: 0;
 }
 
-.app-risk-tag--high, .app-risk-tag--very-high {
-  color: govuk-colour("bright-red");
-  border-color: govuk-colour("bright-red");
-}
-
 .moj-pagination {
   margin: 0; // Stop horizontal scrolling
 }
@@ -121,12 +124,31 @@ $moj-page-width: $govuk-page-width;
   padding: 0;
 }
 
+.moj-pagination__link {
+  &:link,
+  &:visited {
+    color: $govuk-link-colour;
+  }
+  &:hover {
+    color: $govuk-link-hover-colour;
+  }
+  &:focus {
+    color: $govuk-link-active-colour;
+  }
+}
+
+.moj-sub-navigation__link[aria-current="page"] {
+  &:before {
+    background-color: $govuk-link-colour
+  }
+}
+
 //===============================================
 // App specific styles
 //===============================================
 
 .app-filter__header--blue {
-  background: govuk-colour("blue");
+  background: $govuk-brand-colour;
 
   .moj-filter__header-title .govuk-heading-m {
     color: govuk-colour("white");
@@ -152,9 +174,14 @@ $moj-page-width: $govuk-page-width;
   }
 }
 
+.app-risk-tag--high, .app-risk-tag--very-high {
+  color: govuk-colour("bright-red");
+  border-color: govuk-colour("bright-red");
+}
+
 .app-identity-bar-warning {
-  background-color: govuk-tint(govuk-colour("blue"), 97);
-  box-shadow: inset 0 -1px 0 0 govuk-colour("blue");
+  background-color: govuk-tint($govuk-brand-colour, 97);
+  box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
 }
 
 .app-identity-bar--error {
@@ -163,7 +190,7 @@ $moj-page-width: $govuk-page-width;
 }
 
 .app-icon-down {
-  border: solid govuk-colour("blue");
+  border: solid $govuk-brand-colour;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;

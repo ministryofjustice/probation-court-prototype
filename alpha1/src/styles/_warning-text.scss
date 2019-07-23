@@ -13,10 +13,10 @@
   }
 
   &.app-warning-text--interrupt {
-    background: govuk-colour("blue");
+    background: $govuk-brand-colour;
 
     .govuk-warning-text__icon {
-      color: govuk-colour("blue");
+      color: $govuk-brand-colour;
     }
   }
 
@@ -33,7 +33,7 @@
     height: 38px;
 
     &.app-warning-text__icon--interrupt {
-      color: govuk-colour("blue");
+      color: $govuk-brand-colour;
       background: govuk-colour("white");
       border-color: govuk-colour("white");
     }

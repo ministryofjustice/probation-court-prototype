@@ -43,7 +43,7 @@ function OffenderSummary (props) {
               <h1 className="govuk-heading-l govuk-!-margin-0">Offender summary</h1>
               <p className="govuk-body-m govuk-!-font-weight-bold">Appearing
                 on { currentDate.format('dddd, Do MMMM YYYY') }<span
-                  className="govuk-hint app-!-inline">&nbsp;at { court }</span></p>
+                  className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
             </td>
             <td className="app-!-text-align-right">
 
@@ -122,7 +122,7 @@ function OffenderSummary (props) {
                                                  onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
                     </p>
 
-                    <button className="govuk-button govuk-button--secondary app-full-width govuk-!-margin-bottom-0">
+                    <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
                       Edit contact details
                     </button>
 
@@ -143,7 +143,7 @@ function OffenderSummary (props) {
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
 
                         <div
-                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active
+                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 govuk-!-width-full">Active
                           Intervention
                         </div>
 
@@ -170,7 +170,7 @@ function OffenderSummary (props) {
                           Telephone: 0114 276 0760
                         </p>
 
-                        <button className="govuk-button govuk-button--secondary app-full-width govuk-!-margin-bottom-0">
+                        <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
                           Contact offender manager
                         </button>
 

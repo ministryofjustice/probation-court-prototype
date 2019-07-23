@@ -75,7 +75,7 @@ function CaseList (props) {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <nav className="moj-sub-navigation" aria-label="Sub navigation">
+      <nav className="moj-sub-navigation govuk-!-margin-bottom-6" aria-label="Sub navigation">
 
         <p className="govuk-hint app-!-float-right govuk-!-margin-top-2">&nbsp;Last
           updated { currentDate.format('dddd, Do MMMM YYYY') } at 10:30</p>
@@ -208,7 +208,7 @@ function CaseList (props) {
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
-                  <span className="govuk-hint app-!-inline">&nbsp;at { data.courtName }</span>
+                  <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
                 </p>
               </td>
               <td className="app-!-text-align-right">
@@ -285,7 +285,7 @@ function CaseList (props) {
                         <td>
                           { $case.defendant.deliusStatus }
                           { $case.defendant.assignment && (
-                            <span className="govuk-hint app-!-inline">&nbsp;({ $case.defendant.assignment })</span>
+                            <span className="govuk-hint govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
                           ) }
                         </td>
                         <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>

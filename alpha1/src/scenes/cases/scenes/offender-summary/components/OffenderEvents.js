@@ -12,7 +12,7 @@ function OffenderEvents () {
         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
           <h2 className="govuk-heading-m govuk-!-margin-top-2">Events <span
-            className="govuk-hint app-!-inline govuk-!-margin-top-0">(5)</span></h2>
+            className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">(5)</span></h2>
 
           <p className="govuk-heading-s govuk-!-margin-bottom-1">
             <a className="govuk-link govuk-link--no-visited-state" href="/delius/events/1"

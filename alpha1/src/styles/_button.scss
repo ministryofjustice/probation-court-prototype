@@ -1,5 +1,5 @@
 .app-button--interrupt {
-  background-color: govuk-colour("light-blue");
+  background-color: govuk-tint($govuk-brand-colour, 25);
 
   &,
   &:link,
@@ -17,10 +17,10 @@
 
   &:hover,
   &:focus {
-    background-color: govuk-colour("blue");
+    background-color: $govuk-brand-colour;
 
     &[disabled] {
-      background-color: govuk-colour("light-blue");
+      background-color: $govuk-brand-colour;
     }
   }
 }

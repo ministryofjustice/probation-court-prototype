@@ -1,9 +1,14 @@
 import React from 'react'
+import PhaseBanner from './PhaseBanner'
 
 function Footer () {
   return (
-    <footer className="govuk-footer " role="contentinfo">
+    <footer className="govuk-footer govuk-!-padding-top-2" role="contentinfo">
       <div className="govuk-width-container">
+
+        <PhaseBanner/>
+
+        <div className="govuk-!-margin-top-4">
 
         <a href="/help" className="govuk-link govuk-link--no-visited-state"
            onClick={ e => {e.preventDefault()} }>Training</a>
@@ -13,10 +18,7 @@ function Footer () {
         <a href="/faq" className="govuk-link govuk-link--no-visited-state"
            onClick={ e => {e.preventDefault()} }>FAQ</a>
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-
-        <a href="/faq" className="govuk-link govuk-link--no-visited-state"
-           onClick={ e => {e.preventDefault()} }>Submit feedback</a>
+        </div>
 
         <div className="govuk-footer__meta">
           <div className="govuk-footer__meta-item govuk-footer__meta-item--grow">

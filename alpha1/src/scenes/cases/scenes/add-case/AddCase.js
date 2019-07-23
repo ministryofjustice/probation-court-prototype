@@ -51,7 +51,8 @@ function AddCase () {
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
         <h1 className="govuk-heading-l">Add case <span
-          className="govuk-hint app-!-inline">for { currentDate.format('dddd, Do MMMM YYYY') }</span></h1>
+          className="govuk-hint govuk-!-display-inline-block">for { currentDate.format('dddd, Do MMMM YYYY') }</span>
+        </h1>
 
         <div className="moj-filter-layout">
 
@@ -59,7 +60,7 @@ function AddCase () {
 
             <div className="moj-filter">
 
-              <div className="moj-filter__header">
+              <div className="moj-filter__header app-filter__header--blue">
 
                 <div className="moj-filter__header-title">
                   <h2 className="govuk-heading-m">
@@ -162,7 +163,7 @@ function AddCase () {
                         </div>
 
                         <div
-                          className={ `moj-badge moj-badge ${ data.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : data.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 app-full-width` }>Not
+                          className={ `moj-badge moj-badge ${ data.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : data.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 govuk-!-width-full` }>Not
                           known offender
                         </div>
 
@@ -231,90 +232,96 @@ function AddCase () {
                     ) }
 
                     { data.selectOffender && !data.offenderMatch && (
-                      <Fragment>
-                        <div className="govuk-grid-row">
-                          <div className="govuk-grid-column-full">
-                            <div className="app-!-float-left--not-narrow">
+                      <div className="moj-identity-bar govuk-!-margin-bottom-4">
+                        <div className="moj-identity-bar__container">
+                          <div className="govuk-!-padding-left-4 govuk-!-padding-right-4 govuk-!-padding-top-2">
 
-                              <img src="/assets/images/no-photo.png" width="82" height="102"
-                                   alt={ `${ data.defendant.name }` }
-                                   className="app-offender-image"/>
-                            </div>
-                            <div className="app-!-float-left--not-narrow app-offender-selection">
+                            <div className="govuk-grid-row">
+                              <div className="govuk-grid-column-full">
+                                <div className="app-!-float-left--not-narrow">
 
-                              <h1
-                                className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ data.defendant.name }
-                                { data.defendant.current && (
-                                  <span
-                                    className="moj-badge moj-badge--green govuk-!-margin-left-4">Current offender</span>
-                                ) }
-                              </h1>
+                                  <img src="/assets/images/no-photo.png" width="82" height="102"
+                                       alt={ `${ data.defendant.name }` }
+                                       className="app-offender-image"/>
+                                </div>
+                                <div className="app-!-float-left--not-narrow app-offender-selection">
 
-                              <div className="govuk-grid-row">
-                                <div className="govuk-grid-column-one-quarter">
+                                  <h1
+                                    className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ data.defendant.name }
+                                    { data.defendant.current && (
+                                      <span
+                                        className="moj-badge moj-badge--green govuk-!-margin-left-4">Current offender</span>
+                                    ) }
+                                  </h1>
 
-                                  { data.defendant.dateOfBirth && (
-                                    <Fragment>
-                                      <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">Date of birth</p>
+                                  <div className="govuk-grid-row">
+                                    <div className="govuk-grid-column-one-quarter">
+
+                                      { data.defendant.dateOfBirth && (
+                                        <Fragment>
+                                          <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">Date of
+                                            birth</p>
+                                          <p
+                                            className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ moment(data.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</p>
+                                        </Fragment>
+                                      ) }
+
+                                    </div>
+                                    <div className="govuk-grid-column-one-quarter">
+
+                                      { data.defendant.crn && (
+                                        <Fragment>
+                                          <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">CRN</p>
+                                          <p
+                                            className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ data.defendant.crn }</p>
+                                        </Fragment>
+                                      ) }
+
+                                    </div>
+                                    <div className="govuk-grid-column-one-quarter">
+
+                                      <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
                                       <p
-                                        className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ moment(data.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</p>
-                                    </Fragment>
-                                  ) }
+                                        className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ data.defendant.pnc }</p>
 
-                                </div>
-                                <div className="govuk-grid-column-one-quarter">
+                                    </div>
+                                    <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
-                                  { data.defendant.crn && (
-                                    <Fragment>
-                                      <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">CRN</p>
-                                      <p
-                                        className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ data.defendant.crn }</p>
-                                    </Fragment>
-                                  ) }
+                                      <button className="govuk-button govuk-button--secondary" onClick={ e => {
+                                        setData({ ...data, offenderMatch: true })
+                                      } }>Match
+                                      </button>
 
-                                </div>
-                                <div className="govuk-grid-column-one-quarter">
-
-                                  <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
-                                  <p
-                                    className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ data.defendant.pnc }</p>
-
-                                </div>
-                                <div className="govuk-grid-column-one-quarter app-!-text-align-right">
-
-                                  <button className="govuk-button govuk-button--secondary" onClick={ e => {
-                                    setData({ ...data, offenderMatch: true })
-                                  } }>Match
-                                  </button>
-
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
+
+                            <table className="govuk-table app-table">
+                              <tbody>
+                              <tr>
+                                <td>
+
+                                  <p className="govuk-body govuk-!-margin-top-2">
+                                    { data.defendant.gender }, { data.defendant.age } of { data.defendant.address }
+                                  </p>
+
+                                </td>
+                                <td className="app-!-text-align-right">
+
+                                  <a href={ `http://delius/offender/` }
+                                     className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
+                                     onClick={ e => e.preventDefault() }>View offender summary</a>
+
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+
                           </div>
                         </div>
-
-                        <table className="govuk-table app-table">
-                          <tbody>
-                          <tr>
-                            <td>
-
-                              <p className="govuk-body govuk-!-margin-top-2">
-                                { data.defendant.gender }, { data.defendant.age } of { data.defendant.address }
-                              </p>
-
-                            </td>
-                            <td className="app-!-text-align-right">
-
-                              <a href={ `http://delius/offender/` }
-                                 className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
-                                 onClick={ e => e.preventDefault() }>View Delius record</a>
-
-                            </td>
-                          </tr>
-                          </tbody>
-                        </table>
-
-                      </Fragment>
+                      </div>
                     ) }
 
                   </Fragment>

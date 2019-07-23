@@ -30,9 +30,9 @@
   }
 
   &.app-tooltip--secondary span {
-    background: govuk-colour("blue");
+    background: $govuk-brand-colour;
     &::before {
-      border-right: 6px solid govuk-colour("blue");
+      border-right: 6px solid $govuk-brand-colour;
     }
   }
 

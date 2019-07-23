@@ -11,7 +11,7 @@ function DefendantDetails () {
     <Fragment>
 
       <div
-        className={ `moj-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-bottom-4 app-full-width` }>{ currentCase.defendant.deliusStatus } offender
+        className={ `moj-badge moj-badge ${ currentCase.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : currentCase.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-bottom-4 govuk-!-width-full` }>{ currentCase.defendant.deliusStatus } offender
       </div>
 
       <div className="app-!-float-left">

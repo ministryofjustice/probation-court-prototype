@@ -99,7 +99,7 @@ function AdjournedList (props) {
               <td>
                 <h2 className="govuk-heading-l govuk-!-margin-0">Adjourned cases</h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') } <span
-                  className="govuk-hint app-!-inline">at { data.court }</span></p>
+                  className="govuk-hint govuk-!-display-inline-block">at { data.court }</span></p>
               </td>
               <td className="app-!-text-align-right">
 

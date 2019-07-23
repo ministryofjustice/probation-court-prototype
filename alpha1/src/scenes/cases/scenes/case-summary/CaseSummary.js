@@ -10,9 +10,6 @@ function CaseSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
-  console.info('CURRENT CASE:', currentCase)
-  console.info('Props:', props)
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -52,7 +49,7 @@ function CaseSummary (props) {
             <td>
               <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
               <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }<span
-                className="govuk-hint app-!-inline">&nbsp;at { court }</span></p>
+                className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
             </td>
             <td className="app-!-text-align-right">
 
@@ -100,7 +97,7 @@ function CaseSummary (props) {
 
                       { currentCase.defendant.deliusStatus !== 'Not known' && (
                         <button
-                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-top-2 app-full-width"
+                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-top-2 govuk-!-width-full"
                           onClick={ e => {
                             e.preventDefault()
                             props.history.push(`/cases/offender/${ props.match.params.id }`)
@@ -116,7 +113,7 @@ function CaseSummary (props) {
                     { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                       <Fragment>
                         <h2 className="govuk-heading-m govuk-!-margin-bottom-0">RoSH <span
-                          className="govuk-hint app-!-inline govuk-!-margin-top-0">from Delius record</span></h2>
+                          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">from Delius record</span></h2>
 
                         { currentCase.defendant.risk.map((risk, riskIndex) => {
                           return (
@@ -150,7 +147,7 @@ function CaseSummary (props) {
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
 
                         <div
-                          className="moj-badge moj-badge moj-badge--green govuk-!-margin-top-4 app-full-width">Active
+                          className="moj-badge moj-badge moj-badge--green govuk-!-margin-top-4 govuk-!-width-full">Active
                           Intervention
                         </div>
 
@@ -177,7 +174,7 @@ function CaseSummary (props) {
                           Telephone: 0114 276 0760
                         </p>
 
-                        <button className="govuk-button govuk-button--secondary app-full-width govuk-!-margin-bottom-0">
+                        <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
                           Contact offender manager
                         </button>
 
@@ -248,7 +245,7 @@ function CaseSummary (props) {
                             <div className="app-!-text-align-right govuk-!-margin-bottom-2">
                               { currentCase.markers.map((marker, markerIndex) => {
                                 return <div key={ markerIndex }
-                                            className="moj-badge moj-badge--small app-tooltip app-tooltip--secondary app-!-inline app-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
+                                            className="moj-badge moj-badge--small app-tooltip app-tooltip--secondary govuk-!-display-inline-block app-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
                                 </div>
                               }) }
                             </div>
@@ -306,7 +303,7 @@ function CaseSummary (props) {
                     <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                       <h2 className="govuk-heading-m govuk-!-margin-top-2">Summary of convictions <span
-                        className="govuk-hint app-!-inline govuk-!-margin-top-0">from CPS pack</span></h2>
+                        className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">from CPS pack</span></h2>
 
                       <table className="govuk-table app-table app-table--split-rows">
                         <tbody>

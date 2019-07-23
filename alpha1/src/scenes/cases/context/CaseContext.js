@@ -7,7 +7,6 @@ export const initialState = {
 }
 
 export const reducer = (state, action) => {
-  console.info(action)
   switch (action.type) {
     case 'setCourt':
       return {

@@ -99,7 +99,7 @@ function Calendar (props) {
 
       <h1 className="govuk-heading-l govuk-!-margin-0">Calendar</h1>
       <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('MMMM, YYYY') } <span
-        className="govuk-hint app-!-inline">at { data.court }</span></p>
+        className="govuk-hint govuk-!-display-inline-block">at { data.court }</span></p>
 
       <div className="moj-filter-layout">
 
