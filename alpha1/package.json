@@ -35,6 +35,6 @@
     "node-sass": "4.12.0"
   },
   "optionalDependencies": {
-    "lodash": "4.17.13"
+    "lodash": "4.17.15"
   }
 }
