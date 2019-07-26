@@ -1,33 +1,20 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 import { useStateValue } from '../../../../utils/StateProvider'
+import OffenderRisk from './components/OffenderRisk'
+import DefendantDetails from '../../shared-components/DefendantDetails'
+import OffenderEvents from './components/OffenderEvents'
+import SomethingWrong from '../../shared-components/SomethingWrong'
+import OffenderDetails from './components/OffenderDetails'
 
 function OffenderSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
-  console.info(currentCase)
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
-  function getMarker($marker) {
-    let markerDescription
-    switch ($marker) {
-      case 'DV':
-        markerDescription = 'Domestic Violence'
-        break
-      case 'VI':
-        markerDescription = 'Violent'
-        break
-      default:
-        markerDescription = ''
-    }
-    return markerDescription
-  }
 
   return (
     <Fragment>
@@ -37,99 +24,76 @@ function OffenderSummary (props) {
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
           </li>
-          <li className="govuk-breadcrumbs__list-item" aria-current="page">Case details</li>
+          <li className="govuk-breadcrumbs__list-item">
+            <Link to={ `/cases/details/${ props.match.params.id }` } className="govuk-breadcrumbs__link">Case
+              details</Link>
+          </li>
+          <li className="govuk-breadcrumbs__list-item" aria-current="page">
+            Offender summary
+          </li>
         </ol>
       </div>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
-        <p
-          className="govuk-body-m govuk-!-font-weight-bold govuk-!-margin-bottom-0">{ currentDate.format('dddd, Do MMMM YYYY ') }<span
-          className="govuk-hint moj-util-inline">at { court }</span></p>
+        <table className="govuk-table app-table" role="presentation">
+          <tbody>
+          <tr>
+            <td>
+              <h1 className="govuk-heading-l govuk-!-margin-0">Offender summary</h1>
+              <p className="govuk-body-m govuk-!-font-weight-bold">Appearing
+                on { currentDate.format('dddd, Do MMMM YYYY') }<span
+                  className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
+            </td>
+            <td className="app-!-text-align-right">
+
+              <div className="moj-action-bar">
+                { !!(currentCase.defendant && currentCase.defendant.risk && currentCase.defendant.risk.length) && currentCase.defendant.risk.map((risk, riskIndex) => {
+                  return (
+                    <Fragment key={ riskIndex }>
+                      { risk.type === 'RoSH' && (
+                        <div
+                          className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
+                          of Serious Harm</div>
+                      ) }
+                    </Fragment>
+                  )
+                }) }
+
+              </div>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
 
         { currentCase && currentCase.defendant && (
-          <div className="hmcts-filter-layout">
+          <div className="moj-filter-layout">
+            <div className="moj-filter-layout__filter">
+              <div className="moj-filter">
 
-            <div className="hmcts-filter-layout__filter">
-
-              <div className="hmcts-filter">
-
-                <div className="hmcts-filter__header">
-
-                  <div className="hmcts-filter__header-title">
+                <div className="moj-filter__header app-filter__header--blue">
+                  <div className="moj-filter__header-title">
                     <h2 className="govuk-heading-m">{ currentCase.defendant && currentCase.defendant.name }</h2>
                   </div>
                 </div>
 
-                <div className="hmcts-filter__content">
+                <div className="moj-filter__content">
 
-                  <div className="hmcts-filter__selected">
+                  <div className="moj-filter__selected">
 
-                    <div className="hmcts-filter__selected-heading">
+                    <div className="moj-filter__selected-heading">
 
-                      <div className="moj-!-float-left">
-
-                        <img src="/assets/images/no-photo.png" width="82" height="102"
-                             alt={ `${ currentCase.defendant.name }` }
-                             className="app-offender-image"/>
-                      </div>
-                      <div className="moj-!-float-left">
-
-                        <p className="govuk-body govuk-!-margin-bottom-0">
-                          <strong>DOB:</strong> { moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
-                        </p>
-                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>CRN:</strong> X612323A</p>
-                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>PNC:</strong> 2004/123456B</p>
-                        <p className="govuk-body govuk-!-margin-bottom-0"><strong>Court
-                          store:</strong> { currentCase.caseNumber }</p>
-
-                      </div>
-
-                      { currentCase.defendant.deliusStatus === 'Current' && (
-                        <div
-                          className="hmcts-badge moj-badge moj-badge-error govuk-!-margin-top-4 app-full-width">Current
-                          offender</div>
-                      ) }
+                      <DefendantDetails/>
 
                     </div>
                   </div>
 
-                  <div className="hmcts-filter__options">
-
-                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.nps) && (
-                      <Fragment>
-                        <h2 className="govuk-heading-m govuk-!-margin-bottom-0">Risk <span
-                          className="govuk-hint moj-util-inline govuk-!-margin-top-0">from Delius record</span></h2>
-                              <div className="moj-risk-alert moj-risk-alert--small moj-risk-alert--high">Very High Risk of Serious Harm</div>
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-                      </Fragment>
-                    ) }
-
-                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.nps) && (
-                      <Fragment>
-                        <h2 className="govuk-heading-m">Current order</h2>
-
-                        <p className="govuk-body govuk-!-margin-bottom-0">155 days community service</p>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                        <h2 className="govuk-heading-m">Intervention details</h2>
-
-                        <p className="govuk-body govuk-!-margin-bottom-0">ES - RAR Programme</p>
-                        <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
-
-                        <div
-                          className="hmcts-badge moj-badge moj-badge-current govuk-!-margin-top-4 app-full-width">Active
-                        </div>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-                      </Fragment>
-                    ) }
+                  <div className="moj-filter__options">
 
                     <h2 className="govuk-heading-m">Contact details</h2>
 
-                    <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Address</h3>
+                    <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Main address</h3>
 
                     <p className="govuk-body">{ currentCase.defendant.address.line1 }<br/>
                       { currentCase.defendant.address.line2 && (
@@ -145,20 +109,56 @@ function OffenderSummary (props) {
 
                     <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Telephone</h3>
 
+                    <p className="govuk-body">01967 458 260</p>
+
+                    <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Mobile</h3>
+
                     <p className="govuk-body">07765 765 432</p>
 
                     <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</h3>
 
-                    <p className="govuk-body"><a href={ `/contact/${ props.match.params.id }` } className="govuk-link govuk-link--no-visited-state"
+                    <p className="govuk-body"><a href={ `/contact/${ props.match.params.id }` }
+                                                 className="govuk-link govuk-link--no-visited-state"
                                                  onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
                     </p>
+
+                    <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
+                      Edit contact details
+                    </button>
+
+                    <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
+                      <Fragment>
+
+                        <h2 className="govuk-heading-m">Current order</h2>
+
+                        <p className="govuk-body govuk-!-margin-bottom-0">155 days community service</p>
+
+                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                        <h2 className="govuk-heading-m">Intervention details</h2>
+
+                        <p className="govuk-body govuk-!-margin-bottom-0">ES - RAR Programme</p>
+                        <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
+
+                        <div
+                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 govuk-!-width-full">Active
+                          Intervention
+                        </div>
+
+                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                      </Fragment>
+                    ) }
 
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
 
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+                        <h2 className="govuk-heading-m">Offender manager</h2>
 
-                        <h2 className="govuk-heading-m">Probation office</h2>
+                        <p className="govuk-body">Sarah Francis<span className="govuk-hint govuk-!-margin-top-0">Allocated on 01/06/2019</span>
+                        </p>
 
                         <p className="govuk-body">{ currentCase.defendant.nps ? 'NPS' : 'CRC' } South Yorkshire<br/>
                           12 Holme Road<br/>
@@ -166,240 +166,49 @@ function OffenderSummary (props) {
                           South Yorkshire<br/>
                           S7 2TT</p>
 
-                        <button className="govuk-button govuk-button--secondary">Contact offender manager</button>
+                        <p className="govuk-body">
+                          Telephone: 0114 276 0760
+                        </p>
+
+                        <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
+                          Contact offender manager
+                        </button>
+
+                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
                       </Fragment>
                     ) }
 
-                    { /* currentCase.defendant.status.type !== 'not known' && (
-                      <Fragment>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                        <h2 className="govuk-heading-m">Offender record</h2>
-
-                        <p className="govuk-body">View the offender record in Delius.</p>
-
-                        <button className="govuk-button govuk-button--secondary">View Delius record</button>
-
-                      </Fragment>
-                    ) */ }
-
-                    { /* currentCase.defendant.currentState.type === 'New' && (
-                      <Fragment>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                        <h2 className="govuk-heading-m">Something wrong?</h2>
-
-                        <p className="govuk-body">If this offender record does not appear to be correct, you can correct
-                          this
-                          manually.</p>
-
-                        <button className="govuk-button govuk-button--secondary">Find correct record</button>
-
-                      </Fragment>
-                    ) */ }
+                    <SomethingWrong/>
 
                   </div>
-
                 </div>
 
               </div>
-
             </div>
 
-            <div className="hmcts-filter-layout__content">
+            <div className="moj-filter-layout__content">
 
-              { /* currentCase.defendant.currentState.type === 'Sentenced' && currentCase.defendant.deliusUpdated === 'N' && (
-                <div className="govuk-warning-text moj-warning-text moj-warning-text--critical">
-                  <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
-                  <strong className="govuk-warning-text__text">
-                    <span className="govuk-warning-text__assistive">Warning</span>
-                    The current sentence has not been recorded in Delius.
-                  </strong>
-                </div>
-              ) */ }
+              <OffenderRisk/>
+              <OffenderEvents/>
+              <OffenderDetails/>
 
-              { /* currentCase.defendant.currentState.type === 'Sentenced' && !currentCase.defendant.nps && (
-                <div className="govuk-warning-text moj-warning-text">
-                  <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
-                  <strong className="govuk-warning-text__text">
-                    <span className="govuk-warning-text__assistive">Warning</span>
-                    The offender has been given a custodial sentence, this record has now been transferred to NOMIS.
-                  </strong>
-                </div>
-              ) */ }
-
-              <div className="hmcts-identity-bar">
-                <div className="hmcts-identity-bar__container">
+              <div className="moj-identity-bar govuk-!-margin-top-4">
+                <div className="moj-identity-bar__container">
                   <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Current case</h2>
+                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Notes</h2>
 
-                    <table className="govuk-table moj-table moj-table--split-rows">
-                      <thead>
-                      <tr>
-                        <th>Offence</th>
-                        <th>Code</th>
-                        <th>Plea</th>
-                        <th><p className="moj-!-text-align-right">Plea date</p></th>
-                      </tr>
-                      </thead>
-                      <tbody>
+                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
+                      <Fragment>
+                        <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
+                        <p className="govuk-body">Laboris sunt officia ex quis laboris sit exercitation et. Occaecat
+                          nulla tempor laborum adipisicing reprehenderit sint cupidatat dolor nulla proident est non
+                          ipsum.</p>
+                      </Fragment>
+                    ) }
 
-                      { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
-                        return (
-                          <tr key={ offenceIndex }>
-                            <td>{ offence.title }</td>
-                            <td>{ offence.code }</td>
-                            <td>{ offence.plea }</td>
-                            <td>
-                              <p className="moj-!-text-align-right">
-                                { offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').format('DD/MM/YYYY')) }
-                              </p>
-                            </td>
-                          </tr>
-                        )
-                      }) }
-
-                      </tbody>
-                    </table>
-
-                    <table className="govuk-table moj-table">
-                      <thead>
-                      <tr>
-                        <th colSpan="2">Appearing in Court Room { currentCase.courtRoom }</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>
-
-                          <p
-                            className="govuk-body">{ currentDate.format('dddd, Do MMMM YYYY') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } - { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</p>
-
-                        </td>
-                        <td>
-
-                          { currentCase.markers && !!currentCase.markers.length && (
-                            <div className="moj-!-text-align-right govuk-!-margin-bottom-2">
-                              { currentCase.markers.map((marker, markerIndex) => {
-                                return <div key={ markerIndex }
-                                            className="hmcts-badge hmcts-badge--small moj-tooltip moj-tooltip--secondary moj-util-inline moj-!-text-align-center govuk-!-margin-left-1">{ marker }<span>{ getMarker(marker) }</span>
-                                </div>
-                              }) }
-                            </div>
-                          ) }
-
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="hmcts-identity-bar govuk-!-margin-top-4">
-                <div className="hmcts-identity-bar__container">
-                  <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
-
-                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Previous convictions</h2>
-
-                    <table className="govuk-table moj-table moj-table--split-rows">
-                      <thead>
-                      <tr>
-                        <th>Offence</th>
-                        <th>Code</th>
-                        <th><p className="moj-!-text-align-right">Date</p></th>
-                      </tr>
-                      </thead>
-                      <tbody>
-
-                      { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
-                        return (
-                          <tr key={ offenceIndex }>
-                            <td>{ offence.title }</td>
-                            <td>{ offence.code }</td>
-                            <td>
-                              <p className="moj-!-text-align-right">
-                                { offence.pleaDate && (moment(offence.pleaDate, 'YYYY-MM-DD').subtract(1, 'years').format('DD/MM/YYYY')) }
-                              </p>
-                            </td>
-                          </tr>
-                        )
-                      }) }
-
-                      </tbody>
-                    </table>
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
-
-                <h2 className="govuk-heading-m govuk-!-margin-top-6">Case summary</h2>
-
-                { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
-                  return (
-                    <Fragment key={ offenceIndex }>
-                      <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
-                      <p className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
-                    </Fragment>
-                  )
-                }) }
-
-                <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                <h2 className="govuk-heading-m govuk-!-margin-top-6">Case tracker</h2>
-
-                <table className="govuk-table moj-table moj-table--split-rows">
-                  <thead>
-                  <tr>
-                    <th>Supporting information</th>
-                    <th>Action</th>
-                    <th><p className="moj-!-text-align-right">Status</p></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  { currentCase.defendant.deliusStatus === 'Current' && (
-                    <tr>
-                      <td>Offender manager update</td>
-                      <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:15</td>
-                      <td>
-                        <p className="moj-!-text-align-right">Awaiting response</p>
-                      </td>
-                    </tr>
-                  ) }
-                  <tr>
-                    <td>CPS Pack</td>
-                    <td>Acquired</td>
-                    <td className="moj-!-text-align-right">
-                      <p className="moj-!-text-align-right">
-                        <a className="govuk-link hmcts-timeline__document-link" href="/cps-link"
-                           onClick={ e => e.preventDefault() }>CPS Pack</a>
-                      </p>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-
-              </div>
-
-              <div className="hmcts-identity-bar">
-                <div className="hmcts-identity-bar__container">
-                  <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
-
-                    <h2 className="govuk-heading-m">Notes</h2>
-
-                    <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
-
-                    <p className="govuk-body">Case adjourned off as defendant has changed plea from guilty to not
-                      guilty. Seems very upset, claiming the police didn't listen to them.</p>
-
-                    <p className="moj-!-text-align-right">
+                    <p className="app-!-text-align-right">
                       <button className="govuk-button govuk-button--secondary">Add note</button>
                     </p>
 
@@ -411,7 +220,18 @@ function OffenderSummary (props) {
           </div>
         ) }
 
-        <Link to="/cases" className="govuk-back-link">Back</Link>
+        <Link to={ `/cases/details/${ props.match.params.id }` } className="govuk-back-link">Back</Link>
+
+        <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={ e => {
+          e.preventDefault()
+          window.scrollTo(0, 0)
+        } }>
+          <svg role="presentation" focusable="false" className="app-back-to-top__icon"
+               xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>
+          </svg>
+          Back to top
+        </Link>
 
       </main>
 

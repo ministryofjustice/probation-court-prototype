@@ -1,0 +1,56 @@
+.app-risk-tag {
+  @include govuk-font(14);
+  @include govuk-responsive-padding(1, top);
+  @include govuk-responsive-padding(1, bottom);
+  @include govuk-responsive-padding(4, left);
+  @include govuk-responsive-padding(4, right);
+
+  display: inline-block;
+  background: transparent;
+  color: govuk-colour("grey-1");
+  border: 3px solid;
+  min-width: 115px;
+  text-align: center;
+  font-weight: bold;
+
+  &.app-risk-tag--low {
+    color: govuk-colour("light-green");
+  }
+
+  &.app-risk-tag--medium {
+    color: govuk-colour("yellow");
+  }
+
+  &.app-risk-tag--high, &.app-risk-tag--very-high {
+    color: govuk-colour("red");
+  }
+}
+
+.app-risk-alert {
+  @include govuk-font(27, bold);
+  @include govuk-responsive-padding(3, all);
+
+  text-align: center;
+  color: govuk-colour("grey-1");
+  border: 3px solid govuk-colour("grey-1");
+
+  &.app-risk-alert--high, &.app-risk-alert--very-high {
+    color: govuk-colour("bright-red");
+    border-color: govuk-colour("bright-red");
+  }
+
+  &.app-risk-alert--medium {
+    color: govuk-colour("yellow");
+    border-color: govuk-colour("yellow");
+  }
+
+  &.app-risk-alert--low {
+    color: govuk-colour("light-green");
+    border-color: govuk-colour("light-green");
+  }
+
+  &.app-risk-alert--small {
+    @include govuk-font(19, bold);
+    @include govuk-responsive-padding(2, all);
+  }
+}

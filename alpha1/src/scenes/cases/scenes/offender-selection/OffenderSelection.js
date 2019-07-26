@@ -63,17 +63,17 @@ function OffenderSelection () {
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
         <h1 className="govuk-heading-l">Match record <span
-          className="govuk-hint moj-util-inline">in Delius</span></h1>
+          className="govuk-hint govuk-!-display-inline-block">in Delius</span></h1>
 
-        <div className="hmcts-filter-layout">
+        <div className="moj-filter-layout">
 
-          <div className="hmcts-filter-layout__filter">
+          <div className="moj-filter-layout__filter">
 
-            <div className="hmcts-filter">
+            <div className="moj-filter">
 
-              <div className="hmcts-filter__header">
+              <div className="moj-filter__header app-filter__header--blue">
 
-                <div className="hmcts-filter__header-title">
+                <div className="moj-filter__header-title">
                   { currentCase.defendant && (
                     <h2 className="govuk-heading-m">{ currentCase.defendant.name }</h2>
                   ) }
@@ -82,12 +82,12 @@ function OffenderSelection () {
 
               { currentCase.defendant && (
 
-                <div className="hmcts-filter__content">
-                  <div className="hmcts-filter__selected">
+                <div className="moj-filter__content">
+                  <div className="moj-filter__selected">
 
-                    <div className="hmcts-filter__selected-heading">
+                    <div className="moj-filter__selected-heading">
 
-                      <table className="govuk-table moj-table">
+                      <table className="govuk-table app-table app-table__50-50">
                         <tbody>
                         <tr>
                           <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
@@ -134,23 +134,23 @@ function OffenderSelection () {
                     </div>
                   </div>
 
-                  <div className="hmcts-filter__options">
+                  <div className="moj-filter__options">
 
-                    <div className="hmcts-search govuk-!-margin-bottom-6">
+                    <div className="moj-search govuk-!-margin-bottom-6">
 
                       <form id="ndForm" onSubmit={ e => { e.preventDefault() } }>
 
                         <div className="govuk-form-group">
-                          <label className="govuk-label hmcts-search__label govuk-label--m"
+                          <label className="govuk-label moj-search__label govuk-label--m"
                                  htmlFor="offender-search">Record not listed?</label>
 
-                          <span id="offender-search-hint" className="govuk-hint hmcts-search__hint">You can search for an offender record using multiple terms</span>
-                          <input className="govuk-input hmcts-search__input" id="offender-search" name="offender-search"
+                          <span id="offender-search-hint" className="govuk-hint moj-search__hint">You can search for an offender record using multiple terms</span>
+                          <input className="govuk-input moj-search__input" id="offender-search" name="offender-search"
                                  type="search"
                                  aria-describedby="offender-search-hint"/>
                         </div>
 
-                        <button type="submit" className="govuk-button hmcts-search__button ">
+                        <button type="submit" className="govuk-button moj-search__button ">
                           Search
                         </button>
 
@@ -167,7 +167,10 @@ function OffenderSelection () {
                       to
                       probation.</p>
 
-                    <button className="govuk-button govuk-button--secondary">Offender not known</button>
+                    <button
+                      className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">Offender
+                      not known
+                    </button>
 
                   </div>
 
@@ -178,13 +181,14 @@ function OffenderSelection () {
 
           </div>
 
-          <div className="hmcts-filter-layout__content">
+          <div className="moj-filter-layout__content">
 
-            <div className="hmcts-scrollable-pane">
+            <div className="moj-scrollable-pane">
 
-              <div className="hmcts-scrollable-pane__wrapper">
+              <div className="moj-scrollable-pane__wrapper">
 
-                <div className="govuk-warning-text moj-warning-text moj-warning-text--critical">
+                <div
+                  className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
                   <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
                   <strong className="govuk-warning-text__text">
                     <span className="govuk-warning-text__assistive">Warning</span>
@@ -195,88 +199,92 @@ function OffenderSelection () {
 
                 { data.potentialMatches.map((offenderItem, index) => {
                   return offenderItem.defendant && (
-                    <div key={ index }>
-                      <div className="govuk-grid-row">
-                        <div className="govuk-grid-column-full">
-                          <div className="moj-!-float-left--not-narrow">
+                    <div key={ index } className="moj-identity-bar govuk-!-margin-bottom-4">
+                      <div className="moj-identity-bar__container">
+                        <div className="govuk-!-padding-left-4 govuk-!-padding-right-4 govuk-!-padding-top-2">
 
-                            <img src="/assets/images/no-photo.png" width="82" height="102"
-                                 alt={ `${ offenderItem.defendant.name }` }
-                                 className="app-offender-image"/>
-                          </div>
-                          <div className="moj-!-float-left--not-narrow app-offender-selection">
+                          <div className="govuk-grid-row">
+                            <div className="govuk-grid-column-full">
+                              <div className="app-!-float-left--not-narrow">
 
-                            <h1
-                              className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.defendant.name }
-                              { offenderItem.defendant.current && (
-                                <span
-                                  className="hmcts-badge hmcts-badge--green govuk-!-margin-left-4">Current offender</span>
-                              ) }
-                            </h1>
+                                <img src="/assets/images/no-photo.png" width="82" height="102"
+                                     alt={ `${ offenderItem.defendant.name }` }
+                                     className="app-offender-image"/>
+                              </div>
+                              <div className="app-!-float-left--not-narrow app-offender-selection">
 
-                            <div className="govuk-grid-row">
-                              <div className="govuk-grid-column-one-quarter">
+                                <h1
+                                  className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.defendant.name }
+                                  { offenderItem.defendant.current && (
+                                    <span
+                                      className="moj-badge moj-badge--green govuk-!-margin-left-4">Current offender</span>
+                                  ) }
+                                </h1>
 
-                                { offenderItem.defendant.dateOfBirth && (
-                                  <Fragment>
-                                    <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">Date of birth</p>
+                                <div className="govuk-grid-row">
+                                  <div className="govuk-grid-column-one-quarter">
+
+                                    { offenderItem.defendant.dateOfBirth && (
+                                      <Fragment>
+                                        <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">Date of
+                                          birth</p>
+                                        <p
+                                          className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ moment(offenderItem.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</p>
+                                      </Fragment>
+                                    ) }
+
+                                  </div>
+                                  <div className="govuk-grid-column-one-quarter">
+
+                                    { offenderItem.defendant.crn && (
+                                      <Fragment>
+                                        <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">CRN</p>
+                                        <p
+                                          className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.crn }</p>
+                                      </Fragment>
+                                    ) }
+
+                                  </div>
+                                  <div className="govuk-grid-column-one-quarter">
+
+                                    <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
                                     <p
-                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ moment(offenderItem.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</p>
-                                  </Fragment>
-                                ) }
+                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.pnc }</p>
 
-                              </div>
-                              <div className="govuk-grid-column-one-quarter">
+                                  </div>
+                                  <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
-                                { offenderItem.defendant.crn && (
-                                  <Fragment>
-                                    <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">CRN</p>
-                                    <p
-                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.crn }</p>
-                                  </Fragment>
-                                ) }
+                                    <button className="govuk-button govuk-button--secondary">Match</button>
 
-                              </div>
-                              <div className="govuk-grid-column-one-quarter">
-
-                                <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
-                                <p
-                                  className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.pnc }</p>
-
-                              </div>
-                              <div className="govuk-grid-column-one-quarter moj-!-text-align-right">
-
-                                <button className="govuk-button govuk-button--secondary">Match</button>
-
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
+
+                          <table className="govuk-table app-table">
+                            <tbody>
+                            <tr>
+                              <td>
+
+                                <p className="govuk-body govuk-!-margin-top-2">
+                                  { offenderItem.defendant.gender }, { offenderItem.defendant.age } of { offenderItem.defendant.address.line1 } { offenderItem.defendant.address.line2 && offenderItem.defendant.address.line2 } { offenderItem.defendant.address.line3 } { offenderItem.defendant.address.postcode }
+                                </p>
+
+                              </td>
+                              <td className="app-!-text-align-right">
+
+                                <a href={ `http://delius/offender/` }
+                                   className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
+                                   onClick={ (e) => e.preventDefault() }>View offender summary</a>
+
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+
                         </div>
                       </div>
-
-                      <table className="govuk-table moj-table">
-                        <tbody>
-                        <tr>
-                          <td>
-
-                            <p className="govuk-body govuk-!-margin-top-2">
-                              { offenderItem.defendant.gender }, { offenderItem.defendant.age } of { offenderItem.defendant.address.line1 } { offenderItem.defendant.address.line2 && offenderItem.defendant.address.line2 } { offenderItem.defendant.address.line3 } { offenderItem.defendant.address.postcode }
-                            </p>
-
-                          </td>
-                          <td className="moj-!-text-align-right">
-
-                            <a href={ `http://delius/offender/` }
-                               className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
-                               onClick={ (e) => e.preventDefault() }>View Delius record</a>
-
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
-
-                      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
                     </div>
                   )
                 }) }
@@ -287,7 +295,7 @@ function OffenderSelection () {
           </div>
         </div>
 
-        <Link to="/" className="govuk-back-link">Back</Link>
+        <Link to="/cases/list" className="govuk-back-link">Back</Link>
 
       </main>
 

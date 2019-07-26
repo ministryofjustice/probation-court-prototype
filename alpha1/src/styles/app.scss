@@ -2,17 +2,29 @@
 // Config
 //===============================================
 
-$hmcts-assets-path: "/assets/";
+$moj-assets-path: "/assets/";
 $govuk-page-width: 1800px;
-$hmcts-page-width: $govuk-page-width;
+$moj-page-width: $govuk-page-width;
+
+$govuk-text-colour: #231f20;
+$govuk-brand-colour: #204060;
+$govuk-link-colour: #587088;
 
 //===============================================
 // Imports
 //===============================================
 
 @import "~govuk-frontend/all";
-@import "~@hmcts/frontend/all";
-@import "~@mojdigital/pattern-library/all";
+@import "~@ministryofjustice/frontend/all";
+
+@import "button";
+@import "calendar";
+@import "layout";
+@import "risk";
+@import "table";
+@import "tooltip";
+@import "typography";
+@import "warning-text";
 
 // ===============================================
 // Overrides
@@ -22,30 +34,66 @@ $hmcts-page-width: $govuk-page-width;
   box-sizing: border-box;
 }
 
+.govuk-main-wrapper {
+  padding-top: 15px;
+}
+
+.moj-header {
+  border-bottom: 10px solid $govuk-brand-colour;
+}
+
 .govuk-phase-banner__content__tag {
   background: govuk-colour("red");
 }
 
-.hmcts-primary-navigation__link {
+.govuk-header__logotype-crown {
+  fill: white;
+}
+
+.moj-header__link, .moj-header__navigation-link, .moj-primary-navigation__link {
   &:focus {
     color: white !important;
-
     &:before {
       background-color: white !important;
     }
   }
 }
 
-.hmcts-badge--red {
+.moj-badge--red {
   color: govuk-colour("bright-red");
   border-color: govuk-colour("bright-red");
 }
 
-.hmcts-badge--small {
-  width: 35px;
+.moj-badge {
+  text-align: center;
+  color: govuk-colour("grey-1");
+  border-color: govuk-colour("grey-1");
+
+  &.moj-badge-known {
+    color: govuk-colour("yellow");
+    border-color: govuk-colour("yellow");
+  }
 }
 
-.hmcts-badge--text-small {
+.moj-badge:not(.moj-badge--small) {
+  min-width: 0;
+  padding: 5px 20px;
+}
+
+.moj-badge--small {
+  color: $govuk-brand-colour;
+  border-color: $govuk-brand-colour;
+  text-align: center;
+  min-width: 45px;
+  padding: 5px 10px;
+}
+
+.moj-badge--green {
+  color: govuk-colour("light-green");
+  border-color: govuk-colour("light-green");
+}
+
+.moj-badge--text-small {
   font-size: 12px;
 }
 
@@ -54,20 +102,67 @@ $hmcts-page-width: $govuk-page-width;
   border-color: govuk-colour("bright-red") !important;
 }
 
-.hmcts-identity-bar__container {
+.moj-identity-bar__container {
   margin: 0;
 }
 
-.moj-tooltip--secondary {
-  cursor: default;
+.moj-pagination {
+  margin: 0; // Stop horizontal scrolling
+}
+
+.moj-primary-navigation__search {
+  float: right;
+  @include govuk-clearfix;
+}
+
+.moj-primary-navigation__container {
+  padding-top: 10px;
+}
+
+.moj-search {
+  margin: 0;
+  padding: 0;
+}
+
+.moj-pagination__link {
+  &:link,
+  &:visited {
+    color: $govuk-link-colour;
+  }
+  &:hover {
+    color: $govuk-link-hover-colour;
+  }
+  &:focus {
+    color: $govuk-link-active-colour;
+  }
+}
+
+.moj-sub-navigation__link[aria-current="page"] {
+  &:before {
+    background-color: $govuk-link-colour
+  }
 }
 
 //===============================================
 // App specific styles
 //===============================================
 
-abbr {
-  text-decoration: none;
+.app-filter__header--blue {
+  background: $govuk-brand-colour;
+
+  .moj-filter__header-title .govuk-heading-m {
+    color: govuk-colour("white");
+  }
+}
+
+.app-back-to-top__link {
+  float: right;
+  margin: 15px 0;
+  @include govuk-clearfix;
+}
+
+.app-back-to-top__icon {
+  margin-right: 5px;
 }
 
 .app-offence-title {
@@ -79,18 +174,14 @@ abbr {
   }
 }
 
-.app-alternate-rows-table {
-  tr:nth-child(even) {
-    background-color: govuk-colour("grey-4");
-  }
-  th, td {
-    padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) !important;
-  }
+.app-risk-tag--high, .app-risk-tag--very-high {
+  color: govuk-colour("bright-red");
+  border-color: govuk-colour("bright-red");
 }
 
 .app-identity-bar-warning {
-  background-color: govuk-tint(govuk-colour("blue"), 97);
-  box-shadow: inset 0 -1px 0 0 govuk-colour("blue");
+  background-color: govuk-tint($govuk-brand-colour, 97);
+  box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
 }
 
 .app-identity-bar--error {
@@ -99,7 +190,7 @@ abbr {
 }
 
 .app-icon-down {
-  border: solid govuk-colour("blue");
+  border: solid $govuk-brand-colour;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
@@ -108,80 +199,8 @@ abbr {
   -webkit-transform: rotate(45deg);
 }
 
-.app-util-center {
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.app-\!-inline {
-  display: inline;
-}
-
-.app-calendar--link {
-  text-decoration: none;
-}
-
 .app-\!-cursor-pointer {
   cursor: pointer;
-}
-
-.app-hint-s {
-  @extend .govuk-hint;
-  font-size: 14px;
-}
-
-.app-calendar {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 0;
-  @include govuk-font(16);
-  @include govuk-clearfix;
-  border-left: 1px solid govuk-colour("grey-2");
-}
-
-.app-calendar--item {
-  text-align: center;
-  float: left;
-  width: 14.285%;
-  list-style: none;
-  border: 1px solid govuk-colour("grey-2");
-  margin-left: -1px;
-  margin-top: -1px;
-  padding: 0 0 5px 0;
-  min-height: 130px;
-  font-weight: 700;
-}
-
-.app-calendar--item_header {
-  border-color: govuk-colour("blue");
-  background: govuk-colour("blue");
-  color: govuk-colour("white");
-  padding: 5px 0;
-  min-height: 10px;
-}
-
-.app-calendar--item_day {
-  border-color: govuk-colour("grey-3");
-  background: govuk-colour("grey-3");
-  color: govuk-colour("black");
-  min-height: 10px;
-  padding: 5px 0;
-}
-
-.app-calendar--item_day_today {
-  border-color: govuk-colour("yellow");
-  background: govuk-colour("yellow");
-  color: govuk-colour("white");
-}
-
-.app-calendar--item_empty {
-  background: govuk-colour("grey-4");
-}
-
-.app-calendar--item_today {
-  background: govuk-tint(govuk-colour("yellow"), 95);
 }
 
 .app-offender-header {
@@ -194,8 +213,4 @@ abbr {
 
 .app-offender-image {
   margin-right: 10px;
-}
-
-.app-full-width {
-  width: 100%;
 }

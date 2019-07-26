@@ -1,0 +1,26 @@
+abbr {
+  text-decoration: none;
+}
+
+.app-\!-text-align-center {
+  text-align: center; }
+
+.app-\!-text-align-right {
+  text-align: right; }
+
+.app-calendar--link {
+  text-decoration: none;
+}
+
+.app-hint-s {
+  @extend .govuk-hint;
+  font-size: 14px;
+}
+
+.app-\!-color-red {
+  color: govuk-colour("bright-red");
+}
+
+.app-\!-color-green {
+  color: govuk-colour("light-green");
+}
