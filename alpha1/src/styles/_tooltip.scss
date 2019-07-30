@@ -29,7 +29,7 @@
     }
   }
 
-  &.app-tooltip--secondary span {
+  &--secondary span {
     background: $govuk-brand-colour;
     &::before {
       border-right: 6px solid $govuk-brand-colour;

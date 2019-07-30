@@ -118,7 +118,7 @@ function CaseList (props) {
               offender records in Delius.</strong>
           </div>
 
-          <div className="moj-identity-bar app-identity-bar-warning govuk-!-margin-bottom-6">
+          <div className="moj-identity-bar app-identity-bar--warning govuk-!-margin-bottom-6">
             <div className="moj-identity-bar__container">
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
@@ -186,7 +186,7 @@ function CaseList (props) {
                 <h2 className="govuk-heading-m">Filter</h2>
               </div>
 
-              <div className="moj-filter__header-action" />
+              <div className="moj-filter__header-action"/>
 
             </div>
 
@@ -214,10 +214,16 @@ function CaseList (props) {
               <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
-                  <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
+                  <button id="filter-button"
+                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-right-2"
                           type="button"
                           aria-haspopup="true"
                           aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
+                  </button>
+
+                  <button className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
+                          type="button"
+                          aria-expanded="false" onClick={ e => e.preventDefault() }>Show blocks
                   </button>
 
                   <div className="moj-action-bar__filter"/>
@@ -225,7 +231,7 @@ function CaseList (props) {
                   <div className="moj-menu">
                     <div className="moj-menu__wrapper">
 
-                      <button type="submit" className="govuk-button app-button--interrupt moj-menu__item"
+                      <button type="button" className="govuk-button app-button--interrupt moj-menu__item"
                               onClick={ () => {
                                 props.history.push('/cases/add')
                               } }>
@@ -285,7 +291,8 @@ function CaseList (props) {
                         <td>
                           { $case.defendant.deliusStatus }
                           { $case.defendant.assignment && (
-                            <span className="govuk-hint govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
+                            <span
+                              className="govuk-hint govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
                           ) }
                         </td>
                         <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>

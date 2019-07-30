@@ -13,15 +13,15 @@
   text-align: center;
   font-weight: bold;
 
-  &.app-risk-tag--low {
+  &--low {
     color: govuk-colour("light-green");
   }
 
-  &.app-risk-tag--medium {
+  &--medium {
     color: govuk-colour("yellow");
   }
 
-  &.app-risk-tag--high, &.app-risk-tag--very-high {
+  &--high, &--very-high {
     color: govuk-colour("red");
   }
 }
@@ -34,22 +34,22 @@
   color: govuk-colour("grey-1");
   border: 3px solid govuk-colour("grey-1");
 
-  &.app-risk-alert--high, &.app-risk-alert--very-high {
+  &--high, &--very-high {
     color: govuk-colour("bright-red");
     border-color: govuk-colour("bright-red");
   }
 
-  &.app-risk-alert--medium {
+  &--medium {
     color: govuk-colour("yellow");
     border-color: govuk-colour("yellow");
   }
 
-  &.app-risk-alert--low {
+  &--low {
     color: govuk-colour("light-green");
     border-color: govuk-colour("light-green");
   }
 
-  &.app-risk-alert--small {
+  &--small {
     @include govuk-font(19, bold);
     @include govuk-responsive-padding(2, all);
   }

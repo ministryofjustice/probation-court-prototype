@@ -1,13 +1,16 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import { useStateValue } from '../../../../utils/StateProvider'
 import DefendantDetails from '../../shared-components/DefendantDetails'
 import SomethingWrong from '../../shared-components/SomethingWrong'
+import AdjournCase from './components/AdjournCase'
+import RecordSentence from './components/RecordSentence'
 
 function CaseSummary (props) {
 
+  const [data, setData] = useState({ showAdjourn: false, showRecordSentence: false })
   const [{ court, currentDate, currentCase }] = useStateValue()
 
   useEffect(() => {
@@ -58,12 +61,21 @@ function CaseSummary (props) {
                 <div className="moj-menu">
                   <div className="moj-menu__wrapper">
 
-                    <button className="govuk-button app-button--interrupt moj-menu__item" type="button">Adjourn
-                      case
+                    <button
+                      className="govuk-button app-button--interrupt moj-menu__item"
+                      type="button"
+                      onClick={ e => {
+                        e.preventDefault()
+                        setData({ ...data, showAdjourn: true })
+                      } } disabled={ data.showAdjourn || data.showRecordSentence }>Adjourn case
                     </button>
 
-                    <button className="govuk-button app-button--interrupt moj-menu__item" type="button">Record
-                      sentence
+                    <button
+                      className="govuk-button app-button--interrupt moj-menu__item"
+                      type="button" onClick={ e => {
+                      e.preventDefault()
+                      setData({ ...data, showRecordSentence: true })
+                    } } disabled={ data.showAdjourn || data.showRecordSentence }>Record sentence
                     </button>
 
                   </div>
@@ -113,7 +125,8 @@ function CaseSummary (props) {
                     { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
                       <Fragment>
                         <h2 className="govuk-heading-m govuk-!-margin-bottom-0">RoSH <span
-                          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">from Delius record</span></h2>
+                          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">from Delius record</span>
+                        </h2>
 
                         { currentCase.defendant.risk.map((risk, riskIndex) => {
                           return (
@@ -174,7 +187,8 @@ function CaseSummary (props) {
                           Telephone: 0114 276 0760
                         </p>
 
-                        <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
+                        <button
+                          className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
                           Contact offender manager
                         </button>
 
@@ -191,6 +205,14 @@ function CaseSummary (props) {
             </div>
 
             <div className="moj-filter-layout__content">
+
+              { data && data.showAdjourn && (
+                <AdjournCase hideUI={ () => { setData({ ...data, showAdjourn: false }) } }/>
+              ) }
+
+              { data && data.showRecordSentence && (
+                <RecordSentence hideUI={ () => { setData({ ...data, showRecordSentence: false }) } }/>
+              ) }
 
               <div className="moj-identity-bar">
                 <div className="moj-identity-bar__container">
@@ -303,7 +325,8 @@ function CaseSummary (props) {
                     <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                       <h2 className="govuk-heading-m govuk-!-margin-top-2">Summary of convictions <span
-                        className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">from CPS pack</span></h2>
+                        className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">from CPS pack</span>
+                      </h2>
 
                       <table className="govuk-table app-table app-table--split-rows">
                         <tbody>

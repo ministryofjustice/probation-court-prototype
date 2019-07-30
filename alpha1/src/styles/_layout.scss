@@ -1,19 +1,20 @@
-.app-\!-float-left, .app-\!-float-left--not-narrow {
-  float: left;
-}
-
-.app-\!-float-right, .app-\!-float-right--not-narrow {
-  float: right;
-}
-
-.app-\!-float-left--not-narrow, .app-\!-float-right--not-narrow {
-  @include govuk-media-query(mobile, tablet) {
-    float: none;
+.app-\!-float {
+  &-left, &-left--not-narrow {
+    float: left;
   }
-}
-
-.app-\!-float-left, .app-\!-float-right, .app-\!-float-left--not-narrow, .app-\!-float-right--not-narrow {
-  @include govuk-clearfix;
+  &-right, &-right--not-narrow {
+    float: right;
+  }
+  &-left,  &-right  {
+    &--not-narrow {
+      @include govuk-media-query(mobile, tablet) {
+        float: none;
+      }
+    }
+  }
+  &-left, &-left--not-narrow,  &-right, &-right--not-narrow  {
+    @include govuk-clearfix;
+  }
 }
 
 .app-util-center {

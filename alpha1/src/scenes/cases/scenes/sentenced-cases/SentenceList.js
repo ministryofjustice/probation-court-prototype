@@ -74,7 +74,7 @@ function SentencedList (props) {
               recorded in Delius.</strong>
           </div>
 
-          <div className="moj-identity-bar app-identity-bar-warning govuk-!-margin-bottom-6">
+          <div className="moj-identity-bar app-identity-bar--warning govuk-!-margin-bottom-6">
             <div className="moj-identity-bar__container">
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 

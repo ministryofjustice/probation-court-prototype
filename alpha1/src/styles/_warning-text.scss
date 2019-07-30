@@ -1,6 +1,6 @@
 .app-warning-text {
 
-  &.app-warning-text--interrupt, &.app-warning-text--critical {
+  &--interrupt, &--critical {
     @include govuk-responsive-padding(4, all);
 
     color: govuk-colour("white");
@@ -12,7 +12,7 @@
     }
   }
 
-  &.app-warning-text--interrupt {
+  &--interrupt {
     background: $govuk-brand-colour;
 
     .govuk-warning-text__icon {
@@ -20,7 +20,7 @@
     }
   }
 
-  &.app-warning-text--critical {
+  &--critical {
     background: govuk-colour("red");
 
     .govuk-warning-text__icon {
@@ -32,7 +32,7 @@
     width: 38px;
     height: 38px;
 
-    &.app-warning-text__icon--interrupt {
+    &--interrupt {
       color: $govuk-brand-colour;
       background: govuk-colour("white");
       border-color: govuk-colour("white");
