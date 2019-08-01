@@ -6,14 +6,14 @@
   padding: 0;
   @include govuk-font(16);
   @include govuk-clearfix;
-  border-left: 1px solid govuk-colour("grey-2");
+  border-left: 1px solid govuk-colour("mid-grey");
 
   &--item {
     text-align: center;
     float: left;
     width: 14.285%;
     list-style: none;
-    border: 1px solid govuk-colour("grey-2");
+    border: 1px solid govuk-colour("mid-grey");
     margin-left: -1px;
     margin-top: -1px;
     padding: 0 0 5px 0;
@@ -29,8 +29,8 @@
     }
 
     &_day {
-      border-color: govuk-colour("grey-3");
-      background: govuk-colour("grey-3");
+      border-color: govuk-colour("light-grey");
+      background: govuk-colour("light-grey");
       color: govuk-colour("black");
       min-height: 10px;
       padding: 5px 0;
@@ -43,7 +43,7 @@
     }
 
     &_empty {
-      background: govuk-colour("grey-4");
+      background: govuk-colour("light-grey");
     }
 
     &_today {

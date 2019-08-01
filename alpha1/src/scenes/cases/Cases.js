@@ -11,12 +11,14 @@ import CaseSummary from './scenes/case-summary/CaseSummary'
 import OffenderSelection from './scenes/offender-selection/OffenderSelection'
 import AddCase from './scenes/add-case/AddCase'
 import OffenderSummary from './scenes/offender-summary/OffenderSummary'
+import MatchCaseList from './scenes/match-case-list/MatchCaseList'
 
 function Cases (props) {
 
   return (
     <StateProvider initialState={ initialState } reducer={ reducer }>
       <Route path={ `${ props.match.url }/list/:day?/:month?/:year?` } component={ CaseList }/>
+      <Route path={ `${ props.match.url }/unmatched-list/:day?/:month?/:year?` } component={ MatchCaseList }/>
       <Route path={ `${ props.match.url }/adjourned/:day?/:month?/:year?` } component={ AdjournedList }/>
       <Route path={ `${ props.match.url }/sentenced/:day?/:month?/:year?` } component={ SentencedList }/>
       <Route path={ `${ props.match.url }/details/:id` } component={ CaseSummary }/>

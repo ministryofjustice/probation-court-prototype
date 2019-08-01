@@ -1,8 +1,12 @@
 import React from 'react'
+import { useStateValue } from '../../../../../utils/StateProvider'
 
 function RecordSentence (props) {
+
+  const [{ currentCase }] = useStateValue()
+
   return (
-    <div className="moj-identity-bar app-identity-bar--warning govuk-!-margin-bottom-4 govuk-!-padding-top-0">
+    <div className="moj-identity-bar app-identity-bar--interaction govuk-!-margin-bottom-4 govuk-!-padding-top-0">
 
       <div className="moj-filter__header app-filter__header--light-blue">
         <div className="moj-filter__header-title"><h2 className="govuk-heading-m">Record sentence</h2></div>
@@ -11,6 +15,39 @@ function RecordSentence (props) {
       <div className="moj-identity-bar__container govuk-!-padding-left-4 govuk-!-padding-right-4 govuk-!-padding-top-4">
 
         <form name="ndForm">
+
+          <table className="govuk-table app-table app-table--split-rows">
+            <thead>
+            <tr>
+              <th colSpan="2">Offence</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
+              return (
+                <tr key={ offenceIndex }>
+                  <td>{ offence.title }</td>
+                  <td>
+                    <button data-module="govuk-button" className="govuk-button govuk-button--secondary govuk-!-margin-0">Remove</button>
+                  </td>
+                </tr>
+              )
+            }) }
+
+            </tbody>
+          </table>
+
+          <div className="moj-button-action">
+
+            <button data-module="govuk-button" type="submit"
+                    className="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4">
+              Add another offence
+            </button>
+
+          </div>
+
+          <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
           <div className="govuk-form-group">
             <fieldset className="govuk-fieldset" aria-describedby="changed-name-hint">

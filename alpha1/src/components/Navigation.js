@@ -36,7 +36,7 @@ function Navigation () {
                 <input className="govuk-input moj-search__input " id="search-1" name="search-1" type="search"/>
               </div>
 
-              <button type="submit" className="govuk-button moj-search__button ">
+              <button data-module="govuk-button" type="submit" className="govuk-button moj-search__button ">
                 Search
               </button>
 

@@ -193,6 +193,7 @@
                   }
                 ],
                 "deliusStatus": "Current",
+                "breachedConditions": true,
                 "assignment": "crc",
                 "previousConvictions": {
                   "convictionCount": 2,
@@ -231,7 +232,6 @@
                   "contraryToActAndSection": "section 1(1) and 7 of the Theft Act 1968.",
                   "statementOfFact": "",
                   "plea": "G",
-                  "pleaDate": "2019-06-18",
                   "adjournedDate": "2019-03-12",
                   "adjournedReason": "For a pre-sentence report to be prepared."
                 },
@@ -481,6 +481,8 @@
                 ],
                 "assignment": "nps",
                 "deliusStatus": "Current",
+                "breachedConditions": true,
+                "ssoAlert": true,
                 "previousConvictions": {
                   "convictionCount": 6,
                   "offenceCount": 19,

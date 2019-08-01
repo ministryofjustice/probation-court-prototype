@@ -90,7 +90,7 @@ function CalendarFilter() {
 
       <div className="moj-filter__options">
 
-        <button type="submit" className="govuk-button">Apply filters</button>
+        <button data-module="govuk-button" type="submit" className="govuk-button">Apply filters</button>
 
         <div className="govuk-form-group">
           <label className="govuk-label govuk-label--m" htmlFor="sort">

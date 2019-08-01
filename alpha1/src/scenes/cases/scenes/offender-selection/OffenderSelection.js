@@ -150,7 +150,7 @@ function OffenderSelection () {
                                  aria-describedby="offender-search-hint"/>
                         </div>
 
-                        <button type="submit" className="govuk-button moj-search__button ">
+                        <button data-module="govuk-button" type="submit" className="govuk-button moj-search__button ">
                           Search
                         </button>
 
@@ -199,7 +199,7 @@ function OffenderSelection () {
 
                 { data.potentialMatches.map((offenderItem, index) => {
                   return offenderItem.defendant && (
-                    <div key={ index } className="moj-identity-bar govuk-!-margin-bottom-4">
+                    <div key={ index } className="moj-identity-bar app-identity-bar--warning govuk-!-margin-bottom-4">
                       <div className="moj-identity-bar__container">
                         <div className="govuk-!-padding-left-4 govuk-!-padding-right-4 govuk-!-padding-top-2">
 
@@ -254,7 +254,7 @@ function OffenderSelection () {
                                   </div>
                                   <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
-                                    <button className="govuk-button govuk-button--secondary">Match</button>
+                                    <button data-module="govuk-button" className="govuk-button app-button--interrupt">Match</button>
 
                                   </div>
                                 </div>
