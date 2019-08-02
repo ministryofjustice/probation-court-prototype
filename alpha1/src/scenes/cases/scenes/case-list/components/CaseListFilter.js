@@ -94,7 +94,7 @@ function CaseListFilter () {
 
       <div className="moj-filter__options">
 
-        <button type="submit" className="govuk-button">Apply filters</button>
+        <button data-module="govuk-button" type="submit" className="govuk-button">Apply filters</button>
 
         <div className="govuk-form-group">
 

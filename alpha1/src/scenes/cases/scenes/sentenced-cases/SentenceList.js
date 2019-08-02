@@ -74,7 +74,7 @@ function SentencedList (props) {
               recorded in Delius.</strong>
           </div>
 
-          <div className="moj-identity-bar app-identity-bar-warning govuk-!-margin-bottom-6">
+          <div className="moj-identity-bar app-identity-bar--warning govuk-!-margin-bottom-6">
             <div className="moj-identity-bar__container">
               <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
@@ -168,7 +168,7 @@ function SentencedList (props) {
               <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
-                  <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
+                  <button data-module="govuk-button" id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                           type="button"
                           aria-haspopup="true"
                           aria-expanded="false" onClick={ () => toggleFilter() }>Show filter

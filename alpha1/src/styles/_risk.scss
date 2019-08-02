@@ -7,21 +7,21 @@
 
   display: inline-block;
   background: transparent;
-  color: govuk-colour("grey-1");
-  border: 3px solid;
+  color: govuk-colour("dark-grey");
+  border: 3px solid currentColor;
   min-width: 115px;
   text-align: center;
   font-weight: bold;
 
-  &.app-risk-tag--low {
+  &--low {
     color: govuk-colour("light-green");
   }
 
-  &.app-risk-tag--medium {
-    color: govuk-colour("yellow");
+  &--medium {
+    color: govuk-colour("light-blue");
   }
 
-  &.app-risk-tag--high, &.app-risk-tag--very-high {
+  &--high, &--very-high {
     color: govuk-colour("red");
   }
 }
@@ -31,25 +31,22 @@
   @include govuk-responsive-padding(3, all);
 
   text-align: center;
-  color: govuk-colour("grey-1");
-  border: 3px solid govuk-colour("grey-1");
+  color: govuk-colour("dark-grey");
+  border: 3px solid currentColor;
 
-  &.app-risk-alert--high, &.app-risk-alert--very-high {
-    color: govuk-colour("bright-red");
-    border-color: govuk-colour("bright-red");
+  &--high, &--very-high {
+    color: govuk-colour("red");
   }
 
-  &.app-risk-alert--medium {
-    color: govuk-colour("yellow");
-    border-color: govuk-colour("yellow");
+  &--medium {
+    color: govuk-colour("light-blue");
   }
 
-  &.app-risk-alert--low {
+  &--low {
     color: govuk-colour("light-green");
-    border-color: govuk-colour("light-green");
   }
 
-  &.app-risk-alert--small {
+  &--small {
     @include govuk-font(19, bold);
     @include govuk-responsive-padding(2, all);
   }

@@ -36,45 +36,20 @@ function OffenderSummary (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <table className="govuk-table app-table" role="presentation">
-          <tbody>
-          <tr>
-            <td>
-              <h1 className="govuk-heading-l govuk-!-margin-0">Offender summary</h1>
-              <p className="govuk-body-m govuk-!-font-weight-bold">Appearing
-                on { currentDate.format('dddd, Do MMMM YYYY') }<span
-                  className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
-            </td>
-            <td className="app-!-text-align-right">
-
-              <div className="moj-action-bar">
-                { !!(currentCase.defendant && currentCase.defendant.risk && currentCase.defendant.risk.length) && currentCase.defendant.risk.map((risk, riskIndex) => {
-                  return (
-                    <Fragment key={ riskIndex }>
-                      { risk.type === 'RoSH' && (
-                        <div
-                          className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
-                          of Serious Harm</div>
-                      ) }
-                    </Fragment>
-                  )
-                }) }
-
-              </div>
-
-            </td>
-          </tr>
-          </tbody>
-        </table>
+        <h1 className="govuk-heading-l govuk-!-margin-0">Offender summary<span
+          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;from Delius record</span></h1>
+        <p className="govuk-body-m govuk-!-font-weight-bold">Appearing
+          on { currentDate.format('dddd, Do MMMM YYYY') }<span
+            className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
 
         { currentCase && currentCase.defendant && (
           <div className="moj-filter-layout">
             <div className="moj-filter-layout__filter">
               <div className="moj-filter">
 
-                <div className="moj-filter__header app-filter__header--blue">
+                <div className="moj-filter__header">
                   <div className="moj-filter__header-title">
-                    <h2 className="govuk-heading-m">{ currentCase.defendant && currentCase.defendant.name }</h2>
+                    <h2 className="govuk-heading-m app-!-color-white">Offender details</h2>
                   </div>
                 </div>
 
@@ -122,7 +97,8 @@ function OffenderSummary (props) {
                                                  onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
                     </p>
 
-                    <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
+                    <button data-module="govuk-button"
+                            className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0">
                       Edit contact details
                     </button>
 
@@ -133,19 +109,13 @@ function OffenderSummary (props) {
 
                         <h2 className="govuk-heading-m">Current order</h2>
 
-                        <p className="govuk-body govuk-!-margin-bottom-0">155 days community service</p>
+                        <p className="govuk-body">155 days community service</p>
 
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                        <h2 className="govuk-heading-m">Intervention details</h2>
+                        <h2 className="govuk-heading-s govuk-!-margin-bottom-0">Intervention details<span
+                          className="govuk-hint govuk-!-display-inline-block">&nbsp;(active)</span></h2>
 
                         <p className="govuk-body govuk-!-margin-bottom-0">ES - RAR Programme</p>
                         <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
-
-                        <div
-                          className="moj-badge moj-badge moj-badge-current govuk-!-margin-top-4 govuk-!-width-full">Active
-                          Intervention
-                        </div>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
@@ -170,9 +140,10 @@ function OffenderSummary (props) {
                           Telephone: 0114 276 0760
                         </p>
 
-                        <button className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">
-                          Contact offender manager
-                        </button>
+                        <p className="govuk-body">
+                          <a href="/contact" className="govuk-link govuklink--no-visited-state govuk-!-margin-bottom-0"
+                             onClick={ e => e.preventDefault() }>Contact offender manager</a>
+                        </p>
 
                         <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
@@ -193,28 +164,18 @@ function OffenderSummary (props) {
               <OffenderEvents/>
               <OffenderDetails/>
 
-              <div className="moj-identity-bar govuk-!-margin-top-4">
-                <div className="moj-identity-bar__container">
-                  <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+              <h2 className="govuk-heading-m govuk-!-margin-top-2">Notes</h2>
 
-                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Notes</h2>
+              { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
+                <Fragment>
+                  <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
+                  <p className="govuk-body">Laboris sunt officia ex quis laboris sit exercitation et. Occaecat
+                    nulla tempor laborum adipisicing reprehenderit sint cupidatat dolor nulla proident est non
+                    ipsum.</p>
+                </Fragment>
+              ) }
 
-                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
-                      <Fragment>
-                        <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
-                        <p className="govuk-body">Laboris sunt officia ex quis laboris sit exercitation et. Occaecat
-                          nulla tempor laborum adipisicing reprehenderit sint cupidatat dolor nulla proident est non
-                          ipsum.</p>
-                      </Fragment>
-                    ) }
-
-                    <p className="app-!-text-align-right">
-                      <button className="govuk-button govuk-button--secondary">Add note</button>
-                    </p>
-
-                  </div>
-                </div>
-              </div>
+              <button data-module="govuk-button" className="govuk-button govuk-button--secondary">Add note</button>
 
             </div>
           </div>

@@ -14,8 +14,11 @@ $govuk-link-colour: #587088;
 // Imports
 //===============================================
 
-@import "~govuk-frontend/all";
-@import "~@ministryofjustice/frontend/all";
+@import "~govuk-frontend/govuk/all";
+@import "~@ministryofjustice/frontend/moj/all";
+
+$moj-light-color: govuk-colour("light-grey") !default;
+$moj-light-color: govuk-tint($govuk-brand-colour, 97);
 
 @import "button";
 @import "calendar";
@@ -34,6 +37,14 @@ $govuk-link-colour: #587088;
   box-sizing: border-box;
 }
 
+.govuk-accordion__section-button {
+  font-size: 19px;
+}
+
+.govuk-section-break--visible:not(.govuk-section-break--m) {
+  border-bottom: 2px solid govuk-colour("light-grey");
+}
+
 .govuk-main-wrapper {
   padding-top: 15px;
 }
@@ -50,6 +61,10 @@ $govuk-link-colour: #587088;
   fill: white;
 }
 
+.moj-header__link {
+  margin-top: govuk-spacing(2);
+}
+
 .moj-header__link, .moj-header__navigation-link, .moj-primary-navigation__link {
   &:focus {
     color: white !important;
@@ -59,82 +74,57 @@ $govuk-link-colour: #587088;
   }
 }
 
-.moj-badge--red {
-  color: govuk-colour("bright-red");
-  border-color: govuk-colour("bright-red");
-}
-
 .moj-badge {
   text-align: center;
-  color: govuk-colour("grey-1");
-  border-color: govuk-colour("grey-1");
-
-  &.moj-badge-known {
-    color: govuk-colour("yellow");
-    border-color: govuk-colour("yellow");
+  &--small {
+    color: $govuk-brand-colour;
+    border-color: currentColor;
   }
-}
-
-.moj-badge:not(.moj-badge--small) {
-  min-width: 0;
-  padding: 5px 20px;
-}
-
-.moj-badge--small {
-  color: $govuk-brand-colour;
-  border-color: $govuk-brand-colour;
-  text-align: center;
-  min-width: 45px;
-  padding: 5px 10px;
-}
-
-.moj-badge--green {
-  color: govuk-colour("light-green");
-  border-color: govuk-colour("light-green");
-}
-
-.moj-badge--text-small {
-  font-size: 12px;
-}
-
-.moj-badge-error {
-  color: govuk-colour("bright-red") !important;
-  border-color: govuk-colour("bright-red") !important;
 }
 
 .moj-identity-bar__container {
   margin: 0;
 }
 
+.moj-identity-bar {
+  background-color: $moj-light-color;
+  box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
+}
+
 .moj-pagination {
   margin: 0; // Stop horizontal scrolling
+
+  &__link:not(&__item--active) {
+    &:link,
+    &:visited {
+      color: $govuk-link-colour;
+    }
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
 }
 
-.moj-primary-navigation__search {
-  float: right;
-  @include govuk-clearfix;
+.moj-filter__selected {
+  background-color: $moj-light-color;
 }
 
-.moj-primary-navigation__container {
-  padding-top: 10px;
+.moj-primary-navigation {
+  &__search {
+    float: right;
+    @include govuk-clearfix;
+  }
+  &__container {
+    padding-top: 10px;
+  }
 }
 
 .moj-search {
   margin: 0;
   padding: 0;
-}
-
-.moj-pagination__link {
-  &:link,
-  &:visited {
-    color: $govuk-link-colour;
-  }
-  &:hover {
-    color: $govuk-link-hover-colour;
-  }
-  &:focus {
-    color: $govuk-link-active-colour;
-  }
 }
 
 .moj-sub-navigation__link[aria-current="page"] {
@@ -147,22 +137,33 @@ $govuk-link-colour: #587088;
 // App specific styles
 //===============================================
 
-.app-filter__header--blue {
-  background: $govuk-brand-colour;
+.app-link--show-more:focus {
+  @include govuk-focused-text;
+}
 
-  .moj-filter__header-title .govuk-heading-m {
-    color: govuk-colour("white");
+.app-filter__header {
+  &--blue, &--light-blue {
+    background: $govuk-brand-colour;
+
+    .moj-filter__header-title .govuk-heading-m {
+      color: govuk-colour("white");
+    }
+  }
+
+  &--light-blue {
+    background: $govuk-link-colour;
   }
 }
 
-.app-back-to-top__link {
-  float: right;
-  margin: 15px 0;
-  @include govuk-clearfix;
-}
-
-.app-back-to-top__icon {
-  margin-right: 5px;
+.app-back-to-top {
+  &__link {
+    float: right;
+    margin: 15px 0;
+    @include govuk-clearfix;
+  }
+  &__icon {
+    margin-right: 5px;
+  }
 }
 
 .app-offence-title {
@@ -174,19 +175,26 @@ $govuk-link-colour: #587088;
   }
 }
 
-.app-risk-tag--high, .app-risk-tag--very-high {
-  color: govuk-colour("bright-red");
-  border-color: govuk-colour("bright-red");
+.app-risk-tag {
+  &--high, &--very-high {
+    color: govuk-colour("red");
+    border-color: currentColor;
+  }
 }
 
-.app-identity-bar-warning {
-  background-color: govuk-tint($govuk-brand-colour, 97);
-  box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
-}
-
-.app-identity-bar--error {
-  background-color: govuk-tint(govuk-colour("red"), 95);
-  box-shadow: inset 0 -1px 0 0 govuk-colour("red");
+.app-identity-bar {
+  &--warning {
+    background-color: $moj-light-color;
+    box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
+  }
+  &--interaction {
+    background-color: govuk-colour("white");
+    box-shadow: inset 0 0 0 2px $govuk-link-colour;
+  }
+  &--error {
+    background-color: govuk-tint(govuk-colour("red"), 95);
+    box-shadow: inset 0 -1px 0 0 govuk-colour("red");
+  }
 }
 
 .app-icon-down {
@@ -203,14 +211,22 @@ $govuk-link-colour: #587088;
   cursor: pointer;
 }
 
-.app-offender-header {
-  width: calc(100% - 205px);
+.app-\!-width-auto {
+  width: auto;
 }
 
-.app-offender-selection {
-  width: calc(100% - 102px);
+.app-offender {
+  &-header {
+    width: calc(100% - 205px);
+  }
+  &-selection {
+    width: calc(100% - 102px);
+  }
+  &-image {
+    margin-right: 10px;
+  }
 }
 
-.app-offender-image {
-  margin-right: 10px;
+.app-\!-center {
+  margin: 0 auto;
 }

@@ -1,6 +1,6 @@
 {
   "name": "alpha1",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
@@ -30,8 +30,8 @@
     "iOS >= 9"
   ],
   "devDependencies": {
-    "@ministryofjustice/frontend": "0.0.7-alpha",
-    "govuk-frontend": "v2.13.0",
+    "@ministryofjustice/frontend": "0.0.9-alpha",
+    "govuk-frontend": "3.0.0",
     "node-sass": "4.12.0"
   },
   "optionalDependencies": {

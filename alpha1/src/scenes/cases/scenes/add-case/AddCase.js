@@ -60,16 +60,11 @@ function AddCase () {
 
             <div className="moj-filter">
 
-              <div className="moj-filter__header app-filter__header--blue">
+              <div className="moj-filter__header">
 
                 <div className="moj-filter__header-title">
-                  <h2 className="govuk-heading-m">
-                    { !data.offenderMatch && (
-                      <Fragment>Defendant details</Fragment>
-                    ) }
-                    { data.offenderMatch && (
-                      <Fragment>{ data.defendant.name }</Fragment>
-                    ) }
+                  <h2 className="govuk-heading-m app-!-color-white">
+                    Defendant details
                   </h2>
                 </div>
               </div>
@@ -80,6 +75,7 @@ function AddCase () {
                   <div className="moj-filter__selected-heading">
 
                     { !data.offenderMatch && (
+
                       <form name="defendantForm">
                         <div className="govuk-form-group">
                           <label className="govuk-label" htmlFor="name">PNC</label>
@@ -145,27 +141,29 @@ function AddCase () {
                     { data.offenderMatch && (
                       <Fragment>
 
-                        <div className="app-!-float-left">
+                        <p className="govuk-heading-s">{ data.defendant.name }</p>
 
-                          <img src="/assets/images/no-photo.png" width="82" height="102"
-                               alt={ `${ data.defendant.name }` }
-                               className="app-offender-image"/>
-                        </div>
-                        <div className="app-!-float-left">
-
-                          <p className="govuk-body govuk-!-margin-bottom-0">
-                            <strong>DOB:</strong> { moment(data.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
-                          </p>
-                          <p className="govuk-body govuk-!-margin-bottom-0"><strong>CRN:</strong> X612323A</p>
-                          <p className="govuk-body govuk-!-margin-bottom-0"><strong>PNC:</strong> { data.defendant.pnc }
-                          </p>
-
-                        </div>
-
-                        <div
-                          className={ `moj-badge moj-badge ${ data.defendant.deliusStatus === 'Current' ? 'moj-badge-error' : data.defendant.deliusStatus === 'Known' ? 'moj-badge-known' : '' } govuk-!-margin-top-4 govuk-!-width-full` }>Not
-                          known offender
-                        </div>
+                        <table role="presentation">
+                          <tbody>
+                          <tr>
+                            <td style={ { 'width': 92 } }>
+                              <img src="/assets/images/no-photo.png" width="82" height="102"
+                                   alt={ `${ data.defendant.name }` }
+                                   className="app-offender-image"/>
+                            </td>
+                            <td>
+                              <p className="govuk-body govuk-!-margin-bottom-0">
+                                <strong>Status:</strong> Known</p>
+                              <p className="govuk-body govuk-!-margin-bottom-0">
+                                <strong>DOB:</strong> { moment(data.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }
+                              </p>
+                              <p className="govuk-body govuk-!-margin-bottom-0">
+                                <strong>CRN:</strong> X612323A</p>
+                              <p className="govuk-body govuk-!-margin-bottom-0"><strong>PNC:</strong> 2004/123456B</p>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
 
                       </Fragment>
                     ) }
@@ -175,27 +173,34 @@ function AddCase () {
 
                 <div className="moj-filter__options">
 
-                  <h2 className="govuk-heading-m">Contact details</h2>
-
-                  <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Address</h3>
-
-                  <p className="govuk-body">MILES DANTON<br/>368 London Road<br/>Broomhill<br/>S65 7HG</p>
-
-                  <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Telephone</h3>
-
-                  <p className="govuk-body">07765 765 432</p>
-
-                  <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</h3>
-
-                  <p className="govuk-body"><a href="mailto:user-123456@some-host.com"
-                                               className="govuk-link govuk-link--no-visited-state"
-                                               onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
-                  </p>
-
-                  { !data.offenderMatch && (
+                  { data.offenderMatch ? (
                     <Fragment>
 
-                      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+                      <h2 className="govuk-heading-m">Contact details</h2>
+
+                      <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Address</h3>
+
+                      <p className="govuk-body">MILES DANTON<br/>368 London Road<br/>Broomhill<br/>S65 7HG</p>
+
+                      <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Telephone</h3>
+
+                      <p className="govuk-body">07765 765 432</p>
+
+                      <h3 className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</h3>
+
+                      <p className="govuk-body"><a href="mailto:user-123456@some-host.com"
+                                                   className="govuk-link govuk-link--no-visited-state"
+                                                   onClick={ e => e.preventDefault() }>user-123456@some-host.com</a>
+                      </p>
+
+                      <button data-module="govuk-button"
+                              className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0">
+                        Edit contact details
+                      </button>
+
+                    </Fragment>
+                  ) : (
+                    <Fragment>
 
                       <h2 className="govuk-heading-m">Offender not known?</h2>
 
@@ -204,7 +209,9 @@ function AddCase () {
                         to
                         probation.</p>
 
-                      <button className="govuk-button govuk-button--secondary">Offender not known</button>
+                      <button data-module="govuk-button" className="govuk-button govuk-button--secondary">Offender not
+                        known
+                      </button>
 
                     </Fragment>
                   ) }
@@ -232,9 +239,9 @@ function AddCase () {
                     ) }
 
                     { data.selectOffender && !data.offenderMatch && (
-                      <div className="moj-identity-bar govuk-!-margin-bottom-4">
+                      <div className="moj-identity-bar">
                         <div className="moj-identity-bar__container">
-                          <div className="govuk-!-padding-left-4 govuk-!-padding-right-4 govuk-!-padding-top-2">
+                          <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
                             <div className="govuk-grid-row">
                               <div className="govuk-grid-column-full">
@@ -287,7 +294,8 @@ function AddCase () {
                                     </div>
                                     <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
-                                      <button className="govuk-button govuk-button--secondary" onClick={ e => {
+                                      <button data-module="govuk-button"
+                                              className="govuk-button app-button--interrupt" onClick={ e => {
                                         setData({ ...data, offenderMatch: true })
                                       } }>Match
                                       </button>
@@ -329,154 +337,135 @@ function AddCase () {
 
                 { data.offenderMatch && (
                   <form name="caseForm">
-                    <div className="moj-identity-bar">
-                      <div className="moj-identity-bar__container">
-                        <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
 
-                          <h2 className="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-1">Appearing in
-                            Court</h2>
-                          <span
-                            className="govuk-hint govuk-!-margin">On { currentDate.format('dddd, Do MMMM YYYY') }.</span>
+                    <h2 className="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-1">Appearing in
+                      Court</h2>
+                    <span
+                      className="govuk-hint govuk-!-margin">On { currentDate.format('dddd, Do MMMM YYYY') }.</span>
 
-                          <div className="govuk-form-group">
-                            <label className="govuk-label" htmlFor="room">Court room</label>
-                            <input className="govuk-input govuk-input--width-2" id="room" name="room" type="text"/>
-                          </div>
+                    <div className="govuk-form-group">
+                      <label className="govuk-label" htmlFor="room">Court room</label>
+                      <input className="govuk-input govuk-input--width-2" id="room" name="room" type="text"/>
+                    </div>
 
-                          <div className="govuk-form-group">
-                            <label className="govuk-label" htmlFor="sitting">Sitting</label>
-                            <input className="govuk-input govuk-input--width-10" id="sitting" name="sitting"
-                                   type="text"/>
-                          </div>
+                    <div className="govuk-form-group">
+                      <label className="govuk-label" htmlFor="sitting">Sitting</label>
+                      <input className="govuk-input govuk-input--width-10" id="sitting" name="sitting"
+                             type="text"/>
+                    </div>
 
+                    <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+                    <h2 className="govuk-heading-m govuk-!-margin-top-2">Offence</h2>
+
+                    <div className="govuk-grid-row">
+                      <div className="govuk-grid-column-two-thirds">
+
+                        <div className="govuk-form-group">
+                          <label className="govuk-label" htmlFor="offence">Offence</label>
+                          <input className="govuk-input" id="offence" name="offence" type="text"/>
                         </div>
+
+                        <div className="govuk-form-group">
+                          <label className="govuk-label" htmlFor="contrary">Contrary to</label>
+                          <input className="govuk-input" id="contrary" name="contrary" type="text"/>
+                        </div>
+
+                        <div className="govuk-form-group">
+                          <label className="govuk-label" htmlFor="more-detail">
+                            Offence summary
+                          </label>
+                          <textarea className="govuk-textarea" id="more-detail" name="more-detail" rows="5"
+                                    aria-describedby="more-detail-hint"/>
+                        </div>
+
+                        <div className="govuk-form-group">
+                          <label className="govuk-label" htmlFor="code">Code</label>
+                          <span className="govuk-hint">If known</span>
+                          <input className="govuk-input govuk-input--width-5" id="code" name="code" type="text"/>
+                        </div>
+
+                        <button data-module="govuk-button" className="govuk-button govuk-button--secondary"
+                                onClick={ e => {e.preventDefault()} }>Add another offence
+                        </button>
+
+                      </div>
+                      <div className="govuk-grid-column-one-third">
+                        &nbsp;
                       </div>
                     </div>
 
-                    <div className="moj-identity-bar">
-                      <div className="moj-identity-bar__container">
-                        <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+                    <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
-                          <h2 className="govuk-heading-m govuk-!-margin-top-2">Offence</h2>
+                    <div className="govuk-grid-row">
+                      <div className="govuk-grid-column-two-thirds">
 
-                          <div className="govuk-grid-row">
-                            <div className="govuk-grid-column-two-thirds">
-
-                              <div className="govuk-form-group">
-                                <label className="govuk-label" htmlFor="offence">Offence</label>
-                                <input className="govuk-input" id="offence" name="offence" type="text"/>
-                              </div>
-
-                              <div className="govuk-form-group">
-                                <label className="govuk-label" htmlFor="contrary">Contrary to</label>
-                                <input className="govuk-input" id="contrary" name="contrary" type="text"/>
-                              </div>
-
-                              <div className="govuk-form-group">
-                                <label className="govuk-label" htmlFor="more-detail">
-                                  Offence summary
+                        <div className="govuk-form-group govuk-!-margin-top-2">
+                          <fieldset className="govuk-fieldset" aria-describedby="waste-hint">
+                            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+                              <p className="govuk-fieldset__heading">Markers</p>
+                            </legend>
+                            <span id="waste-hint" className="govuk-hint">Select all that apply.</span>
+                            <div className="govuk-checkboxes">
+                              <div className="govuk-checkboxes__item">
+                                <input className="govuk-checkboxes__input" id="waste-1" name="waste"
+                                       type="checkbox" value="carcasses"/>
+                                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-1">
+                                  Domestic violence
                                 </label>
-                                <textarea className="govuk-textarea" id="more-detail" name="more-detail" rows="5"
-                                          aria-describedby="more-detail-hint"/>
                               </div>
-
-                              <div className="govuk-form-group">
-                                <label className="govuk-label" htmlFor="code">Code</label>
-                                <span className="govuk-hint">If known</span>
-                                <input className="govuk-input govuk-input--width-5" id="code" name="code" type="text"/>
+                              <div className="govuk-checkboxes__item">
+                                <input className="govuk-checkboxes__input" id="waste-2" name="waste"
+                                       type="checkbox" value="mines"/>
+                                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-2">
+                                  Violent
+                                </label>
                               </div>
-
-                              <button className="govuk-button govuk-button--secondary"
-                                      onClick={ e => {e.preventDefault()} }>Add another offence
-                              </button>
-
+                              <div className="govuk-checkboxes__item">
+                                <input className="govuk-checkboxes__input" id="waste-3" name="waste"
+                                       type="checkbox" value="farm"/>
+                                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-3">
+                                  Escape risk
+                                </label>
+                              </div>
+                              <div className="govuk-checkboxes__item">
+                                <input className="govuk-checkboxes__input" id="waste-4" name="waste"
+                                       type="checkbox" value="farm"/>
+                                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-4">
+                                  Suicide / Self harm
+                                </label>
+                              </div>
+                              <div className="govuk-checkboxes__item">
+                                <input className="govuk-checkboxes__input" id="waste-5" name="waste"
+                                       type="checkbox" value="farm"/>
+                                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-5">
+                                  Medical needs
+                                </label>
+                              </div>
+                              <div className="govuk-checkboxes__item">
+                                <input className="govuk-checkboxes__input" id="waste-6" name="waste"
+                                       type="checkbox" value="farm"/>
+                                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-6">
+                                  Special transport needs
+                                </label>
+                              </div>
+                              <div className="govuk-checkboxes__item">
+                                <input className="govuk-checkboxes__input" id="waste-7" name="waste"
+                                       type="checkbox" value="farm"/>
+                                <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-7">
+                                  Segregation
+                                </label>
+                              </div>
                             </div>
-                            <div className="govuk-grid-column-one-third">
-                              &nbsp;
-                            </div>
-                          </div>
-
+                          </fieldset>
                         </div>
+
                       </div>
-                    </div>
-
-                    <div className="moj-identity-bar">
-                      <div className="moj-identity-bar__container">
-                        <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
-
-                          <div className="govuk-grid-row">
-                            <div className="govuk-grid-column-two-thirds">
-
-                              <div className="govuk-form-group govuk-!-margin-top-2">
-                                <fieldset className="govuk-fieldset" aria-describedby="waste-hint">
-                                  <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                    <p className="govuk-fieldset__heading">Markers</p>
-                                  </legend>
-                                  <span id="waste-hint" className="govuk-hint">Select all that apply.</span>
-                                  <div className="govuk-checkboxes">
-                                    <div className="govuk-checkboxes__item">
-                                      <input className="govuk-checkboxes__input" id="waste-1" name="waste"
-                                             type="checkbox" value="carcasses"/>
-                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-1">
-                                        Domestic violence
-                                      </label>
-                                    </div>
-                                    <div className="govuk-checkboxes__item">
-                                      <input className="govuk-checkboxes__input" id="waste-2" name="waste"
-                                             type="checkbox" value="mines"/>
-                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-2">
-                                        Violent
-                                      </label>
-                                    </div>
-                                    <div className="govuk-checkboxes__item">
-                                      <input className="govuk-checkboxes__input" id="waste-3" name="waste"
-                                             type="checkbox" value="farm"/>
-                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-3">
-                                        Escape risk
-                                      </label>
-                                    </div>
-                                    <div className="govuk-checkboxes__item">
-                                      <input className="govuk-checkboxes__input" id="waste-4" name="waste"
-                                             type="checkbox" value="farm"/>
-                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-4">
-                                        Suicide / Self harm
-                                      </label>
-                                    </div>
-                                    <div className="govuk-checkboxes__item">
-                                      <input className="govuk-checkboxes__input" id="waste-5" name="waste"
-                                             type="checkbox" value="farm"/>
-                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-5">
-                                        Medical needs
-                                      </label>
-                                    </div>
-                                    <div className="govuk-checkboxes__item">
-                                      <input className="govuk-checkboxes__input" id="waste-6" name="waste"
-                                             type="checkbox" value="farm"/>
-                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-6">
-                                        Special transport needs
-                                      </label>
-                                    </div>
-                                    <div className="govuk-checkboxes__item">
-                                      <input className="govuk-checkboxes__input" id="waste-7" name="waste"
-                                             type="checkbox" value="farm"/>
-                                      <label className="govuk-label govuk-checkboxes__label" htmlFor="waste-7">
-                                        Segregation
-                                      </label>
-                                    </div>
-                                  </div>
-                                </fieldset>
-                              </div>
-
-                            </div>
-                            <div className="govuk-grid-column-one-third app-!-text-align-right">&nbsp;</div>
-                          </div>
-
-                        </div>
-                      </div>
+                      <div className="govuk-grid-column-one-third app-!-text-align-right">&nbsp;</div>
                     </div>
 
                     <p className="app-!-text-align-right">
-                      <button className="govuk-button">Add case</button>
+                      <button data-module="govuk-button" className="govuk-button">Add case</button>
                     </p>
 
                   </form>
