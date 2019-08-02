@@ -14,8 +14,11 @@ $govuk-link-colour: #587088;
 // Imports
 //===============================================
 
-@import "~govuk-frontend/all";
-@import "~@ministryofjustice/frontend/all";
+@import "~govuk-frontend/govuk/all";
+@import "~@ministryofjustice/frontend/moj/all";
+
+$moj-light-color: govuk-colour("light-grey") !default;
+$moj-light-color: govuk-tint($govuk-brand-colour, 97);
 
 @import "button";
 @import "calendar";
@@ -34,6 +37,14 @@ $govuk-link-colour: #587088;
   box-sizing: border-box;
 }
 
+.govuk-accordion__section-button {
+  font-size: 19px;
+}
+
+.govuk-section-break--visible:not(.govuk-section-break--m) {
+  border-bottom: 2px solid govuk-colour("light-grey");
+}
+
 .govuk-main-wrapper {
   padding-top: 15px;
 }
@@ -50,6 +61,10 @@ $govuk-link-colour: #587088;
   fill: white;
 }
 
+.moj-header__link {
+  margin-top: govuk-spacing(2);
+}
+
 .moj-header__link, .moj-header__navigation-link, .moj-primary-navigation__link {
   &:focus {
     color: white !important;
@@ -59,55 +74,42 @@ $govuk-link-colour: #587088;
   }
 }
 
-.moj-badge--red {
-  color: govuk-colour("bright-red");
-  border-color: govuk-colour("bright-red");
-}
-
 .moj-badge {
   text-align: center;
-  color: govuk-colour("grey-1");
-  border-color: govuk-colour("grey-1");
-
-  &.moj-badge-known {
-    color: govuk-colour("yellow");
-    border-color: govuk-colour("yellow");
+  &--small {
+    color: $govuk-brand-colour;
+    border-color: currentColor;
   }
-
-  &:not(.moj-badge--small) {
-    min-width: 0;
-    padding: 5px 20px;
-  }
-}
-
-.moj-badge--small {
-  color: $govuk-brand-colour;
-  border-color: $govuk-brand-colour;
-  text-align: center;
-  min-width: 45px;
-  padding: 5px 10px;
-}
-
-.moj-badge--green {
-  color: govuk-colour("light-green");
-  border-color: govuk-colour("light-green");
-}
-
-.moj-badge--text-small {
-  font-size: 12px;
-}
-
-.moj-badge-error {
-  color: govuk-colour("bright-red") !important;
-  border-color: govuk-colour("bright-red") !important;
 }
 
 .moj-identity-bar__container {
   margin: 0;
 }
 
+.moj-identity-bar {
+  background-color: $moj-light-color;
+  box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
+}
+
 .moj-pagination {
   margin: 0; // Stop horizontal scrolling
+
+  &__link:not(&__item--active) {
+    &:link,
+    &:visited {
+      color: $govuk-link-colour;
+    }
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+}
+
+.moj-filter__selected {
+  background-color: $moj-light-color;
 }
 
 .moj-primary-navigation {
@@ -125,25 +127,6 @@ $govuk-link-colour: #587088;
   padding: 0;
 }
 
-.moj-pagination__link {
-  &:link,
-  &:visited {
-    color: $govuk-link-colour;
-  }
-  &:hover {
-    color: $govuk-link-hover-colour;
-  }
-  &:focus {
-    color: $govuk-link-active-colour;
-    @if variable-exists(govuk-focused-text) {
-      @include govuk-focused-text;
-    }
-    @if variable-exists(govuk-focusable-fill) {
-      @include govuk-focusable-fill;
-    }
-  }
-}
-
 .moj-sub-navigation__link[aria-current="page"] {
   &:before {
     background-color: $govuk-link-colour
@@ -153,6 +136,10 @@ $govuk-link-colour: #587088;
 //===============================================
 // App specific styles
 //===============================================
+
+.app-link--show-more:focus {
+  @include govuk-focused-text;
+}
 
 .app-filter__header {
   &--blue, &--light-blue {
@@ -190,15 +177,19 @@ $govuk-link-colour: #587088;
 
 .app-risk-tag {
   &--high, &--very-high {
-    color: govuk-colour("bright-red");
-    border-color: govuk-colour("bright-red");
+    color: govuk-colour("red");
+    border-color: currentColor;
   }
 }
 
 .app-identity-bar {
   &--warning {
-    background-color: govuk-tint($govuk-brand-colour, 97);
+    background-color: $moj-light-color;
     box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
+  }
+  &--interaction {
+    background-color: govuk-colour("white");
+    box-shadow: inset 0 0 0 2px $govuk-link-colour;
   }
   &--error {
     background-color: govuk-tint(govuk-colour("red"), 95);
@@ -220,6 +211,10 @@ $govuk-link-colour: #587088;
   cursor: pointer;
 }
 
+.app-\!-width-auto {
+  width: auto;
+}
+
 .app-offender {
   &-header {
     width: calc(100% - 205px);
@@ -230,4 +225,8 @@ $govuk-link-colour: #587088;
   &-image {
     margin-right: 10px;
   }
+}
+
+.app-\!-center {
+  margin: 0 auto;
 }

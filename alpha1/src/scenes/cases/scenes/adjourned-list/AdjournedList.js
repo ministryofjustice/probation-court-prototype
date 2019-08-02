@@ -104,7 +104,7 @@ function AdjournedList (props) {
               <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
-                  <button id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
+                  <button data-module="govuk-button" id="filter-button" className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                           type="button"
                           aria-haspopup="true"
                           aria-expanded="false" onClick={ () => toggleFilter() }>Show filter

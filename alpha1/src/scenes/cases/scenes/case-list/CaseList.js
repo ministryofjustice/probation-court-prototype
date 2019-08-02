@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
@@ -108,73 +108,6 @@ function CaseList (props) {
 
       </nav>
 
-      { data.unmatched && data.unmatched.length && (
-        <Fragment>
-
-          <div className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-0">
-            <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong className="govuk-warning-text__text"><span
-              className="govuk-warning-text__assistive">Warning</span>There are 3 cases that have not been matched to
-              offender records in Delius.</strong>
-          </div>
-
-          <div className="moj-identity-bar app-identity-bar--warning govuk-!-margin-bottom-6">
-            <div className="moj-identity-bar__container">
-              <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
-
-                <table className="govuk-table app-table app-table--split-rows govuk-!-margin-bottom-0">
-                  <thead>
-                  <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Offence</th>
-                    <th scope="col">Delius record</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Sitting</th>
-                    <th scope="col">Court</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-
-                  { data.unmatched && data.unmatched.map(($case, index) => {
-                    return (
-                      <tr key={ index }>
-                        <th scope="row"><Link
-                          to={ `/cases/match/${ $case.id }` }
-                          onClick={ () => {
-                            dispatch({ type: 'setCase', setCase: $case })
-                          } }
-                          className="govuk-link govuk-link--no-visited-state">{ $case.defendant.name }</Link>
-                        </th>
-                        <td>
-                          <ol className="govuk-list">
-                            { $case.offences.map((offence, offenceIndex) => {
-                              return <li key={ offenceIndex }
-                                         className="govuk-list--number app-offence-title">{ offence.title }</li>
-                            }) }
-                          </ol>
-                        </td>
-                        <td>Not identified</td>
-                        <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
-                        <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
-                        <td>{ $case.courtRoom }</td>
-                      </tr>
-                    )
-                  }) }
-
-                  </tbody>
-                </table>
-              </div>
-
-              <p className="govuk-body app-!-text-align-center">
-                <a className="govuk-link govuk-link--no-visited-state" href="?expand"
-                   onClick={ e => e.preventDefault() }><em className="app-icon-down"/> Show more <em
-                  className="app-icon-down"/></a>
-              </p>
-
-            </div>
-          </div>
-        </Fragment>
-      ) }
 
       <div className="moj-filter-layout">
 
@@ -183,7 +116,7 @@ function CaseList (props) {
             <div className="moj-filter__header">
 
               <div className="moj-filter__header-title">
-                <h2 className="govuk-heading-m">Filter</h2>
+                <h2 className="govuk-heading-m app-!-color-white">Filter</h2>
               </div>
 
               <div className="moj-filter__header-action"/>
@@ -202,11 +135,13 @@ function CaseList (props) {
 
         <div className="moj-filter-layout__content">
 
-          <table className="govuk-table app-table" role="presentation">
+          <table className="govuk-table app-table govuk-!-margin-bottom-2" role="presentation">
             <tbody>
             <tr>
               <td>
-                <h2 className="govuk-heading-l govuk-!-margin-0">Cases</h2>
+                <h2 className="govuk-heading-l govuk-!-margin-0">Cases<span
+                  className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;matched to offender records in Delius</span>
+                </h2>
                 <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
                   <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
                 </p>
@@ -214,14 +149,15 @@ function CaseList (props) {
               <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
-                  <button id="filter-button"
+                  <button data-module="govuk-button" id="filter-button"
                           className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-right-2"
                           type="button"
                           aria-haspopup="true"
                           aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
                   </button>
 
-                  <button className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
+                  <button data-module="govuk-button"
+                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                           type="button"
                           aria-expanded="false" onClick={ e => e.preventDefault() }>Show blocks
                   </button>
@@ -231,7 +167,8 @@ function CaseList (props) {
                   <div className="moj-menu">
                     <div className="moj-menu__wrapper">
 
-                      <button type="button" className="govuk-button app-button--interrupt moj-menu__item"
+                      <button data-module="govuk-button" type="button"
+                              className="govuk-button app-button--interrupt moj-menu__item"
                               onClick={ () => {
                                 props.history.push('/cases/add')
                               } }>
@@ -251,6 +188,17 @@ function CaseList (props) {
           <div className="moj-scrollable-pane">
 
             <div className="moj-scrollable-pane__wrapper govuk-!-margin-top-0">
+
+              { data.unmatched && data.unmatched.length && (
+                <div className="app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
+                  <p className="govuk-body app-!-float-right govuk-!-margin-0">
+                    <Link className="govuk-link govuk-link--no-visited-state" to="/cases/unmatched-list">Match offender
+                      records</Link>
+                  </p>
+                  <p className="govuk-body govuk-!-font-weight-bold govuk-!-margin-0">There
+                    are { data.unmatched.length } cases that have not been matched to Delius records</p>
+                </div>
+              ) }
 
               <table className="govuk-table app-table app-table--split-rows app-alternate-rows-table">
                 <thead>
@@ -289,10 +237,20 @@ function CaseList (props) {
                           ) }
                         </td>
                         <td>
+                          { $case.defendant.breachedConditions && (
+                            <div
+                              className="moj-badge moj-badge--grey govuk-!-display-block govuk-!-margin-bottom-1">Breach</div>
+                          ) }
+
+                          { $case.defendant.ssoAlert && (
+                            <div
+                              className="moj-badge moj-badge--grey govuk-!-display-block govuk-!-margin-bottom-1">SSO</div>
+                          ) }
+
                           { $case.defendant.deliusStatus }
                           { $case.defendant.assignment && (
                             <span
-                              className="govuk-hint govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
+                              className="govuk-hint govuk-!-margin-0 govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
                           ) }
                         </td>
                         <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>

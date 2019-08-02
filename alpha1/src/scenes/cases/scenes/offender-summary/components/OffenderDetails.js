@@ -8,7 +8,7 @@ function OffenderDetails () {
   const [{ currentDate, currentCase }] = useStateValue()
 
   return (
-    <div className="govuk-!-padding-left-4 govuk-!-padding-right-4">
+    <Fragment>
 
       <h2 className="govuk-heading-m govuk-!-margin-top-6">Offender details</h2>
 
@@ -16,7 +16,7 @@ function OffenderDetails () {
         <tbody>
         <tr>
           <th style={ { 'width': '30%' } }>Aliases</th>
-          <td>Yes <span className="govuk-hint govuk-!-display-inline-block">(10)</span></td>
+          <td>Yes <span className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">(10)</span></td>
           <td style={ { 'width': '100px' } }>
             <a className="govuk-link govuk-link--no-visited-state" href="/"
                onClick={ e => {e.preventDefault()} }>View</a></td>
@@ -62,7 +62,7 @@ function OffenderDetails () {
         </thead>
         <tbody>
         <tr>
-          <td>Offender level recording <span className="govuk-hint govuk-!-display-inline-block">(L)</span></td>
+          <td>Offender level recording <span className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">(L)</span></td>
           <td>Agree offender childcare</td>
           <td>24/07/2018</td>
         </tr>
@@ -80,7 +80,7 @@ function OffenderDetails () {
             <tbody>
             <tr>
               <th style={ { width: '30%' } }>Contact type</th>
-              <td>Planned office visit <span className="govuk-hint govuk-!-display-inline-block">(NS)</span></td>
+              <td>Planned office visit <span className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">(NS)</span></td>
             </tr>
             <tr>
               <th>Date</th>
@@ -109,10 +109,12 @@ function OffenderDetails () {
             </tbody>
           </table>
 
+          <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
         </Fragment>
       ) }
 
-    </div>
+    </Fragment>
   )
 }
 

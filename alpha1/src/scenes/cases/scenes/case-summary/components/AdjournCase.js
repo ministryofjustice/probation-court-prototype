@@ -3,7 +3,7 @@ import moment from 'moment'
 
 function AdjournCase (props) {
   return (
-    <div className="moj-identity-bar app-identity-bar--warning govuk-!-margin-bottom-4 govuk-!-padding-top-0">
+    <div className="moj-identity-bar app-identity-bar--interaction govuk-!-margin-bottom-4 govuk-!-padding-top-0">
 
       <div className="moj-filter__header app-filter__header--light-blue">
         <div className="moj-filter__header-title"><h2 className="govuk-heading-m">Adjourn case</h2></div>

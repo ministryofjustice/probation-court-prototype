@@ -7,8 +7,8 @@
 
   display: inline-block;
   background: transparent;
-  color: govuk-colour("grey-1");
-  border: 3px solid;
+  color: govuk-colour("dark-grey");
+  border: 3px solid currentColor;
   min-width: 115px;
   text-align: center;
   font-weight: bold;
@@ -18,7 +18,7 @@
   }
 
   &--medium {
-    color: govuk-colour("yellow");
+    color: govuk-colour("light-blue");
   }
 
   &--high, &--very-high {
@@ -31,22 +31,19 @@
   @include govuk-responsive-padding(3, all);
 
   text-align: center;
-  color: govuk-colour("grey-1");
-  border: 3px solid govuk-colour("grey-1");
+  color: govuk-colour("dark-grey");
+  border: 3px solid currentColor;
 
   &--high, &--very-high {
-    color: govuk-colour("bright-red");
-    border-color: govuk-colour("bright-red");
+    color: govuk-colour("red");
   }
 
   &--medium {
-    color: govuk-colour("yellow");
-    border-color: govuk-colour("yellow");
+    color: govuk-colour("light-blue");
   }
 
   &--low {
     color: govuk-colour("light-green");
-    border-color: govuk-colour("light-green");
   }
 
   &--small {

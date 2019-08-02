@@ -153,7 +153,7 @@ function Calendar (props) {
                   <div className="moj-menu">
                     <div className="moj-menu__wrapper">
 
-                      <button id="filter-button"
+                      <button data-module="govuk-button" id="filter-button"
                               className="moj-menu__item govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                               type="button"
                               aria-haspopup="true"
