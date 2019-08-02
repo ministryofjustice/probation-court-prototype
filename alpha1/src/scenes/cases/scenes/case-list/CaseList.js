@@ -189,24 +189,16 @@ function CaseList (props) {
 
             <div className="moj-scrollable-pane__wrapper govuk-!-margin-top-0">
 
-              { data.unmatched && data.unmatched.length && data.unmatched.map(($case, index) => {
-                return (
-                  <div key={ index } className="app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
-                    <p className="govuk-body app-!-float-right govuk-!-margin-0">
-                      <Link className="govuk-link govuk-link--no-visited-state"
-                            to={ `/cases/match/${ $case.id }` }
-                            onClick={ () => {
-                              dispatch({
-                                type: 'setCase',
-                                setCase: $case
-                              })
-                            } }>Match offender records</Link>
-                    </p>
-                    <p className="govuk-body govuk-!-font-weight-bold govuk-!-margin-0">There are 4 cases that have not
-                      been matched to Delius records</p>
-                  </div>
-                )
-              }) }
+              { data.unmatched && data.unmatched.length && (
+                <div className="app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
+                  <p className="govuk-body app-!-float-right govuk-!-margin-0">
+                    <Link className="govuk-link govuk-link--no-visited-state" to="/cases/unmatched-list">Match offender
+                      records</Link>
+                  </p>
+                  <p className="govuk-body govuk-!-font-weight-bold govuk-!-margin-0">There
+                    are { data.unmatched.length } cases that have not been matched to Delius records</p>
+                </div>
+              ) }
 
               <table className="govuk-table app-table app-table--split-rows app-alternate-rows-table">
                 <thead>

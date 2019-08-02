@@ -874,6 +874,218 @@
               ]
             },
             {
+              "id": "9168468",
+              "urn": "URN92846237898838784678",
+              "asn": "ASN1234XX76464734",
+              "caseNumber": "1900028950",
+              "caseSequence": "4",
+              "markers": [],
+              "listingNumber": "2st",
+              "informant": "POLSHE",
+              "additionalInformation": "DVLA RESPONSE REQUESTED ON 05/02/2019",
+              "estimatedDuration": "0:05",
+              "defendant": {
+                "name": "Jonathan Moss",
+                "gender": "M",
+                "dateOfBirth": "1982-04-21",
+                "address": {
+                  "line1": "Room 32",
+                  "line2": "Better Lives",
+                  "line3": "Sheffield",
+                  "line4": "",
+                  "line5": "",
+                  "postcode": "S11 7HG"
+                },
+                "age": "37",
+                "assignment": "crc",
+                "deliusStatus": "NO_MATCH",
+                "risk": [
+                  {
+                    "type": "RoSH",
+                    "status": "medium",
+                    "description": "Public",
+                    "date": "2019-06-11"
+                  }
+                ],
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
+              },
+              "bailConditions": "Pre-hearing cond: Assessments/Reports: undergo an assessment conducted by as directed for dependency on Class A drugs and participate in any follow-up assessment",
+              "solicitor": "",
+              "offences": [
+                {
+                  "sequence": "1",
+                  "code": "CJ8816",
+                  "title": "Assault by beating",
+                  "summary": "Between 09/01/2018 and 16/03/2019 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 2 SMS messages, left 2,000 voicemail messages and made unwanted phone calls",
+                  "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
+                  "statementOfFact": "",
+                  "plea": "IG",
+                  "pleaDate": "2019-06-18",
+                  "adjournedDate": "2019-03-12",
+                  "adjournedReason": "to attend or warrant to issue"
+                },
+                {
+                  "sequence": "1",
+                  "code": "TH68010",
+                  "title": "Theft from a shop",
+                  "summary": "Between 11/03/2018 and 15/05/2018 at BARNSLEY in the county of BARNSLEY, stole 2 items of equipment, to the value of £12.50, belonging to Cole Brother's",
+                  "contraryToActAndSection": "section 1(1) and 7 of the Theft Act 1968.",
+                  "statementOfFact": "",
+                  "plea": "G",
+                  "pleaDate": "2019-06-18",
+                  "adjournedDate": "2019-03-12",
+                  "adjournedReason": "For a pre-sentence report to be prepared."
+                }
+              ]
+            },
+            {
+              "id": "9168468",
+              "urn": "URN92846237898838784678",
+              "asn": "ASN1234XX76464734",
+              "caseNumber": "1900028950",
+              "caseSequence": "4",
+              "markers": [],
+              "listingNumber": "2st",
+              "informant": "POLSHE",
+              "additionalInformation": "DVLA RESPONSE REQUESTED ON 05/02/2019",
+              "estimatedDuration": "0:05",
+              "defendant": {
+                "name": "Jason Jones",
+                "gender": "M",
+                "dateOfBirth": "1977-11-18",
+                "address": {
+                  "line1": "Room 32",
+                  "line2": "Better Lives",
+                  "line3": "Sheffield",
+                  "line4": "",
+                  "line5": "",
+                  "postcode": "S11 7HG"
+                },
+                "age": "41",
+                "assignment": "crc",
+                "deliusStatus": "NO_MATCH",
+                "risk": [
+                  {
+                    "type": "RoSH",
+                    "status": "medium",
+                    "description": "Public",
+                    "date": "2019-06-11"
+                  }
+                ],
+                "previousConvictions": {
+                  "convictionCount": 6,
+                  "offenceCount": 19,
+                  "firstConvicted": "1984-01-16",
+                  "lastConvicted": "2012-03-19",
+                  "reprimands": {
+                  },
+                  "summary": [
+                    {
+                      "count": 4,
+                      "description": "Offences against the person",
+                      "dateRange": "2006"
+                    },
+                    {
+                      "count": 6,
+                      "description": "Offences against property",
+                      "dateRange": "1984"
+                    },
+                    {
+                      "count": 4,
+                      "description": "Offences relating to Police/Court/Prisons",
+                      "dateRange": "1995-2012"
+                    },
+                    {
+                      "count": 5,
+                      "description": "Miscellaneous offences",
+                      "dateRange": "1995-2004"
+                    }
+                  ]
+                }
+              },
+              "bailConditions": "Pre-hearing cond: Assessments/Reports: undergo an assessment conducted by as directed for dependency on Class A drugs and participate in any follow-up assessment",
+              "solicitor": "",
+              "offences": [
+                {
+                  "sequence": "1",
+                  "code": "TH68010",
+                  "title": "Theft from a shop",
+                  "summary": "Between 11/03/2018 and 15/05/2018 at BARNSLEY in the county of BARNSLEY, stole 2 items of equipment, to the value of £12.50, belonging to Cole Brother's",
+                  "contraryToActAndSection": "section 1(1) and 7 of the Theft Act 1968.",
+                  "statementOfFact": "",
+                  "plea": "G",
+                  "pleaDate": "2019-06-18",
+                  "adjournedDate": "2019-03-12",
+                  "adjournedReason": "For a pre-sentence report to be prepared."
+                },
+                {
+                  "sequence": "2",
+                  "code": "CJ8816",
+                  "title": "Assault by beating",
+                  "summary": "Between 09/01/2018 and 16/03/2019 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 2 SMS messages, left 2,000 voicemail messages and made unwanted phone calls",
+                  "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
+                  "statementOfFact": "",
+                  "plea": "IG",
+                  "pleaDate": "2019-06-18",
+                  "adjournedDate": "2019-03-12",
+                  "adjournedReason": "to attend or warrant to issue"
+                },
+                {
+                  "sequence": "3",
+                  "code": "CJ8816",
+                  "title": "Assault by beating",
+                  "summary": "Between 09/01/2018 and 16/03/2019 at ROTHERHAM in the county of south Yorkshire pursued a course of conduct which amounted to the harassment of Roger Rabbit and which you knew or ought to have known amounted to the harassment of him in that between the dates shown you sent 2 SMS messages, left 2,000 voicemail messages and made unwanted phone calls",
+                  "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
+                  "statementOfFact": "",
+                  "plea": "IG",
+                  "pleaDate": "2019-06-18",
+                  "adjournedDate": "2019-03-12",
+                  "adjournedReason": "to attend or warrant to issue"
+                },
+                {
+                  "sequence": "4",
+                  "code": "CJ88149",
+                  "title": "Assault by beating of an emergency worker",
+                  "summary": "Commission of a further offence during the operational period of a suspended sentence order made by SHEFFIELD MAGISTRATES COURT on 13/11/2017 for the offences of HARASSMENT X4",
+                  "contraryToActAndSection": "Contrary to section 2(1) and (2) of the Protection from Harassment Act 1997.",
+                  "statementOfFact": "",
+                  "plea": "IG",
+                  "pleaDate": "2019-06-18",
+                  "adjournedDate": "2019-03-12",
+                  "adjournedReason": "to attend or warrant to issue"
+                }
+              ]
+            },
+            {
               "id": "9168477",
               "urn": "URN9284623789657548784678",
               "asn": "ASN1234XX769643734",

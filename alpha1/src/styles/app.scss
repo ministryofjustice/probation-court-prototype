@@ -15,7 +15,7 @@ $govuk-link-colour: #587088;
 //===============================================
 
 @import "~govuk-frontend/govuk/all";
-@import "~@ministryofjustice/frontend/all";
+@import "~@ministryofjustice/frontend/moj/all";
 
 $moj-light-color: govuk-colour("light-grey") !default;
 $moj-light-color: govuk-tint($govuk-brand-colour, 97);

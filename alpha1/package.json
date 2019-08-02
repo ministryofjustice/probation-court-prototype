@@ -30,7 +30,7 @@
     "iOS >= 9"
   ],
   "devDependencies": {
-    "@ministryofjustice/frontend": "0.0.8-alpha",
+    "@ministryofjustice/frontend": "0.0.9-alpha",
     "govuk-frontend": "3.0.0",
     "node-sass": "4.12.0"
   },
