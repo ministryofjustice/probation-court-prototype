@@ -17,17 +17,8 @@ spec:
       containers:
         - name: probation-court-prototype
           image: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/probation-services/probation-court-prototype:latest
-          resources:
-            limits:
-              memory: "512Mi"
-              cpu: "1000m"
-            requests:
-              memory: "256Mi"
-              cpu: "500m"
           ports:
             - containerPort: 3000
-          env:
-            - name: PORT
-              value: '3000'
+
 
 
