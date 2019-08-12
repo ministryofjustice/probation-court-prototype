@@ -22,10 +22,10 @@ function Header () {
 
             <ul className="moj-header__navigation-list">
               <li className="moj-header__navigation-item">
-                <a className="moj-header__navigation-link" href="/" onClick={ e => {e.preventDefault()} }>Profile</a>
+                <a className="moj-header__navigation-link" href="/" onClick={e => {e.preventDefault()} }>Profile</a>
               </li>
               <li className="moj-header__navigation-item">
-                <a className="moj-header__navigation-link" href="/" onClick={ e => {e.preventDefault()} }>Sign out</a>
+                <a className="moj-header__navigation-link" href="/" onClick={e => {e.preventDefault()} }>Sign out</a>
               </li>
             </ul>
 

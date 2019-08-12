@@ -7,8 +7,7 @@ RUN addgroup --gid 2000 --system appgroup && \
 # Create app directory
 RUN mkdir -p /app
 WORKDIR /app
-COPY /alpha1 .
-
+ADD . .
 
 RUN npm ci
 RUN npm run build

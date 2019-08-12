@@ -1,0 +1,232 @@
+//===============================================
+// Config
+//===============================================
+
+$moj-assets-path: "/assets/";
+$govuk-page-width: 1800px;
+$moj-page-width: $govuk-page-width;
+
+$govuk-text-colour: #231f20;
+$govuk-brand-colour: #204060;
+$govuk-link-colour: #587088;
+
+//===============================================
+// Imports
+//===============================================
+
+@import "~govuk-frontend/govuk/all";
+@import "~@ministryofjustice/frontend/moj/all";
+
+$moj-light-color: govuk-colour("light-grey") !default;
+$moj-light-color: govuk-tint($govuk-brand-colour, 97);
+
+@import "button";
+@import "calendar";
+@import "layout";
+@import "risk";
+@import "table";
+@import "tooltip";
+@import "typography";
+@import "warning-text";
+
+// ===============================================
+// Overrides
+//===============================================
+
+* {
+  box-sizing: border-box;
+}
+
+.govuk-accordion__section-button {
+  font-size: 19px;
+}
+
+.govuk-section-break--visible:not(.govuk-section-break--m) {
+  border-bottom: 2px solid govuk-colour("light-grey");
+}
+
+.govuk-main-wrapper {
+  padding-top: 15px;
+}
+
+.moj-header {
+  border-bottom: 10px solid $govuk-brand-colour;
+}
+
+.govuk-phase-banner__content__tag {
+  background: govuk-colour("red");
+}
+
+.govuk-header__logotype-crown {
+  fill: white;
+}
+
+.moj-header__link {
+  margin-top: govuk-spacing(2);
+}
+
+.moj-header__link, .moj-header__navigation-link, .moj-primary-navigation__link {
+  &:focus {
+    color: white !important;
+    &:before {
+      background-color: white !important;
+    }
+  }
+}
+
+.moj-badge {
+  text-align: center;
+  &--small {
+    color: $govuk-brand-colour;
+    border-color: currentColor;
+  }
+}
+
+.moj-identity-bar__container {
+  margin: 0;
+}
+
+.moj-identity-bar {
+  background-color: $moj-light-color;
+  box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
+}
+
+.moj-pagination {
+  margin: 0; // Stop horizontal scrolling
+
+  &__link:not(&__item--active) {
+    &:link,
+    &:visited {
+      color: $govuk-link-colour;
+    }
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+}
+
+.moj-filter__selected {
+  background-color: $moj-light-color;
+}
+
+.moj-primary-navigation {
+  &__search {
+    float: right;
+    @include govuk-clearfix;
+  }
+  &__container {
+    padding-top: 10px;
+  }
+}
+
+.moj-search {
+  margin: 0;
+  padding: 0;
+}
+
+.moj-sub-navigation__link[aria-current="page"] {
+  &:before {
+    background-color: $govuk-link-colour
+  }
+}
+
+//===============================================
+// App specific styles
+//===============================================
+
+.app-link--show-more:focus {
+  @include govuk-focused-text;
+}
+
+.app-filter__header {
+  &--blue, &--light-blue {
+    background: $govuk-brand-colour;
+
+    .moj-filter__header-title .govuk-heading-m {
+      color: govuk-colour("white");
+    }
+  }
+
+  &--light-blue {
+    background: $govuk-link-colour;
+  }
+}
+
+.app-back-to-top {
+  &__link {
+    float: right;
+    margin: 15px 0;
+    @include govuk-clearfix;
+  }
+  &__icon {
+    margin-right: 5px;
+  }
+}
+
+.app-offence-title {
+  padding-left: 5px;
+  padding-bottom: 0;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.app-risk-tag {
+  &--high, &--very-high {
+    color: govuk-colour("red");
+    border-color: currentColor;
+  }
+}
+
+.app-identity-bar {
+  &--warning {
+    background-color: $moj-light-color;
+    box-shadow: inset 0 -1px 0 0 $govuk-brand-colour;
+  }
+  &--interaction {
+    background-color: govuk-colour("white");
+    box-shadow: inset 0 0 0 2px $govuk-link-colour;
+  }
+  &--error {
+    background-color: govuk-tint(govuk-colour("red"), 95);
+    box-shadow: inset 0 -1px 0 0 govuk-colour("red");
+  }
+}
+
+.app-icon-down {
+  border: solid $govuk-brand-colour;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 10px 3px 10px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.app-\!-cursor-pointer {
+  cursor: pointer;
+}
+
+.app-\!-width-auto {
+  width: auto;
+}
+
+.app-offender {
+  &-header {
+    width: calc(100% - 205px);
+  }
+  &-selection {
+    width: calc(100% - 102px);
+  }
+  &-image {
+    margin-right: 10px;
+  }
+}
+
+.app-\!-center {
+  margin: 0 auto;
+}

@@ -11,10 +11,10 @@
     "react-scripts": "^3.0.1"
   },
   "scripts": {
-    "start": "alpha1/node_modules/.bin/react-scripts start",
-    "build": "alpha1/node_modules/.bin/react-scripts build",
-    "test": "alpha1/node_modules/.bin/react-scripts test",
-    "eject": "alpha1/node_modules/.bin/react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -2,8 +2,134 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a15c1f6-bb73-40dc-bf7b-ee56046ef29e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/alpha1/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/alpha1/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/fonts/bold-affa96571d-v2.woff" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/fonts/bold-affa96571d-v2.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/fonts/bold-b542beb274-v2.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/fonts/bold-b542beb274-v2.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/fonts/light-94a07e06a1-v2.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/fonts/light-94a07e06a1-v2.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/fonts/light-f591b13f7d-v2.woff" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/fonts/light-f591b13f7d-v2.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/govuk-crest-2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/govuk-crest-2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/govuk-crest.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/govuk-crest.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-alert-information.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-alert-information.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-alert-success.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-alert-success.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-alert-warning.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-alert-warning.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-arrow-black-down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-arrow-black-down.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-arrow-black-up.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-arrow-black-up.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-arrow-white-down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-arrow-white-down.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-arrow-white-up.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-arrow-white-up.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-close-cross-black.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-close-cross-black.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-document.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-document.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-document.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-document.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-pagination.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-pagination.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-progress-tick.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-progress-tick.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-progress-tick.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-progress-tick.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-search-white.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-search-white.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-tag-remove-cross-white.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-tag-remove-cross-white.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-tag-remove-cross.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-tag-remove-cross.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-toggle-plus-minus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-toggle-plus-minus.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-wysiwyg-bold.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-wysiwyg-bold.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-wysiwyg-italic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-wysiwyg-italic.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-wysiwyg-ordered-list.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-wysiwyg-ordered-list.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-wysiwyg-underline.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-wysiwyg-underline.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/icon-wysiwyg-unordered-list.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/icon-wysiwyg-unordered-list.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/moj-logotype-crest.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/moj-logotype-crest.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/assets/images/no-photo.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/assets/images/no-photo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/build/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/precache-manifest.660658f67506751abaab31e9feea44cc.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/precache-manifest.660658f67506751abaab31e9feea44cc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/css/main.0169577b.chunk.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/css/main.0169577b.chunk.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/css/main.0169577b.chunk.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/css/main.0169577b.chunk.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/js/2.77307e97.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/2.77307e97.chunk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/js/2.77307e97.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/2.77307e97.chunk.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/js/main.827ce476.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/main.827ce476.chunk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/js/main.827ce476.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/main.827ce476.chunk.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/js/runtime~main.a8a9905a.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/runtime~main.a8a9905a.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/js/runtime~main.a8a9905a.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/runtime~main.a8a9905a.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/build/static/media/moj-logotype-crest.b92f538e.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/media/moj-logotype-crest.b92f538e.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/fonts/bold-affa96571d-v2.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/bold-affa96571d-v2.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/fonts/bold-b542beb274-v2.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/bold-b542beb274-v2.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/fonts/light-94a07e06a1-v2.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/light-94a07e06a1-v2.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/fonts/light-f591b13f7d-v2.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/light-f591b13f7d-v2.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/govuk-crest-2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/govuk-crest-2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/govuk-crest.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/govuk-crest.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-alert-information.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-alert-information.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-alert-success.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-alert-success.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-alert-warning.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-alert-warning.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-arrow-black-down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-arrow-black-down.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-arrow-black-up.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-arrow-black-up.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-arrow-white-down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-arrow-white-down.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-arrow-white-up.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-arrow-white-up.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-close-cross-black.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-close-cross-black.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-document.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-document.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-document.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-document.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-pagination.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-pagination.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-progress-tick.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-progress-tick.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-progress-tick.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-progress-tick.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-search-white.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-search-white.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-tag-remove-cross-white.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-tag-remove-cross-white.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-tag-remove-cross.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-tag-remove-cross.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-toggle-plus-minus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-toggle-plus-minus.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-wysiwyg-bold.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-wysiwyg-bold.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-wysiwyg-italic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-wysiwyg-italic.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-wysiwyg-ordered-list.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-wysiwyg-ordered-list.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-wysiwyg-underline.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-wysiwyg-underline.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/icon-wysiwyg-unordered-list.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/icon-wysiwyg-unordered-list.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/moj-logotype-crest.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/moj-logotype-crest.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/assets/images/no-photo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/no-photo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/assets/big-list.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/big-list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/assets/moj-logotype-crest.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/moj-logotype-crest.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/components/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/components/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/components/PhaseBanner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PhaseBanner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/calendar/Calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/calendar/Calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/calendar/components/CalendarFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/calendar/components/CalendarFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/Cases.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/Cases.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/context/CaseContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/context/CaseContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/add-case/AddCase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/add-case/AddCase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/adjourned-list/AdjournedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/adjourned-list/AdjournedList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/case-list/CaseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/case-list/CaseList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/case-list/components/CaseListFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/case-list/components/CaseListFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/case-summary/CaseSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/case-summary/CaseSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/case-summary/components/AdjournCase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/case-summary/components/AdjournCase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/case-summary/components/CurrentCase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/case-summary/components/CurrentCase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/case-summary/components/RecordSentence.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/case-summary/components/RecordSentence.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/match-case-list/MatchCaseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/match-case-list/MatchCaseList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/offender-selection/OffenderSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/offender-selection/OffenderSelection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/offender-summary/OffenderSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/offender-summary/OffenderSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/offender-summary/components/OffenderDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/offender-summary/components/OffenderDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/offender-summary/components/OffenderEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/offender-summary/components/OffenderEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/offender-summary/components/OffenderRisk.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/offender-summary/components/OffenderRisk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/scenes/sentenced-cases/SentenceList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/scenes/sentenced-cases/SentenceList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/shared-components/DefendantDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/shared-components/DefendantDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/scenes/cases/shared-components/SomethingWrong.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/cases/shared-components/SomethingWrong.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_button.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_calendar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_calendar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_risk.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_risk.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_table.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_table.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_tooltip.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_tooltip.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_typography.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_typography.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/_warning-text.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_warning-text.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/utils/DateTools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DateTools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/src/utils/StateProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/StateProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpha1/yarn.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,60 +141,9 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kubectl_deploy/deployment.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-              <folding>
-                <element signature="e#758#798#0" expanded="true" />
-                <element signature="e#793#919#0" expanded="true" />
-                <element signature="e#1089#1152#0" expanded="true" />
-                <element signature="e#1165#1346#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kubectl_deploy/ingress.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="98" column="66" selection-start-line="98" selection-start-column="66" selection-end-line="98" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kubectl_deploy/service.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alpha1/src/index.js">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="7" selection-start-column="7" selection-end-column="7" />
@@ -90,26 +165,29 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alpha1/build/index.html">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alpha1/src/App.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alpha1/package.json">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-182" />
+            <state relative-caret-position="15">
+              <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -131,23 +209,21 @@
         <option value="$PROJECT_DIR$/kubectl_deploy/deployment.yaml" />
         <option value="$PROJECT_DIR$/kubectl_deploy/ingress.yaml" />
         <option value="$PROJECT_DIR$/kubectl_deploy/service.yaml" />
+        <option value="$PROJECT_DIR$/alpha1/package-lock.json" />
+        <option value="$PROJECT_DIR$/alpha1/package.json" />
         <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/components/Header.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/probation-court-prototype.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-      </list>
-    </option>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="195" />
-    <option name="y" value="23" />
+    <option name="x" value="220" />
+    <option name="y" value="44" />
     <option name="width" value="1400" />
     <option name="height" value="919" />
   </component>
@@ -156,29 +232,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="probation-court-prototype" type="b2602c69:ProjectViewProjectNode" />
               <item name="probation-court-prototype" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="probation-court-prototype" type="b2602c69:ProjectViewProjectNode" />
-              <item name="probation-court-prototype" type="462c0819:PsiDirectoryNode" />
-              <item name=".circleci" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="probation-court-prototype" type="b2602c69:ProjectViewProjectNode" />
-              <item name="probation-court-prototype" type="462c0819:PsiDirectoryNode" />
-              <item name="alpha1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="probation-court-prototype" type="b2602c69:ProjectViewProjectNode" />
-              <item name="probation-court-prototype" type="462c0819:PsiDirectoryNode" />
-              <item name="kubectl_deploy" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -187,6 +248,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="editorconfig.notification" value="null" />
@@ -196,13 +258,13 @@
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/alpha1" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/alpha1/public" />
+      <recent name="$PROJECT_DIR$/alpha1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/alpha1" />
     </key>
   </component>
@@ -233,52 +295,47 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8851000" />
+    <option name="totallyTimeSpent" value="21141000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="195" y="23" width="1400" height="919" extended-state="0" />
+    <frame x="220" y="44" width="1400" height="919" extended-state="0" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="SonarLint" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32889965" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32889965" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32889965" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32889965" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="SonarLint" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32889965" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32889965" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/alpha1/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-621" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alpha1/src/serviceWorker.js">
+    <entry file="file://$PROJECT_DIR$/src/serviceWorker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-725">
           <folding>
@@ -287,12 +344,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alpha1/node_modules/.bin/react-scripts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-321" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alpha1/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
@@ -302,12 +354,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alpha1/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-182" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alpha1/src/index.js">
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="7" selection-start-column="7" selection-end-column="7" />
@@ -325,22 +372,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alpha1/build/index.html">
+    <entry file="file://$PROJECT_DIR$/build/index.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kubectl_deploy/ingress.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -373,6 +406,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="98" column="66" selection-start-line="98" selection-start-column="66" selection-end-line="98" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alpha1/node_modules/.bin/react-scripts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3939">
+          <caret line="13548" selection-start-line="13548" selection-end-line="13548" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
