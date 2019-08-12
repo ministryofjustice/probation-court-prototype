@@ -29,14 +29,5 @@ spec:
           env:
             - name: PORT
               value: '3000'
-            - name: AUTH_DOMAIN
-              value: 'https://probation-court-prototype.apps.live-1.cloud-platform.service.justice.gov.uk'
-            - name: API_CLIENT_ID
-              value: 'probation_in_court'
-            - name: API_CLIENT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: probation-court-prototype-secret
-                  key: api-client-secret
 
 
