@@ -1,4 +1,4 @@
-FROM node:12.3.1-slim as react-build
+FROM node:12.3.1-slim
 
 RUN addgroup --gid 2000 --system appgroup && \
     adduser --uid 2000 --system appuser --gid 2000
@@ -8,6 +8,7 @@ RUN addgroup --gid 2000 --system appgroup && \
 RUN mkdir -p /app
 WORKDIR /app
 ADD . .
+
 
 RUN npm ci
 RUN npm run build
