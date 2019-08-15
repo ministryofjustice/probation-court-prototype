@@ -14,7 +14,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "wiremock": "java -jar ./wiremock-standalone-2.23.2.jar --verbose --enable-browser-proxying"
   },
   "eslintConfig": {
     "extends": "react-app"
