@@ -6,7 +6,7 @@ import { useStateValue } from '../../../../utils/StateProvider'
 
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
-import config from '../../../../config';
+// import config from '../../../../config';
 
 function CaseList (props) {
 
@@ -49,11 +49,11 @@ function CaseList (props) {
 
     async function getData () {
       // eslint-disable-next-line
-      let wiremockUrl = '';
-      if(process.env.NODE_ENV !== 'production') {
-        wiremockUrl = 'http://localhost:8080/api/bigcaselist'
-      } else wiremockUrl = config.dataUrl
-      const response = await fetch(wiremockUrl);
+      // let wiremockUrl = '';
+      // if(process.env.NODE_ENV !== 'production') {
+      //   wiremockUrl = 'http://localhost:8080/api/bigcaselist'
+      // } else wiremockUrl = config.dataUrl
+      const response = await fetch(config.dataUrl);
       const data = await response.json()
       configureData(data)
       dispatch({ type: 'setCourt', setCourt: data.courtName })
