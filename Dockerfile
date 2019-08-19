@@ -18,7 +18,7 @@ RUN chown -R appuser:appgroup /app
 
 ENV PORT=3000
 
-ENV NODE_ENV ${NODE_ENV:-production}
+ENV NODE_ENV=production
 EXPOSE 3000
 
 USER 200

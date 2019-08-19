@@ -6,7 +6,7 @@ import { useStateValue } from '../../../../utils/StateProvider'
 
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
-// import config from '../../../../config';
+import config from '../../../../config';
 
 function CaseList (props) {
 
@@ -48,11 +48,12 @@ function CaseList (props) {
     }
 
     async function getData () {
-      // let wiremockUrl = 'http://localhost:8080/api/bigcaselist';
-      // if(process.env.NODE_ENV === 'production') {
-      //   wiremockUrl = config.dataUrl
-      // }
-      const response = await fetch('https://court-list-mock-data.apps.live-1.cloud-platform.service.justice.gov.uk/api/bigcaselist')
+      // eslint-disable-next-line
+      let wiremockUrl = 'http://localhost:8080/api/bigcaselist';
+      if(process.env.NODE_ENV === 'production') {
+        wiremockUrl = config.dataUrl
+      }
+      const response = await fetch(wiremockUrl)
       const data = await response.json()
       configureData(data)
       dispatch({ type: 'setCourt', setCourt: data.courtName })
