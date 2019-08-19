@@ -47,7 +47,7 @@ function CaseList (props) {
     }
 
     async function getData () {
-      const response = await fetch('http://localhost:8080/api/bigcaselist')
+      const response = await fetch('http://localhost:8080/api/bigcaselist' || 'https://court-list-mock-data.apps.live-1.cloud-platform.service.justice.gov.uk/api/bigcaselist')
       const data = await response.json()
       configureData(data)
       dispatch({ type: 'setCourt', setCourt: data.courtName })
