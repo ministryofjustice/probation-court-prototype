@@ -5,10 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "moment": "2.24.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "react-router-dom": "5.0.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,7 +31,7 @@
     "iOS >= 9"
   ],
   "devDependencies": {
-    "@ministryofjustice/frontend": "0.0.9-alpha",
+    "@ministryofjustice/frontend": "0.0.10-alpha",
     "govuk-frontend": "3.0.0",
     "node-sass": "4.12.0"
   },
