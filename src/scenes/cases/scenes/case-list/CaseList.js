@@ -48,11 +48,11 @@ function CaseList (props) {
     }
 
     async function getData () {
-      let wiremockUrl = 'http://localhost:8080/api/bigcaselist';
-      if(process.env.NODE_ENV === 'production') {
-        wiremockUrl = config.dataUrl
-      }
-      const response = await fetch(wiremockUrl)
+      // let wiremockUrl = 'http://localhost:8080/api/bigcaselist';
+      // if(process.env.NODE_ENV === 'production') {
+      //   wiremockUrl = config.dataUrl
+      // }
+      const response = await fetch('https://court-list-mock-data.apps.live-1.cloud-platform.service.justice.gov.uk/api/bigcaselist')
       const data = await response.json()
       configureData(data)
       dispatch({ type: 'setCourt', setCourt: data.courtName })
