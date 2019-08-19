@@ -6,7 +6,7 @@ import { useStateValue } from '../../../../utils/StateProvider'
 
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
-// import config from '../../../../config';
+import config from '../../../../config';
 
 function CaseList (props) {
 
