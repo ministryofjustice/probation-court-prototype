@@ -26,17 +26,16 @@ spec:
               cpu: "1000m"
           ports:
             - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+
         - name: court-list-mock-data
           image: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/probation-services/court-list-mock-data:latest
-          resources:
-            limits:
-              memory: "512Mi"
-              cpu: "1000m"
-            requests:
-              memory: "256Mi"
-              cpu: "500m"
           ports:
             - containerPort: 8080
+          securityContext:
+            runAsUser: 1
 
 
 
