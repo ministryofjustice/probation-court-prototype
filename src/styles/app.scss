@@ -6,9 +6,11 @@ $moj-assets-path: "/assets/";
 $govuk-page-width: 1800px;
 $moj-page-width: $govuk-page-width;
 
+/*
 $govuk-text-colour: #231f20;
 $govuk-brand-colour: #204060;
 $govuk-link-colour: #587088;
+*/
 
 //===============================================
 // Imports
@@ -49,10 +51,6 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
   padding-top: 15px;
 }
 
-.moj-header {
-  border-bottom: 10px solid $govuk-brand-colour;
-}
-
 .govuk-phase-banner__content__tag {
   background: govuk-colour("red");
 }
@@ -61,16 +59,9 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
   fill: white;
 }
 
-.moj-header__link {
-  margin-top: govuk-spacing(2);
-}
-
 .moj-header__link, .moj-header__navigation-link, .moj-primary-navigation__link {
   &:focus {
     color: white !important;
-    &:before {
-      background-color: white !important;
-    }
   }
 }
 
@@ -110,16 +101,6 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
 
 .moj-filter__selected {
   background-color: $moj-light-color;
-}
-
-.moj-primary-navigation {
-  &__search {
-    float: right;
-    @include govuk-clearfix;
-  }
-  &__container {
-    padding-top: 10px;
-  }
 }
 
 .moj-search {
@@ -224,6 +205,8 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
   }
   &-image {
     margin-right: 10px;
+    width: 82px;
+    height: 102px;
   }
 }
 

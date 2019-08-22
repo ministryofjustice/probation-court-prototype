@@ -3,7 +3,25 @@ import moment from 'moment'
 export const initialState = {
   court: '',
   currentDate: moment(),
-  currentCase: {}
+  currentCase: {},
+  newCase: {
+    defendant: {
+      forename: '',
+      surname: '',
+      pnc: '',
+      crn: '',
+      gender: '',
+      current: false,
+      dateOfBirth: '',
+      address: {
+        line1: '',
+        line2: '',
+        line3: '',
+        postcode: ''
+      }
+    },
+    offences: []
+  }
 }
 
 export const reducer = (state, action) => {
@@ -18,6 +36,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         currentCase: action.setCase
+      }
+    case 'newCase' :
+      return {
+        ...state,
+        newCase: action.newCase
       }
     default:
       return state

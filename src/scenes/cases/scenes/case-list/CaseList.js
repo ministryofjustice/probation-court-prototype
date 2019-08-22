@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
+import config from '../../../../config'
+import { initialState } from '../../context/CaseContext'
 import { useStateValue } from '../../../../utils/StateProvider'
 
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
-import config from '../../../../config';
 
 function CaseList (props) {
 
@@ -48,12 +49,7 @@ function CaseList (props) {
     }
 
     async function getData () {
-      // eslint-disable-next-line
-      // let wiremockUrl = '';
-      // if(process.env.NODE_ENV !== 'production') {
-      //   wiremockUrl = 'http://localhost:8080/api/bigcaselist'
-      // } else wiremockUrl = config.dataUrl
-      const response = await fetch(config.dataUrl);
+      const response = await fetch(process.env.NODE_ENV !== 'production' ? 'http://localhost:8080/api/bigcaselist' : config.dataUrl)
       const data = await response.json()
       configureData(data)
       dispatch({ type: 'setCourt', setCourt: data.courtName })
@@ -76,6 +72,15 @@ function CaseList (props) {
 
   function fixNameCase ($name) {
     return $name.toLowerCase().replace('miss ', '').replace('mrs ', '').replace('mr ', '').split(' ').map(item => { return item.charAt(0).toUpperCase() + item.slice(1) }).join(' ')
+  }
+
+  function resetState () {
+    dispatch({
+      type: 'newCase',
+      newCase: {
+        ...initialState.newCase
+      }
+    })
   }
 
   return (
@@ -113,7 +118,6 @@ function CaseList (props) {
         </ul>
 
       </nav>
-
 
       <div className="moj-filter-layout">
 
@@ -156,33 +160,22 @@ function CaseList (props) {
 
                 <div className="moj-action-bar">
                   <button data-module="govuk-button" id="filter-button"
-                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-right-2"
+                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                           type="button"
                           aria-haspopup="true"
                           aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
                   </button>
 
-                  <button data-module="govuk-button"
-                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
-                          type="button"
-                          aria-expanded="false" onClick={ e => e.preventDefault() }>Show blocks
-                  </button>
-
                   <div className="moj-action-bar__filter"/>
 
-                  <div className="moj-menu">
-                    <div className="moj-menu__wrapper">
-
-                      <button data-module="govuk-button" type="button"
-                              className="govuk-button app-button--interrupt moj-menu__item"
-                              onClick={ () => {
-                                props.history.push('/cases/add')
-                              } }>
-                        Add case
-                      </button>
-
-                    </div>
-                  </div>
+                  <button data-module="govuk-button" type="button"
+                          className="govuk-button app-button--interrupt moj-menu__item"
+                          onClick={ () => {
+                            resetState()
+                            props.history.push('/cases/add')
+                          } }>
+                    Add case
+                  </button>
 
                 </div>
 
@@ -196,14 +189,15 @@ function CaseList (props) {
             <div className="moj-scrollable-pane__wrapper govuk-!-margin-top-0">
 
               { data.unmatched && data.unmatched.length && (
-                <div className="app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
+                <div
+                  className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
                   <p className="govuk-body app-!-float-right govuk-!-margin-0">
-                    <Link className="govuk-link govuk-link--no-visited-state" to="/cases/unmatched-list">Match offender
+                    <Link className="govuk-link govuk-link--no-visited-state" to="/cases/unmatched-list">Match cases with Delius
                       records</Link>
                   </p>
-                  <p className="govuk-body govuk-!-font-weight-bold govuk-!-margin-0">There
-                    are { data.unmatched.length } cases that have not been matched to Delius records</p>
-                </div>
+                  <span className="govuk-warning-text__icon" aria-hidden="true">!</span><strong
+                  className="govuk-warning-text__text"><span className="govuk-warning-text__assistive">Warning</span>There
+                  are { data.unmatched.length } listed cases where the defendant has not been automatically matched to a Delius record and require action</strong></div>
               ) }
 
               <table className="govuk-table app-table app-table--split-rows app-alternate-rows-table">
