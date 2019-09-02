@@ -4,6 +4,7 @@ import moment from 'moment'
 import { lastMonth as last, nextMonth as next } from '../../utils/DateTools'
 
 import CalendarFilter from './components/CalendarFilter'
+import PageTitle from '../cases/shared-components/PageTitle'
 
 function Calendar (props) {
 
@@ -43,8 +44,8 @@ function Calendar (props) {
     return blanks
   }
 
-  function postBlanks() {
-    return [<Fragment />]
+  function postBlanks () {
+    return [<Fragment/>]
   }
 
   function daysInMonth () {
@@ -97,9 +98,7 @@ function Calendar (props) {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <h1 className="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-1">Calendar</h1>
-      <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('MMMM, YYYY') } <span
-        className="govuk-hint govuk-!-display-inline-block">at { data.court }</span></p>
+      <PageTitle title={ currentDate.format('MMMM YYYY') } hint="calendar view of cases for this period"/>
 
       <div className="moj-filter-layout">
 

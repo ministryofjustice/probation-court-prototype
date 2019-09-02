@@ -108,12 +108,6 @@ function CaseSummary (props) {
 
                       <DefendantDetails/>
 
-                      { currentCase.defendant.deliusStatus !== 'Not known' && (
-                        <p className="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-0">
-                          <Link to={`/cases/offender/${props.match.params.id}`} className="govuk-link govuk-link--no-visited-state">View offender summary</Link>
-                        </p>
-                      ) }
-
                     </div>
                   </div>
 
@@ -211,6 +205,80 @@ function CaseSummary (props) {
                 <RecordSentence hideUI={ () => { setData({ ...data, showRecordSentence: false }) } }/>
               ) }
 
+              <div className="govuk-grid-row app-!-display-flex">
+                <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                  <div className="app-card app-card--muted">
+
+                    <p className="govuk-heading-m govuk-!-margin-0">{ currentCase.defendant.deliusStatus } offender</p>
+
+                    { currentCase.defendant.deliusStatus === 'Current' && (
+                      <p className="govuk-body">{ currentCase.defendant.name }, the defendant in this case, has a
+                        current offender record in nDelius.</p>
+                    ) }
+
+                    { currentCase.defendant.deliusStatus === 'Known' && (
+                      <p className="govuk-body">{ currentCase.defendant.name }, the defendant in this case, has a known
+                        offender record in nDelius.</p>
+                    ) }
+
+                    { currentCase.defendant.deliusStatus === 'Not known' && (
+                      <Fragment>
+                        <p className="govuk-body">{ currentCase.defendant.name }, the defendant in this case, has not
+                          been
+                          previously known to probation.</p>
+
+                        <p className="govuk-body">
+                          <a href="/" className="govuk-link govuk-link--no-visited-state"
+                             onClick={ e => e.preventDefault() }>Something wrong?</a>
+                        </p>
+                      </Fragment>
+                    ) }
+
+                    { currentCase.defendant.deliusStatus !== 'Not known' && (
+                      <p className="govuk-body">
+                        <Link to={`/cases/offender/${props.match.params.id}`} className="govuk-link govuk-link--no-visited-state">View offender summary</Link>
+                      </p>
+                    ) }
+
+                  </div>
+                </div>
+                <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                  <div className="app-card app-card--muted">
+
+                    <p className="govuk-heading-m govuk-!-margin-0">CPS Pack</p>
+                    <p className="govuk-body">The CPS pack was obtained on { currentDate.format('Do MMMM YYYY ') } at
+                      09:04.</p>
+
+                    <p className="govuk-body">
+                      <a href="/" className="govuk-link govuk-link--no-visited-state"
+                         onClick={ e => e.preventDefault() }>CPS Pack</a>
+                    </p>
+
+                  </div>
+                </div>
+
+                <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                  <div
+                    className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
+
+                    { currentCase.defendant.deliusStatus === 'Current' && (
+                      <Fragment>
+                        <p className="govuk-heading-m govuk-!-margin-0">OM Update</p>
+                        <p className="govuk-body">An update was requested on { currentDate.format('Do MMMM YYYY ') } at
+                          09:15, currently awaiting a response.</p>
+
+                        <p className="govuk-body"><a href="/contact" className="govuk-link govuklink--no-visited-state"
+                                                     onClick={ e => e.preventDefault() }>Contact
+                          offender manager</a></p>
+                      </Fragment>
+                    ) }
+
+                  </div>
+                </div>
+              </div>
+
+              <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
               <h2 className="govuk-heading-m govuk-!-margin-top-2">Case tracker</h2>
 
               <table className="govuk-table app-table app-table--split-rows">
@@ -231,7 +299,7 @@ function CaseSummary (props) {
                 ) }
                 <tr>
                   <td>CPS Pack</td>
-                  <td>Acquired</td>
+                  <td>Obtained on { currentDate.format('Do MMMM YYYY ') } at 09:04</td>
                   <td>
                     <a className="govuk-link moj-timeline__document-link" href="/cps-link"
                        onClick={ e => e.preventDefault() }>CPS Pack</a>
@@ -341,30 +409,32 @@ function CaseSummary (props) {
                 <p className="govuk-hint">No notes recorded.</p>
               ) }
 
-              <button data-module="govuk-button" className="govuk-button govuk-button--secondary govuk-!-margin-top-2">Add note</button>
+              <button data-module="govuk-button"
+                      className="govuk-button govuk-button--secondary govuk-!-margin-top-2">Add note
+              </button>
 
             </div>
 
-          </div>
-        ) }
+            < /div>
+              ) }
 
-        <Link to="/cases/list" className="govuk-back-link">Back</Link>
+              <Link to="/cases/list" className="govuk-back-link">Back</Link>
 
-        <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={ e => {
-          e.preventDefault()
-          window.scrollTo(0, 0)
-        } }>
-          <svg role="presentation" focusable="false" className="app-back-to-top__icon"
-               xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
-            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>
-          </svg>
-          Back to top
-        </Link>
+              <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={ e => {
+                e.preventDefault()
+                window.scrollTo(0, 0)
+              } }>
+                <svg role="presentation" focusable="false" className="app-back-to-top__icon"
+                     xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+                  <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>
+                </svg>
+                Back to top
+              </Link>
 
-      </main>
+            </main>
 
-    </Fragment>
-  )
-}
+          </Fragment>
+        )
+        }
 
-export default CaseSummary
+        export default CaseSummary

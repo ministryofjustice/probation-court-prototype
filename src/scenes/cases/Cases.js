@@ -20,7 +20,7 @@ function Cases (props) {
   return (
     <StateProvider initialState={ initialState } reducer={ reducer }>
       <Route path={ `${ props.match.url }/list/:day?/:month?/:year?` } component={ CaseList }/>
-      <Route exact path={ `${ props.match.url }/unmatched-list` } component={ MatchCaseList }/>
+      <Route exact path={ `/cases/unmatched-list` } component={ MatchCaseList }/>
       <Route path={ `${ props.match.url }/adjourned/:day?/:month?/:year?` } component={ AdjournedList }/>
       <Route path={ `${ props.match.url }/sentenced/:day?/:month?/:year?` } component={ SentencedList }/>
       <Route path={ `${ props.match.url }/details/:id` } component={ CaseSummary }/>

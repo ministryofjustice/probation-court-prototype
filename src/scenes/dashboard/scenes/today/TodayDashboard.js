@@ -4,6 +4,8 @@ import moment from 'moment'
 import { useStateValue } from '../../../../utils/StateProvider'
 
 import { configureCaseData, getCaseData } from '../../../../utils/DataService'
+import PageTitle from '../../../cases/shared-components/PageTitle'
+import { Link } from 'react-router-dom'
 
 function TodayDashboard () {
 
@@ -23,12 +25,9 @@ function TodayDashboard () {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <h1
-        className="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-1">Today, { currentDate.format('dddd Do MMMM') }
-        <span className="govuk-hint govuk-!-display-inline-block">&nbsp;{ `at ${ data.courtName }` }</span>
-      </h1>
+      <PageTitle title={ `Today, ${ currentDate.format('dddd Do MMMM') }` } hint={ `at ${ data.courtName }` }/>
 
-      <div className="govuk-grid-row app-!-display-flex">
+      <div className="govuk-grid-row app-!-display-flex govuk-!-margin-top-4">
         <div className="govuk-grid-column-one-half app-!-display-flex--1">
 
           <div className="app-card app-card__primary">
@@ -48,10 +47,9 @@ function TodayDashboard () {
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">6</span> Defendants
               not known to
               Probation.</p>
-            <p className="govuk-body govuk-!-margin-top-4"><a
-              className="govuk-link govuk-link--no-visited-state app-!-color-white app-dashboard-count" href="/"
-              onClick={ e => e.preventDefault() }>View
-              case list</a></p>
+            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link govuk-link--no-visited-state app-!-color-white"
+                                                                 to="/cases/list">View case
+              list</Link></p>
           </div>
 
         </div>
@@ -135,9 +133,9 @@ function TodayDashboard () {
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">3</span> Defendants not known to
               Probation.</p>
-            <p className="govuk-body govuk-!-margin-top-4"><a className="govuk-link govuk-link--no-visited-state"
-                                                              href="/" onClick={ e => e.preventDefault() }>View case
-              list</a></p>
+            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link govuk-link--no-visited-state"
+                                                              to="/cases/list">View case
+              list</Link></p>
           </div>
 
         </div>
@@ -159,9 +157,9 @@ function TodayDashboard () {
                     records.</p>
                 </td>
                 <td className="app-!-text-align-right">
-                  <p className="govuk-body govuk-!-margin-0"><a className="govuk-link govuk-link--no-visited-state"
-                                                                href="/" onClick={ e => e.preventDefault() }>Match
-                    records</a></p>
+                  <p className="govuk-body govuk-!-margin-0"><Link className="govuk-link govuk-link--no-visited-state"
+                                                                to="/cases/unmatched-list">Match
+                    records</Link></p>
                 </td>
               </tr>
               <tr>
@@ -233,9 +231,9 @@ function TodayDashboard () {
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">8</span> Defendants not known to
               Probation.</p>
-            <p className="govuk-body govuk-!-margin-top-4"><a className="govuk-link govuk-link--no-visited-state"
-                                                              href="/" onClick={ e => e.preventDefault() }>View case
-              list</a></p>
+            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link govuk-link--no-visited-state"
+                                                                 to="/cases/list">View case
+              list</Link></p>
           </div>
 
         </div>
@@ -257,9 +255,9 @@ function TodayDashboard () {
                     records.</p>
                 </td>
                 <td className="app-!-text-align-right">
-                  <p className="govuk-body govuk-!-margin-0"><a className="govuk-link govuk-link--no-visited-state"
-                                                                href="/" onClick={ e => e.preventDefault() }>Match
-                    records</a></p>
+                  <p className="govuk-body govuk-!-margin-0"><Link className="govuk-link govuk-link--no-visited-state"
+                                                                   to="/cases/unmatched-list">Match
+                    records</Link></p>
                 </td>
               </tr>
               <tr>
