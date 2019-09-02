@@ -27,4 +27,16 @@ abbr {
 
 .app-\!-color-white {
   color: govuk-colour("white");
+
+  &.govuk-link {
+    color: govuk-colour("white");
+
+    &:hover {
+      color: govuk-colour("mid-grey") !important;
+    }
+
+    &:visited {
+      color: govuk-colour("white");
+    }
+  }
 }

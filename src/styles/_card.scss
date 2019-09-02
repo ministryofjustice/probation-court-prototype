@@ -1,0 +1,20 @@
+.app-card {
+
+  display: block;
+  background: govuk-tint(govuk-colour("light-blue"), 85);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+
+  &__secondary {
+    background: govuk-colour("dark-grey");
+
+    &.app-card--muted {
+      background: govuk-colour("light-grey");
+    }
+  }
+
+  &__primary {
+    background: $govuk-brand-colour;
+  }
+}

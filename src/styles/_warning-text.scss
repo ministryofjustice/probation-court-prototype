@@ -27,10 +27,10 @@
   }
 
   &--critical {
-    background: govuk-colour("red");
+    background: govuk-colour("light-pink");
 
     .govuk-warning-text__icon {
-      color: govuk-colour("red");
+      color: govuk-colour("light-pink");
     }
   }
 

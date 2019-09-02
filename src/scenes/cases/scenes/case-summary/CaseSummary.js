@@ -52,7 +52,7 @@ function CaseSummary (props) {
           <tr>
             <td>
               <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
-              <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }<span
+              <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd Do MMMM') }<span
                 className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;at { court }</span></p>
             </td>
             <td className="app-!-text-align-right">
@@ -63,7 +63,7 @@ function CaseSummary (props) {
                   <div className="moj-menu__wrapper">
 
                     <button
-                      className="govuk-button app-button--interrupt moj-menu__item"
+                      className="govuk-button app-button--interrupt moj-menu__item govuk-!-margin-right-2"
                       type="button"
                       onClick={ e => {
                         e.preventDefault()
@@ -251,7 +251,7 @@ function CaseSummary (props) {
                   <td>
 
                     <p
-                      className="govuk-body">{ currentDate.format('dddd, Do MMMM YYYY') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } - { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</p>
+                      className="govuk-body">{ currentDate.format('dddd Do MMMM') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } - { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</p>
 
                   </td>
                   <td>
@@ -333,7 +333,7 @@ function CaseSummary (props) {
 
               { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') ? (
                 <Fragment>
-                  <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
+                  <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd Do MMMM ') }</p>
                   <p className="govuk-body">Case adjourned off as defendant has changed plea from guilty to not
                     guilty. Seems very upset, claiming the police didn't listen to them.</p>
                 </Fragment>
