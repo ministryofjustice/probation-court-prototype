@@ -4,6 +4,7 @@ import moment from 'moment'
 
 import { useStateValue } from '../../../../utils/StateProvider'
 import { getAge } from '../../../../utils/DateTools'
+import OffenderMatch from '../../shared-components/OffenderMatch'
 
 function OffenderSelection () {
 
@@ -18,6 +19,8 @@ function OffenderSelection () {
     for (let i = 0, len = 3, $case; i < len; i++) {
       $case = JSON.parse(JSON.stringify(currentCase))
       if ($case.hasOwnProperty('defendant')) {
+        $case.defendant.forename = $case.defendant.name.substr(0, $case.defendant.name.indexOf(' '))
+        $case.defendant.surname = $case.defendant.name.substr($case.defendant.name.indexOf(' ') + 1)
         $case.defendant.crn = `DX1234${ i }A`
         $case.defendant.pnc = `A123456${ i }BA`
         $case.defendant.current = i === 1
@@ -26,8 +29,6 @@ function OffenderSelection () {
             $case.defendant.address.line1 = 'No fixed abode'
             $case.defendant.address.line2 = void 0
             $case.defendant.address.line3 = void 0
-            $case.defendant.address.line4 = void 0
-            $case.defendant.address.line5 = void 0
             $case.defendant.address.postcode = void 0
             $case.defendant.dateOfBirth = moment($case.defendant.dateOfBirth, 'YYYY-MM-DD').subtract(1, 'years').format('YYYY-MM-DD')
             break
@@ -35,6 +36,7 @@ function OffenderSelection () {
             $case.defendant.dateOfBirth = moment($case.defendant.dateOfBirth, 'YYYY-MM-DD').add(3, 'months').format('YYYY-MM-DD')
             $case.defendant.address.line1 = '10'
             $case.defendant.address.line2 = 'King Road'
+            $case.defendant.address.line3 = 'Southey'
             $case.defendant.address.postcode = 'S12 5GH'
             $case.defendant.pnc = 'Not recorded'
             break
@@ -206,89 +208,7 @@ function OffenderSelection () {
                   return offenderItem.defendant && (
                     <Fragment key={ index }>
 
-                      <div className="govuk-grid-row">
-                        <div className="govuk-grid-column-full">
-                          <div className="app-!-float-left--not-narrow">
-
-                            <img src="/assets/images/no-photo.png" width="82" height="102"
-                                 alt={ `${ offenderItem.defendant.name }` }
-                                 className="app-offender-image"/>
-                          </div>
-                          <div className="app-!-float-left--not-narrow app-offender-selection">
-
-                            <h1
-                              className="govuk-heading-m govuk-!-margin-0 govuk-!-margin-top-1 govuk-!-padding-0">{ offenderItem.defendant.name }
-                              { offenderItem.defendant.current && (
-                                <span
-                                  className="moj-badge moj-badge--green govuk-!-margin-left-4">Current offender</span>
-                              ) }
-                            </h1>
-
-                            <div className="govuk-grid-row">
-                              <div className="govuk-grid-column-one-quarter">
-
-                                { offenderItem.defendant.dateOfBirth && (
-                                  <Fragment>
-                                    <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">Date of
-                                      birth</p>
-                                    <p
-                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ moment(offenderItem.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</p>
-                                  </Fragment>
-                                ) }
-
-                              </div>
-                              <div className="govuk-grid-column-one-quarter">
-
-                                { offenderItem.defendant.crn && (
-                                  <Fragment>
-                                    <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">CRN</p>
-                                    <p
-                                      className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.crn }</p>
-                                  </Fragment>
-                                ) }
-
-                              </div>
-                              <div className="govuk-grid-column-one-quarter">
-
-                                <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
-                                <p
-                                  className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ offenderItem.defendant.pnc }</p>
-
-                              </div>
-                              <div className="govuk-grid-column-one-quarter app-!-text-align-right">
-
-                                <button data-module="govuk-button"
-                                        className="govuk-button app-button--interrupt">Match
-                                </button>
-
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <table className="govuk-table app-table">
-                        <tbody>
-                        <tr>
-                          <td>
-
-                            <p className="govuk-body govuk-!-margin-top-2">
-                              { offenderItem.defendant.gender }, { offenderItem.defendant.age } of { offenderItem.defendant.address.line1 } { offenderItem.defendant.address.line2 && offenderItem.defendant.address.line2 } { offenderItem.defendant.address.line3 } { offenderItem.defendant.address.postcode }
-                            </p>
-
-                          </td>
-                          <td className="app-!-text-align-right">
-
-                            <a href={ `http://delius/offender/` }
-                               className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
-                               onClick={ (e) => e.preventDefault() }>View offender summary</a>
-
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
-
-                      <hr className="govuk-section-break govuk-section-break--m govuk-section-break--visible"/>
+                      <OffenderMatch case={ offenderItem } action={ () => {} } />
 
                     </Fragment>
                   )

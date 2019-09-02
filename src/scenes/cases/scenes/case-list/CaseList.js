@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
+import { configureCaseData, getCaseData } from '../../../../utils/DataService'
+import { initialState } from '../../context/CaseContext'
 import { useStateValue } from '../../../../utils/StateProvider'
 
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
-import config from '../../../../config';
 
 function CaseList (props) {
 
@@ -15,52 +16,13 @@ function CaseList (props) {
 
   useEffect(() => {
 
-    function notInString ($title, $string) {
-      return $title.toLowerCase().indexOf($string) === -1
-    }
-
-    function configureData ($data) {
-      let cases = []
-      let unmatched = []
-      $data.sessions.forEach($session => {
-        $session.blocks.forEach($block => {
-          $block.cases.forEach($case => {
-
-            $case = {
-              ...$case,
-              courtRoom: parseInt($session.courtRoom, 10),
-              startTime: $block.startTime,
-              endTime: $block.endTime,
-              noMatch: $case.defendant.deliusStatus === 'NO_MATCH'
-            }
-
-            $case.defendant = { ...$case.defendant, name: fixNameCase($case.defendant.name) }
-
-            if ($case.noMatch) {
-              unmatched.push($case)
-            } else if ($case.offences.some(item => { return notInString(item.title, 'speed') && notInString(item.title, 'non-payment') && notInString(item.title, 'television') })) {
-              cases.push($case)
-            }
-          })
-        })
-      })
-      setData({ courtName: $data.courtName, cases: cases, unmatched: unmatched })
-    }
-
-    async function getData () {
-      // eslint-disable-next-line
-      // let wiremockUrl = '';
-      // if(process.env.NODE_ENV !== 'production') {
-      //   wiremockUrl = 'http://localhost:8080/api/bigcaselist'
-      // } else wiremockUrl = config.dataUrl
-      const response = await fetch(config.dataUrl);
-      const data = await response.json()
-      configureData(data)
-      dispatch({ type: 'setCourt', setCourt: data.courtName })
-    }
-
     window.scrollTo(0, 0)
-    getData()
+
+    getCaseData().then($data => {
+      setData(configureCaseData($data))
+      dispatch({ type: 'setCourt', setCourt: $data.courtName })
+    })
+
   }, [dispatch])
 
   function toggleFilter () {
@@ -74,46 +36,24 @@ function CaseList (props) {
     }
   }
 
-  function fixNameCase ($name) {
-    return $name.toLowerCase().replace('miss ', '').replace('mrs ', '').replace('mr ', '').split(' ').map(item => { return item.charAt(0).toUpperCase() + item.slice(1) }).join(' ')
+  function resetState () {
+    dispatch({
+      type: 'newCase',
+      newCase: {
+        ...initialState.newCase
+      }
+    })
   }
 
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <nav className="moj-sub-navigation govuk-!-margin-bottom-6" aria-label="Sub navigation">
-
-        <p className="govuk-hint app-!-float-right govuk-!-margin-top-2">&nbsp;Last
-          updated { currentDate.format('dddd, Do MMMM YYYY') } at 10:30</p>
-
-        <ul className="moj-sub-navigation__list">
-
-          <li className="moj-sub-navigation__item">
-            <Link to={ `/cases/list/${ currentDate.format('DD/MM/YYYY') }` }
-                  className="moj-sub-navigation__link govuk-link--no-visited-state"
-                  aria-current="page">
-              { currentDate.format('dddd, Do MMMM YYYY') }
-            </Link>
-          </li>
-
-          <li className="moj-sub-navigation__item">
-            <Link to={ `/cases/list/${ moment(currentDate).add(1, 'd').format('DD/MM/YYYY') }` }
-                  className="moj-sub-navigation__link govuk-link--no-visited-state">
-              { moment(currentDate).add(1, 'd').format('dddd, Do MMMM YYYY') }
-            </Link>
-          </li>
-
-          <li className="moj-sub-navigation__item">
-            <Link to={ `/cases/list/${ moment(currentDate).add(2, 'd').format('DD/MM/YYYY') }` }
-                  className="moj-sub-navigation__link govuk-link--no-visited-state">
-              { moment(currentDate).add(2, 'd').format('dddd, Do MMMM YYYY') }
-            </Link>
-          </li>
-
-        </ul>
-
-      </nav>
-
+      <h1 className="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-1">Cases<span
+        className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;where the Defendant has been matched with an offender record in nDelius</span>
+      </h1>
+      <p className="govuk-body-m govuk-!-font-weight-bold">Today, { currentDate.format('dddd Do MMMM') }
+        <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
+      </p>
 
       <div className="moj-filter-layout">
 
@@ -145,44 +85,58 @@ function CaseList (props) {
             <tbody>
             <tr>
               <td>
-                <h2 className="govuk-heading-l govuk-!-margin-0">Cases<span
-                  className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;matched to offender records in Delius</span>
-                </h2>
-                <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
-                  <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
-                </p>
+
+                <div className="app-!-display-flex">
+                  <div className="app-!-display-flex-1">
+
+                    <p className="govuk-body govuk-!-margin-0"><span
+                      className="govuk-heading-l govuk-!-display-inline-block">12</span> <a href="/"
+                                                                                            className="govuk-link govuk-link--no-visited-state"
+                                                                                            onClick={ e => e.preventDefault() }>Current
+                      defendants</a></p>
+
+                  </div>
+                  <div className="app-!-display-flex-1">
+
+                    <p className="govuk-body govuk-!-margin-0"><span
+                      className="govuk-heading-l govuk-!-display-inline-block">24</span> <a href="/"
+                                                                                            className="govuk-link govuk-link--no-visited-state"
+                                                                                            onClick={ e => e.preventDefault() }>Known
+                      defendants</a></p>
+
+                  </div>
+                  <div className="app-!-display-flex-1">
+
+                    <p className="govuk-body govuk-!-margin-0"><span
+                      className="govuk-heading-l govuk-!-display-inline-block">6</span> <a href="/"
+                                                                                           className="govuk-link govuk-link--no-visited-state"
+                                                                                           onClick={ e => e.preventDefault() }>Not
+                      known defendants</a></p>
+
+                  </div>
+                </div>
+
               </td>
               <td className="app-!-text-align-right">
 
                 <div className="moj-action-bar">
                   <button data-module="govuk-button" id="filter-button"
-                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-right-2"
+                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                           type="button"
                           aria-haspopup="true"
                           aria-expanded="false" onClick={ () => toggleFilter() }>Show filter
                   </button>
 
-                  <button data-module="govuk-button"
-                          className="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
-                          type="button"
-                          aria-expanded="false" onClick={ e => e.preventDefault() }>Show blocks
-                  </button>
-
                   <div className="moj-action-bar__filter"/>
 
-                  <div className="moj-menu">
-                    <div className="moj-menu__wrapper">
-
-                      <button data-module="govuk-button" type="button"
-                              className="govuk-button app-button--interrupt moj-menu__item"
-                              onClick={ () => {
-                                props.history.push('/cases/add')
-                              } }>
-                        Add case
-                      </button>
-
-                    </div>
-                  </div>
+                  <button data-module="govuk-button" type="button"
+                          className="govuk-button app-button--interrupt moj-menu__item"
+                          onClick={ () => {
+                            resetState()
+                            props.history.push('/cases/add')
+                          } }>
+                    Add case
+                  </button>
 
                 </div>
 
@@ -194,17 +148,6 @@ function CaseList (props) {
           <div className="moj-scrollable-pane">
 
             <div className="moj-scrollable-pane__wrapper govuk-!-margin-top-0">
-
-              { data.unmatched && data.unmatched.length && (
-                <div className="app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
-                  <p className="govuk-body app-!-float-right govuk-!-margin-0">
-                    <Link className="govuk-link govuk-link--no-visited-state" to="/cases/unmatched-list">Match offender
-                      records</Link>
-                  </p>
-                  <p className="govuk-body govuk-!-font-weight-bold govuk-!-margin-0">There
-                    are { data.unmatched.length } cases that have not been matched to Delius records</p>
-                </div>
-              ) }
 
               <table className="govuk-table app-table app-table--split-rows app-alternate-rows-table">
                 <thead>

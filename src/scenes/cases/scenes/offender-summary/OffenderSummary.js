@@ -39,7 +39,7 @@ function OffenderSummary (props) {
         <h1 className="govuk-heading-l govuk-!-margin-0">Offender summary<span
           className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;from Delius record</span></h1>
         <p className="govuk-body-m govuk-!-font-weight-bold">Appearing
-          on { currentDate.format('dddd, Do MMMM YYYY') }<span
+          on { currentDate.format('dddd Do MMMM') }<span
             className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
 
         { currentCase && currentCase.defendant && (
@@ -168,7 +168,7 @@ function OffenderSummary (props) {
 
               { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
                 <Fragment>
-                  <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd, Do MMMM YYYY ') }</p>
+                  <p className="govuk-hint">Paul Johnson, SPO. { currentDate.format('dddd Do MMMM ') }</p>
                   <p className="govuk-body">Laboris sunt officia ex quis laboris sit exercitation et. Occaecat
                     nulla tempor laborum adipisicing reprehenderit sint cupidatat dolor nulla proident est non
                     ipsum.</p>

@@ -59,7 +59,7 @@ function Calendar (props) {
           <Link to={ `/cases/list/${ moment().date(i).format('D/M/YYYY') }` } className="app-calendar--link">
             <div className={ `app-calendar--item_day ${ i === today ? 'app-calendar--item_day_today' : '' }` }
                  aria-hidden="true">{ i }</div>
-            <div className="govuk-visually-hidden">{ moment().date(i).format('dddd, Do MMMM YYYY') }</div>
+            <div className="govuk-visually-hidden">{ moment().date(i).format('dddd Do MMMM') }</div>
             { day !== 'Sa' && day !== 'Su' && (
               <Fragment>
                 { today !== -1 && i >= today && i <= today + (todayDay === 'Th' || todayDay === 'Fr' ? 4 : 2) && (<div
@@ -97,7 +97,7 @@ function Calendar (props) {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <h1 className="govuk-heading-l govuk-!-margin-0">Calendar</h1>
+      <h1 className="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-1">Calendar</h1>
       <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('MMMM, YYYY') } <span
         className="govuk-hint govuk-!-display-inline-block">at { data.court }</span></p>
 
