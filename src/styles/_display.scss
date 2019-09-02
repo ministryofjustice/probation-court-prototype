@@ -1,0 +1,9 @@
+.app-\!-display-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &--1 {
+    flex: 1;
+  }
+}

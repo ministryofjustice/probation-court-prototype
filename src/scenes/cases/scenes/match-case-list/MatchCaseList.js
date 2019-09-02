@@ -69,7 +69,7 @@ function MatchCaseList () {
         <h2 className="govuk-heading-l govuk-!-margin-0">Match cases<span
           className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;to offender records in Delius</span>
         </h2>
-        <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd, Do MMMM YYYY') }
+        <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd Do MMMM') }
           <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span></p>
 
         { data.unmatched && data.unmatched.length && (

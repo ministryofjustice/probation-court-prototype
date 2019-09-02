@@ -6,9 +6,10 @@ $moj-assets-path: "/assets/";
 $govuk-page-width: 1800px;
 $moj-page-width: $govuk-page-width;
 
+$govuk-brand-colour: #204060;
+
 /*
 $govuk-text-colour: #231f20;
-$govuk-brand-colour: #204060;
 $govuk-link-colour: #587088;
 */
 
@@ -24,6 +25,9 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
 
 @import "button";
 @import "calendar";
+@import "card";
+@import "dashboard";
+@import "display";
 @import "layout";
 @import "risk";
 @import "table";
@@ -71,6 +75,10 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
     color: $govuk-brand-colour;
     border-color: currentColor;
   }
+}
+
+.moj-header {
+  border-bottom: 10px solid $govuk-brand-colour;
 }
 
 .moj-identity-bar__container {
