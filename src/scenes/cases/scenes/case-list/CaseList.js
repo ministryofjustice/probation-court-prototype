@@ -8,6 +8,7 @@ import { useStateValue } from '../../../../utils/StateProvider'
 
 import Pagination from '../../../../components/Pagination'
 import CaseListFilter from './components/CaseListFilter'
+import PageTitle from '../../shared-components/PageTitle'
 
 function CaseList (props) {
 
@@ -48,9 +49,8 @@ function CaseList (props) {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <h1 className="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-1">Cases<span
-        className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;where the Defendant has been matched with an offender record in nDelius</span>
-      </h1>
+      <PageTitle title="Cases" hint="where the Defendant has been matched with an offender record in nDelius"/>
+
       <p className="govuk-body-m govuk-!-font-weight-bold">Today, { currentDate.format('dddd Do MMMM') }
         <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
       </p>
@@ -86,33 +86,50 @@ function CaseList (props) {
             <tr>
               <td>
 
-                <div className="app-!-display-flex">
-                  <div className="app-!-display-flex-1">
+                <div className="govuk-grid-row app-!-display-flex">
+                  <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                    <div className="app-card app-card--muted">
 
-                    <p className="govuk-body govuk-!-margin-0"><span
-                      className="govuk-heading-l govuk-!-display-inline-block">12</span> <a href="/"
-                                                                                            className="govuk-link govuk-link--no-visited-state"
-                                                                                            onClick={ e => e.preventDefault() }>Current
-                      defendants</a></p>
+                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
+                        className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">12</span> Current
+                        defendants</p>
 
+                      <p className="govuk-body"><a href="/"
+                                                   className="govuk-link govuk-link--no-visited-state"
+                                                   onClick={ e => e.preventDefault() }>View current
+                        defendants</a></p>
+
+                    </div>
                   </div>
-                  <div className="app-!-display-flex-1">
+                  <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                    <div className="app-card app-card--muted">
 
-                    <p className="govuk-body govuk-!-margin-0"><span
-                      className="govuk-heading-l govuk-!-display-inline-block">24</span> <a href="/"
-                                                                                            className="govuk-link govuk-link--no-visited-state"
-                                                                                            onClick={ e => e.preventDefault() }>Known
-                      defendants</a></p>
+                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
+                        className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">24</span> Known
+                        defendants</p>
 
+                      <p className="govuk-body"><a href="/"
+                                                   className="govuk-link govuk-link--no-visited-state"
+                                                   onClick={ e => e.preventDefault() }>View known
+                        defendants</a></p>
+
+                    </div>
                   </div>
-                  <div className="app-!-display-flex-1">
 
-                    <p className="govuk-body govuk-!-margin-0"><span
-                      className="govuk-heading-l govuk-!-display-inline-block">6</span> <a href="/"
-                                                                                           className="govuk-link govuk-link--no-visited-state"
-                                                                                           onClick={ e => e.preventDefault() }>Not
-                      known defendants</a></p>
+                  <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                    <div
+                      className="app-card app-card--muted">
 
+                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
+                        className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">6</span> Not known
+                        defendants</p>
+
+                      <p className="govuk-body"><a href="/"
+                                                   className="govuk-link govuk-link--no-visited-state"
+                                                   onClick={ e => e.preventDefault() }>View not known
+                        defendants</a></p>
+
+                    </div>
                   </div>
                 </div>
 
