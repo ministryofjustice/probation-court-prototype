@@ -14,6 +14,7 @@ import OffenderSummary from './scenes/offender-summary/OffenderSummary'
 import MatchCaseList from './scenes/match-case-list/MatchCaseList'
 import AddCaseMatch from './scenes/add-case/AddCaseMatch'
 import AddCaseDetails from './scenes/add-case/AddCaseDetails'
+import AddCaseFinished from './scenes/add-case/AddCaseFinished'
 
 function Cases (props) {
 
@@ -29,6 +30,7 @@ function Cases (props) {
       <Route exact path={ `${ props.match.url }/add` } component={ AddCase }/>
       <Route path={ `${ props.match.url }/add/match` } component={ AddCaseMatch }/>
       <Route path={ `${ props.match.url }/add/details` } component={ AddCaseDetails }/>
+      <Route path={ `${ props.match.url }/add/finished` } component={ AddCaseFinished }/>
     </StateProvider>
   )
 }
