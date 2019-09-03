@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 import { useStateValue } from '../../../../utils/StateProvider'
 
 import PageTitle from '../../shared-components/PageTitle'
-import OffenderMatch from '../../shared-components/OffenderMatch'
 
-function AddCaseMatch (props) {
+function AddCaseFinished (props) {
 
-  const [{ currentDate, newCase }] = useStateValue()
+  const [{ currentDate }] = useStateValue()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -25,7 +24,9 @@ function AddCaseMatch (props) {
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/add" className="govuk-breadcrumbs__link">Add case</Link>
           </li>
-          <li className="govuk-breadcrumbs__list-item" aria-current="page">Match defendant</li>
+          <li className="govuk-breadcrumbs__list-item">Match defendant</li>
+          <li className="govuk-breadcrumbs__list-item">Case details</li>
+          <li className="govuk-breadcrumbs__list-item" aria-current="page">Finished</li>
         </ol>
       </div>
 
@@ -47,18 +48,18 @@ function AddCaseMatch (props) {
                   <span className="app-progress-bar__label">Defendant details</span>
                 </li>
 
-                <li className="app-progress-bar__list-item" aria-current="step">
+                <li className="app-progress-bar__list-item">
                   <span className="app-progress-bar__icon app-progress-bar__icon--complete"/>
                   <span className="app-progress-bar__label">Match defendant</span>
                 </li>
 
-                <li className="app-progress-bar__list-item">
-                  <span className="app-progress-bar__icon"/>
+                <li className="app-progress-bar__list-item" aria-current="step">
+                  <span className="app-progress-bar__icon app-progress-bar__icon--complete"/>
                   <span className="app-progress-bar__label">Case details</span>
                 </li>
 
                 <li className="app-progress-bar__list-item">
-                  <span className="app-progress-bar__icon"/>
+                  <span className="app-progress-bar__icon app-progress-bar__icon--complete"/>
                   <span className="app-progress-bar__label">Finished</span>
                 </li>
 
@@ -68,28 +69,18 @@ function AddCaseMatch (props) {
           </div>
         </div>
 
-        <p className="govuk-body-l govuk-!-margin-bottom-6">Match defendant</p>
-
-        <p className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">1 results found in Delius</p>
-
-        <OffenderMatch case={ newCase } action={ () => {
-          props.history.push('/cases/add/details')
-        } }/>
-
-        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-        <h2 className="govuk-heading-m">Not known offender?</h2>
-        <p className="govuk-body">If the offender is not known to probation and therefore has no matching record in
-          Delius; you can continue and create a new offender record.</p>
-
-        <div>
-          <button className="govuk-button govuk-button--secondary" onClick={ () => {
-            props.history.push('/cases/add/details')
-          } }>This is a new offender
-          </button>
+        <div className="govuk-panel govuk-panel--confirmation govuk-!-margin-top-6">
+          <h1 className="govuk-panel__title">
+            New case added
+          </h1>
+          <div className="govuk-panel__body">
+            <strong>Your new case has been added<br/>to the case list for today</strong>
+          </div>
         </div>
 
-        <Link to="/cases/add" className="govuk-back-link">Back</Link>
+        <p className="govuk-body govuk-!-margin-top-6">
+          <Link to="/cases/list" className="govuk-link govuk-link--no-visited-state">Return to case list</Link>
+        </p>
 
       </main>
 
@@ -97,4 +88,4 @@ function AddCaseMatch (props) {
   )
 }
 
-export default AddCaseMatch
+export default AddCaseFinished

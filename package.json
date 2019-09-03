@@ -1,15 +1,8 @@
 {
   "name": "alpha1",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "private": true,
   "license": "MIT",
-  "dependencies": {
-    "moment": "2.24.0",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
-    "react-router-dom": "5.0.1",
-    "react-scripts": "3.1.1"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -30,12 +23,16 @@
     "ie 8-11",
     "iOS >= 9"
   ],
+  "dependencies": {
+    "moment": "2.24.0",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-router-dom": "5.0.1",
+    "react-scripts": "3.1.1"
+  },
   "devDependencies": {
     "@ministryofjustice/frontend": "0.0.13-alpha",
-    "govuk-frontend": "3.0.0",
+    "govuk-frontend": "3.1.0",
     "node-sass": "4.12.0"
-  },
-  "optionalDependencies": {
-    "lodash": "4.17.15"
   }
 }

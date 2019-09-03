@@ -40,7 +40,7 @@ function AddCase (props) {
     })
   }
 
-  function getDobObject() {
+  function getDobObject () {
     const dob = moment(newCase.defendant.dateOfBirth, 'YYYY-MM-DD')
     return {
       day: dob.date(),
@@ -63,7 +63,42 @@ function AddCase (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <PageTitle title="Add case" hint={ `for ${ currentDate.format('dddd Do MMMM') }` }/>
+        <div className="govuk-grid-row">
+          <div className="govuk-grid-column-one-third">
+
+            <PageTitle title="Add case" hint={ `for ${ currentDate.format('dddd Do MMMM') }` }/>
+
+          </div>
+          <div className="govuk-grid-column-two-thirds">
+
+            <div className="app-progress-bar govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+              <ol className="app-progress-bar__list">
+
+                <li className="app-progress-bar__list-item" aria-current="step">
+                  <span className="app-progress-bar__icon app-progress-bar__icon--complete"/>
+                  <span className="app-progress-bar__label">Defendant details</span>
+                </li>
+
+                <li className="app-progress-bar__list-item">
+                  <span className="app-progress-bar__icon"/>
+                  <span className="app-progress-bar__label">Match defendant</span>
+                </li>
+
+                <li className="app-progress-bar__list-item">
+                  <span className="app-progress-bar__icon"/>
+                  <span className="app-progress-bar__label">Case details</span>
+                </li>
+
+                <li className="app-progress-bar__list-item">
+                  <span className="app-progress-bar__icon"/>
+                  <span className="app-progress-bar__label">Finished</span>
+                </li>
+
+              </ol>
+            </div>
+
+          </div>
+        </div>
 
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds">
@@ -71,7 +106,7 @@ function AddCase (props) {
             <p className="govuk-body-l govuk-!-margin-bottom-0">Defendant details</p>
 
             <p className="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-6">We will use these details to search
-              against offender records in Delius.</p>
+            against offender records in Delius.</p>
 
             <form name="ndForm" onSubmit={ e => {
               e.preventDefault()

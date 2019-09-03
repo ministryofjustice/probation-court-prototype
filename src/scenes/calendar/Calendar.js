@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { lastMonth as last, nextMonth as next } from '../../utils/DateTools'
@@ -8,7 +8,6 @@ import PageTitle from '../cases/shared-components/PageTitle'
 
 function Calendar (props) {
 
-  const [data, setData] = useState({})
   const currentDate = moment()
 
   if (props.match.params.month && props.match.params.year) {
@@ -17,14 +16,7 @@ function Calendar (props) {
   }
 
   useEffect(() => {
-    async function getData () {
-      const response = await fetch('http://localhost:8080/api/calendar')
-      const data = await response.json()
-      setData(data)
-    }
-
     window.scrollTo(0, 0)
-    getData()
   }, [])
 
   const lastMonth = last(currentDate)
@@ -61,9 +53,9 @@ function Calendar (props) {
             <div className={ `app-calendar--item_day ${ i === today ? 'app-calendar--item_day_today' : '' }` }
                  aria-hidden="true">{ i }</div>
             <div className="govuk-visually-hidden">{ moment().date(i).format('dddd Do MMMM') }</div>
-            { day !== 'Sa' && day !== 'Su' && (
+            { day !== 'Su' && (
               <Fragment>
-                { today !== -1 && i >= today && i <= today + (todayDay === 'Th' || todayDay === 'Fr' ? 4 : 2) && (<div
+                { today !== -1 && i >= today && i <= today + 10 && (<div
                   className="moj-badge govuk-!-margin-2">{ Math.ceil(Math.random() * 15) + 10 } cases</div>) }
                 { (i <= today || (today === -1 && currentDate.month() <= moment().month())) && (
                   <Fragment>
