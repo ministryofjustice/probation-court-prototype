@@ -206,7 +206,7 @@ function CaseSummary (props) {
               ) }
 
               <div className="govuk-grid-row app-!-display-flex">
-                <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
                   <div className="app-card app-card--muted">
 
                     <p className="govuk-heading-m govuk-!-margin-0">{ currentCase.defendant.deliusStatus } offender</p>
@@ -236,13 +236,14 @@ function CaseSummary (props) {
 
                     { currentCase.defendant.deliusStatus !== 'Not known' && (
                       <p className="govuk-body">
-                        <Link to={`/cases/offender/${props.match.params.id}`} className="govuk-link govuk-link--no-visited-state">View offender summary</Link>
+                        <Link to={ `/cases/offender/${ props.match.params.id }` }
+                              className="govuk-link govuk-link--no-visited-state">View offender summary</Link>
                       </p>
                     ) }
 
                   </div>
                 </div>
-                <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
                   <div className="app-card app-card--muted">
 
                     <p className="govuk-heading-m govuk-!-margin-0">CPS Pack</p>
@@ -257,7 +258,7 @@ function CaseSummary (props) {
                   </div>
                 </div>
 
-                <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
                   <div
                     className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
 
@@ -270,6 +271,21 @@ function CaseSummary (props) {
                         <p className="govuk-body"><a href="/contact" className="govuk-link govuklink--no-visited-state"
                                                      onClick={ e => e.preventDefault() }>Contact
                           offender manager</a></p>
+                      </Fragment>
+                    ) }
+
+                  </div>
+                </div>
+
+                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                  <div
+                    className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
+
+                    { currentCase.defendant.deliusStatus === 'Current' && (
+                      <Fragment>
+                        <p className="govuk-heading-m govuk-!-margin-0">PSR</p>
+                        <p className="govuk-body">A pre-sentence report was requested at 09:25, this was added to the
+                          event in nDelius and is currently awaiting completion.</p>
                       </Fragment>
                     ) }
 
@@ -291,11 +307,21 @@ function CaseSummary (props) {
                 </thead>
                 <tbody>
                 { currentCase.defendant.deliusStatus === 'Current' && (
-                  <tr>
-                    <td>Offender manager update</td>
-                    <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:15</td>
-                    <td>Awaiting response</td>
-                  </tr>
+                  <Fragment>
+                    <tr>
+                      <td>Case adjourned - PSR</td>
+                      <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:25</td>
+                      <td>
+                        <a className="govuk-link moj-timeline__document-link" href="/psr-link"
+                           onClick={ e => e.preventDefault() }>Draft PSR</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Offender manager update</td>
+                      <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:05</td>
+                      <td>Awaiting response</td>
+                    </tr>
+                  </Fragment>
                 ) }
                 <tr>
                   <td>CPS Pack</td>
