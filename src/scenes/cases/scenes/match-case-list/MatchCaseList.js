@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-import config from '../../../../config'
 import { useStateValue } from '../../../../utils/StateProvider'
+import { getCaseData } from '../../../../utils/DataService'
 
 function MatchCaseList () {
 
@@ -41,15 +41,12 @@ function MatchCaseList () {
       setData({ courtName: $data.courtName, unmatched: unmatched })
     }
 
-    async function getData () {
-      const response = await fetch(process.env.NODE_ENV !== 'production' ? 'http://localhost:8080/api/bigcaselist' : config.dataUrl)
-      const data = await response.json()
-      configureData(data)
-      dispatch({ type: 'setCourt', setCourt: data.courtName })
-    }
+    getCaseData().then($data => {
+      configureData($data)
+      dispatch({ type: 'setCourt', setCourt: $data.courtName })
+    })
 
     window.scrollTo(0, 0)
-    getData()
   }, [dispatch])
 
   return (
