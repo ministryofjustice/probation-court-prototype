@@ -1,7 +1,7 @@
 import config from '../config'
 
 const getCaseData = async () => {
-  const response = await fetch(process.env.NODE_ENV !== 'production' ? 'http://localhost:8080/api/bigcaselist' : config.dataUrl)
+  const response = await fetch(config.dataUrl)
   return await response.json()
 }
 
