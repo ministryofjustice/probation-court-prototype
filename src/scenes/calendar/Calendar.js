@@ -43,7 +43,6 @@ function Calendar (props) {
   function daysInMonth () {
     let days = []
     const today = currentDate.month() === moment().month() ? currentDate.date() : -1
-    const todayDay = currentDate.format('dd')
 
     for (let i = 1, day; i <= currentDate.daysInMonth(); i++) {
       day = moment(currentDate).date(i).format('dd')
