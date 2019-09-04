@@ -284,8 +284,10 @@ function CaseSummary (props) {
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
                         <p className="govuk-heading-m govuk-!-margin-0">PSR</p>
-                        <p className="govuk-body">A pre-sentence report was requested at 09:25, this was added to the
-                          event in nDelius and is currently awaiting completion.</p>
+                        <p className="govuk-body">A pre-sentence report was requested at 09:25 and is currently in draft.</p>
+
+                        <p className="govuk-body"><a href="/contact" className="govuk-link govuklink--no-visited-state"
+                                                     onClick={ e => e.preventDefault() }>View draft report</a></p>
                       </Fragment>
                     ) }
 
@@ -313,7 +315,7 @@ function CaseSummary (props) {
                       <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:25</td>
                       <td>
                         <a className="govuk-link moj-timeline__document-link" href="/psr-link"
-                           onClick={ e => e.preventDefault() }>Draft PSR</a>
+                           onClick={ e => e.preventDefault() }>Draft report</a>
                       </td>
                     </tr>
                     <tr>
