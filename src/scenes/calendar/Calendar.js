@@ -51,7 +51,7 @@ function Calendar (props) {
           <Link to={ `/cases/list/${ moment().date(i).format('D/M/YYYY') }` } className="app-calendar--link">
             <div className={ `app-calendar--item_day ${ i === today ? 'app-calendar--item_day_today' : '' }` }
                  aria-hidden="true">{ i }</div>
-            <div className="govuk-visually-hidden">{ moment().date(i).format('dddd Do MMMM') }</div>
+            <div className="govuk-visually-hidden">{ moment().date(i).format('dddd D MMMM') }</div>
             { day !== 'Su' && (
               <Fragment>
                 { today !== -1 && i >= today && i <= today + 10 && (<div

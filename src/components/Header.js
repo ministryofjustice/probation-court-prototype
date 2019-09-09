@@ -12,8 +12,8 @@ function Header () {
         <div className="moj-header__logo">
 
           <Logo className="moj-header__logotype-crest govuk-header__logotype-crown"/>
-          <Link to="/cases/list" className="moj-header__link moj-header__link--organisation-name">MOJ Digital</Link>
-          <Link to="/cases/list" className="moj-header__link moj-header__link--service-name">Probation in court</Link>
+          <Link to="/dashboard" className="moj-header__link moj-header__link--organisation-name">MOJ Digital</Link>
+          <Link to="/dashboard" className="moj-header__link moj-header__link--service-name">Probation in court</Link>
 
         </div>
         <div className="moj-header__content">
@@ -22,11 +22,11 @@ function Header () {
 
             <ul className="moj-header__navigation-list">
               <li className="moj-header__navigation-item">
-                <a className="moj-header__navigation-link" href="/" onClick={ e => {e.preventDefault()} }>Profile</a>
+                <a className="moj-header__navigation-link" href="/" onClick={ e => e.preventDefault() }>Profile</a>
               </li>
 
               <li className="moj-header__navigation-item">
-                <a className="moj-header__navigation-link" href="/" onClick={ e => {e.preventDefault()} }>Sign out</a>
+                <a className="moj-header__navigation-link" href="/" onClick={ e => e.preventDefault() }>Sign out</a>
               </li>
             </ul>
 
@@ -36,37 +36,6 @@ function Header () {
       </div>
 
     </header>
-    /*
-    <header className="moj-header" role="banner">
-      <div className="moj-header__container">
-        <div className="moj-header__logo">
-
-          <span className="govuk-header__logotype">
-            <Logo className="govuk-header__logotype-crown"/>
-          </span>
-          <Link to="/cases/list" className="moj-header__link moj-header__link--organisation-name">MOJ Digital</Link>
-          <Link to="/cases/list" className="moj-header__link moj-header__link--service-name">Probation in court</Link>
-
-        </div>
-        <div className="moj-header__content">
-
-          <nav className="moj-header__navigation" aria-label="Account navigation">
-
-            <ul className="moj-header__navigation-list">
-              <li className="moj-header__navigation-item">
-                <a className="moj-header__navigation-link" href="/" onClick={e => {e.preventDefault()} }>Profile</a>
-              </li>
-              <li className="moj-header__navigation-item">
-                <a className="moj-header__navigation-link" href="/" onClick={e => {e.preventDefault()} }>Sign out</a>
-              </li>
-            </ul>
-
-          </nav>
-
-        </div>
-      </div>
-    </header>
-    */
   )
 }
 

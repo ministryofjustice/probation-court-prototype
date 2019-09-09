@@ -39,7 +39,7 @@ function OffenderSummary (props) {
         <h1 className="govuk-heading-l govuk-!-margin-0">Offender summary<span
           className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;from Delius record</span></h1>
         <p className="govuk-body-m govuk-!-font-weight-bold">Appearing
-          on { currentDate.format('dddd Do MMMM') }<span
+          on { currentDate.format('dddd D MMMM') }<span
             className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
 
         { currentCase && currentCase.defendant && (
