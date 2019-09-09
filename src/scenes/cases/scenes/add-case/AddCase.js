@@ -66,7 +66,7 @@ function AddCase (props) {
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-one-third">
 
-            <PageTitle title="Add case" hint={ `for ${ currentDate.format('dddd Do MMMM') }` }/>
+            <PageTitle title="Add case" hint={ `for ${ currentDate.format('dddd D MMMM') }` }/>
 
           </div>
           <div className="govuk-grid-column-two-thirds">

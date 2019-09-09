@@ -51,7 +51,7 @@ function CaseList (props) {
 
       <PageTitle title="Cases" hint="where the Defendant has been matched with an offender record in nDelius"/>
 
-      <p className="govuk-body-m govuk-!-font-weight-bold">Today, { currentDate.format('dddd Do MMMM') }
+      <p className="govuk-body-m govuk-!-font-weight-bold">Today, { currentDate.format('dddd D MMMM') }
         <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
       </p>
 
@@ -170,8 +170,8 @@ function CaseList (props) {
                 <thead>
                 <tr>
                   <th scope="col">Name</th>
-                  <th scope="col" style={ { 'width': '40%' } }>Offence</th>
                   <th scope="col">Delius record</th>
+                  <th scope="col" style={ { 'width': '40%' } }>Offence</th>
                   <th scope="col">Status</th>
                   <th scope="col">Sitting</th>
                   <th scope="col">Court</th>
@@ -191,18 +191,6 @@ function CaseList (props) {
                           className="govuk-link govuk-link--no-visited-state">{ $case.defendant.name }</Link>
                         </th>
                         <td>
-                          { $case.offences.length > 1 ? (
-                            <ol className="govuk-list govuk-!-margin-left-4">
-                              { $case.offences.map((offence, offenceIndex) => {
-                                return <li key={ offenceIndex }
-                                           className="govuk-list--number app-offence-title">{ offence.title }</li>
-                              }) }
-                            </ol>
-                          ) : (
-                            <p className="govuk-body govuk-!-margin-bottom-2">{ $case.offences[0].title }</p>
-                          ) }
-                        </td>
-                        <td>
                           { $case.defendant.breachedConditions && (
                             <div
                               className="moj-badge moj-badge--grey govuk-!-display-block govuk-!-margin-bottom-1">Breach</div>
@@ -219,8 +207,20 @@ function CaseList (props) {
                               className="govuk-hint govuk-!-margin-0 govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
                           ) }
                         </td>
+                        <td>
+                          { $case.offences.length > 1 ? (
+                            <ol className="govuk-list govuk-!-margin-left-4">
+                              { $case.offences.map((offence, offenceIndex) => {
+                                return <li key={ offenceIndex }
+                                           className="govuk-list--number app-offence-title">{ offence.title }</li>
+                              }) }
+                            </ol>
+                          ) : (
+                            <p className="govuk-body govuk-!-margin-bottom-2">{ $case.offences[0].title }</p>
+                          ) }
+                        </td>
                         <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
-                        <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
+                        <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } to { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
                         <td>{ $case.courtRoom }</td>
                       </tr>
                     )

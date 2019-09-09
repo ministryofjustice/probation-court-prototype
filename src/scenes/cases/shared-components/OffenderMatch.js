@@ -49,7 +49,7 @@ function OffenderMatch (props) {
 
               <p className="govuk-body govuk-!-margin-0 govuk-!-margin-top-2">PNC</p>
               <p
-                className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ newCase.defendant.pnc }</p>
+                className="govuk-heading-m govuk-!-margin-0 govuk-!-padding-0">{ newCase.defendant.pnc || 'Not available' }</p>
 
             </div>
             <div className="govuk-grid-column-one-quarter app-!-text-align-right">

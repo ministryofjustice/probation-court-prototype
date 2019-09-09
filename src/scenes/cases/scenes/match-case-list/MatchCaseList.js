@@ -63,10 +63,8 @@ function MatchCaseList () {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h2 className="govuk-heading-l govuk-!-margin-0">Match cases<span
-          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;to offender records in Delius</span>
-        </h2>
-        <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd Do MMMM') }
+        <h2 className="govuk-heading-l govuk-!-margin-0">Unmatched cases</h2>
+        <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd D MMMM') }
           <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span></p>
 
         { data.unmatched && data.unmatched.length && (
@@ -83,8 +81,6 @@ function MatchCaseList () {
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Offence</th>
-                <th scope="col">Delius record</th>
-                <th scope="col">Status</th>
                 <th scope="col">Sitting</th>
                 <th scope="col">Court</th>
               </tr>
@@ -109,8 +105,6 @@ function MatchCaseList () {
                         }) }
                       </ol>
                     </td>
-                    <td>Not identified</td>
-                    <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
                     <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
                     <td>{ $case.courtRoom }</td>
                   </tr>

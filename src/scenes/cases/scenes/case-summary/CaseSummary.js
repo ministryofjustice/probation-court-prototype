@@ -1,17 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useStateValue } from '../../../../utils/StateProvider'
 import DefendantDetails from '../../shared-components/DefendantDetails'
 import SomethingWrong from '../../shared-components/SomethingWrong'
-import AdjournCase from './components/AdjournCase'
-import RecordSentence from './components/RecordSentence'
 import CurrentCase from './components/CurrentCase'
 import moment from 'moment'
 
 function CaseSummary (props) {
 
-  const [data, setData] = useState({ showAdjourn: false, showRecordSentence: false })
   const [{ court, currentDate, currentCase }] = useStateValue()
 
   useEffect(() => {
@@ -47,12 +44,12 @@ function CaseSummary (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <table className="govuk-table app-table" role="presentation">
+        <table className="govuk-table app-table govuk-!-margin-top-4 govuk-!-margin-bottom-2" role="presentation">
           <tbody>
           <tr>
             <td>
               <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
-              <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd Do MMMM') }<span
+              <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd D MMMM') }<span
                 className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;at { court }</span></p>
             </td>
             <td className="app-!-text-align-right">
@@ -62,22 +59,15 @@ function CaseSummary (props) {
                 <div className="moj-menu">
                   <div className="moj-menu__wrapper">
 
-                    <button
+                    <Link
                       className="govuk-button app-button--interrupt moj-menu__item govuk-!-margin-right-2"
-                      type="button"
-                      onClick={ e => {
-                        e.preventDefault()
-                        setData({ ...data, showAdjourn: true })
-                      } } disabled={ data.showAdjourn || data.showRecordSentence }>Adjourn case
-                    </button>
+                      to={ `/cases/adjourn/${ props.match.params.id }` }>Adjourn case
+                    </Link>
 
-                    <button
+                    <Link
                       className="govuk-button app-button--interrupt moj-menu__item"
-                      type="button" onClick={ e => {
-                      e.preventDefault()
-                      setData({ ...data, showRecordSentence: true })
-                    } } disabled={ data.showAdjourn || data.showRecordSentence }>Record sentence
-                    </button>
+                      to={ `/cases/record-sentence/${ props.match.params.id }` }>Record sentence
+                    </Link>
 
                   </div>
                 </div>
@@ -133,7 +123,7 @@ function CaseSummary (props) {
 
                         { currentCase.defendant.breachedConditions && (
                           <div
-                            className="moj-badge moj-badge moj-badge--red govuk-!-margin-bottom-1 govuk-!-width-full">Breached
+                            className="moj-badge moj-badge moj-badge--grey govuk-!-margin-bottom-1 govuk-!-width-full">Breached
                             order</div>
                         ) }
 
@@ -197,14 +187,6 @@ function CaseSummary (props) {
 
             <div className="moj-filter-layout__content">
 
-              { data && data.showAdjourn && (
-                <AdjournCase hideUI={ () => { setData({ ...data, showAdjourn: false }) } }/>
-              ) }
-
-              { data && data.showRecordSentence && (
-                <RecordSentence hideUI={ () => { setData({ ...data, showRecordSentence: false }) } }/>
-              ) }
-
               <div className="govuk-grid-row app-!-display-flex">
                 <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
                   <div className="app-card app-card--muted">
@@ -247,7 +229,7 @@ function CaseSummary (props) {
                   <div className="app-card app-card--muted">
 
                     <p className="govuk-heading-m govuk-!-margin-0">CPS Pack</p>
-                    <p className="govuk-body">The CPS pack was obtained on { currentDate.format('Do MMMM YYYY ') } at
+                    <p className="govuk-body">The CPS pack was obtained on { currentDate.format('D MMMM YYYY ') } at
                       09:04.</p>
 
                     <p className="govuk-body">
@@ -265,7 +247,7 @@ function CaseSummary (props) {
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
                         <p className="govuk-heading-m govuk-!-margin-0">OM Update</p>
-                        <p className="govuk-body">An update was requested on { currentDate.format('Do MMMM YYYY ') } at
+                        <p className="govuk-body">An update was requested on { currentDate.format('D MMMM YYYY ') } at
                           09:15, currently awaiting a response.</p>
 
                         <p className="govuk-body"><a href="/contact" className="govuk-link govuklink--no-visited-state"
@@ -284,7 +266,8 @@ function CaseSummary (props) {
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
                         <p className="govuk-heading-m govuk-!-margin-0">PSR</p>
-                        <p className="govuk-body">A pre-sentence report was requested at 09:25 and is currently in draft.</p>
+                        <p className="govuk-body">A pre-sentence report was requested at 09:25 and is currently in
+                          draft.</p>
 
                         <p className="govuk-body"><a href="/contact" className="govuk-link govuklink--no-visited-state"
                                                      onClick={ e => e.preventDefault() }>View draft report</a></p>
@@ -312,7 +295,7 @@ function CaseSummary (props) {
                   <Fragment>
                     <tr>
                       <td>Case adjourned - PSR</td>
-                      <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:25</td>
+                      <td>Requested on { currentDate.format('D MMMM YYYY ') } at 09:25</td>
                       <td>
                         <a className="govuk-link moj-timeline__document-link" href="/psr-link"
                            onClick={ e => e.preventDefault() }>Draft report</a>
@@ -320,14 +303,14 @@ function CaseSummary (props) {
                     </tr>
                     <tr>
                       <td>Offender manager update</td>
-                      <td>Requested on { currentDate.format('Do MMMM YYYY ') } at 09:05</td>
+                      <td>Requested on { currentDate.format('D MMMM YYYY ') } at 09:05</td>
                       <td>Awaiting response</td>
                     </tr>
                   </Fragment>
                 ) }
                 <tr>
                   <td>CPS Pack</td>
-                  <td>Obtained on { currentDate.format('Do MMMM YYYY ') } at 09:04</td>
+                  <td>Obtained on { currentDate.format('D MMMM YYYY ') } at 09:04</td>
                   <td>
                     <a className="govuk-link moj-timeline__document-link" href="/cps-link"
                        onClick={ e => e.preventDefault() }>CPS Pack</a>
@@ -347,7 +330,7 @@ function CaseSummary (props) {
                   <td>
 
                     <p
-                      className="govuk-body">{ currentDate.format('dddd Do MMMM') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } - { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</p>
+                      className="govuk-body">{ currentDate.format('dddd D MMMM') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } - { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</p>
 
                   </td>
                   <td>
@@ -443,26 +426,26 @@ function CaseSummary (props) {
 
             </div>
 
-            < /div>
-              ) }
+          </div>
+        ) }
 
-              <Link to="/cases/list" className="govuk-back-link">Back</Link>
+        <Link to="/cases/list" className="govuk-back-link">Back</Link>
 
-              <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={ e => {
-                e.preventDefault()
-                window.scrollTo(0, 0)
-              } }>
-                <svg role="presentation" focusable="false" className="app-back-to-top__icon"
-                     xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
-                  <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>
-                </svg>
-                Back to top
-              </Link>
+        <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={ e => {
+          e.preventDefault()
+          window.scrollTo(0, 0)
+        } }>
+          <svg role="presentation" focusable="false" className="app-back-to-top__icon"
+               xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>
+          </svg>
+          Back to top
+        </Link>
 
-            </main>
+      </main>
 
-          </Fragment>
-        )
-        }
+    </Fragment>
+  )
+}
 
-        export default CaseSummary
+export default CaseSummary
