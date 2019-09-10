@@ -120,11 +120,7 @@ function SentenceCase (props) {
               </button>
 
             </form>
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 60d4486d73ed351b05d111c43d08678d1c25714e
           </div>
           <div className="govuk-grid-column-one-third">
             { ' ' }
