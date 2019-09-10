@@ -21,8 +21,8 @@
     font-weight: 700;
 
     &_header {
-      border-color: govuk-colour("blue");
-      background: govuk-colour("blue");
+      border-color: $moj-dark-colour;
+      background: $moj-dark-colour;
       color: govuk-colour("white");
       padding: 5px 0;
       min-height: 10px;
@@ -38,7 +38,6 @@
       &_today {
         border-color: govuk-colour("yellow");
         background: govuk-colour("yellow");
-        color: govuk-colour("white");
       }
     }
 

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
+import { AppTitle } from '../../../../utils/Title'
 import { useStateValue } from '../../../../utils/StateProvider'
 import { getCaseData } from '../../../../utils/DataService'
 
@@ -46,24 +47,25 @@ function MatchCaseList () {
       dispatch({ type: 'setCourt', setCourt: $data.courtName })
     })
 
+    document.title = `Unmatched cases - ${ AppTitle }`
     window.scrollTo(0, 0)
   }, [dispatch])
 
   return (
     <Fragment>
 
-      <div className="govuk-breadcrumbs">
+      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Unmatched cases</li>
         </ol>
-      </div>
+      </nav>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h2 className="govuk-heading-l govuk-!-margin-0">Unmatched cases</h2>
+        <h1 className="govuk-heading-l govuk-!-margin-0">Unmatched cases</h1>
         <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd D MMMM') }
           <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span></p>
 

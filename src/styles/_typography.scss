@@ -3,10 +3,12 @@ abbr {
 }
 
 .app-\!-text-align-center {
-  text-align: center; }
+  text-align: center;
+}
 
 .app-\!-text-align-right {
-  text-align: right; }
+  text-align: right;
+}
 
 .app-calendar--link {
   text-decoration: none;
@@ -38,5 +40,17 @@ abbr {
     &:visited {
       color: govuk-colour("white");
     }
+  }
+}
+
+.app-link--dark {
+  color: $moj-dark-colour;
+
+  &:visited, &:link {
+    color: $moj-dark-colour;
+  }
+
+  &:hover {
+    color: $govuk-link-colour;
   }
 }

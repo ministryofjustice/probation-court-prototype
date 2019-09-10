@@ -1,17 +1,20 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
+import { AppTitle } from '../../../../utils/Title'
 import { useStateValue } from '../../../../utils/StateProvider'
+
 import DefendantDetails from '../../shared-components/DefendantDetails'
 import SomethingWrong from '../../shared-components/SomethingWrong'
 import CurrentCase from './components/CurrentCase'
-import moment from 'moment'
 
 function CaseSummary (props) {
 
   const [{ court, currentDate, currentCase }] = useStateValue()
 
   useEffect(() => {
+    document.title = `Case details - ${ AppTitle }`
     window.scrollTo(0, 0)
   }, [])
 
@@ -33,14 +36,14 @@ function CaseSummary (props) {
   return (
     <Fragment>
 
-      <div className="govuk-breadcrumbs">
+      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Case details</li>
         </ol>
-      </div>
+      </nav>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
@@ -59,12 +62,12 @@ function CaseSummary (props) {
                 <div className="moj-menu">
                   <div className="moj-menu__wrapper">
 
-                    <Link
+                    <Link role="button" aria-pressed="false"
                       className="govuk-button app-button--interrupt moj-menu__item govuk-!-margin-right-2"
                       to={ `/cases/adjourn/${ props.match.params.id }` }>Adjourn case
                     </Link>
 
-                    <Link
+                    <Link role="button" aria-pressed="false"
                       className="govuk-button app-button--interrupt moj-menu__item"
                       to={ `/cases/record-sentence/${ props.match.params.id }` }>Record sentence
                     </Link>
@@ -86,7 +89,7 @@ function CaseSummary (props) {
 
                 <div className="moj-filter__header">
                   <div className="moj-filter__header-title">
-                    <h2 className="govuk-heading-m app-!-color-white">Defendant details</h2>
+                    <h2 className="govuk-heading-m">Defendant details</h2>
                   </div>
                 </div>
 
@@ -219,7 +222,7 @@ function CaseSummary (props) {
                     { currentCase.defendant.deliusStatus !== 'Not known' && (
                       <p className="govuk-body">
                         <Link to={ `/cases/offender/${ props.match.params.id }` }
-                              className="govuk-link govuk-link--no-visited-state">View offender summary</Link>
+                              className="govuk-link app-link--dark">View offender summary</Link>
                       </p>
                     ) }
 
@@ -233,7 +236,7 @@ function CaseSummary (props) {
                       09:04.</p>
 
                     <p className="govuk-body">
-                      <a href="/" className="govuk-link govuk-link--no-visited-state"
+                      <a href="/" className="govuk-link app-link--dark"
                          onClick={ e => e.preventDefault() }>CPS Pack</a>
                     </p>
 
@@ -250,7 +253,7 @@ function CaseSummary (props) {
                         <p className="govuk-body">An update was requested on { currentDate.format('D MMMM YYYY ') } at
                           09:15, currently awaiting a response.</p>
 
-                        <p className="govuk-body"><a href="/contact" className="govuk-link govuklink--no-visited-state"
+                        <p className="govuk-body"><a href="/contact" className="govuk-link app-link--dark"
                                                      onClick={ e => e.preventDefault() }>Contact
                           offender manager</a></p>
                       </Fragment>
@@ -269,7 +272,7 @@ function CaseSummary (props) {
                         <p className="govuk-body">A pre-sentence report was requested at 09:25 and is currently in
                           draft.</p>
 
-                        <p className="govuk-body"><a href="/contact" className="govuk-link govuklink--no-visited-state"
+                        <p className="govuk-body"><a href="/contact" className="govuk-link app-link--dark"
                                                      onClick={ e => e.preventDefault() }>View draft report</a></p>
                       </Fragment>
                     ) }
