@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+
+import { AppTitle } from '../../utils/Title'
 import { lastMonth as last, nextMonth as next } from '../../utils/DateTools'
 
 import CalendarFilter from './components/CalendarFilter'
@@ -16,6 +18,7 @@ function Calendar (props) {
   }
 
   useEffect(() => {
+    document.title = `Calendar - ${ AppTitle }`
     window.scrollTo(0, 0)
   }, [])
 
@@ -119,19 +122,19 @@ function Calendar (props) {
 
         <div className="moj-filter-layout__content">
 
-          <table className="govuk-table app-table" role="presentation">
+          <table className="govuk-table app-table govuk-!-margin-top-0" role="presentation">
             <tbody>
             <tr>
               <td>
                 <ul className="moj-pagination__list govuk-!-margin-top-2">
                   <li className="moj-pagination__item  moj-pagination__item--prev">
                     <Link to={ `/calendar/${ lastMonth.month + '/' + lastMonth.year }` }
-                          className="govuk-body-s moj-pagination__link">{ lastMonth.monthName }, { lastMonth.year }</Link>
+                          className="govuk-body-s moj-pagination__link govuk-!-margin-0">{ lastMonth.monthName }, { lastMonth.year }</Link>
                   </li>
                   <li className="moj-pagination__item">&nbsp;|&nbsp;</li>
                   <li className="moj-pagination__item  moj-pagination__item--next">
                     <Link to={ `/calendar/${ nextMonth.month + '/' + nextMonth.year }` }
-                          className="govuk-body-s moj-pagination__link">{ nextMonth.monthName }, { nextMonth.year }</Link>
+                          className="govuk-body-s moj-pagination__link govuk-!-margin-0">{ nextMonth.monthName }, { nextMonth.year }</Link>
                   </li>
                 </ul>
 

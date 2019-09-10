@@ -2,11 +2,14 @@
 // Config
 //===============================================
 
+$moj-dark-colour: #204060;
+$moj-black-colour: #231f20;
+
 $moj-assets-path: "/assets/";
 $govuk-page-width: 1800px;
 $moj-page-width: $govuk-page-width;
 
-$govuk-brand-colour: #204060;
+$govuk-brand-colour: $moj-dark-colour;
 
 /*
 $govuk-text-colour: #231f20;
@@ -64,12 +67,6 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
   fill: white;
 }
 
-.moj-header__link, .moj-header__navigation-link, .moj-primary-navigation__link {
-  &:focus {
-    color: white !important;
-  }
-}
-
 .moj-badge {
   text-align: center;
   &--small {
@@ -121,6 +118,11 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
   &:before {
     background-color: $govuk-link-colour
   }
+}
+
+.moj-badge--dark {
+  border-color: $moj-dark-colour;
+  color: $moj-dark-colour;
 }
 
 //===============================================

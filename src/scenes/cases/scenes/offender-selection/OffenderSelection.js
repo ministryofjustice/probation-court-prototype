@@ -53,7 +53,7 @@ function OffenderSelection () {
   return (
     <Fragment>
 
-      <div className="govuk-breadcrumbs">
+      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
@@ -63,7 +63,7 @@ function OffenderSelection () {
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Match record</li>
         </ol>
-      </div>
+      </nav>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
@@ -79,7 +79,7 @@ function OffenderSelection () {
               <div className="moj-filter__header">
 
                 <div className="moj-filter__header-title">
-                  <h2 className="govuk-heading-m app-!-color-white">Defendant details</h2>
+                  <h2 className="govuk-heading-m">Defendant details</h2>
                 </div>
               </div>
 

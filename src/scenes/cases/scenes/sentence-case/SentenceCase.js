@@ -1,19 +1,25 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
+import { AppTitle } from '../../../../utils/Title'
 import PageTitle from '../../shared-components/PageTitle'
 import { useStateValue } from '../../../../utils/StateProvider'
-import moment from 'moment'
 
 function SentenceCase (props) {
 
   const [{ currentDate, currentCase }] = useStateValue()
   const backLink = `/cases/details/${ props.match.params.id }`
 
+  useEffect(() => {
+    document.title = `Record sentence - ${ AppTitle }`
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <Fragment>
 
-      <div className="govuk-breadcrumbs">
+      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
@@ -24,7 +30,7 @@ function SentenceCase (props) {
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Record sentence</li>
         </ol>
-      </div>
+      </nav>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
@@ -77,7 +83,7 @@ function SentenceCase (props) {
               <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
               <div className="govuk-form-group">
-                <fieldset className="govuk-fieldset" aria-describedby="changed-name-hint">
+                <fieldset className="govuk-fieldset" aria-required="true">
                   <legend className="govuk-fieldset__legend">
                     <h1 className="govuk-fieldset__heading">Is this a custodial sentence?</h1>
                   </legend>
@@ -99,13 +105,13 @@ function SentenceCase (props) {
 
               <div className="govuk-form-group">
                 <label className="govuk-label" htmlFor="width-20">Sentence</label>
-                <input className="govuk-input govuk-!-width-three-quarters" id="width-20" name="width-20" type="text"/>
+                <input className="govuk-input govuk-!-width-three-quarters" id="width-20" name="width-20" type="text" aria-required="true"/>
               </div>
 
               <div className="govuk-form-group">
                 <label className="govuk-label" htmlFor="more-detail">Sentence details</label>
                 <textarea className="govuk-textarea govuk-!-width-three-quarters" id="more-detail" name="more-detail"
-                          rows="5"/>
+                          rows="5" aria-required="true"/>
               </div>
 
               <button data-module="govuk-button" type="button"
@@ -114,7 +120,6 @@ function SentenceCase (props) {
               </button>
 
             </form>
-
 
           </div>
           <div className="govuk-grid-column-one-third">

@@ -105,41 +105,41 @@ function CaseListFilter () {
             <div className="govuk-checkboxes govuk-checkboxes--small">
 
               <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="1"
+                <input className="govuk-checkboxes__input" id="court-1" name="court" type="checkbox" value="1"
                        defaultChecked/>
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="type-1">
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="court-1">
                   1
                 </label>
               </div>
 
               <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2"
+                <input className="govuk-checkboxes__input" id="court-2" name="court" type="checkbox" value="2"
                        defaultChecked/>
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="type-2">
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="court-2">
                   2
                 </label>
               </div>
 
               <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2"
+                <input className="govuk-checkboxes__input" id="court-3" name="court" type="checkbox" value="2"
                        defaultChecked/>
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="type-2">
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="court-3">
                   3
                 </label>
               </div>
 
               <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2"
+                <input className="govuk-checkboxes__input" id="court-4" name="court" type="checkbox" value="2"
                        defaultChecked/>
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="type-2">
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="court-4">
                   4
                 </label>
               </div>
 
               <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2"
+                <input className="govuk-checkboxes__input" id="court-5" name="court" type="checkbox" value="2"
                        defaultChecked/>
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="type-2">
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="court-5">
                   5
                 </label>
               </div>
@@ -187,17 +187,17 @@ function CaseListFilter () {
             <div className="govuk-checkboxes govuk-checkboxes--small">
 
               <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="1"
+                <input className="govuk-checkboxes__input" id="listing-1" name="listing" type="checkbox" value="1"
                        defaultChecked/>
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="type-1">
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="listing-1">
                   1st listing
                 </label>
               </div>
 
               <div className="govuk-checkboxes__item">
-                <input className="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2"
+                <input className="govuk-checkboxes__input" id="listing-2" name="listing" type="checkbox" value="2"
                        defaultChecked/>
-                <label className="govuk-label govuk-checkboxes__label" htmlFor="type-2">
+                <label className="govuk-label govuk-checkboxes__label" htmlFor="listing-2">
                   2nd listing
                 </label>
               </div>

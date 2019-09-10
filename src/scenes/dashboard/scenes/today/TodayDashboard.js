@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 
+import { AppTitle } from '../../../../utils/Title'
 import { useStateValue } from '../../../../utils/StateProvider'
 
 import { configureCaseData, getCaseData } from '../../../../utils/DataService'
 import PageTitle from '../../../cases/shared-components/PageTitle'
-import { Link } from 'react-router-dom'
 
 function TodayDashboard () {
 
@@ -14,6 +15,7 @@ function TodayDashboard () {
 
   useEffect(() => {
 
+    document.title = `Dashboard - ${ AppTitle }`
     window.scrollTo(0, 0)
 
     getCaseData().then($data => {
@@ -135,7 +137,7 @@ function TodayDashboard () {
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">3</span> Defendants not known to
               Probation</p>
-            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link govuk-link--no-visited-state"
+            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link app-link--dark"
                                                               to="/cases/list">View case
               list</Link></p>
           </div>
@@ -153,7 +155,7 @@ function TodayDashboard () {
               <tbody>
               <tr>
                 <td>
-                  <p className="govuk-body govuk-!-margin-0 app-!-color-red"><span
+                  <p className="govuk-body govuk-!-margin-0 app-!-color-red govuk-!-font-weight-bold"><span
                     className="govuk-body-l govuk-!-font-weight-bold app-!-color-red app-dashboard-count">2</span> Defendants
                     not matched to nDelius offender
                     records</p>
@@ -233,7 +235,7 @@ function TodayDashboard () {
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">8</span> Defendants not known to
               Probation</p>
-            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link govuk-link--no-visited-state"
+            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link app-link--dark"
                                                                  to="/cases/list">View case
               list</Link></p>
           </div>
@@ -251,7 +253,7 @@ function TodayDashboard () {
               <tbody>
               <tr>
                 <td>
-                  <p className="govuk-body govuk-!-margin-0 app-!-color-red"><span
+                  <p className="govuk-body govuk-!-margin-0 app-!-color-red govuk-!-font-weight-bold"><span
                     className="govuk-body-l govuk-!-font-weight-bold app-!-color-red app-dashboard-count">4</span> Defendants
                     not matched to offender
                     records</p>
