@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
+import { AppTitle } from '../../../../utils/Title'
 import { useStateValue } from '../../../../utils/StateProvider'
 
 import Input from '../../shared-components/Input'
@@ -13,6 +14,7 @@ function AddCase (props) {
   const [{ currentDate, newCase }, dispatch] = useStateValue()
 
   useEffect(() => {
+    document.title = `Add case - ${ AppTitle }`
     window.scrollTo(0, 0)
   }, [])
 

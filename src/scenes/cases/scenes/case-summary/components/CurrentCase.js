@@ -9,6 +9,7 @@ function CurrentCase () {
   useEffect(() => {
     window.scrollTo(0, 0)
     const $accordion = document.querySelector('[data-module="govuk-accordion"]')
+    console.info($accordion)
     if ($accordion) {
       new Accordion($accordion).init()
     }
@@ -24,16 +25,16 @@ function CurrentCase () {
 
         { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
           return (
-            <div key={ offenceIndex } className="govuk-accordion__section">
+            <div key={ offenceIndex + 1 } className="govuk-accordion__section">
               <div className="govuk-accordion__section-header">
                 <h3 className="govuk-accordion__section-heading">
-                  <span className="govuk-accordion__section-button" id={`accordion-offences-heading-${offenceIndex}`}>
+                  <span className="govuk-accordion__section-button" id={`accordion-offences-heading-${offenceIndex + 1}`}>
                     { offence.title }
                   </span>
                 </h3>
               </div>
-              <div id={`accordion-offences-content-${offenceIndex}`} className="govuk-accordion__section-content"
-                   aria-labelledby={`accordion-offences-heading-${offenceIndex}`}>
+              <div id={`accordion-offences-content-${offenceIndex + 1}`} className="govuk-accordion__section-content"
+                   aria-labelledby={`accordion-offences-heading-${offenceIndex + 1}`}>
                 <p className="govuk-body govuk-!-margin-bottom-1">{ offence.summary }</p>
                 <p className="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">{ offence.contraryToActAndSection }</p>
               </div>

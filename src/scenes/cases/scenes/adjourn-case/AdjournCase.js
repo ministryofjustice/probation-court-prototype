@@ -1,19 +1,25 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
+import { AppTitle } from '../../../../utils/Title'
 import PageTitle from '../../shared-components/PageTitle'
 import { useStateValue } from '../../../../utils/StateProvider'
-import moment from 'moment'
 
 function AdjournCase (props) {
 
   const [{ currentDate, currentCase }] = useStateValue()
   const backLink = `/cases/details/${ props.match.params.id }`
 
+  useEffect(() => {
+    document.title = `Adjourn case - ${ AppTitle }`
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <Fragment>
 
-      <div className="govuk-breadcrumbs">
+      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
@@ -24,7 +30,7 @@ function AdjournCase (props) {
           </li>
           <li className="govuk-breadcrumbs__list-item" aria-current="page">Adjourn case</li>
         </ol>
-      </div>
+      </nav>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
@@ -47,11 +53,11 @@ function AdjournCase (props) {
                 <label className="govuk-label" htmlFor="width-20">
                   Adjournment reason
                 </label>
-                <input className="govuk-input govuk-!-width-three-quarters" id="width-20" name="width-20" type="text"/>
+                <input className="govuk-input govuk-!-width-three-quarters" id="width-20" name="width-20" type="text" aria-required="true"/>
               </div>
 
               <div className="govuk-form-group">
-                <fieldset className="govuk-fieldset" aria-describedby="passport-issued-hint" role="group">
+                <fieldset className="govuk-fieldset" role="group">
                   <legend className="govuk-fieldset__legend">
                     <h1 className="govuk-fieldset__heading">Adjourned until</h1>
                   </legend>
@@ -64,7 +70,7 @@ function AdjournCase (props) {
                           Day
                         </label>
                         <input className="govuk-input govuk-date-input__input govuk-input--width-2"
-                               id="passport-issued-day" name="passport-issued-day" type="number" pattern="[0-9]*"/>
+                               id="passport-issued-day" name="passport-issued-day" type="number" pattern="[0-9]*" aria-required="true"/>
                       </div>
                     </div>
                     <div className="govuk-date-input__item">
@@ -73,7 +79,7 @@ function AdjournCase (props) {
                           Month
                         </label>
                         <input className="govuk-input govuk-date-input__input govuk-input--width-2"
-                               id="passport-issued-month" name="passport-issued-month" type="number" pattern="[0-9]*"/>
+                               id="passport-issued-month" name="passport-issued-month" type="number" pattern="[0-9]*" aria-required="true"/>
                       </div>
                     </div>
                     <div className="govuk-date-input__item">
@@ -82,7 +88,7 @@ function AdjournCase (props) {
                           Year
                         </label>
                         <input className="govuk-input govuk-date-input__input govuk-input--width-4"
-                               id="passport-issued-year" name="passport-issued-year" type="number" pattern="[0-9]*"/>
+                               id="passport-issued-year" name="passport-issued-year" type="number" pattern="[0-9]*" aria-required="true"/>
                       </div>
                     </div>
                   </div>

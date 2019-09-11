@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
+import { AppTitle } from '../../../../utils/Title'
 import { configureCaseData, getCaseData } from '../../../../utils/DataService'
 import { initialState } from '../../context/CaseContext'
 import { useStateValue } from '../../../../utils/StateProvider'
@@ -17,6 +18,7 @@ function CaseList (props) {
 
   useEffect(() => {
 
+    document.title = `Case list - ${ AppTitle }`
     window.scrollTo(0, 0)
 
     getCaseData().then($data => {
@@ -49,7 +51,7 @@ function CaseList (props) {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <PageTitle title="Cases" hint="where the Defendant has been matched with an offender record in nDelius"/>
+      <PageTitle title="Cases"/>
 
       <p className="govuk-body-m govuk-!-font-weight-bold">Today, { currentDate.format('dddd D MMMM') }
         <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
@@ -90,28 +92,20 @@ function CaseList (props) {
                   <div className="govuk-grid-column-one-third app-!-display-flex--1">
                     <div className="app-card app-card--muted">
 
-                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
+                      <a href="/" className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"
+                         onClick={ e => e.preventDefault() }><span
                         className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">12</span> Current
-                        defendants</p>
-
-                      <p className="govuk-body"><a href="/"
-                                                   className="govuk-link govuk-link--no-visited-state"
-                                                   onClick={ e => e.preventDefault() }>View current
-                        defendants</a></p>
+                        defendants</a>
 
                     </div>
                   </div>
                   <div className="govuk-grid-column-one-third app-!-display-flex--1">
                     <div className="app-card app-card--muted">
 
-                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
+                      <a href="/" className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"
+                         onClick={ e => e.preventDefault() }><span
                         className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">24</span> Known
-                        defendants</p>
-
-                      <p className="govuk-body"><a href="/"
-                                                   className="govuk-link govuk-link--no-visited-state"
-                                                   onClick={ e => e.preventDefault() }>View known
-                        defendants</a></p>
+                        defendants</a>
 
                     </div>
                   </div>
@@ -120,14 +114,10 @@ function CaseList (props) {
                     <div
                       className="app-card app-card--muted">
 
-                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
+                      <a href="/" className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"
+                         onClick={ e => e.preventDefault() }><span
                         className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">6</span> Not known
-                        defendants</p>
-
-                      <p className="govuk-body"><a href="/"
-                                                   className="govuk-link govuk-link--no-visited-state"
-                                                   onClick={ e => e.preventDefault() }>View not known
-                        defendants</a></p>
+                        defendants</a>
 
                     </div>
                   </div>
@@ -193,18 +183,18 @@ function CaseList (props) {
                         <td>
                           { $case.defendant.breachedConditions && (
                             <div
-                              className="moj-badge moj-badge--grey govuk-!-display-block govuk-!-margin-bottom-1">Breach</div>
+                              className="moj-badge moj-badge--dark govuk-!-display-block govuk-!-margin-bottom-1">Breach</div>
                           ) }
 
                           { $case.defendant.ssoAlert && (
                             <div
-                              className="moj-badge moj-badge--grey govuk-!-display-block govuk-!-margin-bottom-1">SSO</div>
+                              className="moj-badge moj-badge--dark govuk-!-display-block govuk-!-margin-bottom-1">SSO</div>
                           ) }
 
                           { $case.defendant.deliusStatus }
                           { $case.defendant.assignment && (
                             <span
-                              className="govuk-hint govuk-!-margin-0 govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
+                              className="govuk-!-margin-0 govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
                           ) }
                         </td>
                         <td>
