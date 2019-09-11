@@ -16,6 +16,19 @@ $govuk-text-colour: #231f20;
 $govuk-link-colour: #587088;
 */
 
+// DEBUG VIEW
+/*
+* { background-color: rgba(255,0,0,.2); }
+* * { background-color: rgba(0,255,0,.2); }
+* * * { background-color: rgba(0,0,255,.2); }
+* * * * { background-color: rgba(255,0,255,.2); }
+* * * * * { background-color: rgba(0,255,255,.2); }
+* * * * * * { background-color: rgba(255,255,0,.2); }
+* * * * * * * { background-color: rgba(255,0,0,.2); }
+* * * * * * * * { background-color: rgba(0,255,0,.2); }
+* * * * * * * * * { background-color: rgba(0,0,255,.2); }
+*/
+
 //===============================================
 // Imports
 //===============================================
@@ -103,6 +116,10 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
       @include govuk-focused-text;
     }
   }
+}
+
+.moj-header__link:focus {
+  @include govuk-focused-text;
 }
 
 .moj-filter__selected {

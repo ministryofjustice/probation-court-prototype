@@ -27,7 +27,7 @@ function TodayDashboard () {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <PageTitle title={ currentDate.format('dddd D MMMM')  } hint={ `at ${ data.courtName }` }/>
+      <PageTitle title={ currentDate.format('dddd D MMMM') } hint={ `at ${ data.courtName }` }/>
 
       <div className="govuk-grid-row app-!-display-flex govuk-!-margin-top-4">
         <div className="govuk-grid-column-one-half app-!-display-flex--1">
@@ -39,21 +39,24 @@ function TodayDashboard () {
             </h2>
             <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">12</span> Defendants
-              current to
-              Probation</p>
+              current to Probation</p>
             <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">24</span> Defendants
-              known to
-              Probation</p>
+              className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">2</span> Defendants
+              recently known to Probation</p>
+            <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
+              className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">22</span> Defendants
+              previously known to Probation</p>
             <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">6</span> Defendants
-              not known to
-              Probation</p>
-            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link govuk-link--no-visited-state app-!-color-white"
-                                                                 to="/cases/list">View case
-              list</Link></p>
-            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link govuk-link--no-visited-state app-!-color-white"
-                                                                 to="/cases/add">Add case</Link></p>
+              not known to Probation</p>
+            <p className="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-2 app-!-text-align-right">
+              <Link className="govuk-link govuk-link--no-visited-state app-!-color-white" to="/cases/list">View case
+                list</Link>
+            </p>
+            <p className="govuk-body govuk-!-margin-top-0 app-!-text-align-right">
+              <Link className="govuk-link govuk-link--no-visited-state app-!-color-white" to="/cases/add">Add
+                case</Link>
+            </p>
           </div>
 
         </div>
@@ -132,14 +135,17 @@ function TodayDashboard () {
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">15</span> Defendants current to
               Probation</p>
             <p className="govuk-body govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">29</span> Defendants known to
-              Probation</p>
+              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">5</span> Defendants recently known
+              to Probation</p>
+            <p className="govuk-body govuk-!-margin-0"><span
+              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">24</span> Defendants previously
+              known to Probation</p>
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">3</span> Defendants not known to
               Probation</p>
-            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link app-link--dark"
-                                                              to="/cases/list">View case
-              list</Link></p>
+            <p className="govuk-body govuk-!-margin-top-0 app-!-text-align-right">
+              <Link className="govuk-link app-link--dark" to="/cases/list">View case list</Link>
+            </p>
           </div>
 
         </div>
@@ -162,7 +168,7 @@ function TodayDashboard () {
                 </td>
                 <td className="app-!-text-align-right">
                   <p className="govuk-body govuk-!-margin-0"><Link className="govuk-link govuk-link--no-visited-state"
-                                                                to="/cases/unmatched-list">Match
+                                                                   to="/cases/unmatched-list">Match
                     records</Link></p>
                 </td>
               </tr>
@@ -185,9 +191,10 @@ function TodayDashboard () {
                     updates outstanding</p>
                 </td>
                 <td className="app-!-text-align-right">
-                  <p className="govuk-body govuk-!-margin-0"><a className="govuk-link govuk-link--no-visited-state"
-                                                                href="/" onClick={ e => e.preventDefault() }>Request
-                    updates</a></p>
+                  <p className="govuk-body govuk-!-margin-0">
+                    <a className="govuk-link govuk-link--no-visited-state" href="/" onClick={ e => e.preventDefault() }>Request
+                      updates</a>
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -230,14 +237,17 @@ function TodayDashboard () {
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">22</span> Defendants current to
               Probation</p>
             <p className="govuk-body govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">19</span> Defendants known to
-              Probation</p>
+              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">3</span> Defendants recently known
+              to Probation</p>
+            <p className="govuk-body govuk-!-margin-0"><span
+              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">16</span> Defendants previously
+              known to Probation</p>
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">8</span> Defendants not known to
               Probation</p>
-            <p className="govuk-body govuk-!-margin-top-4"><Link className="govuk-link app-link--dark"
-                                                                 to="/cases/list">View case
-              list</Link></p>
+            <p className="govuk-body govuk-!-margin-top-0 app-!-text-align-right">
+              <Link className="govuk-link app-link--dark" to="/cases/list">View case list</Link>
+            </p>
           </div>
 
         </div>
