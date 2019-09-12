@@ -89,35 +89,58 @@ function CaseList (props) {
               <td>
 
                 <div className="govuk-grid-row app-!-display-flex">
-                  <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                  <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
                     <div className="app-card app-card--muted">
 
-                      <a href="/" className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"
-                         onClick={ e => e.preventDefault() }><span
-                        className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">12</span> Current
-                        defendants</a>
+                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold">
+                        <span
+                          className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">12</span> Current
+                        defendants</p>
+
+                      <p className="govuk-body govuk-!-margin-top-2">
+                        <a href="/" className="govuk-link app-link--dark">View current defendants</a>
+                      </p>
 
                     </div>
                   </div>
-                  <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                  <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
                     <div className="app-card app-card--muted">
 
-                      <a href="/" className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"
-                         onClick={ e => e.preventDefault() }><span
-                        className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">24</span> Known
-                        defendants</a>
+                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold">
+                        <span
+                          className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">2</span> Recently known
+                        defendants</p>
+                      <p className="govuk-body govuk-!-margin-top-2">
+                        <a href="/" className="govuk-link app-link--dark">View recently known defendants</a>
+                      </p>
+
+                    </div>
+                  </div>
+                  <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                    <div className="app-card app-card--muted">
+
+                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
+                        className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">22</span> Previously known
+                        defendants</p>
+
+                      <p className="govuk-body govuk-!-margin-top-2">
+                        <a href="/" className="govuk-link app-link--dark">View previously known defendants</a>
+                      </p>
 
                     </div>
                   </div>
 
-                  <div className="govuk-grid-column-one-third app-!-display-flex--1">
+                  <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
                     <div
                       className="app-card app-card--muted">
 
-                      <a href="/" className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"
-                         onClick={ e => e.preventDefault() }><span
+                      <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
                         className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">6</span> Not known
-                        defendants</a>
+                        defendants</p>
+
+                      <p className="govuk-body govuk-!-margin-top-2">
+                        <a href="/" className="govuk-link app-link--dark">View not known defendants</a>
+                      </p>
 
                     </div>
                   </div>
@@ -162,7 +185,7 @@ function CaseList (props) {
                   <th scope="col">Name</th>
                   <th scope="col">Delius record</th>
                   <th scope="col" style={ { 'width': '40%' } }>Offence</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">Listing</th>
                   <th scope="col">Sitting</th>
                   <th scope="col">Court</th>
                 </tr>

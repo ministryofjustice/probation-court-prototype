@@ -357,8 +357,6 @@ function CaseSummary (props) {
 
               <CurrentCase/>
 
-              <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
               { !!(currentCase.defendant.previousConvictions.summary && currentCase.defendant.previousConvictions.summary.length) && (
                 <Fragment>
 
