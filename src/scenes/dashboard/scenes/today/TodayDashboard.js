@@ -27,31 +27,30 @@ function TodayDashboard () {
   return (
     <main id="main-content" role="main" className="govuk-main-wrapper">
 
-      <PageTitle title={ currentDate.format('dddd D MMMM') } hint={ `at ${ data.courtName }` }/>
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-one-half">
+
+          <PageTitle title={ currentDate.format('dddd D MMMM') } hint={ `at ${ data.courtName }` }/>
+
+        </div>
+        <div className="govuk-grid-column-one-half app-!-text-align-right">
+
+          <Link to="/cases/list" role="button"
+                className="govuk-button govuk-button--secondary govuk-!-margin-top-4 govuk-!-margin-bottom-0 govuk-!-margin-left-4">View
+            case list</Link>
+
+        </div>
+      </div>
 
       <div className="govuk-grid-row app-!-display-flex govuk-!-margin-top-4">
         <div className="govuk-grid-column-one-half app-!-display-flex--1">
 
           <div className="app-card app-card__primary">
 
-            <table role="presentation" className="govuk-!-width-full">
-              <tbody>
-              <tr>
-                <td>
-                  <h2 className="govuk-heading-xl app-!-color-white govuk-!-margin-bottom-4">42
-                    <span
-                      className="govuk-hint govuk-!-font-weight-bold app-!-color-white govuk-!-margin-bottom-0 govuk-!-display-inline-block">&nbsp;Cases scheduled</span>
-                  </h2>
-                </td>
-                <td className="app-!-text-align-right">
-                  <p className="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-2 app-!-text-align-right">
-                    <Link className="govuk-link govuk-link--no-visited-state app-!-color-white" to="/cases/list">View
-                      case list</Link>
-                  </p>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+            <h2 className="govuk-heading-xl app-!-color-white govuk-!-margin-bottom-4">42
+              <span
+                className="govuk-hint govuk-!-font-weight-bold app-!-color-white govuk-!-margin-bottom-0 govuk-!-display-inline-block">&nbsp;Cases scheduled</span>
+            </h2>
 
             <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">12</span> Defendants
@@ -62,14 +61,9 @@ function TodayDashboard () {
             <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">22</span> Defendants
               previously known to Probation</p>
-            <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
+            <p className="govuk-body app-!-color-white govuk-!-margin-top-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">6</span> Defendants
               not known to Probation</p>
-
-            <p className="govuk-body govuk-!-margin-top-0 app-!-text-align-right">
-              <Link className="govuk-link govuk-link--no-visited-state app-!-color-white" to="/cases/add">Add
-                case</Link>
-            </p>
           </div>
 
         </div>
@@ -130,34 +124,33 @@ function TodayDashboard () {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
-      <h1
-        className="govuk-heading-m govuk-!-margin-bottom-1">{ moment(currentDate).add(1, 'days').format('dddd D MMMM') }
-        <span className="govuk-hint govuk-!-display-inline-block">&nbsp;{ `at ${ data.courtName }` }</span>
-      </h1>
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-one-half">
+
+          <h1
+            className="govuk-heading-m govuk-!-margin-bottom-1">{ moment(currentDate).add(1, 'days').format('dddd D MMMM') }
+            <span className="govuk-hint govuk-!-display-inline-block">&nbsp;{ `at ${ data.courtName }` }</span>
+          </h1>
+
+        </div>
+        <div className="govuk-grid-column-one-half app-!-text-align-right">
+
+          <Link to="/cases/list" role="button"
+                className="govuk-button govuk-button--secondary govuk-!-margin-top-0 govuk-!-margin-bottom-4">View
+            case list</Link>
+
+        </div>
+      </div>
 
       <div className="govuk-grid-row app-!-display-flex">
         <div className="govuk-grid-column-one-half app-!-display-flex--1">
 
           <div className="app-card">
 
-            <table role="presentation" className="govuk-!-width-full">
-              <tbody>
-              <tr>
-                <td>
-                  <h2 className="govuk-heading-xl govuk-!-margin-bottom-4">49
-                    <span
-                      className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">&nbsp;Cases scheduled</span>
-                  </h2>
-                </td>
-                <td className="app-!-text-align-right">
-                  <p className="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-2 app-!-text-align-right">
-                    <Link className="govuk-link app-link--dark" to="/cases/list">View
-                      case list</Link>
-                  </p>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+            <h2 className="govuk-heading-xl govuk-!-margin-bottom-4">49
+              <span
+                className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">&nbsp;Cases scheduled</span>
+            </h2>
 
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">15</span> Defendants current to
@@ -245,34 +238,33 @@ function TodayDashboard () {
 
       <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
-      <h1
-        className="govuk-heading-m govuk-!-margin-bottom-1">{ moment(currentDate).add(2, 'days').format('dddd D MMMM') }
-        <span className="govuk-hint govuk-!-display-inline-block">&nbsp;{ `at ${ data.courtName }` }</span>
-      </h1>
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-one-half">
+
+          <h1
+            className="govuk-heading-m govuk-!-margin-bottom-1">{ moment(currentDate).add(2, 'days').format('dddd D MMMM') }
+            <span className="govuk-hint govuk-!-display-inline-block">&nbsp;{ `at ${ data.courtName }` }</span>
+          </h1>
+
+        </div>
+        <div className="govuk-grid-column-one-half app-!-text-align-right">
+
+          <Link to="/cases/list" role="button"
+                className="govuk-button govuk-button--secondary govuk-!-margin-top-0 govuk-!-margin-bottom-4">View
+            case list</Link>
+
+        </div>
+      </div>
 
       <div className="govuk-grid-row app-!-display-flex govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-one-half app-!-display-flex--1">
 
           <div className="app-card">
 
-            <table role="presentation" className="govuk-!-width-full">
-              <tbody>
-              <tr>
-                <td>
-                  <h2 className="govuk-heading-xl govuk-!-margin-bottom-4">53
-                    <span
-                      className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">&nbsp;Cases scheduled</span>
-                  </h2>
-                </td>
-                <td className="app-!-text-align-right">
-                  <p className="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-2 app-!-text-align-right">
-                    <Link className="govuk-link app-link--dark" to="/cases/list">View
-                      case list</Link>
-                  </p>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+            <h2 className="govuk-heading-xl govuk-!-margin-bottom-4">53
+              <span
+                className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">&nbsp;Cases scheduled</span>
+            </h2>
 
             <p className="govuk-body govuk-!-margin-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">22</span> Defendants current to
@@ -344,7 +336,7 @@ function TodayDashboard () {
                 </td>
                 <td className="app-!-text-align-right">
                   <p className="govuk-body govuk-!-margin-top-0"><a className="govuk-link govuk-link--no-visited-state"
-                                                                href="/" onClick={ e => e.preventDefault() }>Request
+                                                                    href="/" onClick={ e => e.preventDefault() }>Request
                     logs</a></p>
                 </td>
               </tr>
