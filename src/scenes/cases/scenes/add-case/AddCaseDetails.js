@@ -12,7 +12,7 @@ import DateInput from '../../shared-components/DateInput'
 
 function AddCaseDetails (props) {
 
-  const dispatch = useStateValue().dispatch
+  const [state, dispatch] = useStateValue()
 
   useEffect(() => {
     document.title = `Case details - ${ AppTitle }`

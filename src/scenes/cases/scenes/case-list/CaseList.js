@@ -160,7 +160,7 @@ function CaseList (props) {
                   <div className="moj-action-bar__filter"/>
 
                   <button data-module="govuk-button" type="button"
-                          className="govuk-button app-button--interrupt moj-menu__item"
+                          className="govuk-button govuk-button--secondary moj-menu__item"
                           onClick={ () => {
                             resetState()
                             props.history.push('/cases/add')
