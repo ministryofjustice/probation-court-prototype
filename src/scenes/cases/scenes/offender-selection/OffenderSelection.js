@@ -171,13 +171,13 @@ function OffenderSelection () {
                     <h2 className="govuk-heading-m">Offender not known?</h2>
 
                     <p className="govuk-body">Confirm that you have determined that the offender is not currently known
-                      to
-                      probation.</p>
+                      to probation.</p>
 
-                    <button
-                      className="govuk-button govuk-button--secondary govuk-!-width-full govuk-!-margin-bottom-0">Offender
-                      not known
-                    </button>
+                    <p className="govuk-body">
+                      <Link to="/" className="govuk-link  govuk-link--no-visited-state govuk-!-margin-bottom-0"
+                            onClick={ e => e.preventDefault() }>This is
+                        a new offender</Link>
+                    </p>
 
                   </div>
 
@@ -208,7 +208,7 @@ function OffenderSelection () {
                   return offenderItem.defendant && (
                     <Fragment key={ index }>
 
-                      <OffenderMatch case={ offenderItem } action={ () => {} } />
+                      <OffenderMatch case={ offenderItem } action={ () => {} }/>
 
                     </Fragment>
                   )

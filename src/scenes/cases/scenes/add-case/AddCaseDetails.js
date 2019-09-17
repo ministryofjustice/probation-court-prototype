@@ -1,20 +1,21 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 import { useStateValue } from '../../../../utils/StateProvider'
 
-import PageTitle from '../../shared-components/PageTitle'
+import { AppTitle } from '../../../../utils/Title'
+import { initialState } from '../../context/CaseContext'
 import Input from '../../shared-components/Input'
 import TextArea from '../../shared-components/TextArea'
-import { initialState } from '../../context/CaseContext'
 import DateInput from '../../shared-components/DateInput'
-import moment from 'moment'
 
 function AddCaseDetails (props) {
 
-  const [{ currentDate }, dispatch] = useStateValue()
+  const dispatch = useStateValue().dispatch
 
   useEffect(() => {
+    document.title = `Case details - ${ AppTitle }`
     window.scrollTo(0, 0)
   }, [])
 
@@ -47,47 +48,11 @@ function AddCaseDetails (props) {
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <div className="govuk-grid-row">
-          <div className="govuk-grid-column-one-third">
-
-            <PageTitle title="Add case" hint={ `for ${ currentDate.format('dddd D MMMM') }` }/>
-
-          </div>
-          <div className="govuk-grid-column-two-thirds">
-
-            <div className="app-progress-bar govuk-!-margin-top-6 govuk-!-margin-bottom-0">
-              <ol className="app-progress-bar__list">
-
-                <li className="app-progress-bar__list-item">
-                  <span className="app-progress-bar__icon app-progress-bar__icon--complete"/>
-                  <span className="app-progress-bar__label">Defendant details</span>
-                </li>
-
-                <li className="app-progress-bar__list-item">
-                  <span className="app-progress-bar__icon app-progress-bar__icon--complete"/>
-                  <span className="app-progress-bar__label">Match defendant</span>
-                </li>
-
-                <li className="app-progress-bar__list-item" aria-current="step">
-                  <span className="app-progress-bar__icon app-progress-bar__icon--complete"/>
-                  <span className="app-progress-bar__label">Case details</span>
-                </li>
-
-                <li className="app-progress-bar__list-item">
-                  <span className="app-progress-bar__icon"/>
-                  <span className="app-progress-bar__label">Finished</span>
-                </li>
-
-              </ol>
-            </div>
-
-          </div>
-        </div>
+        <span className="govuk-caption-xl">Step 3 of 3</span>
+        <h1 className="govuk-heading-l">Case details</h1>
 
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds">
-
-            <p className="govuk-body-l govuk-!-margin-bottom-6">Case details</p>
 
             <form name="ndForm" onSubmit={ e => {
               e.preventDefault()
@@ -106,16 +71,16 @@ function AddCaseDetails (props) {
                     <div className="govuk-radios__item">
                       <input className="govuk-radios__input" id="changed-name" name="changed-name" type="radio"
                              value="yes"/>
-                        <label className="govuk-label govuk-radios__label" htmlFor="changed-name">
-                          Yes
-                        </label>
+                      <label className="govuk-label govuk-radios__label" htmlFor="changed-name">
+                        Yes
+                      </label>
                     </div>
                     <div className="govuk-radios__item">
                       <input className="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio"
                              value="no"/>
-                        <label className="govuk-label govuk-radios__label" htmlFor="changed-name-2">
-                          No
-                        </label>
+                      <label className="govuk-label govuk-radios__label" htmlFor="changed-name-2">
+                        No
+                      </label>
                     </div>
                   </div>
                 </fieldset>

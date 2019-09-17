@@ -4,13 +4,10 @@ import { NavLink } from 'react-router-dom'
 function Navigation () {
   return (
     <div className="moj-primary-navigation">
-
       <div className="moj-primary-navigation__container">
-
         <div className="moj-primary-navigation__nav">
 
           <nav className="moj-primary-navigation" aria-label="Primary navigation">
-
             <ul className="moj-primary-navigation__list">
               <li className="moj-primary-navigation__item">
                 <NavLink to="/dashboard" className="moj-primary-navigation__link">Dashboard</NavLink>
@@ -22,12 +19,10 @@ function Navigation () {
                 <NavLink to="/calendar" className="moj-primary-navigation__link">Calendar</NavLink>
               </li>
             </ul>
-
           </nav>
 
         </div>
       </div>
-
     </div>
   )
 }

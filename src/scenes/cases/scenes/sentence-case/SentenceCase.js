@@ -49,27 +49,26 @@ function SentenceCase (props) {
 
             <form name="ndForm">
 
-              <table className="govuk-table app-table app-table--split-rows">
-                <thead>
-                <tr>
-                  <th colSpan="2">Offence</th>
-                </tr>
-                </thead>
-                <tbody>
+              <p className="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Offences</p>
 
+              <dl className="govuk-summary-list">
                 { currentCase.offences && currentCase.offences.map((offence, offenceIndex) => {
                   return (
-                    <tr key={ offenceIndex }>
-                      <td>{ offence.title }</td>
-                      <td>
-                        <button data-module="govuk-button" className="govuk-button govuk-button--secondary govuk-!-margin-0">Remove</button>
-                      </td>
-                    </tr>
+
+                    <div key={ offenceIndex } className="govuk-summary-list__row">
+                      <dd className="govuk-summary-list__value">
+                        { offence.title }
+                      </dd>
+                      <dd className="govuk-summary-list__actions">
+                        <Link to="/" className="govuk-link govuk-link--no-visited-state"
+                              onClick={ e => e.preventDefault() }>
+                          Remove<span className="govuk-visually-hidden"> offence.title</span>
+                        </Link>
+                      </dd>
+                    </div>
                   )
                 }) }
-
-                </tbody>
-              </table>
+              </dl>
 
               <div className="moj-button-action">
 
@@ -105,7 +104,8 @@ function SentenceCase (props) {
 
               <div className="govuk-form-group">
                 <label className="govuk-label" htmlFor="width-20">Sentence</label>
-                <input className="govuk-input govuk-!-width-three-quarters" id="width-20" name="width-20" type="text" aria-required="true"/>
+                <input className="govuk-input govuk-!-width-three-quarters" id="width-20" name="width-20" type="text"
+                       aria-required="true"/>
               </div>
 
               <div className="govuk-form-group">

@@ -54,7 +54,7 @@ function OffenderMatch (props) {
             </div>
             <div className="govuk-grid-column-one-quarter app-!-text-align-right">
 
-              <button data-module="govuk-button" className="govuk-button app-button--interrupt" onClick={ () => {
+              <button data-module="govuk-button" className="govuk-button govuk-button--secondary" onClick={ () => {
                 props.action()
               }}>Confirm match
               </button>

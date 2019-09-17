@@ -35,14 +35,16 @@ function TodayDashboard () {
         </div>
         <div className="govuk-grid-column-one-half app-!-text-align-right">
 
-          <Link to="/cases/list" role="button"
-                className="govuk-button govuk-button--secondary govuk-!-margin-top-4 govuk-!-margin-bottom-0 govuk-!-margin-left-4">View
-            case list</Link>
+          <p className="govuk-body govuk-!-margin-top-6">
+            <Link to="/cases/list"
+                  className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-0 govuk-!-margin-bottom-4">View
+              case list</Link>
+          </p>
 
         </div>
       </div>
 
-      <div className="govuk-grid-row app-!-display-flex govuk-!-margin-top-4">
+      <div className="govuk-grid-row app-!-display-flex govuk-!-margin-top-2">
         <div className="govuk-grid-column-one-half app-!-display-flex--1">
 
           <div className="app-card app-card__primary">
@@ -135,9 +137,11 @@ function TodayDashboard () {
         </div>
         <div className="govuk-grid-column-one-half app-!-text-align-right">
 
-          <Link to="/cases/list" role="button"
-                className="govuk-button govuk-button--secondary govuk-!-margin-top-0 govuk-!-margin-bottom-4">View
-            case list</Link>
+          <p className="govuk-body">
+            <Link to="/cases/list"
+                  className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-0 govuk-!-margin-bottom-4">View
+              case list</Link>
+          </p>
 
         </div>
       </div>
@@ -249,9 +253,11 @@ function TodayDashboard () {
         </div>
         <div className="govuk-grid-column-one-half app-!-text-align-right">
 
-          <Link to="/cases/list" role="button"
-                className="govuk-button govuk-button--secondary govuk-!-margin-top-0 govuk-!-margin-bottom-4">View
-            case list</Link>
+          <p className="govuk-body">
+            <Link to="/cases/list"
+                  className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-0 govuk-!-margin-bottom-4">View
+              case list</Link>
+          </p>
 
         </div>
       </div>
