@@ -44,6 +44,7 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
 @import "card";
 @import "dashboard";
 @import "display";
+@import "key-details";
 @import "layout";
 @import "progress-bar";
 @import "risk";
@@ -135,6 +136,10 @@ $moj-light-color: govuk-tint($govuk-brand-colour, 97);
   &:before {
     background-color: $govuk-link-colour
   }
+}
+
+.moj-action-bar {
+  min-width: 245px;
 }
 
 .moj-badge--dark {

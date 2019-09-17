@@ -72,11 +72,7 @@ function MatchCaseList () {
         { data.unmatched && data.unmatched.length && (
           <Fragment>
 
-            <p className="govuk-body govuk-!-margin-0">The below defendants have not been successfully matched with offender records in
-              Delius.</p>
-
-            <p className="govuk-body">Please action each to find the correct offender record within Delius or to confirm that
-              the defendant is not currently known to Probation.</p>
+            <p className="govuk-body govuk-!-margin-top-0">Select a name to find possible matching records in nDelius</p>
 
             <table className="govuk-table app-table app-table--split-rows govuk-!-margin-bottom-0">
               <thead>
@@ -107,7 +103,7 @@ function MatchCaseList () {
                         }) }
                       </ol>
                     </td>
-                    <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } - { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
+                    <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } to { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
                     <td>{ $case.courtRoom }</td>
                   </tr>
                 )

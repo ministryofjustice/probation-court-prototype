@@ -14,11 +14,11 @@
   font-weight: bold;
 
   &--low {
-    color: govuk-colour("light-green");
+    color: govuk-colour("green");
   }
 
   &--medium {
-    color: govuk-colour("light-blue");
+    color: govuk-colour("blue");
   }
 
   &--high, &--very-high {
@@ -39,11 +39,11 @@
   }
 
   &--medium {
-    color: govuk-colour("light-blue");
+    color: govuk-colour("blue");
   }
 
   &--low {
-    color: govuk-colour("light-green");
+    color: govuk-colour("green");
   }
 
   &--small {

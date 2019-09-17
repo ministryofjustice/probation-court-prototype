@@ -63,12 +63,12 @@ function CaseSummary (props) {
                   <div className="moj-menu__wrapper">
 
                     <Link role="button" aria-pressed="false"
-                      className="govuk-button app-button--interrupt moj-menu__item govuk-!-margin-right-2"
+                      className="govuk-button govuk-button--secondary moj-menu__item govuk-!-margin-right-2"
                       to={ `/cases/adjourn/${ props.match.params.id }` }>Adjourn case
                     </Link>
 
                     <Link role="button" aria-pressed="false"
-                      className="govuk-button app-button--interrupt moj-menu__item"
+                      className="govuk-button govuk-button--secondary moj-menu__item"
                       to={ `/cases/record-sentence/${ props.match.params.id }` }>Record sentence
                     </Link>
 
@@ -356,8 +356,6 @@ function CaseSummary (props) {
               <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
               <CurrentCase/>
-
-              <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
               { !!(currentCase.defendant.previousConvictions.summary && currentCase.defendant.previousConvictions.summary.length) && (
                 <Fragment>

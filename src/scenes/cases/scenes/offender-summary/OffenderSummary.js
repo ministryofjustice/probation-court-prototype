@@ -19,7 +19,7 @@ function OffenderSummary (props) {
   return (
     <Fragment>
 
-      <div className="govuk-breadcrumbs">
+      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
         <ol className="govuk-breadcrumbs__list">
           <li className="govuk-breadcrumbs__list-item">
             <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
@@ -32,15 +32,14 @@ function OffenderSummary (props) {
             Offender summary
           </li>
         </ol>
-      </div>
+      </nav>
 
       <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
 
-        <h1 className="govuk-heading-l govuk-!-margin-0">Offender summary<span
-          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;from Delius record</span></h1>
-        <p className="govuk-body-m govuk-!-font-weight-bold">Appearing
+        <h1 className="govuk-heading-l govuk-!-margin-0 govuk-!-margin-top-4">Offender summary</h1>
+        <p className="govuk-body-m govuk-!-font-weight-bold govuk-!-margin-bottom-2">Appearing
           on { currentDate.format('dddd D MMMM') }<span
-            className="govuk-hint govuk-!-display-inline-block">&nbsp;at { court }</span></p>
+            className="govuk-hint govuk-!-display-inline-block govuk-!-margin-bottom-2">&nbsp;at { court }</span></p>
 
         { currentCase && currentCase.defendant && (
           <div className="moj-filter-layout">
@@ -49,7 +48,7 @@ function OffenderSummary (props) {
 
                 <div className="moj-filter__header">
                   <div className="moj-filter__header-title">
-                    <h2 className="govuk-heading-m app-!-color-white">Offender details</h2>
+                    <h2 className="govuk-heading-m">Offender details</h2>
                   </div>
                 </div>
 
