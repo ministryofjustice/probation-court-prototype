@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
@@ -10,7 +10,7 @@ import DateInput from '../../shared-components/DateInput'
 
 function AddCase (props) {
 
-  const [{ currentDate, newCase }, dispatch] = useStateValue()
+  const [{ newCase }, dispatch] = useStateValue()
 
   useEffect(() => {
     document.title = `Add case - ${ AppTitle }`
@@ -28,8 +28,9 @@ function AddCase (props) {
           pnc: $form.get('pnc'),
           crn: 'D123456',
           gender: 'M',
-          current: true,
           dateOfBirth: `${ $form.get('dob-year') }-${ $form.get('dob-month') }-${ $form.get('dob-day') }`,
+          deliusStatus: '',
+          current: true,
           address: {
             line1: '23 King Croson Street',
             line2: 'Nether Edge',
@@ -51,30 +52,17 @@ function AddCase (props) {
   }
 
   return (
-    <Fragment>
+    <div className="govuk-width-container">
 
-      <div className="govuk-breadcrumbs">
-        <ol className="govuk-breadcrumbs__list">
-          <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
-          </li>
-          <li className="govuk-breadcrumbs__list-item" aria-current="page">Add case</li>
-        </ol>
-      </div>
-
-      <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
+      <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-padding-top-6">
 
         <span className="govuk-caption-xl">Step 1 of 3</span>
-        <h1 className="govuk-heading-l">Add case <span
-          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">{ ` for ${ currentDate.format('dddd D MMMM') }` }</span>
-        </h1>
+        <h1 className="govuk-heading-l">Defendant details</h1>
 
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-two-thirds">
 
-            <p className="govuk-body-l govuk-!-margin-bottom-0">Defendant details</p>
-
-            <p className="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-6">We will use these details to search
+            <p className="govuk-body govuk-!-margin-bottom-6">We will use these details to search
               against offender records in Delius.</p>
 
             <form name="ndForm" onSubmit={ e => {
@@ -105,7 +93,7 @@ function AddCase (props) {
 
       </main>
 
-    </Fragment>
+    </div>
   )
 }
 

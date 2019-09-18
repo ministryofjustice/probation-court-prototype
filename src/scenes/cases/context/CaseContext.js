@@ -11,6 +11,7 @@ export const initialState = {
       pnc: '',
       crn: '',
       gender: '',
+      deliusStatus: '',
       current: false,
       dateOfBirth: '',
       address: {

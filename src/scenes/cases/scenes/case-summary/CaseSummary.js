@@ -5,13 +5,12 @@ import moment from 'moment'
 import { AppTitle } from '../../../../utils/Title'
 import { useStateValue } from '../../../../utils/StateProvider'
 
-import DefendantDetails from '../../shared-components/DefendantDetails'
-import SomethingWrong from '../../shared-components/SomethingWrong'
+import DefendantBanner from '../../shared-components/DefendantBanner'
 import CurrentCase from './components/CurrentCase'
 
 function CaseSummary (props) {
 
-  const [{ court, currentDate, currentCase }] = useStateValue()
+  const [{ currentDate, currentCase }] = useStateValue()
 
   useEffect(() => {
     document.title = `Case details - ${ AppTitle }`
@@ -36,199 +35,48 @@ function CaseSummary (props) {
   return (
     <Fragment>
 
-      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
-        <ol className="govuk-breadcrumbs__list">
-          <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
-          </li>
-          <li className="govuk-breadcrumbs__list-item" aria-current="page">Case details</li>
-        </ol>
-      </nav>
+      { currentCase && currentCase.defendant && (
+        <DefendantBanner case={ currentCase } id={ props.match.params.id } showRecordLink={ true }/>
+      ) }
 
-      <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
+      <div className="govuk-width-container">
 
-        <table className="govuk-table app-table govuk-!-margin-top-4 govuk-!-margin-bottom-2" role="presentation">
-          <tbody>
-          <tr>
-            <td>
-              <h1 className="govuk-heading-l govuk-!-margin-0">Case details</h1>
-              <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd D MMMM') }<span
-                className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">&nbsp;at { court }</span></p>
-            </td>
-            <td className="app-!-text-align-right">
+        <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-padding-top-6">
 
-              <div className="moj-action-bar">
+          <div className="moj-page-header-actions govuk-!-margin-bottom-4">
 
-                <div className="moj-menu">
-                  <div className="moj-menu__wrapper">
-
-                    <Link role="button" aria-pressed="false"
-                      className="govuk-button govuk-button--secondary moj-menu__item govuk-!-margin-right-2"
-                      to={ `/cases/adjourn/${ props.match.params.id }` }>Adjourn case
-                    </Link>
-
-                    <Link role="button" aria-pressed="false"
-                      className="govuk-button govuk-button--secondary moj-menu__item"
-                      to={ `/cases/record-sentence/${ props.match.params.id }` }>Record sentence
-                    </Link>
-
-                  </div>
-                </div>
-
-              </div>
-
-            </td>
-          </tr>
-          </tbody>
-        </table>
-
-        { currentCase && currentCase.defendant && (
-          <div className="moj-filter-layout">
-            <div className="moj-filter-layout__filter">
-              <div className="moj-filter">
-
-                <div className="moj-filter__header">
-                  <div className="moj-filter__header-title">
-                    <h2 className="govuk-heading-m">Defendant details</h2>
-                  </div>
-                </div>
-
-                <div className="moj-filter__content">
-
-                  <div className="moj-filter__selected">
-
-                    <div className="moj-filter__selected-heading">
-
-                      <DefendantDetails/>
-
-                    </div>
-                  </div>
-
-                  <div className="moj-filter__options">
-
-                    { !!((currentCase.defendant.risk && currentCase.defendant.risk.length) || currentCase.defendant.breachedConditions) && (
-                      <Fragment>
-                        <h2 className="govuk-heading-m govuk-!-margin-bottom-0">Alerts <span
-                          className="govuk-hint govuk-!-display-inline-block govuk-!-margin-top-0">from Delius record</span>
-                        </h2>
-
-                        { currentCase.defendant.risk.map((risk, riskIndex) => {
-                          return (
-                            <Fragment key={ riskIndex }>
-                              { risk.type === 'RoSH' && (
-                                <div
-                                  className={ `app-risk-alert app-risk-alert--small app-risk-alert--${ risk.status.toLowerCase().replace(' ', '-') } govuk-!-margin-top-2 govuk-!-margin-bottom-1` }>{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
-                                  of Serious Harm</div>
-                              ) }
-                            </Fragment>
-                          )
-                        }) }
-
-                        { currentCase.defendant.breachedConditions && (
-                          <div
-                            className="moj-badge moj-badge moj-badge--grey govuk-!-margin-bottom-1 govuk-!-width-full">Breached
-                            order</div>
-                        ) }
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                      </Fragment>
-                    ) }
-
-                    { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
-                      <Fragment>
-
-                        <h2 className="govuk-heading-m">Current order</h2>
-
-                        <p className="govuk-body">155 days community service</p>
-
-                        <h2 className="govuk-heading-s govuk-!-margin-bottom-0">Intervention details<span
-                          className="govuk-hint govuk-!-display-inline-block">&nbsp;(active)</span></h2>
-
-                        <p className="govuk-body govuk-!-margin-bottom-0">ES - RAR Programme</p>
-                        <p className="govuk-body govuk-!-margin-bottom-0">One to one</p>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                      </Fragment>
-                    ) }
-
-                    { currentCase.defendant.deliusStatus === 'Current' && (
-                      <Fragment>
-
-                        <h2 className="govuk-heading-m">Offender manager</h2>
-
-                        <p className="govuk-body">Sarah Francis<span className="govuk-hint govuk-!-margin-top-0">Allocated on 01/06/2019</span>
-                        </p>
-
-                        <p className="govuk-body">{ currentCase.defendant.nps ? 'NPS' : 'CRC' } South Yorkshire<br/>
-                          12 Holme Road<br/>
-                          Sheffield<br/>
-                          South Yorkshire<br/>
-                          S7 2TT</p>
-
-                        <p className="govuk-body">
-                          Telephone: 0114 276 0760
-                        </p>
-
-                        <p className="govuk-body">
-                          <a href="/contact" className="govuk-link govuklink--no-visited-state govuk-!-margin-bottom-0"
-                             onClick={ e => e.preventDefault() }>Contact offender manager</a>
-                        </p>
-
-                        <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-                      </Fragment>
-                    ) }
-
-                    <SomethingWrong/>
-
-                  </div>
-                </div>
-              </div>
+            <div className="moj-page-header-actions__title">
+              <h1 className="govuk-heading-l">Case details</h1>
             </div>
 
-            <div className="moj-filter-layout__content">
+            <div className="moj-page-header-actions__actions app-!-float-right">
+
+              <div className="moj-button-menu">
+                <div className="moj-button-menu__wrapper">
+
+                  <Link to={ `/cases/adjourn/${ props.match.params.id }` } role="button"
+                        className="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action"
+                        data-module="govuk-button">
+                    Adjourn case
+                  </Link>
+
+                  <Link to={ `/cases/record-sentence/${ props.match.params.id }` } role="button"
+                        className="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action"
+                        data-module="govuk-button">
+                    Record sentence
+                  </Link>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          { currentCase && currentCase.defendant && (
+            <Fragment>
 
               <div className="govuk-grid-row app-!-display-flex">
-                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
-                  <div className="app-card app-card--muted">
-
-                    <p className="govuk-heading-m govuk-!-margin-0">{ currentCase.defendant.deliusStatus } offender</p>
-
-                    { currentCase.defendant.deliusStatus === 'Current' && (
-                      <p className="govuk-body">{ currentCase.defendant.name }, the defendant in this case, has a
-                        current offender record in nDelius.</p>
-                    ) }
-
-                    { currentCase.defendant.deliusStatus === 'Known' && (
-                      <p className="govuk-body">{ currentCase.defendant.name }, the defendant in this case, has a known
-                        offender record in nDelius.</p>
-                    ) }
-
-                    { currentCase.defendant.deliusStatus === 'Not known' && (
-                      <Fragment>
-                        <p className="govuk-body">{ currentCase.defendant.name }, the defendant in this case, has not
-                          been
-                          previously known to probation.</p>
-
-                        <p className="govuk-body">
-                          <a href="/" className="govuk-link govuk-link--no-visited-state"
-                             onClick={ e => e.preventDefault() }>Something wrong?</a>
-                        </p>
-                      </Fragment>
-                    ) }
-
-                    { currentCase.defendant.deliusStatus !== 'Not known' && (
-                      <p className="govuk-body">
-                        <Link to={ `/cases/offender/${ props.match.params.id }` }
-                              className="govuk-link app-link--dark">View offender summary</Link>
-                      </p>
-                    ) }
-
-                  </div>
-                </div>
-                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                <div className="govuk-grid-column-one-third app-!-display-flex--1">
                   <div className="app-card app-card--muted">
 
                     <p className="govuk-heading-m govuk-!-margin-0">CPS Pack</p>
@@ -243,7 +91,7 @@ function CaseSummary (props) {
                   </div>
                 </div>
 
-                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                <div className="govuk-grid-column-one-third app-!-display-flex--1">
                   <div
                     className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
 
@@ -262,7 +110,7 @@ function CaseSummary (props) {
                   </div>
                 </div>
 
-                <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                <div className="govuk-grid-column-one-third app-!-display-flex--1">
                   <div
                     className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
 
@@ -281,9 +129,7 @@ function CaseSummary (props) {
                 </div>
               </div>
 
-              <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-              <h2 className="govuk-heading-m govuk-!-margin-top-2">Case tracker</h2>
+              <h2 className="govuk-heading-m govuk-!-margin-top-6">Case tracker</h2>
 
               <table className="govuk-table app-table app-table--split-rows">
                 <thead>
@@ -421,29 +267,17 @@ function CaseSummary (props) {
                 <p className="govuk-hint">No notes recorded.</p>
               ) }
 
-              <button data-module="govuk-button"
-                      className="govuk-button govuk-button--secondary govuk-!-margin-top-2">Add note
-              </button>
+              <p className="govuk-body">
+                <Link to="/" className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
+                      onClick={ e => e.preventDefault() }>Add note</Link>
+              </p>
 
-            </div>
+            </Fragment>
+          ) }
 
-          </div>
-        ) }
+        </main>
 
-        <Link to="/cases/list" className="govuk-back-link">Back</Link>
-
-        <Link to="#top" className="govuk-link govuk-link--no-visited-state app-back-to-top__link" onClick={ e => {
-          e.preventDefault()
-          window.scrollTo(0, 0)
-        } }>
-          <svg role="presentation" focusable="false" className="app-back-to-top__icon"
-               xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
-            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>
-          </svg>
-          Back to top
-        </Link>
-
-      </main>
+      </div>
 
     </Fragment>
   )
