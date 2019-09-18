@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 function OffenderMatch (props) {
 
   const newCase = props.case
 
   if (!newCase) {
-    return (<Fragment />)
+    return (<Fragment/>)
   }
 
   return (
@@ -56,7 +57,7 @@ function OffenderMatch (props) {
 
               <button data-module="govuk-button" className="govuk-button govuk-button--secondary" onClick={ () => {
                 props.action()
-              }}>Confirm match
+              } }>Confirm match
               </button>
 
             </div>
@@ -76,9 +77,8 @@ function OffenderMatch (props) {
           </td>
           <td className="app-!-text-align-right">
 
-            <a href={ `http://delius/offender/` }
-               className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2"
-               onClick={ (e) => e.preventDefault() }>View offender summary</a>
+            <Link to={ `/cases/offender/${ props.id }` }
+                  className="govuk-link govuk-link--no-visited-state govuk-!-margin-top-2">View offender summary</Link>
 
           </td>
         </tr>

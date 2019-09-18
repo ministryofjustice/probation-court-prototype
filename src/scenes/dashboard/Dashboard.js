@@ -9,9 +9,11 @@ import TodayDashboard from './scenes/today/TodayDashboard'
 function Dashboard (props) {
 
   return (
-    <StateProvider initialState={ initialState } reducer={ reducer }>
-      <Route path={ `${ props.match.url }/` } component={ TodayDashboard }/>
-    </StateProvider>
+    <div className="govuk-width-container">
+      <StateProvider initialState={ initialState } reducer={ reducer }>
+        <Route path={ `${ props.match.url }/` } component={ TodayDashboard }/>
+      </StateProvider>
+    </div>
   )
 }
 

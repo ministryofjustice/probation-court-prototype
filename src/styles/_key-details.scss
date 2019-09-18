@@ -1,0 +1,107 @@
+$white-transparent: rgba(255, 255, 255, .3);
+
+.key-details-bar {
+  background-color: $govuk-brand-colour;
+
+  .key-details-bar__key-details {
+    @include moj-width-container;
+    margin: 0 auto;
+    padding: 20px 0;
+    position: relative;
+    @media(max-width: 670px) {
+      padding: 20px 15px;
+    }
+
+    * {
+      color: govuk-colour("white");
+    }
+
+    .key-details-bar__top-block,
+    .key-details-bar__bottom-block {
+      &::after {
+        clear: both;
+        content: ' ';
+        display: block;
+      }
+    }
+
+    .key-details-bar__bottom-block {
+      border-top: 1px solid $white-transparent;
+      content: ' ';
+      padding-top: 10px;
+      margin-top: 6px;
+      @media(max-width: 670px) {
+        border: 0;
+      }
+    }
+
+    dd,
+    dt {
+      float: left;
+      @include govuk-font(19);
+      margin-right: 5px;
+      @media(max-width: 670px) {
+        float: none;
+        @include govuk-font(16);
+        margin: 0;
+      }
+    }
+
+    dd {
+      margin-right: 20px;
+      @media(max-width: 670px) {
+        margin-bottom: 20px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .key-details-bar__name {
+      @include govuk-font(36);
+      font-weight: 700;
+      line-height: 1.11111;
+      margin-right: 10px;
+      margin-inline-start: 0;
+      @media(max-width: 670px) {
+        @include govuk-font(24);
+        line-height: 1.04167;
+        float: left;
+        margin: 0 5px 0 0;
+      }
+    }
+
+    .key-details-bar__nino {
+      @include govuk-font(19);
+      line-height: 1;
+      margin-top: 12px;
+      @media(max-width: 670px) {
+        @include govuk-font(16);
+        float: left;
+        margin: 5px 0 0 0;
+      }
+    }
+
+    .key-details-bar__status {
+      @include govuk-font(16);
+      font-weight: 700;
+      line-height: 1.25;
+      padding: 5px 8px;
+      color: $govuk-brand-colour;
+      background-color: govuk-colour("white");
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      float: right;
+      margin: 5px 0 0;
+      @media(max-width: 670px) {
+        @include govuk-font(14);
+        float: left;
+        clear: both;
+        margin-top: 5px;
+      }
+    }
+  }
+}

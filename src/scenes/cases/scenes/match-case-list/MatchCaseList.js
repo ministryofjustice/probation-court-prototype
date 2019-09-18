@@ -54,68 +54,63 @@ function MatchCaseList () {
   return (
     <Fragment>
 
-      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
-        <ol className="govuk-breadcrumbs__list">
-          <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
-          </li>
-          <li className="govuk-breadcrumbs__list-item" aria-current="page">Unmatched cases</li>
-        </ol>
-      </nav>
+      <div className="govuk-width-container">
 
-      <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
+        <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-padding-top-6">
 
-        <h1 className="govuk-heading-l govuk-!-margin-0">Unmatched cases</h1>
-        <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd D MMMM') }
-          <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span></p>
+          <h1 className="govuk-heading-l govuk-!-margin-0">Unmatched cases</h1>
+          <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd D MMMM') }
+            <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span></p>
 
-        { data.unmatched && data.unmatched.length && (
-          <Fragment>
+          { data.unmatched && data.unmatched.length && (
+            <Fragment>
 
-            <p className="govuk-body govuk-!-margin-top-0">Select a name to find possible matching records in nDelius</p>
+              <p className="govuk-body govuk-!-margin-top-0">Select a name to find possible matching records in
+                nDelius</p>
 
-            <table className="govuk-table app-table app-table--split-rows govuk-!-margin-bottom-0">
-              <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Offence</th>
-                <th scope="col">Sitting</th>
-                <th scope="col">Court</th>
-              </tr>
-              </thead>
-              <tbody>
+              <table className="govuk-table app-table app-table--split-rows govuk-!-margin-bottom-0">
+                <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Offence</th>
+                  <th scope="col">Sitting</th>
+                  <th scope="col">Court</th>
+                </tr>
+                </thead>
+                <tbody>
 
-              { data.unmatched && data.unmatched.map(($case, index) => {
-                return (
-                  <tr key={ index }>
-                    <th scope="row"><Link
-                      to={ `/cases/match/${ $case.id }` }
-                      onClick={ () => {
-                        dispatch({ type: 'setCase', setCase: $case })
-                      } }
-                      className="govuk-link govuk-link--no-visited-state">{ $case.defendant.name }</Link>
-                    </th>
-                    <td>
-                      <ol className="govuk-list">
-                        { $case.offences.map((offence, offenceIndex) => {
-                          return <li key={ offenceIndex }
-                                     className="govuk-list--number app-offence-title">{ offence.title }</li>
-                        }) }
-                      </ol>
-                    </td>
-                    <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } to { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
-                    <td>{ $case.courtRoom }</td>
-                  </tr>
-                )
-              }) }
+                { data.unmatched && data.unmatched.map(($case, index) => {
+                  return (
+                    <tr key={ index }>
+                      <th scope="row"><Link
+                        to={ `/cases/match/${ $case.id }` }
+                        onClick={ () => {
+                          dispatch({ type: 'setCase', setCase: $case })
+                        } }
+                        className="govuk-link govuk-link--no-visited-state">{ $case.defendant.name }</Link>
+                      </th>
+                      <td>
+                        <ol className="govuk-list">
+                          { $case.offences.map((offence, offenceIndex) => {
+                            return <li key={ offenceIndex }
+                                       className="govuk-list--number app-offence-title">{ offence.title }</li>
+                          }) }
+                        </ol>
+                      </td>
+                      <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } to { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
+                      <td>{ $case.courtRoom }</td>
+                    </tr>
+                  )
+                }) }
 
-              </tbody>
-            </table>
+                </tbody>
+              </table>
 
-          </Fragment>
-        ) }
+            </Fragment>
+          ) }
 
-      </main>
+        </main>
+      </div>
     </Fragment>
   )
 }

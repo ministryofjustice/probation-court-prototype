@@ -17,12 +17,10 @@ function App () {
       <Header/>
       <Navigation/>
 
-      <div className="govuk-width-container">
-        <Route path="/dashboard" component={ Dashboard }/>
-        <Route path="/cases/" component={ Cases }/>
-        <Route path="/calendar/:month?/:year?" component={ Calendar }/>
-        <Redirect from="*" to="/dashboard" />
-      </div>
+      <Route path="/dashboard" component={ Dashboard }/>
+      <Route path="/cases/" component={ Cases }/>
+      <Route path="/calendar/:month?/:year?" component={ Calendar }/>
+      <Redirect from="*" to="/dashboard" />
 
       <Footer/>
     </Router>

@@ -5,13 +5,16 @@ import moment from 'moment'
 import { useStateValue } from '../../../../utils/StateProvider'
 import { getAge } from '../../../../utils/DateTools'
 import OffenderMatch from '../../shared-components/OffenderMatch'
+import DefendantBanner from '../../shared-components/DefendantBanner'
+import { AppTitle } from '../../../../utils/Title'
 
-function OffenderSelection () {
+function OffenderSelection (props) {
 
   const [{ currentCase }] = useStateValue()
   const [data, setState] = useState({ potentialMatches: [] })
 
   useEffect(() => {
+    document.title = `Match with offender record - ${ AppTitle }`
     window.scrollTo(0, 0)
 
     // Create some potential matches from the current defendant data
@@ -53,176 +56,41 @@ function OffenderSelection () {
   return (
     <Fragment>
 
-      <nav className="govuk-breadcrumbs" aria-label="Page navigation">
-        <ol className="govuk-breadcrumbs__list">
-          <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/list" className="govuk-breadcrumbs__link">Cases</Link>
-          </li>
-          <li className="govuk-breadcrumbs__list-item">
-            <Link to="/cases/unmatched-list" className="govuk-breadcrumbs__link">Unmatched cases</Link>
-          </li>
-          <li className="govuk-breadcrumbs__list-item" aria-current="page">Match record</li>
-        </ol>
-      </nav>
+      { currentCase && currentCase.defendant && (
+        <DefendantBanner case={ currentCase }/>
+      ) }
 
-      <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-margin-top-0 govuk-!-padding-top-0">
+      <div className="govuk-width-container">
 
-        <h1 className="govuk-heading-l">Match record <span
-          className="govuk-hint govuk-!-display-inline-block">in Delius</span></h1>
+        <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-padding-top-6">
 
-        <div className="moj-filter-layout">
+          <h1 className="govuk-heading-l">Match with offender record</h1>
 
-          <div className="moj-filter-layout__filter">
-
-            <div className="moj-filter">
-
-              <div className="moj-filter__header">
-
-                <div className="moj-filter__header-title">
-                  <h2 className="govuk-heading-m">Defendant details</h2>
-                </div>
-              </div>
-
-              { currentCase.defendant && (
-
-                <div className="moj-filter__content">
-                  <div className="moj-filter__selected">
-
-                    <div className="moj-filter__selected-heading">
-
-                      { currentCase.defendant && (
-                        <p className="govuk-heading-s">{ currentCase.defendant.name }</p>
-                      ) }
-
-                      <table className="govuk-table app-table app-table__50-50">
-                        <tbody>
-                        <tr>
-                          <td className="govuk-body govuk-!-font-weight-bold">PNC:</td>
-                          <td className="govuk-body">{ data.pnc }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Date of birth:</td>
-                          <td>{ moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Age:</td>
-                          <td>{ currentCase.defendant.age }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Gender:</td>
-                          <td>{ currentCase.defendant.gender === 'M' ? 'Male' : 'Female' }</td>
-                        </tr>
-                        <tr>
-                          <td className="govuk-!-font-weight-bold">Address:</td>
-                          <td>
-
-                            <p
-                              className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line1 }</p>
-                            { currentCase.defendant.address.line2 && (
-                              <p
-                                className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line2 }</p>
-                            ) }
-                            { currentCase.defendant.address.line3 && (
-                              <p
-                                className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line3 }</p>
-                            ) }
-                            { currentCase.defendant.address.line4 && (
-                              <p
-                                className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.line4 }</p>
-                            ) }
-                            <p
-                              className="govuk-body govuk-!-margin-bottom-0">{ currentCase.defendant.address.postcode }</p>
-
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
-
-                    </div>
-                  </div>
-
-                  <div className="moj-filter__options">
-
-                    <div className="moj-search govuk-!-margin-bottom-6">
-
-                      <form id="ndForm" onSubmit={ e => { e.preventDefault() } }>
-
-                        <div className="govuk-form-group">
-                          <label className="govuk-label moj-search__label govuk-label--m"
-                                 htmlFor="offender-search">Record not listed?</label>
-
-                          <span id="offender-search-hint" className="govuk-hint moj-search__hint">You can search for an offender record using multiple terms</span>
-                          <input className="govuk-input moj-search__input" id="offender-search" name="offender-search"
-                                 type="search"
-                                 aria-describedby="offender-search-hint"/>
-                        </div>
-
-                        <button data-module="govuk-button" type="submit" className="govuk-button moj-search__button ">
-                          Search
-                        </button>
-
-                      </form>
-
-                    </div>
-
-                    <hr
-                      className="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-0"/>
-
-                    <h2 className="govuk-heading-m">Offender not known?</h2>
-
-                    <p className="govuk-body">Confirm that you have determined that the offender is not currently known
-                      to probation.</p>
-
-                    <p className="govuk-body">
-                      <Link to="/" className="govuk-link  govuk-link--no-visited-state govuk-!-margin-bottom-0"
-                            onClick={ e => e.preventDefault() }>This is
-                        a new offender</Link>
-                    </p>
-
-                  </div>
-
-                </div>
-              ) }
-
-            </div>
-
+          <div
+            className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
+            <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong className="govuk-warning-text__text">
+              <span className="govuk-warning-text__assistive">Warning</span>
+              A positive identification was not possible due to missing data, please manually match the offender
+              record.
+            </strong>
           </div>
 
-          <div className="moj-filter-layout__content">
+          { data.potentialMatches.map((offenderItem, index) => {
+            return offenderItem.defendant && (
+              <Fragment key={ index }>
 
-            <div className="moj-scrollable-pane">
+                <OffenderMatch case={ offenderItem } id={ props.match.params.id } action={ () => {} }/>
 
-              <div className="moj-scrollable-pane__wrapper">
+              </Fragment>
+            )
+          }) }
 
-                <div
-                  className="govuk-warning-text app-warning-text app-warning-text--interrupt govuk-!-margin-bottom-4">
-                  <span className="govuk-warning-text__icon" aria-hidden="true">!</span>
-                  <strong className="govuk-warning-text__text">
-                    <span className="govuk-warning-text__assistive">Warning</span>
-                    A positive identification was not possible due to missing data, please manually match the offender
-                    record.
-                  </strong>
-                </div>
+          <Link to="/cases/list" className="govuk-back-link">Back</Link>
 
-                { data.potentialMatches.map((offenderItem, index) => {
-                  return offenderItem.defendant && (
-                    <Fragment key={ index }>
+        </main>
 
-                      <OffenderMatch case={ offenderItem } action={ () => {} }/>
-
-                    </Fragment>
-                  )
-                }) }
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <Link to="/cases/list" className="govuk-back-link">Back</Link>
-
-      </main>
+      </div>
 
     </Fragment>
   )
