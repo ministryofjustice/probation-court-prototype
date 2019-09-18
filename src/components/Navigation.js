@@ -15,9 +15,6 @@ function Navigation () {
               <li className="moj-primary-navigation__item">
                 <NavLink to="/cases/list" className="moj-primary-navigation__link">Cases</NavLink>
               </li>
-              <li className="moj-primary-navigation__item">
-                <NavLink to="/calendar" className="moj-primary-navigation__link">Calendar</NavLink>
-              </li>
             </ul>
           </nav>
 
