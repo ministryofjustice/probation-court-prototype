@@ -35,10 +35,10 @@ function AdjournCase (props) {
               <form name="ndForm">
 
                 <div className="govuk-form-group">
-                  <label className="govuk-label" htmlFor="width-20">
+                  <label className="govuk-label" htmlFor="adjournReason">
                     Adjournment reason
                   </label>
-                  <input className="govuk-input govuk-!-width-three-quarters" id="width-20" name="width-20" type="text"
+                  <input className="govuk-input govuk-!-width-three-quarters" id="adjournReason" name="width-20" type="text"
                          aria-required="true"/>
                 </div>
 
@@ -90,10 +90,7 @@ function AdjournCase (props) {
                             rows="5"/>
                 </div>
 
-                <button data-module="govuk-button" type="button"
-                        className="govuk-button govuk-!-margin-right-2"
-                        onClick={ e => e.preventDefault() }>Adjourn case
-                </button>
+                <Link to="/cases/list" type="button" className="govuk-button govuk-!-margin-right-2">Adjourn case</Link>
 
               </form>
 

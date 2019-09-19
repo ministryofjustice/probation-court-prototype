@@ -43,7 +43,7 @@ function CaseSummary (props) {
 
         <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-padding-top-6">
 
-          <div className="moj-page-header-actions govuk-!-margin-bottom-4">
+          <div className="moj-page-header-actions">
 
             <div className="moj-page-header-actions__title">
               <h1 className="govuk-heading-l">Case details</h1>
@@ -53,6 +53,12 @@ function CaseSummary (props) {
 
               <div className="moj-button-menu">
                 <div className="moj-button-menu__wrapper">
+
+                  <Link to={ `/cases/close/${ props.match.params.id }` } role="button"
+                        className="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action"
+                        data-module="govuk-button">
+                    Close case
+                  </Link>
 
                   <Link to={ `/cases/adjourn/${ props.match.params.id }` } role="button"
                         className="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action"
