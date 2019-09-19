@@ -49,7 +49,7 @@ function DefendantBanner (props) {
 
         </div>
         <div className="key-details-bar__bottom-block">
-          
+
           <span className="govuk-body">Date of birth: { moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</span>
 
           { !!props.showRecordLink && currentCase.defendant.deliusStatus !== 'Not known' && currentCase.defendant.deliusStatus !== 'NO_MATCH' && (
