@@ -45,7 +45,7 @@ function OffenderSummary (props) {
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
                         <p className="govuk-heading-m govuk-!-margin-0">Rehabilitation Activity Requirement (RAR)</p>
-                        <p className="govuk-body">Hours ordered: <strong>5</strong></p>
+                        <p className="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-0">Hours ordered: <strong>5</strong></p>
                         <p className="govuk-body">Hours credited: <strong>0</strong></p>
 
                         <p className="govuk-body">

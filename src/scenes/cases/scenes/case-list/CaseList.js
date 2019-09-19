@@ -185,7 +185,6 @@ function CaseList (props) {
                 <table className="govuk-table app-table app-table--split-rows app-alternate-rows-table">
                   <thead>
                   <tr>
-                    <th scope="col">Case</th>
                     <th scope="col">Name</th>
                     <th scope="col">Delius record</th>
                     <th scope="col" style={ { 'width': '40%' } }>Offence</th>
@@ -200,9 +199,6 @@ function CaseList (props) {
                     return (
                       caseIndex < 15 && (
                         <tr key={ caseIndex }>
-                          <td>
-                            { $case.caseSequence }
-                          </td>
                           <th scope="row"><Link
                             to={ `/cases/details/${ $case.id }` }
                             onClick={ () => {
