@@ -54,6 +54,12 @@ function CaseSummary (props) {
               <div className="moj-button-menu">
                 <div className="moj-button-menu__wrapper">
 
+                  <Link to={ `/cases/close/${ props.match.params.id }` } role="button"
+                        className="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action"
+                        data-module="govuk-button">
+                    Close case
+                  </Link>
+
                   <Link to={ `/cases/adjourn/${ props.match.params.id }` } role="button"
                         className="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action"
                         data-module="govuk-button">

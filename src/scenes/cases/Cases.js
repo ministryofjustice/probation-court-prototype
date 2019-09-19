@@ -17,6 +17,7 @@ import AddCaseDetails from './scenes/add-case/AddCaseDetails'
 import AddCaseFinished from './scenes/add-case/AddCaseFinished'
 import AdjournCase from './scenes/adjourn-case/AdjournCase'
 import SentenceCase from './scenes/sentence-case/SentenceCase'
+import CloseCase from './scenes/close-case/CloseCase'
 
 function Cases (props) {
 
@@ -29,6 +30,7 @@ function Cases (props) {
       <Route path={ `${ props.match.url }/details/:id` } component={ CaseSummary }/>
       <Route path={ `${ props.match.url }/adjourn/:id` } component={ AdjournCase }/>
       <Route path={ `${ props.match.url }/record-sentence/:id` } component={ SentenceCase }/>
+      <Route path={ `${ props.match.url }/close/:id` } component={ CloseCase }/>
       <Route path={ `${ props.match.url }/offender/:id` } component={ OffenderSummary }/>
       <Route path={ `${ props.match.url }/match/:id` } component={ OffenderSelection }/>
       <Route exact path={ `${ props.match.url }/add` } component={ AddCase }/>

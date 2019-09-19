@@ -98,10 +98,7 @@ function SentenceCase (props) {
                             rows="5" aria-required="true"/>
                 </div>
 
-                <button data-module="govuk-button" type="button"
-                        className="govuk-button govuk-!-margin-right-2"
-                        onClick={ e => e.preventDefault() }>Record sentence
-                </button>
+                <Link to="/cases/list" type="button" className="govuk-button govuk-!-margin-right-2">Record sentence</Link>
 
               </form>
 

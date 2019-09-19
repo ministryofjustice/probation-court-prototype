@@ -22,14 +22,14 @@ function DefendantBanner (props) {
               Room { currentCase.courtRoom }, { currentDate.format('dddd D MMMM') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } to { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</span>
           ) }
 
-          { currentCase.defendant.deliusStatus && (
+          { currentCase.defendant.deliusStatus && currentCase.defendant.deliusStatus !== 'NO_MATCH' && (
             <Fragment>
               <span className="govuk-visually-hidden">Status from nDelius:</span>
               <span className="key-details-bar__status">{ currentCase.defendant.deliusStatus } offender</span>
             </Fragment>
           ) }
 
-          { !!((currentCase.defendant.risk && currentCase.defendant.risk.length) || currentCase.defendant.breachedConditions) && (
+          { !!((currentCase.defendant.risk && currentCase.defendant.risk.length) || currentCase.defendant.breachedConditions) && currentCase.defendant.deliusStatus !== 'NO_MATCH' && (
             <Fragment>
               { currentCase.defendant.risk.map((risk, riskIndex) => {
                 return (
@@ -49,11 +49,10 @@ function DefendantBanner (props) {
 
         </div>
         <div className="key-details-bar__bottom-block">
+          
+          <span className="govuk-body">Date of birth: { moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</span>
 
-          <span className="govuk-body">Date of birth:</span>
-          <span className="govuk-body">{ moment(currentCase.defendant.dateOfBirth, 'YYYY-MM-DD').format('DD/MM/YYYY') }</span>
-
-          { !!props.showRecordLink && currentCase.defendant.deliusStatus !== 'Not known' && (
+          { !!props.showRecordLink && currentCase.defendant.deliusStatus !== 'Not known' && currentCase.defendant.deliusStatus !== 'NO_MATCH' && (
             <p className="govuk-body govuk-!-margin-0 app-!-float-right">
               <Link to={ `/cases/offender/${ props.id }` }
                     className="govuk-link govuk-link--no-visited-state govuk-link--text-colour">View offender
@@ -61,7 +60,7 @@ function DefendantBanner (props) {
             </p>
           ) }
 
-          { !!props.showCaseLink && (
+          { !!props.showCaseLink && currentCase.defendant.deliusStatus !== 'NO_MATCH' && (
             <p className="govuk-body govuk-!-margin-0 app-!-float-right">
               <Link to={ `/cases/details/${ props.id }` }
                     className="govuk-link govuk-link--no-visited-state govuk-link--text-colour">View case details</Link>
