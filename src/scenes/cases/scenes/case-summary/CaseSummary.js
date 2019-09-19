@@ -43,7 +43,7 @@ function CaseSummary (props) {
 
         <main id="main-content" role="main" className="govuk-main-wrapper govuk-!-padding-top-6">
 
-          <div className="moj-page-header-actions govuk-!-margin-bottom-4">
+          <div className="moj-page-header-actions">
 
             <div className="moj-page-header-actions__title">
               <h1 className="govuk-heading-l">Case details</h1>

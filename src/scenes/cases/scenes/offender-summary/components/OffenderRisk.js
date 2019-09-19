@@ -11,7 +11,7 @@ function OffenderRisk () {
 
       { !!(currentCase.defendant.risk && currentCase.defendant.risk.length) && (
         <Fragment>
-          <h2 className="govuk-heading-m govuk-!-margin-top-2">Registers and warnings</h2>
+          <h2 className="govuk-heading-m govuk-!-margin-top-6">Registers and warnings</h2>
 
           <table className="govuk-table app-table app-table--split-rows">
             <thead>

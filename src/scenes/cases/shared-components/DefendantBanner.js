@@ -22,10 +22,28 @@ function DefendantBanner (props) {
               Room { currentCase.courtRoom }, { currentDate.format('dddd D MMMM') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } to { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</dd>
           ) }
 
-          { (currentCase.defendant.deliusStatus === 'Current' || currentCase.defendant.deliusStatus === 'Known') && (
+          { currentCase.defendant.deliusStatus && (
             <Fragment>
               <dt className="govuk-visually-hidden">Status from nDelius:</dt>
               <dd className="key-details-bar__status">{ currentCase.defendant.deliusStatus } offender</dd>
+            </Fragment>
+          ) }
+
+          { !!((currentCase.defendant.risk && currentCase.defendant.risk.length) || currentCase.defendant.breachedConditions) && (
+            <Fragment>
+              { currentCase.defendant.risk.map((risk, riskIndex) => {
+                return (
+                  <Fragment key={ riskIndex }>
+                    { risk.type === 'RoSH' && (
+                      <Fragment>
+                        <dt className="govuk-visually-hidden">Status from nDelius:</dt>
+                        <dd className="key-details-bar__status govuk-!-margin-right-2">{ risk.status.charAt(0).toUpperCase() + risk.status.slice(1) } Risk
+                          of Serious Harm</dd>
+                      </Fragment>
+                    ) }
+                  </Fragment>
+                )
+              }) }
             </Fragment>
           ) }
 
