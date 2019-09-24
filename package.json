@@ -24,6 +24,8 @@
     "iOS >= 9"
   ],
   "dependencies": {
+    "@ministryofjustice/frontend": "0.0.15-alpha",
+    "govuk-frontend": "3.2.0",
     "moment": "2.24.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
@@ -31,8 +33,6 @@
     "react-scripts": "3.1.1"
   },
   "devDependencies": {
-    "@ministryofjustice/frontend": "0.0.15-alpha",
-    "govuk-frontend": "3.2.0",
     "node-sass": "4.12.0"
   }
 }

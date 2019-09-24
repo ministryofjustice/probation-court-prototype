@@ -8,9 +8,10 @@ RUN mkdir -p /app
 WORKDIR /app
 ADD . .
 
+RUN npm ci
+
 ENV NODE_ENV=production
 
-RUN npm ci
 RUN npm run build
 RUN chown -R appuser:appgroup /app
 
