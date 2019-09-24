@@ -1,4 +1,4 @@
-const AppTitle = 'MOJ Digital Probation in court'
+const AppTitle = 'MoJ D&T Probation in court - Sheffield Magistrates\' Court'
 
 export {
   AppTitle

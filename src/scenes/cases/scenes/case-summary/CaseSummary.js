@@ -85,13 +85,13 @@ function CaseSummary (props) {
                 <div className="govuk-grid-column-one-third app-!-display-flex--1">
                   <div className="app-card app-card--muted">
 
-                    <p className="govuk-heading-m govuk-!-margin-0">CPS Pack</p>
+                    <p className="govuk-heading-m govuk-!-margin-0">Crown Prosecution Service (CPS) pack</p>
                     <p className="govuk-body">The CPS pack was obtained on { currentDate.format('D MMMM YYYY ') } at
                       09:04.</p>
 
                     <p className="govuk-body">
                       <a href="/" className="govuk-link app-link--dark"
-                         onClick={ e => e.preventDefault() }>CPS Pack</a>
+                         onClick={ e => e.preventDefault() }>View CPS pack</a>
                     </p>
 
                   </div>
@@ -103,7 +103,7 @@ function CaseSummary (props) {
 
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
-                        <p className="govuk-heading-m govuk-!-margin-0">OM Update</p>
+                        <p className="govuk-heading-m govuk-!-margin-0">Offender Manager update</p>
                         <p className="govuk-body">An update was requested on { currentDate.format('D MMMM YYYY ') } at
                           09:15, currently awaiting a response.</p>
 
@@ -122,7 +122,7 @@ function CaseSummary (props) {
 
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
-                        <p className="govuk-heading-m govuk-!-margin-0">PSR</p>
+                        <p className="govuk-heading-m govuk-!-margin-0">Pre-Sentence Report requested</p>
                         <p className="govuk-body">A pre-sentence report was requested at 09:25 and is currently in
                           draft.</p>
 
