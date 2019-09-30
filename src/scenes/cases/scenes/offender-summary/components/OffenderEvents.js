@@ -1,10 +1,6 @@
 import React, { Fragment } from 'react'
-import { useStateValue } from '../../../../../utils/StateProvider'
 
 function OffenderEvents () {
-
-  const [{ currentCase }] = useStateValue()
-  const hasActive = currentCase.defendant.deliusStatus && currentCase.defendant.deliusStatus === 'Current'
 
   return (
     <Fragment>
@@ -14,16 +10,15 @@ function OffenderEvents () {
 
       <p className="govuk-heading-s govuk-!-margin-bottom-1">
         <a className="govuk-link govuk-link--no-visited-state" href="/delius/events/1"
-           onClick={ e => {e.preventDefault()} }>Short Format Pre-Sentence Report (adjourned)</a>
+           onClick={ e => {e.preventDefault()} }>ORA Suspended Sentence Order (24 months)</a>
       </p>
 
       <table className="govuk-table app-table govuk-!-margin-top-0">
         <tbody>
         <tr>
-          <td>Criminal damage to property valued under £5000 - CD71039</td>
+          <td>Common assault and battery - 10501</td>
           <td style={ { 'width': '125px' } }>27/06/2018</td>
-          <td style={ { 'width': '125px' } }
-              className={ hasActive ? 'app-!-color-green' : 'app-!-color-red' }>{ hasActive ? 'Active' : 'Terminated' }</td>
+          <td style={ { 'width': '125px' } } className="app-!-color-red govuk-!-font-weight-bold">Breached</td>
         </tr>
         </tbody>
       </table>

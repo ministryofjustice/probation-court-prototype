@@ -12,8 +12,10 @@ function Header () {
         <div className="moj-header__logo">
 
           <Logo className="moj-header__logotype-crest govuk-header__logotype-crown"/>
-          <Link to="/dashboard" className="moj-header__link moj-header__link--organisation-name">MoJ D&amp;T</Link>
-          <Link to="/dashboard" className="moj-header__link moj-header__link--service-name">Probation in court</Link>
+          <Link to="/dashboard" className="moj-header__link">
+            <span className="moj-header__link moj-header__link--organisation-name">MoJ D&amp;T</span>&nbsp;
+            <span className="moj-header__link moj-header__link--service-name">Probation in court</span>
+          </Link>
 
         </div>
         <div className="moj-header__content">

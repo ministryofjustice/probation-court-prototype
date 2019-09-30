@@ -58,10 +58,7 @@ function TodayDashboard () {
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">12</span> Defendants
               current to Probation</p>
             <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">2</span> Defendants
-              recently known to Probation</p>
-            <p className="govuk-body app-!-color-white govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">22</span> Defendants
+              className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">24</span> Defendants
               previously known to Probation</p>
             <p className="govuk-body app-!-color-white govuk-!-margin-top-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-!-color-white app-dashboard-count">6</span> Defendants
@@ -113,6 +110,24 @@ function TodayDashboard () {
         </div>
       </div>
 
+      <div className="moj-banner govuk-!-margin-top-4">
+
+        <span className="govuk-body app-!-float-right">
+          <Link to="/cases/yesterday" className="govuk-link govuk-link--no-visited-state" onClick={ e => e.preventDefault() }>View cases from yesterday</Link>
+        </span>
+
+        <svg className="moj-banner__icon" fill="currentColor" role="presentation" focusable="false"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25">
+          <path d="M13.7,18.5h-2.4v-2.4h2.4V18.5z M12.5,13.7c-0.7,0-1.2-0.5-1.2-1.2V7.7c0-0.7,0.5-1.2,1.2-1.2s1.2,0.5,1.2,1.2v4.8
+C13.7,13.2,13.2,13.7,12.5,13.7z M12.5,0.5c-6.6,0-12,5.4-12,12s5.4,12,12,12s12-5.4,12-12S19.1,0.5,12.5,0.5z"/>
+        </svg>
+
+        <div className="moj-banner__message">
+          <h2 className="govuk-heading-m">There are 4 cases from yesterday that require action</h2>
+        </div>
+
+      </div>
+
       {
         /*
         <div className="app-card app-card__secondary app-card--muted govuk-!-margin-top-4">
@@ -160,10 +175,7 @@ function TodayDashboard () {
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">15</span> Defendants current to
               Probation</p>
             <p className="govuk-body govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">5</span> Defendants recently known
-              to Probation</p>
-            <p className="govuk-body govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">24</span> Defendants previously
+              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">29</span> Defendants previously
               known to Probation</p>
             <p className="govuk-body govuk-!-margin-top-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">3</span> Defendants not known to
@@ -276,10 +288,7 @@ function TodayDashboard () {
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">22</span> Defendants current to
               Probation</p>
             <p className="govuk-body govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">3</span> Defendants recently known
-              to Probation</p>
-            <p className="govuk-body govuk-!-margin-0"><span
-              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">16</span> Defendants previously
+              className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">19</span> Defendants previously
               known to Probation</p>
             <p className="govuk-body govuk-!-margin-top-0"><span
               className="govuk-body-l govuk-!-font-weight-bold app-dashboard-count">8</span> Defendants not known to

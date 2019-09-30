@@ -120,6 +120,9 @@ $moj-light-color: govuk-tint(govuk-colour("black"), 98);
 
 .moj-header__link:focus {
   @include govuk-focused-text;
+  span {
+    color: govuk-colour("black");
+  }
 }
 
 .moj-filter__selected {
