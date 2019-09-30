@@ -85,13 +85,13 @@ function CaseSummary (props) {
                 <div className="govuk-grid-column-one-third app-!-display-flex--1">
                   <div className="app-card app-card--muted">
 
-                    <p className="govuk-heading-m govuk-!-margin-0">Crown Prosecution Service (CPS) pack</p>
+                    <p className="govuk-heading-m govuk-!-margin-0">Crown Prosecution Service pack</p>
                     <p className="govuk-body">The CPS pack was obtained on { currentDate.format('D MMMM YYYY ') } at
                       09:04.</p>
 
                     <p className="govuk-body">
                       <a href="/" className="govuk-link app-link--dark"
-                         onClick={ e => e.preventDefault() }>View CPS pack</a>
+                         onClick={ e => e.preventDefault() }>View CPS Pack</a>
                     </p>
 
                   </div>
@@ -103,8 +103,8 @@ function CaseSummary (props) {
 
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
-                        <p className="govuk-heading-m govuk-!-margin-0">Offender Manager update</p>
-                        <p className="govuk-body">An update was requested on { currentDate.format('D MMMM YYYY ') } at
+                        <p className="govuk-heading-m govuk-!-margin-0">Offender Manager Update</p>
+                        <p className="govuk-body">An OM update was requested on { currentDate.format('D MMMM YYYY ') } at
                           09:15, currently awaiting a response.</p>
 
                         <p className="govuk-body"><a href="/contact" className="govuk-link app-link--dark"
@@ -122,8 +122,9 @@ function CaseSummary (props) {
 
                     { currentCase.defendant.deliusStatus === 'Current' && (
                       <Fragment>
-                        <p className="govuk-heading-m govuk-!-margin-0">Pre-Sentence Report requested</p>
-                        <p className="govuk-body">A pre-sentence report was requested at 09:25 and is currently in
+
+                        <p className="govuk-heading-m govuk-!-margin-0">Report request</p>
+                        <p className="govuk-body">A Short Format Pre-Sentence Report (PSR) was requested at 09:25 and is currently in
                           draft.</p>
 
                         <p className="govuk-body"><a href="/contact" className="govuk-link app-link--dark"
@@ -185,7 +186,7 @@ function CaseSummary (props) {
                   <td>
 
                     <p
-                      className="govuk-body">{ currentDate.format('dddd D MMMM') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } - { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</p>
+                      className="govuk-body">{ currentDate.format('dddd D MMMM') }, { moment(currentCase.startTime, 'HH:mm:ss').format('HH:mm') } to { moment(currentCase.endTime, 'HH:mm:ss').format('HH:mm') }</p>
 
                   </td>
                   <td>

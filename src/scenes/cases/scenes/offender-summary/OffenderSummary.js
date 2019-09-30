@@ -7,6 +7,8 @@ import OffenderRisk from './components/OffenderRisk'
 import OffenderEvents from './components/OffenderEvents'
 import OffenderDetails from './components/OffenderDetails'
 import DefendantBanner from '../../shared-components/DefendantBanner'
+import OffenderManager from './components/OffenderManager'
+import CurrentOrder from './components/CurrentOrder'
 
 function OffenderSummary (props) {
 
@@ -37,67 +39,14 @@ function OffenderSummary (props) {
           { currentCase && currentCase.defendant && (
             <Fragment>
 
-              <div className="govuk-grid-row app-!-display-flex">
-                <div className="govuk-grid-column-one-third app-!-display-flex--1">
-                  <div
-                    className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
-
-                    { currentCase.defendant.deliusStatus === 'Current' && (
-                      <Fragment>
-                        <p className="govuk-heading-m govuk-!-margin-0">Rehabilitation Activity Requirement (RAR)</p>
-                        <p className="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-0">Hours ordered: <strong>5</strong></p>
-                        <p className="govuk-body">Hours credited: <strong>0</strong></p>
-
-                        <p className="govuk-body">
-                          <a href="/" className="govuk-link app-link--dark"
-                             onClick={ e => e.preventDefault() }>CPS Pack</a>
-                        </p>
-                      </Fragment>
-                    ) }
-
-                  </div>
-                </div>
-
-                <div className="govuk-grid-column-one-third app-!-display-flex--1">
-                  <div
-                    className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
-
-                    { currentCase.defendant.deliusStatus === 'Current' && (
-                      <Fragment>
-                        <p className="govuk-heading-m govuk-!-margin-0">OM Update</p>
-                        <p className="govuk-body">An update was requested on { currentDate.format('D MMMM YYYY ') } at
-                          09:15, currently awaiting a response.</p>
-
-                        <p className="govuk-body"><a href="/contact" className="govuk-link app-link--dark"
-                                                     onClick={ e => e.preventDefault() }>Contact
-                          offender manager</a></p>
-                      </Fragment>
-                    ) }
-
-                  </div>
-                </div>
-
-                <div className="govuk-grid-column-one-third app-!-display-flex--1">
-                  <div
-                    className={ `app-card app-card--muted ${ currentCase.defendant.deliusStatus !== 'Current' ? 'app-card__secondary' : '' }` }>
-
-                    { currentCase.defendant.deliusStatus === 'Current' && (
-                      <Fragment>
-                        <p className="govuk-heading-m govuk-!-margin-0">PSR</p>
-                        <p className="govuk-body">A pre-sentence report was requested at 09:25 and is currently in
-                          draft.</p>
-
-                        <p className="govuk-body"><a href="/contact" className="govuk-link app-link--dark"
-                                                     onClick={ e => e.preventDefault() }>View draft report</a></p>
-                      </Fragment>
-                    ) }
-
-                  </div>
-                </div>
-              </div>
-
               <OffenderRisk/>
+              { currentCase.defendant.deliusStatus === 'Current' &&
+              <CurrentOrder/>
+              }
               <OffenderEvents/>
+              { currentCase.defendant.deliusStatus === 'Current' &&
+                <OffenderManager/>
+              }
               <OffenderDetails/>
 
               <h2 className="govuk-heading-m govuk-!-margin-top-2">Notes</h2>

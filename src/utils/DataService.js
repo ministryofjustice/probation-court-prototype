@@ -13,6 +13,10 @@ function fixNameCase ($name) {
   return $name.toLowerCase().replace('miss ', '').replace('mrs ', '').replace('mr ', '').split(' ').map(item => { return item.charAt(0).toUpperCase() + item.slice(1) }).join(' ')
 }
 
+function fixDeliusStatus ($status) {
+  return $status === 'Known' ? 'Previously known' : $status
+}
+
 const configureCaseData = $data => {
   let cases = []
   let unmatched = []
@@ -28,7 +32,7 @@ const configureCaseData = $data => {
           noMatch: $case.defendant.deliusStatus === 'NO_MATCH'
         }
 
-        $case.defendant = { ...$case.defendant, name: fixNameCase($case.defendant.name) }
+        $case.defendant = { ...$case.defendant, name: fixNameCase($case.defendant.name), deliusStatus: fixDeliusStatus($case.defendant.deliusStatus) }
 
         if ($case.noMatch) {
           unmatched.push($case)

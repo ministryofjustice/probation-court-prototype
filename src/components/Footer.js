@@ -8,19 +8,7 @@ function Footer () {
 
         <PhaseBanner/>
 
-        <div className="govuk-!-margin-top-4">
-
-        <a href="/help" className="govuk-link govuk-link--no-visited-state"
-           onClick={ e => {e.preventDefault()} }>Training</a>
-
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-
-        <a href="/faq" className="govuk-link govuk-link--no-visited-state"
-           onClick={ e => {e.preventDefault()} }>FAQ</a>
-
-        </div>
-
-        <div className="govuk-footer__meta">
+        <div className="govuk-footer__meta govuk-!-margin-top-6">
           <div className="govuk-footer__meta-item govuk-footer__meta-item--grow">
 
             <svg role="presentation" focusable="false" className="govuk-footer__licence-logo"

@@ -54,7 +54,7 @@ function CaseList (props) {
 
         <PageTitle title="Cases"/>
 
-        <p className="govuk-body-m govuk-!-font-weight-bold">Today, { currentDate.format('dddd D MMMM') }
+        <p className="govuk-body-m govuk-!-font-weight-bold">{ currentDate.format('dddd D MMMM') }
           <span className="govuk-hint govuk-!-display-inline-block">&nbsp;at { data.courtName }</span>
         </p>
 
@@ -90,7 +90,7 @@ function CaseList (props) {
                 <td>
 
                   <div className="govuk-grid-row app-!-display-flex">
-                    <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                    <div className="govuk-grid-column-one-third app-!-display-flex--1">
                       <div className="app-card app-card--muted">
 
                         <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold">
@@ -99,41 +99,29 @@ function CaseList (props) {
                           defendants</p>
 
                         <p className="govuk-body govuk-!-margin-top-2">
-                          <a href="/" className="govuk-link app-link--dark">View current defendants</a>
+                          <Link to="/" className="govuk-link app-link--dark" onClick={ e => e.preventDefault() }>View
+                            current defendants</Link>
                         </p>
 
                       </div>
                     </div>
-                    <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
-                      <div className="app-card app-card--muted">
-
-                        <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold">
-                        <span
-                          className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">2</span> Recently
-                          known
-                          defendants</p>
-                        <p className="govuk-body govuk-!-margin-top-2">
-                          <a href="/" className="govuk-link app-link--dark">View recently known defendants</a>
-                        </p>
-
-                      </div>
-                    </div>
-                    <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                    <div className="govuk-grid-column-one-third app-!-display-flex--1">
                       <div className="app-card app-card--muted">
 
                         <p className="govuk-body govuk-!-margin-0 govuk-!-font-weight-bold"><span
-                          className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">22</span> Previously
+                          className="govuk-heading-l govuk-!-margin-0 govuk-!-display-inline-block">24</span> Previously
                           known
                           defendants</p>
 
                         <p className="govuk-body govuk-!-margin-top-2">
-                          <a href="/" className="govuk-link app-link--dark">View previously known defendants</a>
+                          <Link to="/" className="govuk-link app-link--dark" onClick={ e => e.preventDefault() }>View
+                            previously known defendants</Link>
                         </p>
 
                       </div>
                     </div>
 
-                    <div className="govuk-grid-column-one-quarter app-!-display-flex--1">
+                    <div className="govuk-grid-column-one-third app-!-display-flex--1">
                       <div
                         className="app-card app-card--muted">
 
@@ -142,7 +130,8 @@ function CaseList (props) {
                           defendants</p>
 
                         <p className="govuk-body govuk-!-margin-top-2">
-                          <a href="/" className="govuk-link app-link--dark">View not known defendants</a>
+                          <Link to="/" className="govuk-link app-link--dark" onClick={ e => e.preventDefault() }>View
+                            not known defendants</Link>
                         </p>
 
                       </div>
@@ -222,6 +211,12 @@ function CaseList (props) {
                               <span
                                 className="govuk-!-margin-0 govuk-!-display-inline-block">&nbsp;({ $case.defendant.assignment })</span>
                             ) }
+
+                            { $case.defendant.deliusStatus === 'Previously known' && (
+                              <p>
+                                { moment().subtract(3, 'months').format('DD/MM/YYYY') }
+                              </p>
+                            ) }
                           </td>
                           <td>
                             { $case.offences.length > 1 ? (
@@ -235,7 +230,14 @@ function CaseList (props) {
                               <p className="govuk-body govuk-!-margin-bottom-2">{ $case.offences[0].title }</p>
                             ) }
                           </td>
-                          <td>{ $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing</td>
+                          <td>
+                            { $case.listingNumber === '2st' ? '2nd' : $case.listingNumber } listing
+                            { $case.listingNumber === '2st' && (
+                              <p>
+                                Adjourned from { moment().subtract(3, 'weeks').format('DD/MM/YYYY') }
+                              </p>
+                            ) }
+                          </td>
                           <td>{ moment($case.startTime, 'HH:mm:ss').format('HH:mm') } to { moment($case.endTime, 'HH:mm:ss').format('HH:mm') }</td>
                           <td>{ $case.courtRoom }</td>
                         </tr>

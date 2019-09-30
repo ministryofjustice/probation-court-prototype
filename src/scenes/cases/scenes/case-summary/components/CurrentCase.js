@@ -9,7 +9,6 @@ function CurrentCase () {
   useEffect(() => {
     window.scrollTo(0, 0)
     const $accordion = document.querySelector('[data-module="govuk-accordion"]')
-    console.info($accordion)
     if ($accordion) {
       new Accordion($accordion).init()
     }

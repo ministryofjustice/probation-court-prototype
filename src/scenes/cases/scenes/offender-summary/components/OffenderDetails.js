@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react'
-import moment from 'moment'
 
 import { useStateValue } from '../../../../../utils/StateProvider'
 
 function OffenderDetails () {
 
-  const [{ currentDate, currentCase }] = useStateValue()
+  const [{ currentCase }] = useStateValue()
 
   return (
     <Fragment>
@@ -48,71 +47,39 @@ function OffenderDetails () {
         </tbody>
       </table>
 
-      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-      <h2 className="govuk-heading-m">Personal circumstances</h2>
-
-      <table className="govuk-table app-table app-table--split-rows">
-        <thead>
-        <tr>
-          <th style={ { width: '30%' } }>Type</th>
-          <th>Sub type</th>
-          <th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Offender level recording <span className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">(L)</span></td>
-          <td>Agree offender childcare</td>
-          <td>24/07/2018</td>
-        </tr>
-        </tbody>
-      </table>
-
-      { !!(currentCase.defendant.deliusStatus === 'Current' && currentCase.defendant.assignment === 'nps') && (
-        <Fragment>
-
-          <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
-
-          <h2 className="govuk-heading-m">Next appointment details</h2>
+      <details className="govuk-details" data-module="govuk-details">
+        <summary className="govuk-details__summary">
+          <span className="govuk-details__summary-text">
+            Contact details
+          </span>
+        </summary>
+        <div className="govuk-details__text">
 
           <table className="govuk-table app-table app-table--split-rows">
             <tbody>
             <tr>
-              <th style={ { width: '30%' } }>Contact type</th>
-              <td>Planned office visit <span className="govuk-hint govuk-!-display-inline-block govuk-!-margin-0">(NS)</span></td>
+              <th style={ { 'width': '30%' } }>Telephone</th>
+              <td>01967 458 260</td>
             </tr>
             <tr>
-              <th>Date</th>
-              <td>{ moment(currentDate).add(1, 'weeks').format('DD/MM/YYYY') }</td>
+              <th>Email</th>
+              <td>wallace.pearson@stralum.biz</td>
             </tr>
             <tr>
-              <th>Start time</th>
-              <td>14:00</td>
+              <th>Mobile</th>
+              <td>07839 469 354</td>
             </tr>
             <tr>
-              <th>Location</th>
-              <td>Location 1</td>
-            </tr>
-            <tr>
-              <th>Provider</th>
-              <td>ZZ Bast Public Provider 1</td>
-            </tr>
-            <tr>
-              <th>Team</th>
-              <td>Team 1</td>
-            </tr>
-            <tr>
-              <th>Officer</th>
-              <td>Francis, Sarah</td>
+              <th>Main address</th>
+              <td> 78<br/> Lincoln Avenue<br/> Sheffield<br/> South Yorkshire<br/> S7 8IU</td>
             </tr>
             </tbody>
           </table>
 
-          <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+        </div>
+      </details>
 
-        </Fragment>
-      ) }
+      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
 
     </Fragment>
   )
