@@ -47,6 +47,7 @@ $moj-light-color: govuk-tint(govuk-colour("black"), 98);
 @import "layout";
 @import "progress-bar";
 @import "risk";
+@import "skip-link";
 @import "table";
 @import "tooltip";
 @import "typography";
@@ -118,13 +119,6 @@ $moj-light-color: govuk-tint(govuk-colour("black"), 98);
   }
 }
 
-.moj-header__link:focus {
-  @include govuk-focused-text;
-  span {
-    color: govuk-colour("black");
-  }
-}
-
 .moj-filter__selected {
   background-color: $moj-light-color;
 }
@@ -134,9 +128,12 @@ $moj-light-color: govuk-tint(govuk-colour("black"), 98);
   padding: 0;
 }
 
-.moj-sub-navigation__link[aria-current="page"] {
-  &:before {
-    background-color: $govuk-link-colour
+.moj-header__navigation-link, .moj-header__link, .moj-primary-navigation__link {
+  @include govuk-link-common;
+  &:hover, &:focus, &:active {
+    span {
+      color: govuk-colour("black") !important;
+    }
   }
 }
 

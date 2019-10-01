@@ -1,0 +1,15 @@
+.app-skip-link {
+  @extend %govuk-body-m;
+  @include govuk-link-common;
+  @include govuk-link-style-no-visited-state;
+  position: absolute;
+  overflow: hidden;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+
+  &:focus, &:active {
+    position: static;
+    overflow: visible;
+  }
+}

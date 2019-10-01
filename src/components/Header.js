@@ -9,6 +9,10 @@ function Header () {
 
       <div className="moj-header__container">
 
+        <div>
+          <a href="#main-content" className="app-skip-link">Skip to main content</a>
+        </div>
+
         <div className="moj-header__logo">
 
           <Logo className="moj-header__logotype-crest govuk-header__logotype-crown"/>
