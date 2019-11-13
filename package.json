@@ -27,12 +27,12 @@
     "@ministryofjustice/frontend": "0.0.17-alpha",
     "govuk-frontend": "3.3.0",
     "moment": "2.24.0",
-    "react": "16.10.2",
-    "react-dom": "16.10.2",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
     "react-router-dom": "5.1.2",
     "react-scripts": "3.2.0"
   },
   "devDependencies": {
-    "node-sass": "4.12.0"
+    "node-sass": "4.13.0"
   }
 }

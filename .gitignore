@@ -1,5 +1,6 @@
 /_Research
 node_modules/
+build/
 .idea
 /.idea/
 *.iml

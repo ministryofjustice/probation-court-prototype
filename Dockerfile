@@ -1,22 +1,23 @@
-FROM node:10.15-slim
+FROM node:12.13.0
 
 RUN addgroup --gid 2000 --system appgroup && \
     adduser --uid 2000 --system appuser --gid 2000
 
-# Create app directory
 RUN mkdir -p /app
 WORKDIR /app
-ADD . .
+COPY package*.json yarn*.lock ./
 
-RUN npm ci
+RUN yarn
+
+COPY . .
 
 ENV NODE_ENV=production
 
-RUN npm run build
+RUN yarn build
 RUN chown -R appuser:appgroup /app
 
 ENV PORT=3000
 EXPOSE 3000
-USER 200
+USER 2000
 
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
