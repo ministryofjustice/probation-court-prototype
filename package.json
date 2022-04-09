@@ -26,7 +26,7 @@
   "dependencies": {
     "@ministryofjustice/frontend": "0.0.17-alpha",
     "govuk-frontend": "3.3.0",
-    "moment": "2.24.0",
+    "moment": "2.29.2",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-router-dom": "5.1.2",
